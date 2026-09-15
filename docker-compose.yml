@@ -16,11 +16,13 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - alma-network
 
   backend:
     build:
-      context: ./server
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: server/Dockerfile
     container_name: projectalma-backend
     restart: unless-stopped
     ports:
@@ -28,11 +30,20 @@ services:
     environment:
       PORT: 5000
       MONGODB_URI: mongodb://mongo:27017/alumniconnect
-      JWT_SECRET: supersecret_projectalma_jwt_key_2026!#
+      JWT_SECRET: ${JWT_SECRET:-supersecret_projectalma_jwt_key_2026!#}
       NODE_ENV: production
+      CLIENT_URL: ${CLIENT_URL:-http://localhost:5173}
+      ALLOWED_ORIGIN: ${ALLOWED_ORIGIN:-http://localhost:5173}
+      GMAIL_USER: ${GMAIL_USER:-}
+      GMAIL_APP_PASSWORD: ${GMAIL_APP_PASSWORD:-}
+      EMAIL_FROM_NAME: ${EMAIL_FROM_NAME:-AlmaConnect Portal}
+    volumes:
+      - backend_uploads:/app/server/uploads
     depends_on:
       mongo:
         condition: service_healthy
+    networks:
+      - alma-network
 
   frontend:
     build:
@@ -43,8 +54,17 @@ services:
     ports:
       - "5173:80"
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
+    networks:
+      - alma-network
 
 volumes:
   mongo_data:
     driver: local
+  backend_uploads:
+    driver: local
+
+networks:
+  alma-network:
+    driver: bridge

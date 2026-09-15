@@ -90,5 +90,25 @@ npm run dev:all
 
 ---
 
+## 🚢 Production Deployment
+
+Project ALMA is fully containerized and production-ready.
+
+### 🐳 Quick Deploy with Docker Compose
+```bash
+# Copy and configure environment variables
+cp .env.example .env
+
+# Build and start all services in detached mode
+docker compose up -d --build
+```
+- **Frontend**: `http://localhost:5173`
+- **Backend Health**: `http://localhost:5000/health`
+
+For complete cloud deployment instructions (Render, Railway, Fly.io, Vercel, VPS with Nginx SSL), see the **[Production Deployment Guide](DEPLOYMENT.md)**.
+
+---
+
 ## 📄 License
 This project is open-source and available under the [MIT License](LICENSE).
+

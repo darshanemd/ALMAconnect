@@ -4,6 +4,7 @@ import { Server } from 'socket.io';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import fs from 'fs';
 import { exec } from 'child_process';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -51,10 +52,31 @@ const httpServer = http.createServer(app);
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/alumniconnect';
 
-// Initialize Socket.io
+// Parse allowed CORS origins from CLIENT_URL and ALLOWED_ORIGIN
+const rawAllowedOrigins = [
+  ...(process.env.ALLOWED_ORIGIN ? process.env.ALLOWED_ORIGIN.split(',') : []),
+  process.env.CLIENT_URL
+]
+  .filter(Boolean)
+  .map(origin => origin.trim().replace(/\/+$/, ''));
+
+const isOriginAllowed = (origin) => {
+  if (!origin) return true; // Direct/Server-to-server or same-origin
+  if (process.env.NODE_ENV !== 'production') return true;
+  if (rawAllowedOrigins.length === 0 || rawAllowedOrigins.includes('*')) return true;
+  return rawAllowedOrigins.includes(origin.replace(/\/+$/, ''));
+};
+
+// Initialize Socket.io with origin validation
 const io = new Server(httpServer, {
   cors: {
-    origin: '*',
+    origin: (origin, callback) => {
+      if (isOriginAllowed(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error(`Origin ${origin} not permitted by CORS`));
+      }
+    },
     credentials: true
   }
 });
@@ -145,9 +167,13 @@ app.use(helmet({
 app.use(compression());
 app.use(cookieParser());
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production'
-    ? (process.env.ALLOWED_ORIGIN ? process.env.ALLOWED_ORIGIN.split(',') : false)
-    : true,
+  origin: (origin, callback) => {
+    if (isOriginAllowed(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error(`Origin ${origin} not permitted by CORS`));
+    }
+  },
   credentials: true
 }));
 app.use(express.json({ limit: '50mb' }));
@@ -300,12 +326,20 @@ app.get('/health', (req, res) => {
   });
 });
 
-// Serving static assets in production
+// Explicit 404 for unmatched API routes (prevents returning SPA index.html for missing API endpoints)
+app.all('/api/*', (req, res) => {
+  res.status(404).json({ message: `API endpoint ${req.method} ${req.originalUrl} not found.` });
+});
+
+// Serving static assets in production (SPA fallback)
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../dist')));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../dist/index.html'));
-  });
+  const distPath = path.join(__dirname, '../dist');
+  if (fs.existsSync(distPath)) {
+    app.use(express.static(distPath));
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(distPath, 'index.html'));
+    });
+  }
 }
 
 // Error handling middleware
@@ -316,6 +350,35 @@ if (!process.env.MONGODB_URI && process.env.NODE_ENV === 'production') {
   console.error('CRITICAL ERROR: MONGODB_URI is required in production environment!');
   process.exit(1);
 }
+
+// Graceful shutdown handling
+let isShuttingDown = false;
+const gracefulShutdown = async (signal) => {
+  if (isShuttingDown) return;
+  isShuttingDown = true;
+  console.log(`\nReceived ${signal}. Initiating graceful shutdown...`);
+
+  httpServer.close(async () => {
+    console.log('HTTP and WebSocket server closed.');
+    try {
+      if (mongoose.connection.readyState === 1) {
+        await mongoose.connection.close();
+        console.log('MongoDB connection closed successfully.');
+      }
+    } catch (err) {
+      console.error('Error closing MongoDB connection:', err);
+    }
+    process.exit(0);
+  });
+
+  setTimeout(() => {
+    console.error('Forced shutdown due to timeout.');
+    process.exit(1);
+  }, 10000).unref();
+};
+
+process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+process.on('SIGINT', () => gracefulShutdown('SIGINT'));
 
 // Start Server
 if (process.env.NODE_ENV !== 'test') {

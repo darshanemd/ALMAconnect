@@ -9,17 +9,31 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const router = express.Router();
 
-const PROJECT_ROOT = path.resolve(__dirname, '..', '..');
-const INFERENCE_SCRIPT = path.join(PROJECT_ROOT, 'ml', 'inference.py');
-const TRAIN_PLACEMENT_SCRIPT = path.join(PROJECT_ROOT, 'ml', 'train_placement_model.py');
-const TRAIN_RESUME_SCRIPT = path.join(PROJECT_ROOT, 'ml', 'train_resume_model.py');
-const METRICS_FILE = path.join(PROJECT_ROOT, 'ml', 'saved_models', 'placement_metrics.json');
-const RESUME_METRICS_FILE = path.join(PROJECT_ROOT, 'ml', 'saved_models', 'resume_metrics.json');
+const candidateMlDirs = [
+  process.env.ML_DIR,
+  path.resolve(__dirname, '..', '..', 'ml'),
+  path.resolve(__dirname, '..', 'ml'),
+  path.resolve(process.cwd(), 'ml'),
+  path.resolve(process.cwd(), '..', 'ml')
+].filter(Boolean);
+
+const ML_DIR = candidateMlDirs.find(dir => fs.existsSync(dir)) || path.resolve(__dirname, '..', '..', 'ml');
+const INFERENCE_SCRIPT = path.join(ML_DIR, 'inference.py');
+const TRAIN_PLACEMENT_SCRIPT = path.join(ML_DIR, 'train_placement_model.py');
+const TRAIN_RESUME_SCRIPT = path.join(ML_DIR, 'train_resume_model.py');
+const METRICS_FILE = path.join(ML_DIR, 'saved_models', 'placement_metrics.json');
+const RESUME_METRICS_FILE = path.join(ML_DIR, 'saved_models', 'resume_metrics.json');
+
+const PYTHON_BIN = process.env.PYTHON_BIN || (process.platform === 'win32' ? 'python' : 'python3');
 
 // Helper to execute Python inference script
 function runPythonInference(mode, payload) {
   return new Promise((resolve, reject) => {
-    const pythonProcess = spawn('python', [
+    if (!fs.existsSync(INFERENCE_SCRIPT)) {
+      return reject(new Error(`ML inference script not found at ${INFERENCE_SCRIPT}. Verify that the ml directory is present.`));
+    }
+
+    const pythonProcess = spawn(PYTHON_BIN, [
       INFERENCE_SCRIPT,
       '--mode', mode
     ]);
@@ -37,7 +51,7 @@ function runPythonInference(mode, payload) {
 
     pythonProcess.on('close', (code) => {
       if (code !== 0) {
-        return reject(new Error(`Python inference process exited with code ${code}: ${stderr || stdout}`));
+        return reject(new Error(`Python inference exited with code ${code}: ${stderr || stdout}`));
       }
       try {
         const parsed = JSON.parse(stdout.trim());
@@ -48,7 +62,11 @@ function runPythonInference(mode, payload) {
     });
 
     pythonProcess.on('error', (err) => {
-      reject(new Error(`Failed to start python process: ${err.message}`));
+      if (err.code === 'ENOENT') {
+        reject(new Error(`Python runtime '${PYTHON_BIN}' not found. Ensure Python 3 is installed and in PATH, or set PYTHON_BIN environment variable.`));
+      } else {
+        reject(new Error(`Failed to start python process: ${err.message}`));
+      }
     });
 
     try {
@@ -136,7 +154,7 @@ router.post('/train', async (req, res) => {
 
     const runScript = (scriptPath) => {
       return new Promise((resolve, reject) => {
-        const proc = spawn('python', [scriptPath]);
+        const proc = spawn(PYTHON_BIN, [scriptPath]);
         let out = '';
         let errOut = '';
         proc.stdout.on('data', d => out += d.toString());

@@ -1,0 +1,16 @@
+node_modules
+npm-debug.log
+.git
+.gitignore
+.vscode
+.env
+.env.*
+!.env.example
+server/.env
+dist
+scratch
+ml/__pycache__
+*.pyc
+*.pyo
+*.log
+.DS_Store

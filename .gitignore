@@ -9,24 +9,36 @@ lerna-debug.log*
 
 # Dependencies
 node_modules/
+server/node_modules/
+
+# Production build outputs
 dist/
 dist-ssr/
+build/
 *.local
 
-# Environment & Secrets
+# User uploads (media, avatars, resumes)
+server/uploads/*
+!server/uploads/.gitkeep
+
+# Environment variables & secrets
 .env
 .env.*
 !.env.example
+server/.env
+server/.env.*
+!server/.env.example
 
-# Python cache & artifacts
+# Python & ML cache
 __pycache__/
 *.py[cod]
 *$py.class
-.pytest_cache/
+.venv/
+venv/
+ENV/
+*.joblib.bak
 
-# Uploads & Temporary folders
-server/uploads/*
-!server/uploads/.gitkeep
+# Scratch & temporary workspace files
 scratch/
 
 # Editor directories and files
