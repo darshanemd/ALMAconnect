@@ -1,0 +1,2001 @@
+student_id,department,cgpa,aptitude_score,technical_score,projects_count,internships_count,dsa_problems_solved,backlogs_count,certifications_count,soft_skills_score,placement_score,is_placed,hiring_tier,ctc_lpa
+STU-1000,Information Science,6.63,76,63,2,0,55,0,1,65,62.72,1,Tier 3 Enterprise,4.29
+STU-1001,Artificial Intelligence & Machine Learning,6.69,100,71,4,1,40,0,3,71,92.03,1,Tier 2 Tech,13.66
+STU-1002,Electronics & Communication,7.35,46,70,0,0,57,0,4,69,52.05,0,Unplaced,0.0
+STU-1003,Electronics & Communication,8.0,71,61,0,1,93,0,0,58,60.58,1,Tier 3 Enterprise,7.38
+STU-1004,Computer Science,8.6,80,81,2,1,61,0,4,45,96.99,1,Tier 2 Tech,17.88
+STU-1005,Computer Science,6.72,73,76,1,1,33,0,1,62,74.82,1,Tier 2 Tech,14.99
+STU-1006,Computer Science,9.24,70,85,1,2,157,0,4,95,101.76,1,Tier 2 Tech,11.8
+STU-1007,Civil Engineering,7.3,53,78,1,0,83,2,2,70,31.5,0,Unplaced,0.0
+STU-1008,Electronics & Communication,7.58,75,62,2,0,7,0,5,83,68.86,1,Tier 2 Tech,12.12
+STU-1009,Electronics & Communication,6.78,61,65,1,0,50,0,2,48,59.64,1,Tier 3 Enterprise,5.41
+STU-1010,Computer Science,5.0,41,45,3,0,237,0,0,61,57.58,1,Tier 3 Enterprise,6.41
+STU-1011,Artificial Intelligence & Machine Learning,8.57,88,88,2,2,154,4,2,57,39.46,0,Unplaced,0.0
+STU-1012,Mechanical Engineering,8.41,85,79,2,1,42,1,3,71,64.69,1,Tier 3 Enterprise,6.96
+STU-1013,Computer Science,7.29,72,77,1,1,306,1,2,100,71.51,1,Tier 2 Tech,16.19
+STU-1014,Computer Science,7.67,75,84,0,1,8,0,1,79,69.46,1,Tier 2 Tech,12.17
+STU-1015,Computer Science,8.17,87,84,2,0,357,0,1,94,84.58,1,Tier 1 Product,35.2
+STU-1016,Computer Science,5.88,75,61,4,1,31,0,3,70,79.67,1,Tier 2 Tech,17.16
+STU-1017,Information Science,7.02,84,58,4,1,1,0,2,90,81.98,1,Tier 2 Tech,17.21
+STU-1018,Information Science,8.47,67,79,5,1,62,0,3,98,93.78,1,Tier 2 Tech,15.04
+STU-1019,Computer Science,6.22,90,56,1,0,48,2,5,72,36.09,0,Unplaced,0.0
+STU-1020,Electronics & Communication,7.92,76,71,3,1,85,0,1,67,77.11,1,Tier 2 Tech,14.37
+STU-1021,Computer Science,6.11,74,57,2,0,175,0,1,58,68.56,1,Tier 2 Tech,13.32
+STU-1022,Computer Science,8.11,54,67,1,1,203,1,3,70,59.59,1,Tier 3 Enterprise,4.73
+STU-1023,Information Science,7.56,76,52,1,1,56,0,2,74,69.96,1,Tier 2 Tech,9.24
+STU-1024,Information Science,5.82,60,51,2,0,61,0,2,98,60.27,1,Tier 3 Enterprise,5.94
+STU-1025,Mechanical Engineering,8.88,63,84,1,1,17,0,2,58,72.92,1,Tier 2 Tech,9.59
+STU-1026,Computer Science,6.79,60,52,1,2,5,0,1,74,75.44,1,Tier 2 Tech,13.77
+STU-1027,Information Science,6.71,57,65,2,0,112,1,5,52,46.54,0,Unplaced,0.0
+STU-1028,Electronics & Communication,7.82,100,93,1,2,7,0,0,68,89.7,1,Tier 2 Tech,14.46
+STU-1029,Computer Science,8.86,90,93,4,1,145,1,2,77,93.25,1,Tier 2 Tech,13.26
+STU-1030,Electronics & Communication,6.48,98,80,1,1,85,1,2,80,69.05,1,Tier 2 Tech,8.36
+STU-1031,Computer Science,7.67,54,77,1,2,24,1,1,81,72.43,1,Tier 2 Tech,8.58
+STU-1032,Computer Science,8.07,72,88,3,1,85,0,0,78,89.56,1,Tier 2 Tech,9.13
+STU-1033,Artificial Intelligence & Machine Learning,8.36,53,71,3,2,22,0,0,80,84.7,1,Tier 2 Tech,9.54
+STU-1034,Artificial Intelligence & Machine Learning,7.79,62,67,1,0,63,0,1,74,60.85,1,Tier 3 Enterprise,7.96
+STU-1035,Mechanical Engineering,7.2,59,42,2,0,176,0,1,61,56.65,1,Tier 3 Enterprise,5.38
+STU-1036,Computer Science,6.69,89,77,3,1,68,2,3,51,55.1,1,Tier 3 Enterprise,5.17
+STU-1037,Computer Science,7.69,66,88,2,2,17,0,2,67,78.62,1,Tier 2 Tech,8.52
+STU-1038,Electronics & Communication,6.42,86,57,3,2,141,1,2,72,71.3,1,Tier 2 Tech,14.35
+STU-1039,Information Science,5.0,80,49,2,1,22,0,1,89,59.71,1,Tier 3 Enterprise,6.61
+STU-1040,Computer Science,8.08,100,69,0,1,147,0,1,72,85.45,1,Tier 2 Tech,9.75
+STU-1041,Information Science,8.59,51,84,3,0,71,2,3,71,46.01,0,Unplaced,0.0
+STU-1042,Computer Science,5.0,89,63,1,3,66,0,2,78,77.51,1,Tier 2 Tech,17.19
+STU-1043,Artificial Intelligence & Machine Learning,6.49,88,46,4,0,209,1,0,70,58.44,1,Tier 3 Enterprise,7.2
+STU-1044,Computer Science,8.28,58,82,3,1,135,0,2,83,78.67,1,Tier 2 Tech,10.3
+STU-1045,Electronics & Communication,9.86,86,88,4,1,3,2,2,97,74.7,1,Tier 2 Tech,12.86
+STU-1046,Computer Science,7.62,76,74,3,1,38,0,3,100,90.32,1,Tier 2 Tech,12.58
+STU-1047,Information Science,6.8,68,70,0,0,225,1,1,75,50.96,0,Unplaced,0.0
+STU-1048,Information Science,7.4,60,69,2,3,2,0,2,78,81.21,1,Tier 2 Tech,11.49
+STU-1049,Computer Science,9.11,61,83,2,1,86,0,1,92,87.94,1,Tier 2 Tech,16.18
+STU-1050,Artificial Intelligence & Machine Learning,6.89,100,64,1,2,143,2,2,72,58.3,1,Tier 3 Enterprise,4.44
+STU-1051,Mechanical Engineering,6.72,72,75,1,0,106,1,3,82,55.85,1,Tier 3 Enterprise,5.66
+STU-1052,Artificial Intelligence & Machine Learning,7.07,82,72,1,1,157,0,2,60,80.52,1,Tier 2 Tech,12.28
+STU-1053,Civil Engineering,6.55,60,66,5,1,142,0,1,70,80.3,1,Tier 2 Tech,12.69
+STU-1054,Electronics & Communication,7.73,61,61,3,1,129,0,1,87,77.89,1,Tier 2 Tech,16.61
+STU-1055,Artificial Intelligence & Machine Learning,9.39,87,83,1,2,189,0,1,65,94.7,1,Tier 1 Product,23.24
+STU-1056,Computer Science,7.96,53,84,5,0,114,1,2,72,61.37,1,Tier 3 Enterprise,4.41
+STU-1057,Computer Science,7.32,66,70,0,0,56,0,2,55,60.59,1,Tier 3 Enterprise,6.47
+STU-1058,Computer Science,7.28,72,76,2,1,70,0,4,98,84.87,1,Tier 2 Tech,9.74
+STU-1059,Computer Science,5.88,73,76,0,0,138,0,3,89,62.65,1,Tier 3 Enterprise,4.3
+STU-1060,Information Science,8.57,69,90,3,3,229,0,3,76,110.14,1,Tier 1 Product,28.24
+STU-1061,Computer Science,7.51,77,73,2,0,34,1,2,80,57.32,1,Tier 3 Enterprise,4.88
+STU-1062,Mechanical Engineering,7.4,81,66,2,1,46,3,2,78,27.93,0,Unplaced,0.0
+STU-1063,Information Science,9.9,82,65,2,0,293,0,1,90,83.85,1,Tier 1 Product,26.67
+STU-1064,Computer Science,7.93,58,73,1,1,95,1,1,67,59.94,1,Tier 3 Enterprise,5.04
+STU-1065,Information Science,6.77,68,62,3,0,21,0,0,82,66.88,1,Tier 3 Enterprise,4.37
+STU-1066,Computer Science,7.13,88,72,4,0,119,0,0,86,86.89,1,Tier 2 Tech,13.6
+STU-1067,Mechanical Engineering,8.86,84,81,3,0,480,0,3,88,86.79,1,Tier 1 Product,18.65
+STU-1068,Computer Science,7.72,52,70,2,0,190,0,0,46,65.09,1,Tier 3 Enterprise,7.87
+STU-1069,Artificial Intelligence & Machine Learning,6.02,76,42,3,3,150,0,3,66,81.45,1,Tier 2 Tech,11.41
+STU-1070,Mechanical Engineering,8.61,44,71,3,0,25,0,2,61,63.62,1,Tier 3 Enterprise,6.78
+STU-1071,Computer Science,6.87,72,71,4,1,229,2,3,75,59.37,1,Tier 3 Enterprise,7.24
+STU-1072,Computer Science,9.66,98,100,0,3,82,1,3,49,82.34,1,Tier 2 Tech,10.79
+STU-1073,Mechanical Engineering,8.79,58,81,1,1,242,3,2,49,35.08,0,Unplaced,0.0
+STU-1074,Electronics & Communication,7.11,60,72,0,3,44,0,0,100,75.45,1,Tier 2 Tech,15.49
+STU-1075,Electronics & Communication,9.01,82,93,2,3,7,0,2,81,92.33,1,Tier 2 Tech,16.32
+STU-1076,Mechanical Engineering,7.67,50,65,2,1,71,0,1,75,69.36,1,Tier 2 Tech,10.41
+STU-1077,Computer Science,8.54,63,83,5,1,34,0,1,78,89.07,1,Tier 2 Tech,17.92
+STU-1078,Information Science,8.13,80,69,1,0,138,0,1,75,75.2,1,Tier 2 Tech,8.21
+STU-1079,Computer Science,6.67,63,74,5,0,346,0,1,85,83.24,1,Tier 2 Tech,10.17
+STU-1080,Civil Engineering,6.89,68,68,1,2,129,0,0,66,70.34,1,Tier 2 Tech,15.8
+STU-1081,Electronics & Communication,8.73,82,84,4,1,239,0,2,76,98.48,1,Tier 1 Product,22.66
+STU-1082,Computer Science,7.23,77,62,2,1,66,0,0,76,76.19,1,Tier 2 Tech,14.98
+STU-1083,Computer Science,7.16,75,76,3,1,162,0,1,61,82.94,1,Tier 2 Tech,16.56
+STU-1084,Computer Science,6.55,67,85,3,0,203,0,2,89,79.2,1,Tier 2 Tech,17.59
+STU-1085,Computer Science,8.07,77,66,4,2,136,0,3,68,97.55,1,Tier 2 Tech,12.74
+STU-1086,Electronics & Communication,9.87,70,87,2,1,77,1,3,86,80.84,1,Tier 2 Tech,17.71
+STU-1087,Electronics & Communication,6.43,78,65,5,0,108,0,0,75,69.47,1,Tier 2 Tech,12.12
+STU-1088,Civil Engineering,7.63,65,80,2,2,132,1,1,93,66.16,1,Tier 3 Enterprise,4.87
+STU-1089,Information Science,9.15,69,79,3,0,32,0,1,61,72.84,1,Tier 2 Tech,13.14
+STU-1090,Computer Science,7.51,58,43,3,1,182,0,0,60,72.53,1,Tier 2 Tech,14.5
+STU-1091,Electronics & Communication,8.1,71,90,3,1,330,1,2,63,70.45,1,Tier 2 Tech,12.58
+STU-1092,Mechanical Engineering,6.43,60,71,2,0,68,0,0,75,61.22,1,Tier 3 Enterprise,6.27
+STU-1093,Electronics & Communication,8.07,56,59,5,2,132,0,0,92,87.85,1,Tier 2 Tech,12.16
+STU-1094,Mechanical Engineering,7.39,75,65,1,1,146,2,0,93,41.76,0,Unplaced,0.0
+STU-1095,Information Science,8.68,74,97,2,0,119,0,2,46,78.9,1,Tier 2 Tech,13.25
+STU-1096,Information Science,8.91,82,97,2,0,87,0,1,76,90.33,1,Tier 2 Tech,17.53
+STU-1097,Information Science,9.9,65,100,1,2,234,1,2,45,85.67,1,Tier 1 Product,30.0
+STU-1098,Computer Science,8.24,77,76,0,0,65,1,1,83,52.22,0,Unplaced,0.0
+STU-1099,Computer Science,7.96,79,76,3,2,6,0,3,87,92.09,1,Tier 2 Tech,10.53
+STU-1100,Computer Science,7.81,78,73,3,0,204,0,3,73,84.98,1,Tier 2 Tech,15.59
+STU-1101,Electronics & Communication,7.21,60,80,3,1,123,1,1,75,62.73,1,Tier 3 Enterprise,5.35
+STU-1102,Computer Science,7.97,74,67,2,2,208,0,1,74,95.01,1,Tier 2 Tech,16.16
+STU-1103,Information Science,7.28,77,62,3,0,16,0,3,64,73.22,1,Tier 2 Tech,8.57
+STU-1104,Artificial Intelligence & Machine Learning,7.79,72,84,3,1,3,0,0,79,81.14,1,Tier 2 Tech,11.32
+STU-1105,Computer Science,9.05,42,83,0,1,299,2,1,71,50.41,0,Unplaced,0.0
+STU-1106,Information Science,6.49,74,77,1,1,17,0,0,85,74.86,1,Tier 2 Tech,8.94
+STU-1107,Mechanical Engineering,8.85,100,76,4,1,182,1,1,72,89.42,1,Tier 1 Product,20.05
+STU-1108,Computer Science,9.05,66,83,1,1,190,0,4,63,87.04,1,Tier 1 Product,33.8
+STU-1109,Computer Science,7.47,61,62,2,1,135,0,2,55,69.07,1,Tier 2 Tech,11.85
+STU-1110,Computer Science,5.27,77,54,3,2,15,1,2,51,58.57,1,Tier 3 Enterprise,7.49
+STU-1111,Computer Science,6.93,76,52,1,1,121,3,3,89,33.07,0,Unplaced,0.0
+STU-1112,Artificial Intelligence & Machine Learning,9.03,88,79,2,0,241,0,1,68,86.89,1,Tier 1 Product,30.39
+STU-1113,Mechanical Engineering,7.57,54,58,3,3,60,0,2,78,80.55,1,Tier 2 Tech,10.95
+STU-1114,Electronics & Communication,6.5,82,70,5,0,58,2,0,95,50.02,0,Unplaced,0.0
+STU-1115,Civil Engineering,7.04,80,75,1,0,64,0,2,67,62.95,1,Tier 3 Enterprise,6.88
+STU-1116,Mechanical Engineering,8.52,70,62,1,0,9,0,3,66,69.62,1,Tier 2 Tech,14.24
+STU-1117,Computer Science,8.2,76,90,5,0,244,0,0,72,86.94,1,Tier 1 Product,37.19
+STU-1118,Civil Engineering,7.34,86,95,0,0,223,1,3,74,65.82,1,Tier 3 Enterprise,6.57
+STU-1119,Information Science,7.2,84,70,2,0,480,1,1,96,67.19,1,Tier 2 Tech,9.67
+STU-1120,Mechanical Engineering,7.17,55,62,1,0,96,2,5,92,40.68,0,Unplaced,0.0
+STU-1121,Civil Engineering,6.59,83,92,3,1,153,0,2,81,86.47,1,Tier 2 Tech,14.7
+STU-1122,Computer Science,9.38,71,73,1,0,24,0,2,91,72.41,1,Tier 2 Tech,11.92
+STU-1123,Computer Science,7.25,73,70,1,0,121,0,5,71,73.0,1,Tier 2 Tech,12.63
+STU-1124,Computer Science,8.94,73,85,3,0,115,0,2,77,85.35,1,Tier 2 Tech,17.22
+STU-1125,Information Science,9.27,69,99,3,0,254,0,2,70,95.03,1,Tier 1 Product,26.64
+STU-1126,Mechanical Engineering,8.7,88,85,3,0,195,0,0,58,84.19,1,Tier 1 Product,32.69
+STU-1127,Civil Engineering,7.13,70,64,1,1,306,0,0,88,84.27,1,Tier 2 Tech,11.63
+STU-1128,Computer Science,8.04,56,66,0,3,223,0,2,80,80.26,1,Tier 2 Tech,8.95
+STU-1129,Information Science,7.57,66,69,2,2,223,0,2,74,87.51,1,Tier 2 Tech,12.54
+STU-1130,Information Science,6.61,74,54,1,2,7,1,2,73,56.69,1,Tier 3 Enterprise,6.39
+STU-1131,Computer Science,7.96,89,76,4,0,205,0,2,55,88.05,1,Tier 2 Tech,12.08
+STU-1132,Computer Science,6.3,80,56,4,0,102,0,3,62,76.21,1,Tier 2 Tech,11.91
+STU-1133,Computer Science,8.91,60,68,1,0,52,0,0,78,67.91,1,Tier 2 Tech,16.2
+STU-1134,Artificial Intelligence & Machine Learning,7.09,100,81,0,1,6,1,2,67,62.51,1,Tier 3 Enterprise,4.12
+STU-1135,Computer Science,7.82,75,69,3,0,124,0,2,71,76.04,1,Tier 2 Tech,10.96
+STU-1136,Information Science,7.91,89,62,1,1,43,0,0,72,72.02,1,Tier 2 Tech,16.12
+STU-1137,Electronics & Communication,7.32,69,68,4,0,69,0,2,65,71.51,1,Tier 2 Tech,17.21
+STU-1138,Information Science,8.25,79,78,2,0,125,0,2,62,82.45,1,Tier 2 Tech,12.12
+STU-1139,Artificial Intelligence & Machine Learning,7.08,83,51,3,3,267,1,2,54,79.58,1,Tier 2 Tech,16.89
+STU-1140,Artificial Intelligence & Machine Learning,8.56,89,83,6,1,192,0,2,72,103.49,1,Tier 1 Product,22.77
+STU-1141,Computer Science,6.12,86,50,1,2,65,0,5,81,75.13,1,Tier 2 Tech,10.21
+STU-1142,Information Science,7.74,84,91,0,1,53,0,3,54,78.83,1,Tier 2 Tech,16.46
+STU-1143,Computer Science,9.73,67,95,1,2,30,0,2,73,97.15,1,Tier 2 Tech,17.03
+STU-1144,Computer Science,6.5,63,60,1,1,51,0,0,77,68.68,1,Tier 2 Tech,10.23
+STU-1145,Computer Science,6.85,76,59,0,2,12,0,0,62,71.51,1,Tier 2 Tech,8.59
+STU-1146,Electronics & Communication,8.17,85,76,1,0,389,1,1,91,68.46,1,Tier 2 Tech,8.9
+STU-1147,Information Science,7.8,68,80,2,1,93,1,1,69,69.51,1,Tier 2 Tech,10.61
+STU-1148,Computer Science,7.99,86,75,3,1,15,1,4,72,67.24,1,Tier 2 Tech,15.61
+STU-1149,Computer Science,8.14,92,74,6,0,47,0,1,72,81.96,1,Tier 2 Tech,13.1
+STU-1150,Artificial Intelligence & Machine Learning,8.3,59,78,1,2,87,0,2,52,78.88,1,Tier 2 Tech,12.56
+STU-1151,Computer Science,8.82,60,76,2,3,83,0,4,86,97.0,1,Tier 2 Tech,13.84
+STU-1152,Computer Science,8.05,70,72,3,1,3,0,1,62,78.69,1,Tier 2 Tech,16.9
+STU-1153,Information Science,7.33,76,49,0,0,331,0,2,71,72.56,1,Tier 2 Tech,8.9
+STU-1154,Artificial Intelligence & Machine Learning,8.34,64,88,5,1,35,2,5,81,57.18,1,Tier 3 Enterprise,6.78
+STU-1155,Computer Science,9.69,90,92,3,2,1,0,1,91,110.58,1,Tier 2 Tech,17.27
+STU-1156,Electronics & Communication,7.45,77,63,2,1,8,2,2,61,41.51,0,Unplaced,0.0
+STU-1157,Mechanical Engineering,6.53,72,83,0,0,95,0,0,68,63.2,1,Tier 3 Enterprise,4.85
+STU-1158,Computer Science,8.82,51,83,2,1,16,0,1,90,87.79,1,Tier 2 Tech,16.38
+STU-1159,Electronics & Communication,7.47,53,61,7,0,4,0,0,79,68.19,1,Tier 2 Tech,14.98
+STU-1160,Information Science,5.21,75,62,2,1,52,0,1,82,70.88,1,Tier 2 Tech,8.14
+STU-1161,Electronics & Communication,8.53,42,84,1,0,107,0,1,61,66.41,1,Tier 3 Enterprise,4.93
+STU-1162,Electronics & Communication,7.01,86,72,0,1,13,2,0,69,42.72,0,Unplaced,0.0
+STU-1163,Information Science,7.5,69,67,4,1,41,1,2,71,68.47,1,Tier 2 Tech,14.06
+STU-1164,Computer Science,7.97,100,80,0,0,59,0,1,63,71.1,1,Tier 2 Tech,13.02
+STU-1165,Mechanical Engineering,7.81,100,71,4,0,19,0,1,53,80.32,1,Tier 2 Tech,13.28
+STU-1166,Computer Science,8.38,69,84,1,0,77,2,2,67,43.29,0,Unplaced,0.0
+STU-1167,Computer Science,7.12,70,49,3,0,9,1,0,90,42.82,0,Unplaced,0.0
+STU-1168,Computer Science,8.16,85,72,2,0,5,0,1,74,75.68,1,Tier 2 Tech,10.32
+STU-1169,Electronics & Communication,7.31,95,87,2,3,80,1,1,90,75.28,1,Tier 2 Tech,14.75
+STU-1170,Electronics & Communication,8.41,49,71,3,2,31,0,2,76,84.34,1,Tier 2 Tech,10.66
+STU-1171,Computer Science,8.28,46,72,2,2,11,0,2,64,75.15,1,Tier 2 Tech,11.89
+STU-1172,Information Science,6.57,63,60,1,2,60,0,3,89,71.37,1,Tier 2 Tech,11.69
+STU-1173,Computer Science,8.79,80,70,0,0,271,0,3,76,80.52,1,Tier 2 Tech,14.72
+STU-1174,Electronics & Communication,7.01,78,45,2,0,141,0,0,85,66.18,1,Tier 3 Enterprise,4.36
+STU-1175,Computer Science,8.49,86,77,1,0,185,0,2,61,79.85,1,Tier 2 Tech,10.06
+STU-1176,Electronics & Communication,8.0,55,77,1,2,226,0,0,86,80.49,1,Tier 2 Tech,10.0
+STU-1177,Information Science,9.62,39,88,1,1,395,2,0,86,49.04,0,Unplaced,0.0
+STU-1178,Artificial Intelligence & Machine Learning,7.35,84,69,3,0,158,3,2,77,35.15,0,Unplaced,0.0
+STU-1179,Computer Science,7.22,60,70,6,0,103,0,1,64,72.28,1,Tier 2 Tech,9.08
+STU-1180,Computer Science,7.58,43,82,2,1,50,0,1,73,75.54,1,Tier 2 Tech,10.08
+STU-1181,Computer Science,7.27,74,68,0,1,22,0,1,81,70.59,1,Tier 2 Tech,14.07
+STU-1182,Artificial Intelligence & Machine Learning,8.48,83,74,1,2,127,0,3,76,89.8,1,Tier 2 Tech,15.32
+STU-1183,Civil Engineering,5.82,70,55,2,0,480,0,3,81,76.61,1,Tier 2 Tech,14.6
+STU-1184,Computer Science,6.44,65,69,3,2,69,0,2,86,82.34,1,Tier 2 Tech,12.75
+STU-1185,Electronics & Communication,6.43,69,77,4,0,141,0,0,66,73.9,1,Tier 2 Tech,8.52
+STU-1186,Mechanical Engineering,8.65,66,74,2,1,75,0,3,60,83.58,1,Tier 2 Tech,17.59
+STU-1187,Electronics & Communication,9.48,53,88,0,2,62,0,1,73,83.81,1,Tier 2 Tech,9.68
+STU-1188,Information Science,7.49,61,75,2,2,58,1,3,70,68.45,1,Tier 2 Tech,14.68
+STU-1189,Computer Science,7.41,79,61,3,0,77,0,5,83,77.52,1,Tier 2 Tech,17.13
+STU-1190,Computer Science,7.68,76,73,3,0,50,0,1,61,73.73,1,Tier 2 Tech,14.98
+STU-1191,Civil Engineering,8.88,74,68,1,1,151,0,3,86,81.83,1,Tier 2 Tech,10.18
+STU-1192,Artificial Intelligence & Machine Learning,6.58,58,46,2,0,228,0,4,90,73.54,1,Tier 2 Tech,11.16
+STU-1193,Electronics & Communication,7.86,69,78,1,1,235,0,1,74,81.22,1,Tier 2 Tech,8.3
+STU-1194,Computer Science,8.67,41,77,2,2,28,1,2,74,71.13,1,Tier 2 Tech,14.13
+STU-1195,Computer Science,8.15,74,79,0,0,248,0,2,64,81.39,1,Tier 2 Tech,14.13
+STU-1196,Electronics & Communication,7.81,92,74,4,1,45,1,0,67,71.66,1,Tier 2 Tech,15.26
+STU-1197,Civil Engineering,8.7,51,71,2,0,40,0,5,69,66.12,1,Tier 3 Enterprise,4.04
+STU-1198,Civil Engineering,5.0,63,51,4,2,142,0,1,91,71.84,1,Tier 2 Tech,16.18
+STU-1199,Mechanical Engineering,8.35,76,66,1,3,39,0,3,73,79.51,1,Tier 2 Tech,15.39
+STU-1200,Electronics & Communication,6.88,89,80,1,1,5,0,4,58,75.88,1,Tier 2 Tech,9.41
+STU-1201,Computer Science,5.59,65,43,4,0,51,0,0,77,64.8,1,Tier 3 Enterprise,5.39
+STU-1202,Computer Science,8.16,62,75,1,1,140,2,1,83,52.12,0,Unplaced,0.0
+STU-1203,Civil Engineering,9.11,44,74,1,1,43,0,2,73,65.98,1,Tier 3 Enterprise,6.55
+STU-1204,Electronics & Communication,7.45,73,77,1,0,109,0,1,91,67.49,1,Tier 2 Tech,12.96
+STU-1205,Computer Science,8.65,100,77,1,2,118,2,1,83,59.4,1,Tier 3 Enterprise,4.46
+STU-1206,Computer Science,9.37,75,81,2,3,145,0,3,61,96.46,1,Tier 2 Tech,8.87
+STU-1207,Electronics & Communication,9.05,71,92,3,1,250,0,3,67,97.28,1,Tier 1 Product,36.75
+STU-1208,Computer Science,9.4,76,87,4,1,62,0,2,76,101.06,1,Tier 2 Tech,9.56
+STU-1209,Computer Science,8.42,71,84,1,0,20,0,1,54,72.44,1,Tier 2 Tech,9.72
+STU-1210,Information Science,7.68,60,63,4,1,42,0,1,78,75.16,1,Tier 2 Tech,16.31
+STU-1211,Electronics & Communication,5.84,83,44,3,0,62,0,4,52,61.47,1,Tier 3 Enterprise,6.45
+STU-1212,Electronics & Communication,7.33,75,71,2,0,137,0,3,86,67.94,1,Tier 2 Tech,14.05
+STU-1213,Computer Science,6.67,72,62,5,0,1,0,2,84,73.53,1,Tier 2 Tech,12.79
+STU-1214,Electronics & Communication,9.9,58,97,3,0,41,0,1,80,76.58,1,Tier 2 Tech,13.69
+STU-1215,Computer Science,7.41,90,70,2,0,166,0,1,65,83.24,1,Tier 2 Tech,14.02
+STU-1216,Computer Science,7.74,81,75,4,1,122,0,5,76,92.69,1,Tier 2 Tech,17.68
+STU-1217,Electronics & Communication,8.21,64,61,2,1,144,2,2,67,44.77,0,Unplaced,0.0
+STU-1218,Electronics & Communication,7.65,86,92,2,1,183,0,2,61,83.86,1,Tier 2 Tech,10.23
+STU-1219,Mechanical Engineering,9.46,65,86,3,0,168,1,2,69,61.84,1,Tier 3 Enterprise,4.86
+STU-1220,Electronics & Communication,6.92,61,74,5,0,126,0,2,82,69.46,1,Tier 2 Tech,8.57
+STU-1221,Electronics & Communication,7.81,61,66,2,2,63,0,4,74,77.55,1,Tier 2 Tech,14.58
+STU-1222,Computer Science,6.78,47,69,2,1,452,0,1,91,75.23,1,Tier 2 Tech,13.49
+STU-1223,Information Science,6.15,78,48,1,3,92,1,0,83,54.75,0,Unplaced,0.0
+STU-1224,Computer Science,6.93,46,71,4,0,24,0,0,81,68.24,1,Tier 2 Tech,9.11
+STU-1225,Computer Science,7.56,54,68,2,1,38,1,1,54,56.45,1,Tier 3 Enterprise,5.46
+STU-1226,Artificial Intelligence & Machine Learning,7.13,42,69,2,0,130,3,3,70,20.17,0,Unplaced,0.0
+STU-1227,Information Science,6.84,70,73,0,1,284,0,1,61,82.01,1,Tier 2 Tech,9.79
+STU-1228,Civil Engineering,6.05,69,48,1,2,21,0,2,71,61.03,1,Tier 3 Enterprise,5.33
+STU-1229,Electronics & Communication,7.51,67,65,1,2,9,0,2,65,73.48,1,Tier 2 Tech,17.51
+STU-1230,Mechanical Engineering,5.94,57,64,1,3,234,0,3,69,74.67,1,Tier 2 Tech,14.83
+STU-1231,Information Science,8.44,55,100,2,0,271,0,1,86,81.15,1,Tier 2 Tech,8.08
+STU-1232,Electronics & Communication,7.69,78,72,3,1,35,1,4,79,63.7,1,Tier 3 Enterprise,5.01
+STU-1233,Information Science,6.0,64,65,3,1,52,0,1,86,73.08,1,Tier 2 Tech,8.1
+STU-1234,Computer Science,7.26,76,69,4,1,118,0,4,54,84.83,1,Tier 2 Tech,15.15
+STU-1235,Electronics & Communication,6.77,59,85,3,0,44,0,2,74,67.8,1,Tier 2 Tech,12.69
+STU-1236,Computer Science,7.95,74,58,1,2,230,2,5,85,53.54,0,Unplaced,0.0
+STU-1237,Computer Science,9.07,90,85,3,2,12,0,3,92,100.09,1,Tier 2 Tech,17.94
+STU-1238,Electronics & Communication,5.54,80,40,2,0,4,2,1,55,23.57,0,Unplaced,0.0
+STU-1239,Computer Science,7.73,66,48,2,0,25,3,1,69,17.36,0,Unplaced,0.0
+STU-1240,Artificial Intelligence & Machine Learning,7.42,75,74,1,0,37,0,1,86,68.33,1,Tier 2 Tech,15.34
+STU-1241,Artificial Intelligence & Machine Learning,8.34,68,80,1,1,13,0,2,71,76.07,1,Tier 2 Tech,13.18
+STU-1242,Artificial Intelligence & Machine Learning,7.83,72,71,4,0,7,0,0,63,71.85,1,Tier 2 Tech,16.05
+STU-1243,Information Science,6.77,67,65,2,2,154,0,0,55,77.83,1,Tier 2 Tech,15.05
+STU-1244,Computer Science,7.25,69,100,1,1,19,1,2,62,59.13,1,Tier 3 Enterprise,4.98
+STU-1245,Artificial Intelligence & Machine Learning,6.72,74,63,2,1,269,0,1,53,84.05,1,Tier 2 Tech,13.3
+STU-1246,Information Science,8.78,58,87,1,1,50,0,5,74,76.69,1,Tier 2 Tech,13.56
+STU-1247,Artificial Intelligence & Machine Learning,7.62,57,66,5,0,122,0,1,84,74.04,1,Tier 2 Tech,12.51
+STU-1248,Artificial Intelligence & Machine Learning,9.69,52,92,3,2,28,0,1,58,92.39,1,Tier 2 Tech,9.79
+STU-1249,Civil Engineering,7.53,49,69,2,1,30,0,2,77,65.88,1,Tier 3 Enterprise,4.89
+STU-1250,Computer Science,6.82,54,62,2,3,94,0,0,84,75.4,1,Tier 2 Tech,10.81
+STU-1251,Information Science,5.93,74,77,5,1,90,1,1,73,65.58,1,Tier 3 Enterprise,4.04
+STU-1252,Civil Engineering,5.62,59,68,3,1,161,0,1,54,67.91,1,Tier 2 Tech,17.17
+STU-1253,Computer Science,5.86,79,60,3,0,155,0,2,78,72.45,1,Tier 2 Tech,14.86
+STU-1254,Computer Science,7.89,72,52,3,1,122,1,2,73,62.83,1,Tier 3 Enterprise,6.76
+STU-1255,Electronics & Communication,8.16,44,73,5,1,65,2,1,72,46.67,0,Unplaced,0.0
+STU-1256,Artificial Intelligence & Machine Learning,5.86,81,85,3,1,243,0,0,67,91.5,1,Tier 2 Tech,13.72
+STU-1257,Electronics & Communication,8.58,83,78,7,1,107,0,1,75,91.38,1,Tier 2 Tech,14.89
+STU-1258,Electronics & Communication,7.07,58,79,4,0,480,0,3,80,83.29,1,Tier 2 Tech,17.82
+STU-1259,Computer Science,7.76,77,88,1,3,188,0,2,100,92.9,1,Tier 2 Tech,11.85
+STU-1260,Electronics & Communication,9.37,60,89,1,3,4,1,2,75,69.58,1,Tier 2 Tech,15.13
+STU-1261,Artificial Intelligence & Machine Learning,8.59,73,72,2,0,42,0,3,92,80.17,1,Tier 2 Tech,11.6
+STU-1262,Computer Science,7.3,54,46,2,2,93,1,2,78,61.33,1,Tier 3 Enterprise,7.42
+STU-1263,Information Science,6.62,46,71,3,0,140,0,1,72,67.4,1,Tier 2 Tech,16.58
+STU-1264,Civil Engineering,5.23,66,45,3,1,87,0,3,75,65.86,1,Tier 3 Enterprise,7.61
+STU-1265,Electronics & Communication,6.81,70,68,2,0,169,0,1,59,64.48,1,Tier 3 Enterprise,4.02
+STU-1266,Electronics & Communication,7.37,66,58,2,3,36,0,2,77,75.76,1,Tier 2 Tech,10.98
+STU-1267,Electronics & Communication,6.51,55,61,4,0,22,0,0,50,55.87,1,Tier 3 Enterprise,4.54
+STU-1268,Information Science,7.46,66,72,2,1,6,0,0,63,69.29,1,Tier 2 Tech,12.54
+STU-1269,Computer Science,7.68,75,76,3,0,93,0,5,75,83.68,1,Tier 2 Tech,12.95
+STU-1270,Mechanical Engineering,7.35,71,59,2,0,128,1,1,88,53.4,0,Unplaced,0.0
+STU-1271,Mechanical Engineering,6.88,74,79,5,1,43,0,3,91,86.66,1,Tier 2 Tech,10.56
+STU-1272,Civil Engineering,7.79,62,68,3,0,104,1,4,71,62.58,1,Tier 3 Enterprise,6.89
+STU-1273,Artificial Intelligence & Machine Learning,8.09,88,59,7,1,5,0,1,75,83.45,1,Tier 2 Tech,10.7
+STU-1274,Information Science,6.4,55,62,1,3,11,1,0,85,54.41,0,Unplaced,0.0
+STU-1275,Information Science,9.15,78,85,5,2,133,3,1,58,58.69,0,Unplaced,0.0
+STU-1276,Mechanical Engineering,7.49,88,73,2,2,50,0,3,78,83.75,1,Tier 2 Tech,16.54
+STU-1277,Electronics & Communication,7.62,78,86,5,0,122,1,0,64,60.11,1,Tier 3 Enterprise,4.71
+STU-1278,Electronics & Communication,8.38,69,76,2,0,196,0,1,71,77.72,1,Tier 2 Tech,11.67
+STU-1279,Mechanical Engineering,7.86,64,73,0,1,210,1,0,68,56.14,1,Tier 3 Enterprise,6.49
+STU-1280,Civil Engineering,8.65,86,70,2,0,20,0,2,79,80.98,1,Tier 2 Tech,14.05
+STU-1281,Computer Science,7.92,52,83,3,2,73,0,1,80,88.82,1,Tier 2 Tech,8.78
+STU-1282,Information Science,6.93,58,69,1,0,145,0,2,84,64.78,1,Tier 3 Enterprise,7.39
+STU-1283,Computer Science,8.0,66,71,3,2,163,0,0,78,91.05,1,Tier 2 Tech,13.98
+STU-1284,Electronics & Communication,6.34,89,43,0,0,168,0,1,76,59.66,1,Tier 3 Enterprise,7.48
+STU-1285,Computer Science,7.72,77,88,1,2,28,4,1,96,29.9,0,Unplaced,0.0
+STU-1286,Information Science,7.56,58,60,1,0,23,1,1,55,42.89,0,Unplaced,0.0
+STU-1287,Information Science,7.37,67,65,2,0,98,0,1,94,67.15,1,Tier 2 Tech,16.68
+STU-1288,Computer Science,7.46,63,75,0,1,148,1,1,70,54.09,0,Unplaced,0.0
+STU-1289,Electronics & Communication,5.53,62,44,0,0,42,1,0,80,29.36,0,Unplaced,0.0
+STU-1290,Computer Science,7.0,85,53,0,1,12,0,2,70,65.33,1,Tier 3 Enterprise,6.18
+STU-1291,Computer Science,7.7,52,52,3,1,138,0,2,65,72.9,1,Tier 2 Tech,17.11
+STU-1292,Mechanical Engineering,7.78,94,81,3,0,39,0,2,79,82.83,1,Tier 2 Tech,16.48
+STU-1293,Information Science,6.47,83,58,1,2,20,1,1,86,67.8,1,Tier 2 Tech,17.58
+STU-1294,Computer Science,8.99,87,100,2,1,17,1,5,79,78.28,1,Tier 2 Tech,16.5
+STU-1295,Information Science,6.65,65,55,4,1,41,0,5,67,81.37,1,Tier 2 Tech,16.21
+STU-1296,Mechanical Engineering,8.67,69,72,4,1,98,0,0,100,88.83,1,Tier 2 Tech,12.69
+STU-1297,Computer Science,8.07,51,70,2,1,48,1,0,88,58.69,1,Tier 3 Enterprise,4.85
+STU-1298,Electronics & Communication,6.89,64,69,1,0,2,2,2,85,25.2,0,Unplaced,0.0
+STU-1299,Computer Science,9.55,78,83,3,0,11,1,2,69,69.45,1,Tier 2 Tech,17.11
+STU-1300,Computer Science,6.29,90,68,2,1,37,0,3,66,71.31,1,Tier 2 Tech,15.23
+STU-1301,Information Science,8.61,56,71,0,0,118,0,2,70,68.05,1,Tier 2 Tech,10.82
+STU-1302,Information Science,8.7,66,67,2,0,11,0,0,86,70.75,1,Tier 2 Tech,11.41
+STU-1303,Electronics & Communication,6.86,69,48,6,1,90,0,1,62,73.33,1,Tier 2 Tech,14.86
+STU-1304,Electronics & Communication,9.13,52,62,1,1,14,1,1,61,48.55,0,Unplaced,0.0
+STU-1305,Artificial Intelligence & Machine Learning,7.32,80,65,2,0,26,0,5,80,74.89,1,Tier 2 Tech,12.78
+STU-1306,Information Science,7.92,61,72,3,0,20,1,1,77,57.74,1,Tier 3 Enterprise,4.33
+STU-1307,Computer Science,7.89,69,68,3,0,7,0,3,64,72.87,1,Tier 2 Tech,9.41
+STU-1308,Mechanical Engineering,7.45,65,84,1,0,122,1,2,60,55.14,1,Tier 3 Enterprise,6.98
+STU-1309,Computer Science,8.49,60,92,1,0,68,0,4,91,75.78,1,Tier 2 Tech,11.29
+STU-1310,Information Science,8.47,71,76,5,0,195,0,1,78,86.88,1,Tier 1 Product,30.18
+STU-1311,Computer Science,5.68,68,39,2,3,11,0,2,57,68.18,1,Tier 2 Tech,15.67
+STU-1312,Computer Science,9.03,66,78,4,1,17,0,0,58,89.69,1,Tier 2 Tech,15.51
+STU-1313,Artificial Intelligence & Machine Learning,5.77,61,52,4,0,40,2,0,69,35.06,0,Unplaced,0.0
+STU-1314,Mechanical Engineering,8.74,76,75,2,0,159,0,1,82,75.51,1,Tier 2 Tech,9.67
+STU-1315,Electronics & Communication,8.84,95,75,2,1,40,0,2,81,86.71,1,Tier 2 Tech,8.98
+STU-1316,Information Science,6.4,73,56,3,0,57,1,2,87,56.13,1,Tier 3 Enterprise,6.36
+STU-1317,Computer Science,7.15,85,65,4,1,39,1,3,56,73.36,1,Tier 2 Tech,15.42
+STU-1318,Computer Science,6.38,52,56,1,2,9,0,3,76,70.97,1,Tier 2 Tech,9.49
+STU-1319,Computer Science,7.36,74,72,3,1,308,2,3,91,63.16,1,Tier 3 Enterprise,5.49
+STU-1320,Information Science,7.26,56,73,3,0,87,0,1,89,71.57,1,Tier 2 Tech,16.7
+STU-1321,Electronics & Communication,8.46,51,70,3,1,170,0,1,78,80.75,1,Tier 2 Tech,17.44
+STU-1322,Electronics & Communication,9.04,61,97,2,3,118,0,0,100,94.63,1,Tier 2 Tech,12.54
+STU-1323,Computer Science,9.14,88,75,2,1,79,0,1,81,91.57,1,Tier 2 Tech,8.8
+STU-1324,Artificial Intelligence & Machine Learning,6.98,85,51,1,1,10,0,5,86,77.23,1,Tier 2 Tech,10.58
+STU-1325,Electronics & Communication,7.37,75,74,4,0,113,0,1,74,74.6,1,Tier 2 Tech,10.33
+STU-1326,Electronics & Communication,5.75,50,49,2,0,18,0,2,64,55.4,1,Tier 3 Enterprise,4.96
+STU-1327,Electronics & Communication,6.71,69,68,3,1,58,1,0,63,59.79,1,Tier 3 Enterprise,5.98
+STU-1328,Information Science,8.66,76,57,3,2,109,0,1,76,96.92,1,Tier 2 Tech,13.83
+STU-1329,Computer Science,9.38,74,100,3,1,167,4,2,71,37.57,0,Unplaced,0.0
+STU-1330,Information Science,6.24,46,68,3,1,127,1,1,52,54.93,0,Unplaced,0.0
+STU-1331,Mechanical Engineering,6.95,59,52,0,0,122,0,2,61,54.93,0,Unplaced,0.0
+STU-1332,Computer Science,7.57,71,57,7,0,17,0,1,70,70.4,1,Tier 2 Tech,9.23
+STU-1333,Computer Science,7.91,79,92,3,1,46,0,0,82,86.1,1,Tier 2 Tech,16.89
+STU-1334,Computer Science,6.71,41,58,2,0,4,1,3,73,46.89,0,Unplaced,0.0
+STU-1335,Computer Science,8.07,69,68,3,1,139,0,0,73,79.62,1,Tier 2 Tech,14.2
+STU-1336,Civil Engineering,7.08,74,45,0,0,335,0,2,62,63.61,1,Tier 3 Enterprise,6.39
+STU-1337,Electronics & Communication,7.58,83,69,2,1,33,2,3,74,47.12,0,Unplaced,0.0
+STU-1338,Information Science,8.2,81,75,2,2,10,0,5,89,93.93,1,Tier 2 Tech,17.87
+STU-1339,Computer Science,7.61,80,80,1,1,70,0,4,75,79.94,1,Tier 2 Tech,14.28
+STU-1340,Information Science,7.12,60,54,3,0,213,0,3,55,68.32,1,Tier 2 Tech,17.29
+STU-1341,Information Science,7.48,45,56,3,1,88,1,1,58,49.34,0,Unplaced,0.0
+STU-1342,Computer Science,7.5,66,76,2,3,5,2,1,81,52.29,0,Unplaced,0.0
+STU-1343,Information Science,7.19,86,79,1,1,402,0,1,71,82.92,1,Tier 2 Tech,10.86
+STU-1344,Information Science,7.32,91,54,3,0,194,0,0,73,79.78,1,Tier 2 Tech,10.4
+STU-1345,Electronics & Communication,9.36,81,97,5,0,15,1,1,66,64.5,1,Tier 3 Enterprise,6.07
+STU-1346,Electronics & Communication,8.22,78,78,2,0,280,1,3,80,66.18,1,Tier 3 Enterprise,6.03
+STU-1347,Computer Science,7.27,77,81,1,0,65,1,3,70,53.15,0,Unplaced,0.0
+STU-1348,Information Science,8.37,64,78,1,2,51,0,0,71,81.3,1,Tier 2 Tech,10.26
+STU-1349,Electronics & Communication,7.23,70,44,4,2,67,2,1,63,50.72,0,Unplaced,0.0
+STU-1350,Information Science,8.89,95,81,5,0,197,0,2,85,96.11,1,Tier 1 Product,34.79
+STU-1351,Civil Engineering,8.01,58,86,1,0,118,0,4,71,66.36,1,Tier 3 Enterprise,4.12
+STU-1352,Electronics & Communication,7.48,94,62,0,0,6,1,2,81,47.64,0,Unplaced,0.0
+STU-1353,Computer Science,8.09,67,72,2,2,347,0,1,59,91.01,1,Tier 1 Product,34.58
+STU-1354,Computer Science,5.87,90,57,4,1,17,1,1,94,58.95,1,Tier 3 Enterprise,5.83
+STU-1355,Electronics & Communication,6.36,52,33,1,1,150,0,2,89,59.83,1,Tier 3 Enterprise,6.76
+STU-1356,Computer Science,6.29,80,79,4,0,111,1,1,51,67.03,1,Tier 2 Tech,12.77
+STU-1357,Electronics & Communication,7.76,61,65,1,1,22,0,4,64,67.59,1,Tier 2 Tech,17.77
+STU-1358,Artificial Intelligence & Machine Learning,9.51,52,93,2,0,20,0,1,79,69.82,1,Tier 2 Tech,11.35
+STU-1359,Electronics & Communication,9.9,75,90,1,0,224,0,1,58,78.03,1,Tier 2 Tech,17.83
+STU-1360,Information Science,8.3,86,90,2,1,59,0,1,72,83.73,1,Tier 2 Tech,8.65
+STU-1361,Electronics & Communication,8.15,60,81,4,1,116,1,2,79,76.76,1,Tier 2 Tech,14.84
+STU-1362,Information Science,5.62,51,54,0,0,77,0,1,71,57.19,1,Tier 3 Enterprise,5.82
+STU-1363,Information Science,7.0,70,59,3,0,142,0,2,80,76.56,1,Tier 2 Tech,16.22
+STU-1364,Artificial Intelligence & Machine Learning,6.73,70,73,1,0,71,0,2,65,65.28,1,Tier 3 Enterprise,7.16
+STU-1365,Information Science,6.92,79,48,2,0,37,1,1,47,52.46,0,Unplaced,0.0
+STU-1366,Artificial Intelligence & Machine Learning,7.42,85,77,1,1,49,0,0,85,73.04,1,Tier 2 Tech,16.0
+STU-1367,Artificial Intelligence & Machine Learning,7.08,71,57,2,2,215,0,1,85,88.33,1,Tier 2 Tech,8.95
+STU-1368,Computer Science,5.42,97,67,3,0,69,0,1,100,78.74,1,Tier 2 Tech,16.22
+STU-1369,Computer Science,8.42,75,80,3,0,26,2,3,47,47.67,0,Unplaced,0.0
+STU-1370,Computer Science,6.42,67,69,1,0,300,0,0,83,74.48,1,Tier 2 Tech,10.14
+STU-1371,Computer Science,7.86,49,75,1,1,175,0,2,50,71.7,1,Tier 2 Tech,8.26
+STU-1372,Computer Science,9.88,68,73,3,0,6,1,1,95,60.29,1,Tier 3 Enterprise,4.87
+STU-1373,Electronics & Communication,6.59,67,56,5,1,480,0,1,79,84.81,1,Tier 2 Tech,12.79
+STU-1374,Computer Science,5.0,85,58,1,0,130,0,4,62,64.99,1,Tier 3 Enterprise,6.97
+STU-1375,Computer Science,7.29,78,71,3,1,19,3,5,83,39.71,0,Unplaced,0.0
+STU-1376,Mechanical Engineering,8.81,55,94,1,2,29,0,0,67,84.37,1,Tier 2 Tech,10.19
+STU-1377,Computer Science,9.75,74,94,1,2,129,0,1,77,91.13,1,Tier 2 Tech,9.13
+STU-1378,Mechanical Engineering,6.25,81,52,2,3,166,0,0,76,76.45,1,Tier 2 Tech,14.46
+STU-1379,Computer Science,8.15,93,69,0,1,30,2,2,94,54.62,0,Unplaced,0.0
+STU-1380,Computer Science,7.09,84,69,2,2,32,0,1,95,87.15,1,Tier 2 Tech,17.84
+STU-1381,Electronics & Communication,7.48,82,48,2,0,40,0,0,66,60.39,1,Tier 3 Enterprise,6.4
+STU-1382,Electronics & Communication,9.9,72,100,1,0,100,0,1,86,76.2,1,Tier 2 Tech,14.91
+STU-1383,Civil Engineering,5.95,77,64,4,0,20,1,3,78,54.0,0,Unplaced,0.0
+STU-1384,Electronics & Communication,7.88,89,87,5,1,12,0,1,57,82.53,1,Tier 2 Tech,13.61
+STU-1385,Mechanical Engineering,8.11,53,61,2,2,124,0,1,65,77.13,1,Tier 2 Tech,15.82
+STU-1386,Computer Science,8.79,67,94,2,0,166,0,1,100,83.63,1,Tier 2 Tech,17.76
+STU-1387,Computer Science,7.71,61,95,1,1,76,0,2,78,79.65,1,Tier 2 Tech,13.44
+STU-1388,Mechanical Engineering,7.94,77,62,3,1,49,1,3,85,62.6,1,Tier 3 Enterprise,5.67
+STU-1389,Mechanical Engineering,7.17,89,77,1,2,62,0,1,71,80.67,1,Tier 2 Tech,16.6
+STU-1390,Artificial Intelligence & Machine Learning,7.9,63,75,3,1,54,1,1,67,56.54,1,Tier 3 Enterprise,7.88
+STU-1391,Information Science,7.22,38,54,5,3,354,0,1,74,84.9,1,Tier 2 Tech,9.29
+STU-1392,Information Science,8.28,66,83,1,0,160,1,2,70,64.34,1,Tier 3 Enterprise,6.31
+STU-1393,Mechanical Engineering,7.19,84,77,4,0,25,0,1,56,69.35,1,Tier 2 Tech,15.92
+STU-1394,Computer Science,8.01,79,70,3,1,53,0,2,61,84.39,1,Tier 2 Tech,13.33
+STU-1395,Artificial Intelligence & Machine Learning,7.57,77,84,2,0,86,3,1,82,29.1,0,Unplaced,0.0
+STU-1396,Civil Engineering,8.84,68,66,1,0,104,3,0,69,24.07,0,Unplaced,0.0
+STU-1397,Information Science,7.54,54,57,3,1,69,0,1,74,73.58,1,Tier 2 Tech,12.09
+STU-1398,Mechanical Engineering,5.65,79,58,1,1,182,0,0,76,68.94,1,Tier 2 Tech,14.55
+STU-1399,Mechanical Engineering,8.99,60,84,1,1,160,0,1,77,78.43,1,Tier 2 Tech,10.7
+STU-1400,Computer Science,6.6,100,57,3,0,77,1,3,87,69.06,1,Tier 2 Tech,11.49
+STU-1401,Artificial Intelligence & Machine Learning,6.88,79,75,2,1,211,0,2,60,83.94,1,Tier 2 Tech,17.92
+STU-1402,Information Science,6.94,63,72,3,0,152,0,3,80,73.95,1,Tier 2 Tech,14.36
+STU-1403,Mechanical Engineering,9.11,63,93,0,0,165,0,2,83,74.38,1,Tier 2 Tech,16.73
+STU-1404,Computer Science,5.25,70,52,2,1,344,2,2,85,45.08,0,Unplaced,0.0
+STU-1405,Civil Engineering,9.9,68,97,3,0,34,0,2,57,81.37,1,Tier 2 Tech,16.08
+STU-1406,Information Science,8.76,87,77,0,0,34,0,2,77,72.3,1,Tier 2 Tech,14.52
+STU-1407,Computer Science,7.85,74,95,2,1,241,0,0,94,86.92,1,Tier 2 Tech,16.41
+STU-1408,Artificial Intelligence & Machine Learning,7.54,61,64,1,0,162,0,0,72,66.41,1,Tier 3 Enterprise,5.15
+STU-1409,Computer Science,7.91,98,96,3,3,287,0,2,79,107.62,1,Tier 2 Tech,14.37
+STU-1410,Computer Science,8.17,72,77,0,1,7,2,1,83,46.49,0,Unplaced,0.0
+STU-1411,Artificial Intelligence & Machine Learning,8.31,82,64,1,3,108,1,0,61,65.78,1,Tier 3 Enterprise,6.36
+STU-1412,Artificial Intelligence & Machine Learning,8.21,63,91,2,0,17,0,1,96,67.96,1,Tier 2 Tech,14.22
+STU-1413,Electronics & Communication,7.7,77,74,4,1,77,1,1,79,66.79,1,Tier 3 Enterprise,4.67
+STU-1414,Electronics & Communication,7.38,76,79,2,0,18,0,2,80,64.68,1,Tier 3 Enterprise,5.11
+STU-1415,Information Science,7.43,45,83,0,2,15,0,3,54,73.48,1,Tier 2 Tech,10.87
+STU-1416,Computer Science,7.39,100,74,3,0,1,3,3,83,31.31,0,Unplaced,0.0
+STU-1417,Computer Science,8.85,90,76,0,0,109,0,3,80,75.15,1,Tier 2 Tech,14.02
+STU-1418,Electronics & Communication,8.25,66,87,0,2,48,0,0,93,76.11,1,Tier 2 Tech,17.73
+STU-1419,Mechanical Engineering,5.0,56,52,2,0,12,3,1,70,11.58,0,Unplaced,0.0
+STU-1420,Mechanical Engineering,8.32,76,85,3,0,42,0,3,62,74.14,1,Tier 2 Tech,17.54
+STU-1421,Mechanical Engineering,7.81,73,52,3,0,20,1,2,65,52.36,0,Unplaced,0.0
+STU-1422,Computer Science,7.58,76,77,4,1,312,2,0,67,63.25,1,Tier 3 Enterprise,4.91
+STU-1423,Information Science,7.17,74,62,2,0,42,0,2,60,73.3,1,Tier 2 Tech,11.05
+STU-1424,Computer Science,8.84,79,99,2,0,44,0,2,89,86.49,1,Tier 2 Tech,8.36
+STU-1425,Information Science,8.64,92,87,0,0,201,0,1,89,85.65,1,Tier 1 Product,27.57
+STU-1426,Information Science,6.75,79,68,3,1,114,0,2,71,84.63,1,Tier 2 Tech,16.35
+STU-1427,Civil Engineering,8.05,57,81,2,1,136,0,2,69,72.91,1,Tier 2 Tech,17.16
+STU-1428,Information Science,6.53,91,54,3,0,111,1,0,52,57.04,1,Tier 3 Enterprise,4.95
+STU-1429,Computer Science,6.08,94,76,2,0,321,0,0,82,83.31,1,Tier 2 Tech,10.66
+STU-1430,Computer Science,6.91,100,87,5,0,25,0,3,93,84.67,1,Tier 2 Tech,10.21
+STU-1431,Mechanical Engineering,8.55,56,84,2,0,480,0,3,66,77.43,1,Tier 2 Tech,11.5
+STU-1432,Electronics & Communication,8.65,75,97,2,0,195,0,2,72,79.74,1,Tier 2 Tech,16.05
+STU-1433,Computer Science,8.16,42,71,1,1,97,1,0,79,56.39,1,Tier 3 Enterprise,6.59
+STU-1434,Computer Science,8.4,79,71,2,1,119,0,0,94,82.92,1,Tier 2 Tech,15.86
+STU-1435,Electronics & Communication,8.17,64,77,4,2,115,1,1,76,72.76,1,Tier 2 Tech,13.83
+STU-1436,Computer Science,6.89,98,71,5,0,6,0,1,76,75.14,1,Tier 2 Tech,10.58
+STU-1437,Mechanical Engineering,8.08,61,72,2,1,27,0,2,76,73.07,1,Tier 2 Tech,10.28
+STU-1438,Electronics & Communication,8.48,48,85,1,1,358,0,0,56,73.76,1,Tier 2 Tech,8.09
+STU-1439,Computer Science,8.43,65,82,0,1,84,0,0,56,72.74,1,Tier 2 Tech,15.81
+STU-1440,Computer Science,8.91,44,73,5,2,52,0,2,64,88.63,1,Tier 2 Tech,16.47
+STU-1441,Artificial Intelligence & Machine Learning,8.38,82,84,4,0,157,0,3,86,91.68,1,Tier 2 Tech,15.68
+STU-1442,Information Science,7.99,43,84,2,0,81,2,1,69,36.51,0,Unplaced,0.0
+STU-1443,Information Science,8.78,72,83,2,1,1,0,3,67,84.48,1,Tier 2 Tech,8.74
+STU-1444,Mechanical Engineering,7.57,42,84,5,0,146,2,3,67,39.66,0,Unplaced,0.0
+STU-1445,Artificial Intelligence & Machine Learning,6.63,67,52,5,0,144,0,2,72,69.15,1,Tier 2 Tech,15.62
+STU-1446,Artificial Intelligence & Machine Learning,7.42,95,76,4,0,19,0,3,94,85.21,1,Tier 2 Tech,8.46
+STU-1447,Mechanical Engineering,6.78,77,54,4,0,345,0,1,72,77.78,1,Tier 2 Tech,9.06
+STU-1448,Information Science,6.86,59,55,2,1,27,0,3,64,70.33,1,Tier 2 Tech,12.4
+STU-1449,Computer Science,7.44,71,65,1,0,67,1,4,74,55.1,1,Tier 3 Enterprise,5.9
+STU-1450,Mechanical Engineering,6.73,72,56,5,0,13,0,2,95,67.37,1,Tier 2 Tech,16.16
+STU-1451,Electronics & Communication,7.26,78,64,6,1,101,0,3,67,86.28,1,Tier 2 Tech,14.8
+STU-1452,Information Science,5.52,52,54,1,1,51,0,1,59,56.94,1,Tier 3 Enterprise,4.61
+STU-1453,Artificial Intelligence & Machine Learning,7.83,80,83,2,3,47,0,2,67,89.89,1,Tier 2 Tech,10.26
+STU-1454,Computer Science,7.6,35,69,0,0,192,1,1,75,44.64,0,Unplaced,0.0
+STU-1455,Information Science,6.7,63,49,1,3,1,0,0,82,69.59,1,Tier 2 Tech,10.86
+STU-1456,Computer Science,8.33,65,90,5,1,175,1,0,86,74.89,1,Tier 2 Tech,9.24
+STU-1457,Information Science,8.63,80,72,2,1,93,0,2,61,90.79,1,Tier 2 Tech,10.88
+STU-1458,Computer Science,5.83,72,58,2,0,470,2,0,62,39.14,0,Unplaced,0.0
+STU-1459,Computer Science,6.76,52,70,0,1,97,1,2,70,53.76,0,Unplaced,0.0
+STU-1460,Computer Science,6.75,58,67,0,2,6,0,1,82,66.45,1,Tier 3 Enterprise,6.91
+STU-1461,Electronics & Communication,6.57,74,75,2,2,5,0,1,58,69.1,1,Tier 2 Tech,10.41
+STU-1462,Electronics & Communication,8.51,70,84,2,0,236,2,2,66,45.83,0,Unplaced,0.0
+STU-1463,Electronics & Communication,7.39,63,62,0,0,202,0,0,66,63.97,1,Tier 3 Enterprise,7.34
+STU-1464,Artificial Intelligence & Machine Learning,7.31,65,92,2,1,46,1,3,85,66.26,1,Tier 3 Enterprise,5.88
+STU-1465,Information Science,5.4,81,57,1,2,105,0,2,80,76.85,1,Tier 2 Tech,11.23
+STU-1466,Computer Science,8.3,64,76,3,0,73,0,3,84,75.27,1,Tier 2 Tech,12.12
+STU-1467,Civil Engineering,6.24,70,71,4,1,375,1,1,90,70.23,1,Tier 2 Tech,15.09
+STU-1468,Computer Science,7.67,100,75,4,1,329,0,1,70,94.83,1,Tier 2 Tech,13.17
+STU-1469,Artificial Intelligence & Machine Learning,7.91,52,79,2,1,453,0,2,59,79.75,1,Tier 2 Tech,8.07
+STU-1470,Computer Science,9.1,46,100,5,1,221,0,0,59,94.2,1,Tier 1 Product,40.14
+STU-1471,Artificial Intelligence & Machine Learning,6.16,82,58,3,0,264,0,2,51,77.63,1,Tier 2 Tech,8.66
+STU-1472,Computer Science,5.0,62,48,3,3,26,1,0,68,55.72,1,Tier 3 Enterprise,7.75
+STU-1473,Civil Engineering,7.8,67,75,2,1,195,2,0,69,48.97,0,Unplaced,0.0
+STU-1474,Information Science,9.58,61,99,4,1,135,2,1,83,65.18,1,Tier 3 Enterprise,4.11
+STU-1475,Artificial Intelligence & Machine Learning,8.96,68,68,3,0,362,0,1,74,84.24,1,Tier 1 Product,36.5
+STU-1476,Computer Science,7.83,94,54,2,1,93,0,0,68,78.14,1,Tier 2 Tech,13.35
+STU-1477,Electronics & Communication,7.06,83,62,3,0,9,1,0,72,46.79,0,Unplaced,0.0
+STU-1478,Artificial Intelligence & Machine Learning,8.49,84,63,3,0,100,0,1,61,78.13,1,Tier 2 Tech,13.06
+STU-1479,Information Science,6.53,52,59,2,1,127,0,1,86,69.13,1,Tier 2 Tech,8.73
+STU-1480,Electronics & Communication,8.12,55,81,6,1,27,2,2,64,50.61,0,Unplaced,0.0
+STU-1481,Electronics & Communication,8.16,35,68,1,1,55,0,3,60,64.77,1,Tier 3 Enterprise,4.95
+STU-1482,Information Science,8.77,60,67,2,0,100,0,1,83,70.74,1,Tier 2 Tech,15.78
+STU-1483,Electronics & Communication,9.9,85,91,2,1,51,0,3,80,99.66,1,Tier 2 Tech,16.91
+STU-1484,Electronics & Communication,8.03,79,84,2,0,51,0,2,53,65.08,1,Tier 3 Enterprise,6.12
+STU-1485,Artificial Intelligence & Machine Learning,7.04,68,51,3,1,15,0,1,84,72.56,1,Tier 2 Tech,11.53
+STU-1486,Computer Science,7.57,71,80,3,0,310,2,2,65,47.93,0,Unplaced,0.0
+STU-1487,Computer Science,5.65,62,65,4,1,152,0,1,69,73.43,1,Tier 2 Tech,8.6
+STU-1488,Artificial Intelligence & Machine Learning,6.84,74,76,1,2,0,0,0,76,78.03,1,Tier 2 Tech,14.82
+STU-1489,Civil Engineering,7.15,82,81,0,0,159,1,0,81,48.22,0,Unplaced,0.0
+STU-1490,Information Science,7.02,49,90,7,0,148,0,2,79,73.35,1,Tier 2 Tech,10.78
+STU-1491,Electronics & Communication,7.77,76,70,0,1,1,0,1,73,75.54,1,Tier 2 Tech,8.55
+STU-1492,Computer Science,6.7,85,66,6,1,50,0,1,68,77.04,1,Tier 2 Tech,14.66
+STU-1493,Computer Science,8.83,66,78,3,1,102,1,1,78,81.91,1,Tier 2 Tech,12.86
+STU-1494,Information Science,7.6,81,72,1,1,66,0,3,72,78.48,1,Tier 2 Tech,8.12
+STU-1495,Information Science,7.59,100,88,1,0,165,0,2,95,82.78,1,Tier 2 Tech,9.11
+STU-1496,Electronics & Communication,7.24,70,56,2,0,60,0,0,81,64.74,1,Tier 3 Enterprise,6.8
+STU-1497,Computer Science,7.77,77,65,2,0,18,0,0,62,72.47,1,Tier 2 Tech,8.64
+STU-1498,Artificial Intelligence & Machine Learning,8.51,61,93,6,0,412,0,3,68,87.5,1,Tier 1 Product,38.78
+STU-1499,Artificial Intelligence & Machine Learning,6.65,74,75,0,1,30,0,2,74,68.18,1,Tier 2 Tech,11.11
+STU-1500,Electronics & Communication,6.88,78,63,1,0,139,0,2,89,70.97,1,Tier 2 Tech,8.89
+STU-1501,Information Science,7.27,74,78,2,2,16,0,2,90,86.12,1,Tier 2 Tech,15.6
+STU-1502,Computer Science,6.12,57,64,2,2,43,0,1,69,76.76,1,Tier 2 Tech,13.24
+STU-1503,Mechanical Engineering,6.7,74,80,3,2,64,0,3,62,86.42,1,Tier 2 Tech,11.07
+STU-1504,Electronics & Communication,7.08,92,69,4,2,23,0,1,61,93.01,1,Tier 2 Tech,12.06
+STU-1505,Computer Science,8.56,78,90,3,0,65,2,1,77,52.97,0,Unplaced,0.0
+STU-1506,Artificial Intelligence & Machine Learning,7.89,85,100,2,2,18,1,0,100,77.87,1,Tier 2 Tech,8.21
+STU-1507,Mechanical Engineering,7.81,68,80,2,0,90,3,1,80,27.05,0,Unplaced,0.0
+STU-1508,Artificial Intelligence & Machine Learning,8.54,82,80,3,0,119,0,4,54,83.38,1,Tier 2 Tech,14.63
+STU-1509,Electronics & Communication,7.45,75,78,2,1,7,0,2,65,77.53,1,Tier 2 Tech,11.66
+STU-1510,Electronics & Communication,8.03,58,72,1,0,225,0,1,66,68.75,1,Tier 2 Tech,15.14
+STU-1511,Information Science,7.49,76,95,3,3,22,0,0,64,90.82,1,Tier 2 Tech,14.28
+STU-1512,Artificial Intelligence & Machine Learning,7.89,58,76,5,1,28,0,0,69,81.97,1,Tier 2 Tech,14.51
+STU-1513,Civil Engineering,6.96,63,64,1,1,119,0,4,78,72.11,1,Tier 2 Tech,15.93
+STU-1514,Computer Science,5.0,74,43,2,0,69,0,2,82,62.64,1,Tier 3 Enterprise,6.52
+STU-1515,Computer Science,7.45,76,82,1,1,76,0,1,87,74.79,1,Tier 2 Tech,12.19
+STU-1516,Information Science,9.17,55,94,5,0,15,0,0,80,77.65,1,Tier 2 Tech,11.9
+STU-1517,Mechanical Engineering,8.62,86,75,2,2,180,0,3,50,100.73,1,Tier 1 Product,20.87
+STU-1518,Artificial Intelligence & Machine Learning,8.66,80,87,0,0,105,0,2,61,79.88,1,Tier 2 Tech,15.79
+STU-1519,Computer Science,8.96,62,68,1,1,16,0,3,72,69.07,1,Tier 2 Tech,15.61
+STU-1520,Electronics & Communication,7.7,50,75,1,0,51,3,3,75,16.27,0,Unplaced,0.0
+STU-1521,Information Science,7.82,69,79,3,0,182,0,4,84,83.13,1,Tier 2 Tech,10.46
+STU-1522,Artificial Intelligence & Machine Learning,6.92,65,84,1,1,92,0,1,74,71.02,1,Tier 2 Tech,16.63
+STU-1523,Mechanical Engineering,7.25,73,62,1,0,12,2,1,74,27.99,0,Unplaced,0.0
+STU-1524,Mechanical Engineering,8.28,66,65,3,1,51,0,1,76,77.8,1,Tier 2 Tech,13.89
+STU-1525,Information Science,8.92,43,74,3,0,30,0,1,70,75.56,1,Tier 2 Tech,12.79
+STU-1526,Information Science,7.45,66,58,2,0,80,0,0,75,58.86,1,Tier 3 Enterprise,4.07
+STU-1527,Computer Science,7.1,67,82,0,1,203,0,1,87,75.82,1,Tier 2 Tech,11.83
+STU-1528,Computer Science,7.6,80,88,1,0,63,0,0,72,73.56,1,Tier 2 Tech,14.41
+STU-1529,Civil Engineering,8.26,62,81,2,0,62,0,3,73,74.85,1,Tier 2 Tech,8.9
+STU-1530,Mechanical Engineering,6.01,95,72,1,2,259,0,1,73,85.95,1,Tier 2 Tech,12.6
+STU-1531,Artificial Intelligence & Machine Learning,5.07,45,53,1,0,94,1,2,89,45.68,0,Unplaced,0.0
+STU-1532,Artificial Intelligence & Machine Learning,6.99,90,66,0,0,91,0,0,60,65.31,1,Tier 3 Enterprise,7.97
+STU-1533,Electronics & Communication,6.26,68,58,2,0,33,0,0,95,64.74,1,Tier 3 Enterprise,6.87
+STU-1534,Mechanical Engineering,7.04,84,65,0,0,102,0,1,59,60.06,1,Tier 3 Enterprise,6.19
+STU-1535,Artificial Intelligence & Machine Learning,7.44,73,56,0,1,94,0,1,66,68.5,1,Tier 2 Tech,13.33
+STU-1536,Mechanical Engineering,7.1,87,71,5,0,55,1,1,82,57.44,1,Tier 3 Enterprise,4.18
+STU-1537,Computer Science,9.2,66,85,3,1,480,0,1,86,103.97,1,Tier 1 Product,40.98
+STU-1538,Information Science,7.96,56,83,2,0,234,1,2,57,60.93,1,Tier 3 Enterprise,7.71
+STU-1539,Computer Science,7.93,91,76,3,0,152,0,5,60,86.36,1,Tier 2 Tech,14.82
+STU-1540,Artificial Intelligence & Machine Learning,8.28,70,76,1,0,84,1,0,77,54.05,0,Unplaced,0.0
+STU-1541,Electronics & Communication,6.35,75,54,2,1,68,0,2,100,73.57,1,Tier 2 Tech,8.99
+STU-1542,Computer Science,8.74,89,82,2,3,22,0,1,88,99.73,1,Tier 2 Tech,10.08
+STU-1543,Electronics & Communication,7.52,57,79,1,1,40,1,3,71,52.07,0,Unplaced,0.0
+STU-1544,Electronics & Communication,8.34,80,67,3,3,163,1,1,45,69.04,1,Tier 2 Tech,9.84
+STU-1545,Information Science,6.42,63,64,4,0,66,0,1,74,70.25,1,Tier 2 Tech,13.2
+STU-1546,Computer Science,5.89,70,61,1,0,235,3,2,78,25.54,0,Unplaced,0.0
+STU-1547,Electronics & Communication,8.5,73,72,2,0,17,0,2,69,76.99,1,Tier 2 Tech,10.08
+STU-1548,Information Science,8.01,50,70,3,0,78,0,2,63,71.8,1,Tier 2 Tech,14.96
+STU-1549,Mechanical Engineering,6.61,61,67,0,0,114,0,1,75,61.21,1,Tier 3 Enterprise,6.18
+STU-1550,Information Science,6.64,90,53,5,0,80,1,3,62,56.77,1,Tier 3 Enterprise,4.07
+STU-1551,Civil Engineering,8.84,84,86,1,0,242,3,4,96,46.9,0,Unplaced,0.0
+STU-1552,Electronics & Communication,6.29,71,53,3,0,480,0,1,92,75.07,1,Tier 2 Tech,15.44
+STU-1553,Electronics & Communication,9.41,75,97,4,0,13,0,4,81,86.49,1,Tier 2 Tech,9.89
+STU-1554,Civil Engineering,6.61,67,88,4,0,15,0,1,75,71.44,1,Tier 2 Tech,16.25
+STU-1555,Information Science,8.3,90,69,1,2,15,0,0,66,78.54,1,Tier 2 Tech,11.55
+STU-1556,Computer Science,7.24,69,75,3,0,125,0,3,73,74.96,1,Tier 2 Tech,11.39
+STU-1557,Computer Science,8.26,75,70,1,1,51,0,2,93,85.62,1,Tier 2 Tech,8.12
+STU-1558,Mechanical Engineering,7.0,88,78,3,1,145,0,1,84,80.75,1,Tier 2 Tech,17.88
+STU-1559,Electronics & Communication,7.42,61,58,1,0,57,0,5,76,58.47,1,Tier 3 Enterprise,6.45
+STU-1560,Electronics & Communication,7.65,93,78,3,0,108,0,1,85,77.62,1,Tier 2 Tech,12.23
+STU-1561,Computer Science,6.5,50,55,3,0,161,1,1,80,47.11,0,Unplaced,0.0
+STU-1562,Computer Science,8.41,94,77,4,1,87,0,0,78,91.7,1,Tier 2 Tech,8.97
+STU-1563,Computer Science,7.04,66,58,2,0,85,0,1,85,70.93,1,Tier 2 Tech,14.99
+STU-1564,Information Science,7.35,68,79,1,0,10,0,3,80,67.3,1,Tier 2 Tech,10.83
+STU-1565,Electronics & Communication,6.51,45,55,1,0,58,0,1,84,48.21,0,Unplaced,0.0
+STU-1566,Information Science,5.0,65,57,0,2,86,0,2,75,68.55,1,Tier 2 Tech,17.88
+STU-1567,Information Science,7.39,57,67,3,0,68,0,0,70,67.44,1,Tier 2 Tech,17.51
+STU-1568,Artificial Intelligence & Machine Learning,9.9,63,90,3,1,254,4,0,67,42.18,0,Unplaced,0.0
+STU-1569,Computer Science,8.46,70,81,4,1,260,0,0,65,89.96,1,Tier 1 Product,35.65
+STU-1570,Information Science,7.58,85,65,1,2,189,0,0,54,82.33,1,Tier 2 Tech,17.71
+STU-1571,Mechanical Engineering,7.31,74,72,1,1,51,0,3,63,71.84,1,Tier 2 Tech,9.06
+STU-1572,Information Science,7.62,76,88,5,1,138,0,3,62,92.05,1,Tier 2 Tech,10.8
+STU-1573,Electronics & Communication,8.2,56,69,4,2,55,2,2,67,52.69,0,Unplaced,0.0
+STU-1574,Civil Engineering,6.3,59,74,1,1,29,3,0,92,16.99,0,Unplaced,0.0
+STU-1575,Artificial Intelligence & Machine Learning,8.83,97,97,4,0,46,0,2,72,85.89,1,Tier 2 Tech,10.53
+STU-1576,Computer Science,8.39,61,70,2,0,8,0,3,76,69.5,1,Tier 2 Tech,8.72
+STU-1577,Artificial Intelligence & Machine Learning,8.39,95,64,0,1,44,1,1,77,64.56,1,Tier 3 Enterprise,7.89
+STU-1578,Information Science,8.08,68,79,2,2,67,0,2,93,91.06,1,Tier 2 Tech,8.6
+STU-1579,Computer Science,7.62,72,67,3,1,342,1,5,67,72.73,1,Tier 2 Tech,16.57
+STU-1580,Information Science,8.34,86,97,1,1,41,1,3,71,75.99,1,Tier 2 Tech,15.68
+STU-1581,Artificial Intelligence & Machine Learning,8.25,89,78,3,1,256,0,4,72,96.25,1,Tier 1 Product,27.02
+STU-1582,Information Science,7.21,70,61,1,0,28,3,0,87,13.4,0,Unplaced,0.0
+STU-1583,Computer Science,6.97,66,56,2,1,23,3,3,90,22.74,0,Unplaced,0.0
+STU-1584,Electronics & Communication,7.71,71,84,2,0,80,2,0,79,44.68,0,Unplaced,0.0
+STU-1585,Computer Science,9.3,76,80,2,3,122,0,1,88,98.41,1,Tier 2 Tech,8.19
+STU-1586,Computer Science,6.24,84,62,4,1,4,0,0,76,73.0,1,Tier 2 Tech,8.06
+STU-1587,Computer Science,5.99,72,69,2,1,27,0,0,71,61.52,1,Tier 3 Enterprise,4.82
+STU-1588,Computer Science,7.78,80,69,2,0,66,0,2,88,74.31,1,Tier 2 Tech,12.94
+STU-1589,Computer Science,7.66,94,72,3,0,44,0,3,79,83.61,1,Tier 2 Tech,12.58
+STU-1590,Computer Science,7.79,77,74,3,0,137,0,1,65,75.75,1,Tier 2 Tech,13.85
+STU-1591,Electronics & Communication,7.87,76,81,0,1,78,0,0,85,68.19,1,Tier 2 Tech,15.72
+STU-1592,Computer Science,7.35,50,76,1,1,19,0,2,71,66.84,1,Tier 3 Enterprise,5.51
+STU-1593,Computer Science,9.24,35,83,4,0,247,0,1,70,85.39,1,Tier 1 Product,21.85
+STU-1594,Civil Engineering,5.84,77,59,3,1,38,0,0,84,64.74,1,Tier 3 Enterprise,7.2
+STU-1595,Information Science,6.69,70,61,2,2,144,1,2,72,64.71,1,Tier 3 Enterprise,5.33
+STU-1596,Electronics & Communication,7.49,64,57,4,0,166,0,0,78,75.74,1,Tier 2 Tech,10.87
+STU-1597,Computer Science,5.79,75,60,1,1,363,0,1,81,77.75,1,Tier 2 Tech,15.64
+STU-1598,Computer Science,7.41,71,90,3,1,75,3,1,64,38.37,0,Unplaced,0.0
+STU-1599,Computer Science,9.43,87,78,1,1,105,0,3,78,86.35,1,Tier 2 Tech,17.34
+STU-1600,Computer Science,7.62,73,65,2,1,44,0,3,90,79.63,1,Tier 2 Tech,17.15
+STU-1601,Computer Science,7.85,61,66,4,1,124,1,4,62,67.03,1,Tier 2 Tech,9.37
+STU-1602,Computer Science,6.21,85,68,2,3,68,1,1,79,64.3,1,Tier 3 Enterprise,6.01
+STU-1603,Computer Science,6.92,68,71,6,0,63,0,0,64,68.34,1,Tier 2 Tech,8.93
+STU-1604,Computer Science,7.19,79,67,3,1,212,2,2,86,59.85,1,Tier 3 Enterprise,7.84
+STU-1605,Information Science,7.25,65,60,4,0,5,2,1,86,41.07,0,Unplaced,0.0
+STU-1606,Computer Science,9.01,62,85,6,0,235,0,4,69,90.56,1,Tier 1 Product,23.17
+STU-1607,Information Science,8.21,73,62,1,0,210,0,3,100,78.44,1,Tier 2 Tech,9.97
+STU-1608,Information Science,6.38,72,64,1,0,77,0,1,87,66.35,1,Tier 3 Enterprise,7.56
+STU-1609,Electronics & Communication,7.87,78,83,3,3,74,0,4,82,90.49,1,Tier 2 Tech,17.68
+STU-1610,Computer Science,8.15,68,64,0,2,49,0,1,81,74.7,1,Tier 2 Tech,14.98
+STU-1611,Mechanical Engineering,8.85,46,67,1,0,480,1,2,85,53.83,0,Unplaced,0.0
+STU-1612,Electronics & Communication,9.34,65,100,2,1,12,0,3,62,84.16,1,Tier 2 Tech,9.21
+STU-1613,Computer Science,6.48,83,57,0,1,98,0,0,76,63.88,1,Tier 3 Enterprise,5.94
+STU-1614,Civil Engineering,6.71,67,77,2,2,125,0,3,78,81.4,1,Tier 2 Tech,16.17
+STU-1615,Artificial Intelligence & Machine Learning,6.22,68,60,4,1,299,0,2,69,79.28,1,Tier 2 Tech,13.72
+STU-1616,Computer Science,7.34,85,69,3,0,166,0,0,79,73.77,1,Tier 2 Tech,9.33
+STU-1617,Computer Science,8.11,62,81,2,1,113,0,2,88,85.91,1,Tier 2 Tech,9.72
+STU-1618,Mechanical Engineering,8.69,50,72,4,1,13,0,0,68,81.39,1,Tier 2 Tech,16.64
+STU-1619,Electronics & Communication,7.52,69,73,3,1,51,1,0,73,58.17,1,Tier 3 Enterprise,6.11
+STU-1620,Computer Science,7.25,65,66,1,2,16,0,1,64,82.04,1,Tier 2 Tech,15.06
+STU-1621,Computer Science,7.77,58,60,5,2,234,0,1,52,82.2,1,Tier 2 Tech,11.73
+STU-1622,Information Science,6.68,69,68,2,1,152,0,1,83,80.32,1,Tier 2 Tech,13.32
+STU-1623,Information Science,9.9,78,88,0,1,155,0,3,73,87.66,1,Tier 2 Tech,17.77
+STU-1624,Electronics & Communication,5.83,71,57,2,3,116,0,1,74,76.63,1,Tier 2 Tech,11.3
+STU-1625,Information Science,7.8,76,62,2,0,77,0,2,62,72.05,1,Tier 2 Tech,14.75
+STU-1626,Information Science,9.83,97,100,2,0,17,1,2,71,67.16,1,Tier 2 Tech,9.73
+STU-1627,Electronics & Communication,7.61,67,81,2,0,44,0,1,87,69.68,1,Tier 2 Tech,9.22
+STU-1628,Computer Science,7.39,75,80,1,2,16,0,3,74,84.32,1,Tier 2 Tech,15.84
+STU-1629,Computer Science,7.21,64,66,0,1,141,0,0,74,60.7,1,Tier 3 Enterprise,7.38
+STU-1630,Electronics & Communication,7.4,60,53,1,0,19,2,2,76,34.9,0,Unplaced,0.0
+STU-1631,Civil Engineering,9.11,63,100,3,3,133,0,3,59,101.87,1,Tier 2 Tech,14.68
+STU-1632,Information Science,5.17,65,52,5,1,129,1,0,81,59.61,1,Tier 3 Enterprise,4.63
+STU-1633,Information Science,9.29,77,78,3,2,67,0,3,58,96.89,1,Tier 2 Tech,10.41
+STU-1634,Computer Science,6.03,100,64,4,0,15,0,2,62,79.23,1,Tier 2 Tech,17.11
+STU-1635,Information Science,7.31,61,82,0,1,41,1,0,61,55.57,1,Tier 3 Enterprise,5.15
+STU-1636,Information Science,7.13,66,68,2,1,42,1,0,71,57.37,1,Tier 3 Enterprise,7.28
+STU-1637,Computer Science,8.25,71,90,3,1,132,0,1,69,87.36,1,Tier 2 Tech,10.86
+STU-1638,Computer Science,5.84,77,69,2,1,13,0,4,73,70.78,1,Tier 2 Tech,17.39
+STU-1639,Information Science,8.11,75,66,3,2,194,0,1,63,89.99,1,Tier 1 Product,39.95
+STU-1640,Computer Science,9.83,89,83,6,0,157,0,1,86,92.14,1,Tier 2 Tech,8.43
+STU-1641,Computer Science,6.1,38,70,2,2,22,2,2,84,43.32,0,Unplaced,0.0
+STU-1642,Computer Science,7.81,38,47,1,0,139,0,1,71,55.06,1,Tier 3 Enterprise,7.08
+STU-1643,Computer Science,6.87,65,65,2,0,121,0,2,68,70.95,1,Tier 2 Tech,9.69
+STU-1644,Computer Science,8.07,87,62,1,0,151,1,1,67,55.67,1,Tier 3 Enterprise,4.86
+STU-1645,Civil Engineering,7.62,50,68,2,0,23,0,4,70,62.38,1,Tier 3 Enterprise,5.84
+STU-1646,Electronics & Communication,6.89,35,64,1,0,18,0,1,57,52.14,0,Unplaced,0.0
+STU-1647,Electronics & Communication,8.14,79,73,3,2,29,1,3,62,69.82,1,Tier 2 Tech,13.76
+STU-1648,Mechanical Engineering,9.58,75,83,0,1,50,0,2,84,80.75,1,Tier 2 Tech,11.26
+STU-1649,Information Science,7.39,56,60,3,0,173,0,1,77,73.33,1,Tier 2 Tech,13.75
+STU-1650,Computer Science,8.39,58,100,3,1,147,0,1,93,88.14,1,Tier 2 Tech,9.71
+STU-1651,Information Science,6.18,58,80,4,0,285,0,3,70,85.39,1,Tier 2 Tech,8.22
+STU-1652,Electronics & Communication,6.55,73,52,1,0,6,0,0,69,55.25,1,Tier 3 Enterprise,6.28
+STU-1653,Electronics & Communication,8.12,63,92,0,1,1,0,1,69,73.0,1,Tier 2 Tech,13.17
+STU-1654,Information Science,9.23,78,81,1,1,132,3,1,70,45.37,0,Unplaced,0.0
+STU-1655,Computer Science,7.99,35,77,6,1,36,3,2,66,30.47,0,Unplaced,0.0
+STU-1656,Computer Science,7.26,60,69,2,0,44,1,3,77,56.41,1,Tier 3 Enterprise,6.76
+STU-1657,Information Science,7.6,56,66,1,1,87,0,3,74,70.51,1,Tier 2 Tech,14.5
+STU-1658,Electronics & Communication,6.22,68,71,2,1,11,3,3,67,21.05,0,Unplaced,0.0
+STU-1659,Electronics & Communication,8.26,64,79,1,3,113,0,2,89,82.16,1,Tier 2 Tech,16.97
+STU-1660,Information Science,8.57,83,75,3,0,43,0,1,96,76.59,1,Tier 2 Tech,12.59
+STU-1661,Artificial Intelligence & Machine Learning,7.1,45,55,2,1,110,1,0,87,49.03,0,Unplaced,0.0
+STU-1662,Electronics & Communication,7.08,72,59,0,1,197,0,2,80,72.61,1,Tier 2 Tech,8.08
+STU-1663,Computer Science,7.89,79,58,2,3,20,0,4,83,83.16,1,Tier 2 Tech,14.31
+STU-1664,Computer Science,7.12,97,69,3,0,293,1,1,96,75.28,1,Tier 2 Tech,14.75
+STU-1665,Computer Science,7.53,65,60,3,1,83,0,1,83,78.47,1,Tier 2 Tech,13.21
+STU-1666,Computer Science,9.9,76,88,3,0,281,0,2,66,99.35,1,Tier 1 Product,34.54
+STU-1667,Computer Science,7.33,46,84,1,1,25,0,2,78,71.94,1,Tier 2 Tech,11.24
+STU-1668,Computer Science,7.21,38,81,0,0,102,2,1,81,33.62,0,Unplaced,0.0
+STU-1669,Computer Science,6.89,83,66,1,0,56,0,2,62,69.31,1,Tier 2 Tech,9.49
+STU-1670,Computer Science,8.42,71,78,3,1,163,0,5,70,90.34,1,Tier 2 Tech,14.65
+STU-1671,Civil Engineering,7.4,88,89,5,0,102,0,2,87,88.74,1,Tier 2 Tech,10.45
+STU-1672,Computer Science,6.89,52,72,1,0,75,0,1,52,62.51,1,Tier 3 Enterprise,5.83
+STU-1673,Information Science,9.05,79,81,2,0,268,3,0,58,38.81,0,Unplaced,0.0
+STU-1674,Information Science,9.16,98,71,2,0,52,0,0,71,80.5,1,Tier 2 Tech,12.92
+STU-1675,Artificial Intelligence & Machine Learning,6.94,77,71,0,3,27,0,0,78,76.14,1,Tier 2 Tech,12.77
+STU-1676,Computer Science,5.55,75,64,0,1,103,0,4,57,64.98,1,Tier 3 Enterprise,6.39
+STU-1677,Information Science,8.71,72,75,0,2,107,2,2,72,51.16,0,Unplaced,0.0
+STU-1678,Artificial Intelligence & Machine Learning,6.85,50,69,0,0,63,0,0,87,62.03,1,Tier 3 Enterprise,4.12
+STU-1679,Civil Engineering,8.47,90,76,1,2,73,0,1,74,91.73,1,Tier 2 Tech,17.9
+STU-1680,Mechanical Engineering,5.43,63,53,2,1,352,0,1,85,67.81,1,Tier 2 Tech,15.16
+STU-1681,Computer Science,8.58,79,55,3,1,145,0,1,66,87.09,1,Tier 2 Tech,12.25
+STU-1682,Computer Science,6.27,50,59,6,1,12,2,2,64,44.54,0,Unplaced,0.0
+STU-1683,Electronics & Communication,8.4,55,88,3,1,26,2,3,84,52.77,0,Unplaced,0.0
+STU-1684,Artificial Intelligence & Machine Learning,7.62,92,66,2,1,408,2,1,78,61.56,1,Tier 3 Enterprise,4.77
+STU-1685,Electronics & Communication,6.55,67,64,2,0,142,2,1,59,37.14,0,Unplaced,0.0
+STU-1686,Electronics & Communication,7.15,92,61,1,0,271,1,2,64,58.28,1,Tier 3 Enterprise,4.32
+STU-1687,Computer Science,8.35,70,82,1,1,39,0,2,92,81.06,1,Tier 2 Tech,14.72
+STU-1688,Mechanical Engineering,7.72,46,71,3,1,148,1,2,62,60.3,1,Tier 3 Enterprise,5.27
+STU-1689,Computer Science,8.24,84,68,1,0,137,0,2,85,73.86,1,Tier 2 Tech,10.29
+STU-1690,Computer Science,9.77,63,100,0,0,38,0,3,68,77.29,1,Tier 2 Tech,11.8
+STU-1691,Information Science,5.88,81,68,0,1,88,0,1,73,72.94,1,Tier 2 Tech,13.93
+STU-1692,Information Science,9.38,72,80,3,2,108,3,1,77,54.47,0,Unplaced,0.0
+STU-1693,Computer Science,7.71,50,78,2,0,72,0,1,48,66.3,1,Tier 3 Enterprise,6.69
+STU-1694,Computer Science,6.61,74,70,2,0,193,1,2,56,58.57,1,Tier 3 Enterprise,6.58
+STU-1695,Electronics & Communication,6.14,100,67,5,2,196,0,2,75,92.8,1,Tier 2 Tech,16.63
+STU-1696,Computer Science,7.39,78,54,2,1,209,0,1,65,81.08,1,Tier 2 Tech,10.19
+STU-1697,Electronics & Communication,8.61,71,90,0,0,178,0,1,85,70.83,1,Tier 2 Tech,14.37
+STU-1698,Computer Science,7.46,87,65,5,2,73,0,2,54,95.85,1,Tier 2 Tech,9.01
+STU-1699,Information Science,9.26,74,82,2,1,52,0,1,80,92.75,1,Tier 2 Tech,13.48
+STU-1700,Information Science,6.0,74,86,1,1,195,0,1,57,72.87,1,Tier 2 Tech,13.84
+STU-1701,Computer Science,7.59,56,75,4,3,74,1,2,69,78.29,1,Tier 2 Tech,10.16
+STU-1702,Computer Science,6.22,75,57,4,2,31,0,2,61,82.98,1,Tier 2 Tech,11.92
+STU-1703,Computer Science,8.0,86,53,4,0,77,0,2,96,79.02,1,Tier 2 Tech,16.27
+STU-1704,Computer Science,8.58,60,94,4,0,16,0,3,57,85.18,1,Tier 2 Tech,9.48
+STU-1705,Artificial Intelligence & Machine Learning,7.14,91,55,0,0,129,0,5,72,71.62,1,Tier 2 Tech,12.35
+STU-1706,Computer Science,5.0,70,41,3,0,45,0,0,53,50.54,0,Unplaced,0.0
+STU-1707,Mechanical Engineering,7.82,59,71,0,0,33,0,1,93,58.29,1,Tier 3 Enterprise,7.73
+STU-1708,Computer Science,8.08,85,90,0,0,344,0,1,78,82.57,1,Tier 1 Product,30.1
+STU-1709,Electronics & Communication,8.04,67,84,4,2,165,0,1,75,84.67,1,Tier 2 Tech,15.25
+STU-1710,Mechanical Engineering,8.96,82,82,5,2,170,1,3,91,93.41,1,Tier 2 Tech,16.27
+STU-1711,Electronics & Communication,6.42,67,66,2,1,107,1,3,75,58.38,1,Tier 3 Enterprise,4.82
+STU-1712,Information Science,8.35,71,72,1,1,201,0,2,76,78.12,1,Tier 2 Tech,10.18
+STU-1713,Information Science,8.91,78,84,1,0,156,0,1,75,79.95,1,Tier 2 Tech,15.59
+STU-1714,Computer Science,5.64,76,57,1,0,100,0,0,80,61.19,1,Tier 3 Enterprise,7.01
+STU-1715,Artificial Intelligence & Machine Learning,7.95,44,85,3,0,357,0,2,68,75.76,1,Tier 2 Tech,8.6
+STU-1716,Mechanical Engineering,7.05,56,78,1,1,23,1,3,71,56.45,1,Tier 3 Enterprise,5.29
+STU-1717,Artificial Intelligence & Machine Learning,7.51,85,77,1,0,315,0,0,83,82.4,1,Tier 2 Tech,11.99
+STU-1718,Computer Science,7.98,70,72,0,2,56,0,0,77,75.56,1,Tier 2 Tech,16.29
+STU-1719,Electronics & Communication,7.06,64,75,2,1,82,0,2,72,72.59,1,Tier 2 Tech,12.22
+STU-1720,Artificial Intelligence & Machine Learning,6.86,52,65,0,0,14,3,2,57,12.92,0,Unplaced,0.0
+STU-1721,Computer Science,7.64,56,62,6,0,85,1,1,91,57.98,1,Tier 3 Enterprise,7.7
+STU-1722,Computer Science,6.4,43,59,1,1,103,1,1,66,40.33,0,Unplaced,0.0
+STU-1723,Electronics & Communication,6.41,70,64,3,2,480,0,3,85,91.05,1,Tier 2 Tech,17.97
+STU-1724,Electronics & Communication,8.35,63,87,7,1,406,0,1,76,88.47,1,Tier 1 Product,36.74
+STU-1725,Mechanical Engineering,6.34,58,60,0,0,373,0,3,58,60.95,1,Tier 3 Enterprise,6.67
+STU-1726,Computer Science,8.33,71,66,3,1,47,0,3,89,89.35,1,Tier 2 Tech,11.92
+STU-1727,Mechanical Engineering,8.11,77,77,0,0,480,0,2,77,74.95,1,Tier 2 Tech,8.67
+STU-1728,Computer Science,5.7,100,58,2,3,66,0,2,90,84.63,1,Tier 2 Tech,13.73
+STU-1729,Computer Science,6.85,50,68,1,1,210,0,2,71,73.91,1,Tier 2 Tech,11.62
+STU-1730,Computer Science,8.91,88,92,1,1,26,1,0,82,70.66,1,Tier 2 Tech,11.51
+STU-1731,Mechanical Engineering,6.52,85,74,2,0,77,0,2,52,65.63,1,Tier 3 Enterprise,6.75
+STU-1732,Electronics & Communication,7.09,61,62,0,1,371,0,4,67,72.04,1,Tier 2 Tech,12.64
+STU-1733,Information Science,8.11,74,70,1,0,323,0,0,58,75.23,1,Tier 2 Tech,15.52
+STU-1734,Information Science,8.46,65,69,1,0,126,0,1,69,71.09,1,Tier 2 Tech,11.98
+STU-1735,Civil Engineering,7.32,74,77,4,0,175,0,2,79,81.49,1,Tier 2 Tech,9.51
+STU-1736,Information Science,6.94,93,82,3,2,21,0,3,66,101.19,1,Tier 2 Tech,12.61
+STU-1737,Mechanical Engineering,9.16,80,82,0,1,140,0,1,84,75.85,1,Tier 2 Tech,17.51
+STU-1738,Information Science,9.51,79,85,7,0,105,0,0,63,89.56,1,Tier 2 Tech,16.02
+STU-1739,Information Science,8.68,65,96,1,2,10,0,2,84,90.97,1,Tier 2 Tech,10.06
+STU-1740,Information Science,7.69,51,78,2,0,13,0,2,89,70.32,1,Tier 2 Tech,11.91
+STU-1741,Computer Science,6.71,69,70,2,0,12,0,2,86,66.02,1,Tier 3 Enterprise,7.71
+STU-1742,Electronics & Communication,6.69,88,53,2,0,141,0,1,69,73.83,1,Tier 2 Tech,9.24
+STU-1743,Information Science,8.17,50,84,2,1,16,0,1,48,64.71,1,Tier 3 Enterprise,5.02
+STU-1744,Computer Science,8.06,57,67,3,1,69,1,1,80,60.29,1,Tier 3 Enterprise,5.05
+STU-1745,Civil Engineering,9.14,73,73,0,1,48,0,1,72,76.51,1,Tier 2 Tech,13.71
+STU-1746,Information Science,8.32,58,75,1,1,87,0,1,62,72.11,1,Tier 2 Tech,12.11
+STU-1747,Information Science,5.95,60,53,2,0,134,2,1,67,37.41,0,Unplaced,0.0
+STU-1748,Artificial Intelligence & Machine Learning,8.76,66,79,3,1,126,1,1,91,72.69,1,Tier 2 Tech,8.8
+STU-1749,Electronics & Communication,6.5,52,49,2,0,79,3,1,60,6.35,0,Unplaced,0.0
+STU-1750,Computer Science,7.18,58,79,1,1,68,0,2,79,71.22,1,Tier 2 Tech,14.29
+STU-1751,Artificial Intelligence & Machine Learning,7.88,81,86,3,1,55,0,0,76,86.08,1,Tier 2 Tech,8.99
+STU-1752,Electronics & Communication,9.8,53,70,1,1,217,0,4,69,79.14,1,Tier 2 Tech,14.06
+STU-1753,Computer Science,9.9,49,100,2,1,44,0,3,81,90.71,1,Tier 2 Tech,13.07
+STU-1754,Computer Science,8.27,63,70,6,1,33,3,2,93,44.45,0,Unplaced,0.0
+STU-1755,Mechanical Engineering,7.4,82,79,3,0,149,0,0,70,81.06,1,Tier 2 Tech,12.94
+STU-1756,Electronics & Communication,8.19,69,76,0,2,49,2,2,71,45.22,0,Unplaced,0.0
+STU-1757,Information Science,8.58,65,80,2,0,206,0,1,81,73.32,1,Tier 2 Tech,8.67
+STU-1758,Civil Engineering,7.25,72,68,4,0,43,0,0,85,63.86,1,Tier 3 Enterprise,6.56
+STU-1759,Mechanical Engineering,9.57,47,100,0,1,133,2,2,72,47.77,0,Unplaced,0.0
+STU-1760,Computer Science,7.85,78,62,3,1,5,1,0,70,64.16,1,Tier 3 Enterprise,5.73
+STU-1761,Computer Science,8.15,77,83,3,0,53,3,1,47,31.98,0,Unplaced,0.0
+STU-1762,Computer Science,8.33,66,89,3,2,46,1,2,64,75.04,1,Tier 2 Tech,12.11
+STU-1763,Electronics & Communication,8.06,86,83,2,3,186,0,1,60,87.33,1,Tier 1 Product,32.31
+STU-1764,Computer Science,8.52,56,100,3,1,375,0,3,82,104.15,1,Tier 1 Product,32.55
+STU-1765,Electronics & Communication,6.92,87,62,0,1,67,2,1,71,43.78,0,Unplaced,0.0
+STU-1766,Mechanical Engineering,6.99,74,77,3,1,191,0,2,70,74.61,1,Tier 2 Tech,8.15
+STU-1767,Civil Engineering,6.39,67,62,1,0,132,0,0,73,59.34,1,Tier 3 Enterprise,4.5
+STU-1768,Computer Science,8.08,71,88,5,1,376,0,1,63,91.24,1,Tier 1 Product,23.68
+STU-1769,Mechanical Engineering,8.46,70,79,1,2,183,0,1,92,80.86,1,Tier 2 Tech,14.78
+STU-1770,Computer Science,8.1,89,72,6,3,8,0,1,89,90.21,1,Tier 2 Tech,13.77
+STU-1771,Mechanical Engineering,9.44,56,100,4,2,137,1,1,93,89.54,1,Tier 2 Tech,15.58
+STU-1772,Computer Science,7.59,61,67,2,0,84,0,1,82,70.4,1,Tier 2 Tech,15.41
+STU-1773,Information Science,8.34,86,64,2,0,1,0,2,73,79.44,1,Tier 2 Tech,16.53
+STU-1774,Mechanical Engineering,6.4,63,58,0,0,31,1,1,93,39.48,0,Unplaced,0.0
+STU-1775,Computer Science,7.17,84,75,3,0,280,0,2,65,78.28,1,Tier 2 Tech,11.77
+STU-1776,Computer Science,8.37,95,92,1,0,286,1,4,63,73.38,1,Tier 2 Tech,11.45
+STU-1777,Electronics & Communication,8.53,66,81,2,0,176,0,1,66,69.55,1,Tier 2 Tech,16.31
+STU-1778,Electronics & Communication,7.28,81,83,2,1,440,2,2,80,53.27,0,Unplaced,0.0
+STU-1779,Electronics & Communication,7.52,55,58,1,1,180,0,2,64,70.67,1,Tier 2 Tech,10.38
+STU-1780,Electronics & Communication,5.93,82,55,2,1,1,0,0,72,65.76,1,Tier 3 Enterprise,5.84
+STU-1781,Information Science,7.21,74,66,3,2,37,1,1,54,69.09,1,Tier 2 Tech,9.94
+STU-1782,Computer Science,8.58,78,79,1,0,3,1,0,79,54.71,0,Unplaced,0.0
+STU-1783,Computer Science,8.23,62,78,5,0,10,0,1,55,77.36,1,Tier 2 Tech,17.14
+STU-1784,Computer Science,8.15,48,84,1,1,27,3,2,62,25.22,0,Unplaced,0.0
+STU-1785,Artificial Intelligence & Machine Learning,7.65,79,68,1,1,77,0,2,88,82.16,1,Tier 2 Tech,12.08
+STU-1786,Electronics & Communication,7.61,43,74,3,1,206,2,0,88,46.54,0,Unplaced,0.0
+STU-1787,Information Science,6.87,67,66,4,0,217,0,2,78,78.93,1,Tier 2 Tech,10.12
+STU-1788,Information Science,8.37,85,69,3,0,105,0,0,77,80.04,1,Tier 2 Tech,14.92
+STU-1789,Artificial Intelligence & Machine Learning,8.06,74,75,4,1,289,0,1,67,92.59,1,Tier 1 Product,23.87
+STU-1790,Computer Science,8.14,99,75,2,2,76,0,1,64,97.13,1,Tier 2 Tech,17.44
+STU-1791,Electronics & Communication,7.02,86,66,1,2,241,0,0,69,82.91,1,Tier 2 Tech,11.68
+STU-1792,Information Science,5.23,62,54,3,1,66,0,2,55,67.59,1,Tier 2 Tech,14.65
+STU-1793,Electronics & Communication,8.81,72,83,4,1,35,0,2,77,91.71,1,Tier 2 Tech,11.45
+STU-1794,Computer Science,7.07,71,64,2,2,273,0,1,74,89.94,1,Tier 2 Tech,16.07
+STU-1795,Civil Engineering,6.65,49,77,0,1,54,0,0,62,61.02,1,Tier 3 Enterprise,7.59
+STU-1796,Artificial Intelligence & Machine Learning,8.36,58,67,1,1,76,1,2,92,59.33,1,Tier 3 Enterprise,7.15
+STU-1797,Electronics & Communication,7.17,64,62,2,2,43,0,0,81,69.7,1,Tier 2 Tech,16.48
+STU-1798,Electronics & Communication,8.77,43,100,3,1,119,1,1,82,69.58,1,Tier 2 Tech,9.02
+STU-1799,Artificial Intelligence & Machine Learning,8.28,72,67,0,2,480,2,0,68,53.66,0,Unplaced,0.0
+STU-1800,Electronics & Communication,8.35,68,65,1,0,2,0,0,73,66.33,1,Tier 3 Enterprise,7.7
+STU-1801,Computer Science,6.1,48,68,3,1,253,3,2,81,31.9,0,Unplaced,0.0
+STU-1802,Electronics & Communication,8.93,77,62,4,2,0,0,1,75,91.14,1,Tier 2 Tech,14.24
+STU-1803,Electronics & Communication,7.89,82,72,3,0,49,0,4,93,72.08,1,Tier 2 Tech,16.69
+STU-1804,Information Science,7.19,75,90,3,1,20,0,1,71,87.11,1,Tier 2 Tech,14.84
+STU-1805,Electronics & Communication,7.76,67,58,2,0,155,0,2,67,70.59,1,Tier 2 Tech,10.02
+STU-1806,Artificial Intelligence & Machine Learning,5.65,80,37,3,2,5,2,1,81,47.19,0,Unplaced,0.0
+STU-1807,Artificial Intelligence & Machine Learning,8.05,81,61,0,1,88,0,1,58,75.45,1,Tier 2 Tech,14.1
+STU-1808,Information Science,6.47,76,72,4,0,38,0,1,85,74.58,1,Tier 2 Tech,8.91
+STU-1809,Computer Science,6.11,60,72,3,1,15,1,0,58,54.34,0,Unplaced,0.0
+STU-1810,Artificial Intelligence & Machine Learning,5.93,75,54,3,1,162,0,1,81,81.83,1,Tier 2 Tech,14.96
+STU-1811,Mechanical Engineering,8.82,88,89,2,1,26,0,0,66,88.39,1,Tier 2 Tech,12.09
+STU-1812,Computer Science,6.91,63,81,1,0,27,0,1,79,67.28,1,Tier 2 Tech,9.52
+STU-1813,Artificial Intelligence & Machine Learning,9.29,100,100,1,2,35,2,0,84,68.95,1,Tier 2 Tech,17.79
+STU-1814,Civil Engineering,7.01,64,65,0,1,97,1,2,75,53.14,0,Unplaced,0.0
+STU-1815,Information Science,5.72,72,34,3,1,118,0,0,59,66.3,1,Tier 3 Enterprise,7.6
+STU-1816,Electronics & Communication,6.37,62,54,5,0,1,0,2,63,63.14,1,Tier 3 Enterprise,7.57
+STU-1817,Information Science,8.96,75,79,2,2,30,0,0,65,94.81,1,Tier 2 Tech,15.89
+STU-1818,Computer Science,7.43,47,68,1,0,62,0,1,51,61.88,1,Tier 3 Enterprise,6.77
+STU-1819,Computer Science,7.0,64,66,0,1,44,1,3,87,58.68,1,Tier 3 Enterprise,6.62
+STU-1820,Mechanical Engineering,7.78,56,85,1,2,237,0,2,75,85.72,1,Tier 2 Tech,9.06
+STU-1821,Computer Science,8.15,73,89,3,0,170,0,2,60,85.36,1,Tier 2 Tech,17.01
+STU-1822,Computer Science,8.83,85,80,2,1,108,2,2,91,64.11,1,Tier 3 Enterprise,7.52
+STU-1823,Information Science,9.19,81,96,1,0,45,1,2,65,62.7,1,Tier 3 Enterprise,6.99
+STU-1824,Information Science,7.2,38,73,1,1,132,0,2,77,71.84,1,Tier 2 Tech,17.27
+STU-1825,Artificial Intelligence & Machine Learning,6.14,100,61,5,1,204,0,2,64,86.97,1,Tier 2 Tech,13.53
+STU-1826,Computer Science,7.15,76,78,0,2,99,0,1,49,77.34,1,Tier 2 Tech,12.48
+STU-1827,Computer Science,7.89,61,75,2,2,168,0,3,57,91.72,1,Tier 2 Tech,17.68
+STU-1828,Electronics & Communication,6.54,74,84,1,1,152,0,3,68,80.65,1,Tier 2 Tech,12.64
+STU-1829,Information Science,6.55,74,50,0,1,93,0,2,84,68.64,1,Tier 2 Tech,14.41
+STU-1830,Computer Science,7.98,62,70,3,1,41,1,2,78,63.46,1,Tier 3 Enterprise,5.49
+STU-1831,Information Science,7.55,74,71,4,0,150,4,1,75,20.0,0,Unplaced,0.0
+STU-1832,Computer Science,7.64,63,77,4,1,25,0,1,49,82.04,1,Tier 2 Tech,14.36
+STU-1833,Computer Science,6.77,66,78,1,2,166,0,1,89,82.25,1,Tier 2 Tech,15.2
+STU-1834,Information Science,7.35,62,70,2,0,179,1,3,76,57.55,1,Tier 3 Enterprise,6.5
+STU-1835,Information Science,6.58,51,50,2,0,189,2,2,72,38.65,0,Unplaced,0.0
+STU-1836,Artificial Intelligence & Machine Learning,8.58,74,89,1,0,70,2,0,87,45.51,0,Unplaced,0.0
+STU-1837,Information Science,8.74,80,89,3,0,23,0,2,88,81.92,1,Tier 2 Tech,13.15
+STU-1838,Electronics & Communication,5.57,79,37,4,0,11,0,0,87,62.96,1,Tier 3 Enterprise,5.2
+STU-1839,Electronics & Communication,6.58,83,64,2,1,149,1,0,71,62.19,1,Tier 3 Enterprise,6.58
+STU-1840,Computer Science,5.95,76,43,3,1,239,0,1,61,72.15,1,Tier 2 Tech,17.08
+STU-1841,Electronics & Communication,6.88,64,60,0,1,115,0,0,85,62.56,1,Tier 3 Enterprise,4.03
+STU-1842,Computer Science,7.51,83,63,0,0,17,0,2,57,63.48,1,Tier 3 Enterprise,4.54
+STU-1843,Artificial Intelligence & Machine Learning,6.01,52,68,3,1,300,1,1,97,66.58,1,Tier 3 Enterprise,4.48
+STU-1844,Computer Science,6.59,59,65,3,2,480,0,5,74,91.74,1,Tier 2 Tech,17.23
+STU-1845,Information Science,6.5,58,51,0,3,62,1,1,61,48.67,0,Unplaced,0.0
+STU-1846,Computer Science,7.83,87,83,3,1,99,0,4,59,84.2,1,Tier 2 Tech,14.63
+STU-1847,Artificial Intelligence & Machine Learning,7.68,85,59,3,0,165,1,1,58,65.79,1,Tier 3 Enterprise,7.81
+STU-1848,Information Science,6.81,78,69,3,3,146,0,3,75,86.53,1,Tier 2 Tech,13.83
+STU-1849,Electronics & Communication,7.79,87,66,2,1,377,0,3,73,88.68,1,Tier 2 Tech,12.62
+STU-1850,Computer Science,7.0,59,64,2,0,13,1,2,59,47.92,0,Unplaced,0.0
+STU-1851,Electronics & Communication,7.3,76,75,1,0,95,1,2,69,53.6,0,Unplaced,0.0
+STU-1852,Computer Science,9.44,70,92,3,0,129,2,3,57,62.27,1,Tier 3 Enterprise,7.17
+STU-1853,Civil Engineering,9.07,83,97,2,0,242,0,2,81,98.56,1,Tier 1 Product,21.86
+STU-1854,Computer Science,6.17,70,60,1,0,227,0,3,73,63.77,1,Tier 3 Enterprise,5.53
+STU-1855,Computer Science,8.51,66,83,2,2,419,0,0,69,102.23,1,Tier 1 Product,29.19
+STU-1856,Computer Science,8.49,79,75,4,1,78,0,2,58,88.09,1,Tier 2 Tech,10.98
+STU-1857,Information Science,6.34,84,64,1,1,195,2,3,70,52.48,0,Unplaced,0.0
+STU-1858,Electronics & Communication,8.5,62,84,2,2,61,0,0,69,90.38,1,Tier 2 Tech,11.71
+STU-1859,Computer Science,9.29,71,85,1,1,60,0,1,77,86.48,1,Tier 2 Tech,8.78
+STU-1860,Mechanical Engineering,6.37,57,44,3,2,32,0,3,76,73.46,1,Tier 2 Tech,9.98
+STU-1861,Information Science,6.59,37,68,1,3,187,0,1,83,70.03,1,Tier 2 Tech,11.35
+STU-1862,Information Science,8.72,74,85,2,0,468,2,2,68,59.53,1,Tier 3 Enterprise,7.18
+STU-1863,Information Science,7.9,80,68,1,3,32,0,4,51,82.48,1,Tier 2 Tech,9.82
+STU-1864,Information Science,8.21,75,64,2,1,6,0,2,85,77.64,1,Tier 2 Tech,11.47
+STU-1865,Electronics & Communication,7.97,44,90,2,0,185,1,2,62,54.0,0,Unplaced,0.0
+STU-1866,Computer Science,8.03,67,81,3,1,106,0,0,60,84.62,1,Tier 2 Tech,8.65
+STU-1867,Computer Science,6.14,40,58,1,1,353,0,0,73,71.84,1,Tier 2 Tech,13.57
+STU-1868,Civil Engineering,8.75,91,70,2,2,31,0,1,77,88.68,1,Tier 2 Tech,14.11
+STU-1869,Artificial Intelligence & Machine Learning,8.89,56,74,1,0,8,0,0,67,66.94,1,Tier 3 Enterprise,7.46
+STU-1870,Information Science,7.35,89,83,2,1,74,0,3,67,84.06,1,Tier 2 Tech,16.19
+STU-1871,Computer Science,7.55,85,73,2,0,9,0,3,69,69.82,1,Tier 2 Tech,10.85
+STU-1872,Electronics & Communication,5.92,59,53,3,0,33,0,1,90,60.49,1,Tier 3 Enterprise,4.55
+STU-1873,Information Science,8.17,56,82,3,0,14,0,1,73,69.44,1,Tier 2 Tech,9.56
+STU-1874,Computer Science,8.23,76,69,2,1,27,0,2,62,73.09,1,Tier 2 Tech,17.69
+STU-1875,Computer Science,7.53,60,87,4,2,12,0,3,62,86.51,1,Tier 2 Tech,14.73
+STU-1876,Electronics & Communication,8.84,73,96,4,0,338,2,4,70,59.47,1,Tier 3 Enterprise,4.17
+STU-1877,Electronics & Communication,7.23,65,65,2,1,35,0,1,76,67.16,1,Tier 2 Tech,9.37
+STU-1878,Computer Science,8.22,47,71,2,0,64,1,1,79,47.64,0,Unplaced,0.0
+STU-1879,Computer Science,6.48,40,37,1,0,251,0,3,75,58.13,1,Tier 3 Enterprise,5.94
+STU-1880,Computer Science,7.57,75,57,0,1,124,0,2,63,68.94,1,Tier 2 Tech,10.08
+STU-1881,Electronics & Communication,7.41,64,57,5,0,105,0,0,68,69.76,1,Tier 2 Tech,16.04
+STU-1882,Computer Science,7.85,64,76,2,1,134,3,1,82,36.98,0,Unplaced,0.0
+STU-1883,Computer Science,7.19,81,66,1,0,194,0,1,60,72.28,1,Tier 2 Tech,13.73
+STU-1884,Mechanical Engineering,7.46,88,58,4,0,231,0,2,68,80.59,1,Tier 2 Tech,14.13
+STU-1885,Computer Science,8.51,68,77,4,1,113,4,0,81,31.88,0,Unplaced,0.0
+STU-1886,Electronics & Communication,7.12,67,74,3,1,242,2,1,84,49.01,0,Unplaced,0.0
+STU-1887,Computer Science,5.83,79,63,4,0,84,0,0,71,68.52,1,Tier 2 Tech,12.63
+STU-1888,Computer Science,9.52,53,69,1,1,35,4,2,69,16.99,0,Unplaced,0.0
+STU-1889,Computer Science,9.12,75,83,4,2,233,1,1,58,85.72,1,Tier 1 Product,24.15
+STU-1890,Electronics & Communication,6.18,79,47,1,1,85,0,1,80,64.95,1,Tier 3 Enterprise,6.36
+STU-1891,Civil Engineering,8.36,81,87,3,0,260,0,1,89,85.24,1,Tier 1 Product,35.21
+STU-1892,Mechanical Engineering,7.05,44,76,2,1,4,0,1,100,69.06,1,Tier 2 Tech,11.71
+STU-1893,Information Science,7.89,61,66,2,1,55,0,2,78,70.68,1,Tier 2 Tech,13.05
+STU-1894,Electronics & Communication,7.92,59,67,1,0,324,1,2,73,56.29,1,Tier 3 Enterprise,7.36
+STU-1895,Computer Science,7.34,73,66,2,2,31,0,5,62,83.47,1,Tier 2 Tech,9.49
+STU-1896,Computer Science,6.74,78,43,4,2,312,0,1,51,81.94,1,Tier 2 Tech,13.45
+STU-1897,Civil Engineering,6.84,92,70,1,2,338,1,0,76,67.55,1,Tier 2 Tech,11.48
+STU-1898,Computer Science,6.59,65,61,4,2,235,0,2,100,91.43,1,Tier 2 Tech,15.03
+STU-1899,Computer Science,6.68,65,75,2,1,91,4,2,89,18.92,0,Unplaced,0.0
+STU-1900,Computer Science,7.53,88,61,1,1,114,2,1,87,49.14,0,Unplaced,0.0
+STU-1901,Computer Science,6.81,76,60,1,1,224,2,2,76,49.48,0,Unplaced,0.0
+STU-1902,Computer Science,8.35,89,63,3,2,164,1,0,78,74.27,1,Tier 2 Tech,8.19
+STU-1903,Electronics & Communication,9.24,76,75,2,1,109,0,2,45,81.45,1,Tier 2 Tech,14.7
+STU-1904,Information Science,6.96,55,55,0,0,443,0,0,83,63.62,1,Tier 3 Enterprise,4.41
+STU-1905,Civil Engineering,7.86,53,84,3,0,127,0,3,67,69.82,1,Tier 2 Tech,8.65
+STU-1906,Mechanical Engineering,8.15,50,70,1,2,407,0,0,65,75.99,1,Tier 2 Tech,15.25
+STU-1907,Computer Science,8.12,81,78,0,0,6,0,1,70,71.17,1,Tier 2 Tech,14.4
+STU-1908,Computer Science,7.68,88,69,6,1,16,0,1,69,85.47,1,Tier 2 Tech,16.95
+STU-1909,Information Science,8.42,97,66,2,3,66,3,3,65,45.47,0,Unplaced,0.0
+STU-1910,Electronics & Communication,8.13,83,75,4,1,53,2,1,74,52.26,0,Unplaced,0.0
+STU-1911,Computer Science,6.24,88,67,2,3,167,0,3,67,90.09,1,Tier 2 Tech,13.2
+STU-1912,Electronics & Communication,8.56,63,68,3,1,19,0,3,75,85.06,1,Tier 2 Tech,13.3
+STU-1913,Information Science,8.58,55,88,3,0,410,0,1,56,78.39,1,Tier 2 Tech,15.07
+STU-1914,Electronics & Communication,6.76,83,57,3,2,41,2,2,71,44.14,0,Unplaced,0.0
+STU-1915,Information Science,7.64,77,68,1,0,61,0,0,60,72.89,1,Tier 2 Tech,11.23
+STU-1916,Computer Science,8.35,73,84,0,0,35,0,1,66,64.2,1,Tier 3 Enterprise,4.15
+STU-1917,Artificial Intelligence & Machine Learning,7.37,77,64,2,0,95,0,0,75,71.93,1,Tier 2 Tech,10.3
+STU-1918,Mechanical Engineering,8.78,76,82,1,0,6,0,2,54,74.7,1,Tier 2 Tech,10.38
+STU-1919,Computer Science,9.9,89,88,1,0,17,2,3,64,52.88,0,Unplaced,0.0
+STU-1920,Civil Engineering,6.74,90,67,3,0,150,0,1,80,73.5,1,Tier 2 Tech,11.36
+STU-1921,Information Science,6.08,79,36,0,1,22,0,1,57,53.82,0,Unplaced,0.0
+STU-1922,Civil Engineering,7.93,83,57,0,2,29,2,0,95,39.05,0,Unplaced,0.0
+STU-1923,Mechanical Engineering,8.39,79,85,2,0,173,2,1,88,50.91,0,Unplaced,0.0
+STU-1924,Information Science,7.35,65,81,1,0,10,1,2,68,56.9,1,Tier 3 Enterprise,7.77
+STU-1925,Computer Science,9.2,82,76,5,1,63,0,0,64,93.48,1,Tier 2 Tech,16.05
+STU-1926,Computer Science,6.13,52,58,3,1,2,0,4,76,67.45,1,Tier 2 Tech,17.36
+STU-1927,Information Science,8.36,86,81,5,2,46,0,0,56,95.7,1,Tier 2 Tech,17.99
+STU-1928,Electronics & Communication,6.93,55,74,5,0,132,0,1,49,66.66,1,Tier 3 Enterprise,5.74
+STU-1929,Computer Science,9.49,76,67,1,2,10,0,2,68,85.61,1,Tier 2 Tech,10.27
+STU-1930,Computer Science,9.79,60,81,2,1,241,0,5,72,96.95,1,Tier 1 Product,31.44
+STU-1931,Mechanical Engineering,6.76,79,62,1,1,264,0,1,75,73.99,1,Tier 2 Tech,16.81
+STU-1932,Artificial Intelligence & Machine Learning,7.0,71,75,1,0,12,2,1,66,34.6,0,Unplaced,0.0
+STU-1933,Information Science,8.55,49,100,2,0,480,0,0,89,87.99,1,Tier 1 Product,29.18
+STU-1934,Computer Science,7.17,77,67,4,0,38,2,1,56,46.15,0,Unplaced,0.0
+STU-1935,Computer Science,7.55,63,58,1,0,9,0,2,60,65.45,1,Tier 3 Enterprise,6.02
+STU-1936,Computer Science,7.63,84,77,6,1,0,0,1,79,82.36,1,Tier 2 Tech,9.34
+STU-1937,Artificial Intelligence & Machine Learning,5.49,72,69,0,2,57,0,5,60,75.99,1,Tier 2 Tech,12.2
+STU-1938,Computer Science,7.58,77,73,0,1,109,1,2,59,61.56,1,Tier 3 Enterprise,5.55
+STU-1939,Electronics & Communication,6.84,58,57,3,1,44,0,2,75,64.36,1,Tier 3 Enterprise,5.41
+STU-1940,Computer Science,7.06,63,78,2,1,199,2,3,61,52.89,0,Unplaced,0.0
+STU-1941,Electronics & Communication,9.19,65,92,3,0,138,0,5,72,81.3,1,Tier 2 Tech,16.87
+STU-1942,Electronics & Communication,6.22,83,51,4,3,47,2,0,65,42.89,0,Unplaced,0.0
+STU-1943,Mechanical Engineering,8.49,95,83,1,1,145,0,2,63,85.17,1,Tier 2 Tech,8.59
+STU-1944,Computer Science,7.29,60,80,2,0,310,2,2,48,48.21,0,Unplaced,0.0
+STU-1945,Computer Science,7.29,87,82,1,0,10,0,1,75,71.89,1,Tier 2 Tech,17.72
+STU-1946,Computer Science,8.47,41,79,4,1,40,1,0,59,61.03,1,Tier 3 Enterprise,4.03
+STU-1947,Artificial Intelligence & Machine Learning,7.97,55,72,1,1,68,0,2,71,71.37,1,Tier 2 Tech,17.46
+STU-1948,Civil Engineering,8.23,58,90,4,0,75,0,1,67,84.79,1,Tier 2 Tech,13.48
+STU-1949,Electronics & Communication,8.67,53,69,0,2,85,2,0,71,37.17,0,Unplaced,0.0
+STU-1950,Electronics & Communication,7.24,49,74,0,1,39,0,0,72,62.95,1,Tier 3 Enterprise,6.81
+STU-1951,Electronics & Communication,6.93,77,53,2,1,121,0,0,76,70.65,1,Tier 2 Tech,9.87
+STU-1952,Computer Science,6.41,69,73,4,0,113,1,0,65,55.08,1,Tier 3 Enterprise,6.62
+STU-1953,Artificial Intelligence & Machine Learning,6.69,77,62,4,0,94,0,2,88,77.28,1,Tier 2 Tech,16.82
+STU-1954,Information Science,9.9,81,100,1,2,13,0,0,51,84.8,1,Tier 2 Tech,9.39
+STU-1955,Information Science,8.97,75,88,3,2,71,0,2,71,99.35,1,Tier 2 Tech,9.27
+STU-1956,Information Science,6.11,81,48,2,0,48,1,0,84,48.3,0,Unplaced,0.0
+STU-1957,Computer Science,6.15,71,75,2,0,74,0,2,79,64.28,1,Tier 3 Enterprise,5.22
+STU-1958,Computer Science,8.13,55,92,3,0,280,0,2,62,85.1,1,Tier 1 Product,21.88
+STU-1959,Electronics & Communication,8.2,86,86,3,0,72,1,3,64,62.95,1,Tier 3 Enterprise,4.44
+STU-1960,Computer Science,8.2,63,69,3,1,1,1,1,61,56.05,1,Tier 3 Enterprise,6.71
+STU-1961,Electronics & Communication,7.32,58,67,0,3,63,2,2,81,37.28,0,Unplaced,0.0
+STU-1962,Computer Science,7.46,69,73,0,0,189,1,2,65,61.83,1,Tier 3 Enterprise,4.86
+STU-1963,Information Science,7.96,59,68,1,0,166,0,2,77,63.48,1,Tier 3 Enterprise,6.67
+STU-1964,Computer Science,7.69,66,90,2,2,79,0,4,77,90.69,1,Tier 2 Tech,16.62
+STU-1965,Information Science,5.16,76,54,3,0,31,0,2,100,64.56,1,Tier 3 Enterprise,6.61
+STU-1966,Electronics & Communication,7.35,76,43,2,3,68,1,1,77,58.95,1,Tier 3 Enterprise,4.48
+STU-1967,Computer Science,6.66,59,68,3,1,91,4,2,64,17.34,0,Unplaced,0.0
+STU-1968,Electronics & Communication,7.79,65,70,4,2,480,1,1,56,78.17,1,Tier 2 Tech,13.74
+STU-1969,Information Science,9.9,87,90,3,0,113,0,2,70,88.25,1,Tier 2 Tech,11.94
+STU-1970,Electronics & Communication,8.0,78,72,2,0,130,0,0,72,66.86,1,Tier 3 Enterprise,5.37
+STU-1971,Artificial Intelligence & Machine Learning,7.26,100,78,2,1,74,0,0,47,83.33,1,Tier 2 Tech,11.19
+STU-1972,Electronics & Communication,8.61,88,92,1,1,48,0,0,65,81.36,1,Tier 2 Tech,17.29
+STU-1973,Computer Science,8.13,88,79,3,0,184,1,1,77,69.31,1,Tier 2 Tech,15.43
+STU-1974,Computer Science,8.06,52,73,1,3,75,0,3,67,81.05,1,Tier 2 Tech,9.34
+STU-1975,Computer Science,8.27,82,77,2,2,480,0,4,85,98.48,1,Tier 1 Product,29.42
+STU-1976,Electronics & Communication,9.86,71,91,1,1,67,2,0,55,45.59,0,Unplaced,0.0
+STU-1977,Computer Science,6.36,64,54,0,0,7,0,3,82,57.78,1,Tier 3 Enterprise,5.27
+STU-1978,Information Science,8.12,74,82,2,1,126,0,1,84,85.97,1,Tier 2 Tech,17.78
+STU-1979,Electronics & Communication,6.58,85,69,1,1,5,0,1,85,71.01,1,Tier 2 Tech,17.78
+STU-1980,Computer Science,8.21,79,93,7,0,31,2,0,55,52.76,0,Unplaced,0.0
+STU-1981,Mechanical Engineering,6.59,59,77,1,2,48,2,5,77,42.11,0,Unplaced,0.0
+STU-1982,Computer Science,7.14,82,62,1,0,147,0,4,65,77.71,1,Tier 2 Tech,11.2
+STU-1983,Computer Science,7.28,63,78,2,0,74,0,0,57,65.93,1,Tier 3 Enterprise,5.41
+STU-1984,Electronics & Communication,8.67,75,71,5,0,3,0,0,69,73.68,1,Tier 2 Tech,13.99
+STU-1985,Information Science,8.61,67,87,2,1,105,0,3,63,86.51,1,Tier 2 Tech,12.79
+STU-1986,Electronics & Communication,6.23,68,56,0,1,58,0,1,85,60.35,1,Tier 3 Enterprise,4.85
+STU-1987,Information Science,7.66,82,63,2,0,280,0,1,80,81.66,1,Tier 2 Tech,14.6
+STU-1988,Computer Science,6.82,57,69,0,0,76,0,1,60,60.91,1,Tier 3 Enterprise,5.34
+STU-1989,Mechanical Engineering,6.22,99,35,1,0,135,1,3,65,55.34,1,Tier 3 Enterprise,6.61
+STU-1990,Mechanical Engineering,7.36,46,53,0,0,27,0,1,69,51.82,0,Unplaced,0.0
+STU-1991,Electronics & Communication,7.26,63,68,4,1,157,0,2,73,81.76,1,Tier 2 Tech,11.84
+STU-1992,Computer Science,9.9,77,92,1,0,140,0,1,86,81.92,1,Tier 2 Tech,15.0
+STU-1993,Electronics & Communication,8.08,80,72,4,0,257,0,0,82,81.03,1,Tier 2 Tech,14.68
+STU-1994,Information Science,6.08,70,44,3,2,3,0,2,74,78.71,1,Tier 2 Tech,13.09
+STU-1995,Computer Science,6.98,71,59,2,1,65,0,1,70,75.81,1,Tier 2 Tech,15.05
+STU-1996,Artificial Intelligence & Machine Learning,8.72,77,85,2,1,125,1,0,52,70.45,1,Tier 2 Tech,12.61
+STU-1997,Computer Science,9.9,68,97,3,0,11,1,2,89,73.12,1,Tier 2 Tech,9.16
+STU-1998,Artificial Intelligence & Machine Learning,5.86,91,58,2,0,58,1,2,68,56.16,1,Tier 3 Enterprise,4.73
+STU-1999,Information Science,5.53,83,67,2,1,313,0,2,92,79.93,1,Tier 2 Tech,10.46
+STU-2000,Computer Science,9.66,84,93,0,0,62,1,3,76,67.85,1,Tier 2 Tech,8.63
+STU-2001,Information Science,8.03,58,68,3,0,464,0,0,98,76.17,1,Tier 2 Tech,15.11
+STU-2002,Civil Engineering,6.64,70,62,3,2,6,4,1,81,8.3,0,Unplaced,0.0
+STU-2003,Electronics & Communication,8.19,67,63,4,2,139,0,3,56,88.16,1,Tier 2 Tech,11.67
+STU-2004,Mechanical Engineering,5.0,57,50,1,0,95,0,1,66,51.36,0,Unplaced,0.0
+STU-2005,Electronics & Communication,7.6,77,83,1,0,76,0,0,71,67.17,1,Tier 2 Tech,8.94
+STU-2006,Electronics & Communication,7.96,64,82,3,3,388,3,1,63,56.46,0,Unplaced,0.0
+STU-2007,Mechanical Engineering,8.62,81,94,2,0,15,3,2,69,33.39,0,Unplaced,0.0
+STU-2008,Computer Science,6.48,57,60,2,1,248,1,1,57,58.5,1,Tier 3 Enterprise,7.28
+STU-2009,Information Science,7.69,96,86,0,3,129,0,0,74,88.5,1,Tier 2 Tech,14.84
+STU-2010,Computer Science,6.58,59,62,0,3,32,0,2,76,68.25,1,Tier 2 Tech,12.52
+STU-2011,Artificial Intelligence & Machine Learning,7.88,75,89,4,1,255,3,3,61,54.5,0,Unplaced,0.0
+STU-2012,Artificial Intelligence & Machine Learning,6.62,83,64,1,0,61,0,3,97,72.31,1,Tier 2 Tech,10.47
+STU-2013,Computer Science,7.15,64,76,3,0,185,2,0,74,45.77,0,Unplaced,0.0
+STU-2014,Electronics & Communication,6.5,83,78,0,2,54,0,2,64,73.12,1,Tier 2 Tech,9.52
+STU-2015,Artificial Intelligence & Machine Learning,8.32,54,76,1,2,209,0,3,54,79.27,1,Tier 2 Tech,12.58
+STU-2016,Computer Science,8.54,92,82,1,1,111,1,3,74,71.26,1,Tier 2 Tech,16.85
+STU-2017,Electronics & Communication,7.34,72,83,2,1,16,0,1,70,74.89,1,Tier 2 Tech,9.88
+STU-2018,Artificial Intelligence & Machine Learning,7.64,63,71,3,1,115,2,3,83,51.63,0,Unplaced,0.0
+STU-2019,Computer Science,6.01,67,46,3,1,23,0,0,72,67.66,1,Tier 2 Tech,13.69
+STU-2020,Electronics & Communication,7.27,83,91,1,2,58,2,1,59,50.65,0,Unplaced,0.0
+STU-2021,Computer Science,7.54,63,67,3,1,20,0,0,94,77.33,1,Tier 2 Tech,17.62
+STU-2022,Artificial Intelligence & Machine Learning,9.9,61,92,2,1,2,1,3,79,73.73,1,Tier 2 Tech,14.37
+STU-2023,Artificial Intelligence & Machine Learning,6.38,68,74,3,0,26,0,0,70,68.13,1,Tier 2 Tech,12.4
+STU-2024,Artificial Intelligence & Machine Learning,9.21,55,79,3,1,84,0,1,75,86.68,1,Tier 2 Tech,15.16
+STU-2025,Information Science,8.7,97,71,3,1,72,0,1,79,90.51,1,Tier 2 Tech,16.25
+STU-2026,Civil Engineering,7.91,64,77,3,0,76,3,2,56,26.01,0,Unplaced,0.0
+STU-2027,Mechanical Engineering,9.53,83,70,4,2,31,0,0,75,103.01,1,Tier 2 Tech,13.91
+STU-2028,Computer Science,8.01,74,73,0,1,127,0,1,68,69.69,1,Tier 2 Tech,16.72
+STU-2029,Mechanical Engineering,8.03,58,78,4,2,134,2,0,80,57.29,1,Tier 3 Enterprise,6.06
+STU-2030,Computer Science,7.54,71,69,3,0,48,0,3,65,77.54,1,Tier 2 Tech,16.3
+STU-2031,Electronics & Communication,8.95,82,68,1,1,234,0,0,66,88.47,1,Tier 1 Product,40.85
+STU-2032,Computer Science,8.81,69,98,0,0,113,0,1,93,74.64,1,Tier 2 Tech,13.01
+STU-2033,Computer Science,6.91,88,68,1,2,137,2,2,88,54.13,0,Unplaced,0.0
+STU-2034,Computer Science,6.15,86,75,4,0,35,0,0,45,68.54,1,Tier 2 Tech,14.05
+STU-2035,Electronics & Communication,7.38,84,68,2,1,0,0,1,87,78.71,1,Tier 2 Tech,14.09
+STU-2036,Computer Science,6.72,65,56,3,1,220,2,1,73,45.09,0,Unplaced,0.0
+STU-2037,Electronics & Communication,7.53,56,74,2,0,190,1,0,65,50.56,0,Unplaced,0.0
+STU-2038,Computer Science,8.96,63,81,7,3,14,0,2,61,90.95,1,Tier 2 Tech,15.81
+STU-2039,Computer Science,7.1,74,57,3,2,51,1,2,62,70.46,1,Tier 2 Tech,16.23
+STU-2040,Information Science,7.55,79,87,3,0,119,2,0,65,52.72,0,Unplaced,0.0
+STU-2041,Mechanical Engineering,7.66,41,67,2,0,116,0,4,60,66.31,1,Tier 3 Enterprise,4.11
+STU-2042,Computer Science,8.53,71,61,3,0,216,1,1,57,57.6,1,Tier 3 Enterprise,6.93
+STU-2043,Electronics & Communication,5.13,74,66,4,0,16,0,2,61,67.53,1,Tier 2 Tech,15.84
+STU-2044,Civil Engineering,6.93,68,62,3,2,61,0,0,77,71.46,1,Tier 2 Tech,15.0
+STU-2045,Electronics & Communication,7.83,90,68,2,3,11,0,2,74,84.28,1,Tier 2 Tech,15.14
+STU-2046,Computer Science,8.92,77,65,1,0,54,0,1,80,72.71,1,Tier 2 Tech,8.41
+STU-2047,Computer Science,7.06,90,85,2,1,1,0,3,73,84.33,1,Tier 2 Tech,12.42
+STU-2048,Civil Engineering,5.54,68,43,2,1,251,1,3,58,56.31,1,Tier 3 Enterprise,7.27
+STU-2049,Computer Science,8.28,85,78,2,0,82,0,0,79,77.21,1,Tier 2 Tech,17.34
+STU-2050,Civil Engineering,6.9,94,76,0,0,208,0,1,61,63.36,1,Tier 3 Enterprise,4.92
+STU-2051,Information Science,6.29,90,66,3,0,6,0,3,81,76.96,1,Tier 2 Tech,13.79
+STU-2052,Artificial Intelligence & Machine Learning,6.91,56,66,4,1,28,1,1,60,59.4,1,Tier 3 Enterprise,7.22
+STU-2053,Mechanical Engineering,7.4,68,54,1,1,33,0,0,65,59.98,1,Tier 3 Enterprise,7.01
+STU-2054,Artificial Intelligence & Machine Learning,6.93,67,59,0,1,53,0,1,69,59.41,1,Tier 3 Enterprise,6.48
+STU-2055,Information Science,5.17,78,55,2,0,178,0,3,82,75.08,1,Tier 2 Tech,8.19
+STU-2056,Mechanical Engineering,8.59,81,72,1,2,53,1,5,76,74.05,1,Tier 2 Tech,15.24
+STU-2057,Information Science,9.0,60,86,2,1,25,0,4,74,91.02,1,Tier 2 Tech,15.73
+STU-2058,Information Science,8.32,72,85,5,2,7,1,0,96,75.12,1,Tier 2 Tech,15.23
+STU-2059,Electronics & Communication,6.35,43,72,0,0,9,0,1,51,39.4,0,Unplaced,0.0
+STU-2060,Civil Engineering,7.38,92,58,0,2,157,0,1,61,80.47,1,Tier 2 Tech,15.66
+STU-2061,Artificial Intelligence & Machine Learning,7.59,64,94,2,2,64,0,2,61,87.38,1,Tier 2 Tech,12.31
+STU-2062,Mechanical Engineering,8.26,72,85,1,0,142,2,0,52,37.99,0,Unplaced,0.0
+STU-2063,Information Science,8.34,67,78,4,0,126,0,1,65,84.7,1,Tier 2 Tech,17.94
+STU-2064,Information Science,6.79,88,77,1,2,15,0,1,82,84.89,1,Tier 2 Tech,15.71
+STU-2065,Electronics & Communication,7.69,35,97,2,1,16,0,1,66,69.1,1,Tier 2 Tech,13.79
+STU-2066,Computer Science,8.1,71,62,0,2,154,0,3,70,81.98,1,Tier 2 Tech,17.34
+STU-2067,Computer Science,9.2,70,83,4,1,140,0,1,53,96.58,1,Tier 2 Tech,17.08
+STU-2068,Information Science,8.37,65,55,0,1,52,1,1,64,54.6,0,Unplaced,0.0
+STU-2069,Computer Science,8.47,96,81,1,0,8,0,1,68,72.99,1,Tier 2 Tech,16.15
+STU-2070,Computer Science,7.69,59,77,2,0,1,0,3,81,72.1,1,Tier 2 Tech,13.64
+STU-2071,Computer Science,9.15,82,84,3,3,37,0,1,53,95.68,1,Tier 2 Tech,13.27
+STU-2072,Computer Science,8.05,76,69,1,0,1,0,0,68,70.73,1,Tier 2 Tech,11.29
+STU-2073,Computer Science,6.65,89,44,2,0,28,0,3,87,71.54,1,Tier 2 Tech,10.51
+STU-2074,Artificial Intelligence & Machine Learning,9.14,62,88,6,1,59,0,4,68,94.07,1,Tier 2 Tech,13.12
+STU-2075,Information Science,8.37,61,93,4,1,14,2,1,48,53.6,0,Unplaced,0.0
+STU-2076,Information Science,7.11,87,62,0,0,12,0,2,89,63.39,1,Tier 3 Enterprise,6.31
+STU-2077,Electronics & Communication,7.07,77,72,1,0,249,1,0,82,60.8,1,Tier 3 Enterprise,4.98
+STU-2078,Computer Science,7.93,50,59,1,1,96,0,0,84,73.6,1,Tier 2 Tech,17.23
+STU-2079,Artificial Intelligence & Machine Learning,8.11,64,81,2,0,299,0,1,53,81.24,1,Tier 2 Tech,13.57
+STU-2080,Mechanical Engineering,7.82,77,70,0,1,46,1,1,92,61.05,1,Tier 3 Enterprise,6.11
+STU-2081,Computer Science,7.94,83,67,3,0,124,1,3,64,66.34,1,Tier 3 Enterprise,5.74
+STU-2082,Information Science,9.47,62,80,5,2,25,0,3,67,103.26,1,Tier 2 Tech,8.58
+STU-2083,Civil Engineering,8.78,35,78,2,2,105,0,0,65,85.57,1,Tier 2 Tech,16.82
+STU-2084,Artificial Intelligence & Machine Learning,7.81,79,78,6,1,15,0,1,85,86.04,1,Tier 2 Tech,11.17
+STU-2085,Information Science,8.64,54,67,2,0,0,0,0,71,65.48,1,Tier 3 Enterprise,6.57
+STU-2086,Electronics & Communication,6.46,43,59,3,1,294,0,3,79,78.6,1,Tier 2 Tech,14.07
+STU-2087,Computer Science,8.04,35,75,2,0,89,1,2,74,53.73,0,Unplaced,0.0
+STU-2088,Artificial Intelligence & Machine Learning,9.59,83,77,5,0,287,0,1,72,91.19,1,Tier 1 Product,32.03
+STU-2089,Computer Science,7.36,73,88,2,2,44,0,1,62,76.83,1,Tier 2 Tech,13.26
+STU-2090,Artificial Intelligence & Machine Learning,6.67,68,56,6,1,43,0,2,95,78.28,1,Tier 2 Tech,9.81
+STU-2091,Electronics & Communication,6.88,91,60,1,2,56,0,0,56,67.11,1,Tier 2 Tech,10.81
+STU-2092,Electronics & Communication,6.4,80,53,2,0,134,0,1,78,62.29,1,Tier 3 Enterprise,6.1
+STU-2093,Information Science,6.74,94,83,3,0,91,0,3,78,80.25,1,Tier 2 Tech,15.89
+STU-2094,Computer Science,7.19,52,75,1,3,285,1,5,87,69.08,1,Tier 2 Tech,12.32
+STU-2095,Computer Science,6.05,71,51,1,1,2,0,4,90,70.32,1,Tier 2 Tech,10.04
+STU-2096,Computer Science,7.62,49,84,3,1,135,1,2,72,69.45,1,Tier 2 Tech,8.88
+STU-2097,Computer Science,8.59,68,82,2,1,44,0,1,80,88.75,1,Tier 2 Tech,14.63
+STU-2098,Mechanical Engineering,6.6,68,67,1,0,21,3,3,95,20.71,0,Unplaced,0.0
+STU-2099,Information Science,9.27,80,82,6,1,78,4,1,73,40.63,0,Unplaced,0.0
+STU-2100,Computer Science,8.16,72,69,2,0,77,1,1,61,47.97,0,Unplaced,0.0
+STU-2101,Artificial Intelligence & Machine Learning,8.73,80,85,3,1,16,1,0,69,75.73,1,Tier 2 Tech,12.23
+STU-2102,Civil Engineering,6.88,81,61,2,1,24,0,1,58,63.39,1,Tier 3 Enterprise,4.5
+STU-2103,Artificial Intelligence & Machine Learning,8.54,100,98,1,2,57,1,1,78,81.77,1,Tier 2 Tech,14.74
+STU-2104,Artificial Intelligence & Machine Learning,6.4,67,50,0,1,57,2,1,86,25.79,0,Unplaced,0.0
+STU-2105,Computer Science,8.58,58,96,1,0,42,0,2,72,72.34,1,Tier 2 Tech,10.08
+STU-2106,Information Science,7.79,75,73,0,1,17,0,4,54,74.22,1,Tier 2 Tech,13.09
+STU-2107,Mechanical Engineering,8.21,60,80,1,0,0,0,4,86,63.36,1,Tier 3 Enterprise,5.22
+STU-2108,Electronics & Communication,6.31,92,70,2,0,386,0,1,52,78.61,1,Tier 2 Tech,17.32
+STU-2109,Computer Science,6.62,68,58,2,0,316,0,1,55,72.96,1,Tier 2 Tech,10.28
+STU-2110,Mechanical Engineering,8.26,64,86,3,1,72,0,2,71,82.77,1,Tier 2 Tech,12.2
+STU-2111,Computer Science,6.56,65,37,1,0,480,0,0,77,65.97,1,Tier 3 Enterprise,7.84
+STU-2112,Computer Science,8.11,82,69,2,1,123,3,3,79,39.35,0,Unplaced,0.0
+STU-2113,Information Science,6.1,69,51,0,2,7,0,1,73,66.78,1,Tier 3 Enterprise,5.27
+STU-2114,Electronics & Communication,8.53,63,67,1,1,13,1,1,95,55.81,1,Tier 3 Enterprise,6.58
+STU-2115,Electronics & Communication,6.24,95,59,4,0,272,0,0,74,79.01,1,Tier 2 Tech,11.17
+STU-2116,Computer Science,8.21,60,81,0,0,109,0,2,86,67.42,1,Tier 2 Tech,9.11
+STU-2117,Civil Engineering,8.29,72,85,0,1,203,0,2,83,75.22,1,Tier 2 Tech,14.28
+STU-2118,Computer Science,6.83,81,69,1,2,251,0,1,58,83.52,1,Tier 2 Tech,17.16
+STU-2119,Computer Science,8.24,49,71,0,0,65,0,2,71,61.17,1,Tier 3 Enterprise,5.81
+STU-2120,Civil Engineering,7.89,78,78,1,2,5,0,3,99,80.92,1,Tier 2 Tech,14.26
+STU-2121,Artificial Intelligence & Machine Learning,7.01,57,69,2,1,22,0,1,67,72.52,1,Tier 2 Tech,14.09
+STU-2122,Civil Engineering,6.49,83,73,2,1,7,0,2,65,68.69,1,Tier 2 Tech,12.15
+STU-2123,Mechanical Engineering,5.44,58,63,1,3,23,0,1,76,64.33,1,Tier 3 Enterprise,6.46
+STU-2124,Electronics & Communication,7.98,81,76,1,1,58,0,1,68,78.77,1,Tier 2 Tech,10.59
+STU-2125,Electronics & Communication,5.88,87,50,3,2,13,0,0,64,77.08,1,Tier 2 Tech,11.78
+STU-2126,Computer Science,7.7,84,67,2,0,20,0,2,68,77.15,1,Tier 2 Tech,12.42
+STU-2127,Information Science,7.31,75,64,3,1,64,0,1,91,77.95,1,Tier 2 Tech,16.64
+STU-2128,Information Science,8.35,68,75,1,1,45,0,4,72,80.71,1,Tier 2 Tech,11.48
+STU-2129,Computer Science,7.27,63,72,0,0,69,0,1,58,57.43,1,Tier 3 Enterprise,6.54
+STU-2130,Electronics & Communication,7.24,92,77,1,1,61,0,2,55,74.89,1,Tier 2 Tech,10.13
+STU-2131,Information Science,8.41,62,78,2,0,113,0,0,100,74.16,1,Tier 2 Tech,10.53
+STU-2132,Computer Science,7.97,57,75,5,0,304,0,0,71,79.66,1,Tier 2 Tech,14.48
+STU-2133,Computer Science,7.95,81,77,5,0,12,0,2,79,80.22,1,Tier 2 Tech,15.62
+STU-2134,Electronics & Communication,8.12,60,71,1,1,11,0,0,64,64.1,1,Tier 3 Enterprise,5.85
+STU-2135,Computer Science,5.91,58,50,4,2,210,0,3,77,81.19,1,Tier 2 Tech,11.35
+STU-2136,Civil Engineering,8.43,51,61,2,1,77,2,1,91,44.22,0,Unplaced,0.0
+STU-2137,Information Science,8.27,65,71,2,1,159,1,1,66,64.23,1,Tier 3 Enterprise,7.64
+STU-2138,Information Science,6.48,70,68,2,0,26,0,0,79,65.44,1,Tier 3 Enterprise,4.54
+STU-2139,Electronics & Communication,7.33,75,63,2,2,194,2,0,57,50.72,0,Unplaced,0.0
+STU-2140,Mechanical Engineering,7.56,85,70,4,1,283,0,2,98,93.7,1,Tier 2 Tech,15.21
+STU-2141,Computer Science,7.45,79,76,2,1,111,0,4,77,84.2,1,Tier 2 Tech,14.9
+STU-2142,Electronics & Communication,7.97,69,80,2,1,12,4,0,69,11.73,0,Unplaced,0.0
+STU-2143,Electronics & Communication,9.17,69,74,1,0,248,1,1,70,65.2,1,Tier 3 Enterprise,6.76
+STU-2144,Computer Science,8.79,79,92,2,1,172,0,1,67,98.06,1,Tier 2 Tech,17.35
+STU-2145,Civil Engineering,6.16,89,72,3,3,152,0,2,68,87.25,1,Tier 2 Tech,15.28
+STU-2146,Mechanical Engineering,8.28,73,66,3,0,4,0,2,45,67.74,1,Tier 2 Tech,11.02
+STU-2147,Electronics & Communication,9.06,65,76,1,1,176,0,1,72,77.71,1,Tier 2 Tech,11.53
+STU-2148,Civil Engineering,8.03,58,88,3,3,16,0,3,72,86.76,1,Tier 2 Tech,11.91
+STU-2149,Civil Engineering,8.8,51,80,3,0,27,0,0,79,74.35,1,Tier 2 Tech,8.31
+STU-2150,Electronics & Communication,9.81,81,68,1,2,94,2,0,67,49.2,0,Unplaced,0.0
+STU-2151,Mechanical Engineering,8.73,80,67,1,2,33,0,0,64,80.57,1,Tier 2 Tech,17.14
+STU-2152,Electronics & Communication,7.87,80,72,0,1,119,1,2,73,63.05,1,Tier 3 Enterprise,4.29
+STU-2153,Electronics & Communication,8.75,70,70,1,0,103,0,1,54,62.18,1,Tier 3 Enterprise,6.8
+STU-2154,Electronics & Communication,7.76,91,69,2,0,12,0,1,75,70.47,1,Tier 2 Tech,15.3
+STU-2155,Mechanical Engineering,7.63,65,73,4,0,117,0,1,51,69.15,1,Tier 2 Tech,16.44
+STU-2156,Computer Science,7.21,85,84,3,2,283,0,1,87,100.62,1,Tier 2 Tech,13.53
+STU-2157,Civil Engineering,9.32,71,83,1,2,19,0,1,82,82.01,1,Tier 2 Tech,15.25
+STU-2158,Civil Engineering,6.7,63,76,3,1,99,0,3,62,75.88,1,Tier 2 Tech,11.03
+STU-2159,Computer Science,9.29,80,100,4,0,46,0,1,81,88.12,1,Tier 2 Tech,15.46
+STU-2160,Mechanical Engineering,8.15,77,91,2,0,67,0,3,75,80.25,1,Tier 2 Tech,11.43
+STU-2161,Computer Science,6.06,76,63,3,1,37,0,1,61,74.06,1,Tier 2 Tech,17.03
+STU-2162,Computer Science,8.0,73,56,2,1,48,0,1,49,73.78,1,Tier 2 Tech,9.63
+STU-2163,Electronics & Communication,5.29,71,58,1,2,3,0,1,77,66.61,1,Tier 3 Enterprise,5.26
+STU-2164,Computer Science,8.29,100,88,1,1,439,0,0,64,93.94,1,Tier 1 Product,29.97
+STU-2165,Mechanical Engineering,8.57,88,79,3,2,107,0,1,87,98.86,1,Tier 2 Tech,15.76
+STU-2166,Mechanical Engineering,6.95,82,85,1,1,76,2,1,74,50.88,0,Unplaced,0.0
+STU-2167,Information Science,7.74,73,82,4,1,53,0,0,65,79.24,1,Tier 2 Tech,15.49
+STU-2168,Computer Science,9.75,86,95,4,0,85,0,2,95,89.0,1,Tier 2 Tech,10.11
+STU-2169,Computer Science,7.04,79,79,2,2,52,0,1,80,78.61,1,Tier 2 Tech,9.44
+STU-2170,Electronics & Communication,6.44,72,66,0,1,49,0,2,45,55.13,1,Tier 3 Enterprise,5.22
+STU-2171,Artificial Intelligence & Machine Learning,9.23,67,60,1,0,68,0,3,68,73.99,1,Tier 2 Tech,12.84
+STU-2172,Electronics & Communication,9.76,70,85,4,0,35,0,2,57,83.45,1,Tier 2 Tech,13.39
+STU-2173,Computer Science,7.6,35,84,2,0,21,1,1,64,51.86,0,Unplaced,0.0
+STU-2174,Electronics & Communication,8.71,74,73,2,1,89,0,0,72,79.78,1,Tier 2 Tech,12.29
+STU-2175,Information Science,9.08,65,82,2,0,203,0,2,78,84.71,1,Tier 1 Product,33.91
+STU-2176,Mechanical Engineering,6.78,94,55,5,0,18,0,2,77,74.17,1,Tier 2 Tech,12.28
+STU-2177,Computer Science,7.07,72,86,3,1,3,0,0,86,79.84,1,Tier 2 Tech,17.46
+STU-2178,Mechanical Engineering,8.95,55,100,3,0,31,0,3,81,80.96,1,Tier 2 Tech,10.61
+STU-2179,Information Science,9.45,71,78,1,2,428,1,0,80,75.85,1,Tier 2 Tech,14.27
+STU-2180,Artificial Intelligence & Machine Learning,8.22,57,79,3,1,194,1,1,76,78.43,1,Tier 2 Tech,14.11
+STU-2181,Computer Science,6.63,78,58,2,1,99,1,0,89,63.97,1,Tier 3 Enterprise,5.13
+STU-2182,Electronics & Communication,9.79,76,96,1,0,291,0,3,70,85.29,1,Tier 1 Product,27.88
+STU-2183,Artificial Intelligence & Machine Learning,7.02,85,73,3,0,64,1,0,70,55.57,1,Tier 3 Enterprise,5.46
+STU-2184,Computer Science,7.23,60,77,2,0,450,0,4,51,76.82,1,Tier 2 Tech,9.72
+STU-2185,Artificial Intelligence & Machine Learning,7.98,72,79,2,2,38,1,0,86,70.21,1,Tier 2 Tech,12.77
+STU-2186,Electronics & Communication,9.31,52,100,4,1,30,2,0,73,63.12,1,Tier 3 Enterprise,5.55
+STU-2187,Computer Science,8.54,81,70,0,0,111,0,2,100,70.63,1,Tier 2 Tech,9.78
+STU-2188,Computer Science,8.06,79,59,5,1,52,0,1,69,83.91,1,Tier 2 Tech,12.5
+STU-2189,Electronics & Communication,8.11,78,72,1,0,108,0,1,75,64.41,1,Tier 3 Enterprise,5.69
+STU-2190,Computer Science,7.65,72,57,2,3,40,1,1,80,66.69,1,Tier 3 Enterprise,4.53
+STU-2191,Electronics & Communication,8.21,77,62,2,3,105,0,4,60,83.79,1,Tier 2 Tech,9.31
+STU-2192,Computer Science,5.0,94,41,2,1,35,3,0,78,28.95,0,Unplaced,0.0
+STU-2193,Electronics & Communication,7.27,68,60,0,1,5,0,4,74,59.35,1,Tier 3 Enterprise,6.59
+STU-2194,Computer Science,7.87,73,65,1,2,267,0,1,70,91.19,1,Tier 2 Tech,15.07
+STU-2195,Civil Engineering,6.33,56,67,1,1,236,0,0,88,62.51,1,Tier 3 Enterprise,7.76
+STU-2196,Artificial Intelligence & Machine Learning,8.02,59,71,1,1,388,1,0,63,58.21,1,Tier 3 Enterprise,4.35
+STU-2197,Artificial Intelligence & Machine Learning,7.38,73,69,1,3,138,0,0,77,74.87,1,Tier 2 Tech,9.18
+STU-2198,Electronics & Communication,9.53,87,97,0,1,126,0,1,91,86.65,1,Tier 2 Tech,8.52
+STU-2199,Computer Science,9.33,68,78,4,1,90,0,2,65,91.8,1,Tier 2 Tech,13.32
+STU-2200,Mechanical Engineering,7.09,68,66,3,2,14,0,1,70,73.05,1,Tier 2 Tech,14.23
+STU-2201,Computer Science,7.43,66,75,1,1,23,0,1,100,74.45,1,Tier 2 Tech,12.04
+STU-2202,Computer Science,7.52,64,52,1,1,37,0,2,79,70.62,1,Tier 2 Tech,15.98
+STU-2203,Computer Science,7.1,76,44,2,0,242,1,0,67,54.49,0,Unplaced,0.0
+STU-2204,Information Science,7.81,51,77,0,0,20,3,0,83,14.25,0,Unplaced,0.0
+STU-2205,Mechanical Engineering,6.77,89,71,5,0,281,0,2,67,90.31,1,Tier 2 Tech,14.87
+STU-2206,Electronics & Communication,6.36,62,83,5,1,81,1,1,55,61.23,1,Tier 3 Enterprise,7.94
+STU-2207,Information Science,8.28,82,79,1,1,138,2,3,90,59.28,1,Tier 3 Enterprise,4.55
+STU-2208,Computer Science,8.29,54,86,3,3,12,0,1,60,84.41,1,Tier 2 Tech,8.58
+STU-2209,Artificial Intelligence & Machine Learning,6.72,81,63,4,1,34,0,1,100,78.48,1,Tier 2 Tech,10.75
+STU-2210,Information Science,8.58,81,83,4,1,350,0,3,68,108.43,1,Tier 1 Product,18.46
+STU-2211,Information Science,6.91,77,83,4,0,34,0,2,99,78.85,1,Tier 2 Tech,17.33
+STU-2212,Computer Science,7.88,58,53,3,2,38,0,4,57,80.09,1,Tier 2 Tech,11.04
+STU-2213,Mechanical Engineering,8.5,75,84,2,1,24,1,3,86,74.35,1,Tier 2 Tech,13.52
+STU-2214,Electronics & Communication,7.56,55,93,2,1,15,4,2,79,7.66,0,Unplaced,0.0
+STU-2215,Computer Science,8.1,68,79,2,0,29,0,0,84,65.85,1,Tier 3 Enterprise,5.27
+STU-2216,Computer Science,7.03,86,84,5,1,113,0,1,85,93.21,1,Tier 2 Tech,10.46
+STU-2217,Electronics & Communication,7.38,83,64,1,1,66,0,4,68,71.7,1,Tier 2 Tech,9.52
+STU-2218,Electronics & Communication,7.37,72,70,2,1,88,1,2,58,57.0,1,Tier 3 Enterprise,5.28
+STU-2219,Computer Science,6.78,58,66,1,2,14,0,2,73,73.66,1,Tier 2 Tech,14.15
+STU-2220,Artificial Intelligence & Machine Learning,7.41,81,49,0,2,178,0,2,76,78.32,1,Tier 2 Tech,17.72
+STU-2221,Computer Science,5.9,72,47,4,3,168,0,2,68,85.37,1,Tier 2 Tech,13.58
+STU-2222,Information Science,7.06,39,57,1,1,2,0,1,77,59.91,1,Tier 3 Enterprise,6.13
+STU-2223,Artificial Intelligence & Machine Learning,7.29,82,78,4,3,53,0,1,77,92.65,1,Tier 2 Tech,8.35
+STU-2224,Information Science,7.32,71,79,2,2,7,1,1,63,63.49,1,Tier 3 Enterprise,7.36
+STU-2225,Electronics & Communication,7.33,88,73,2,0,172,0,1,78,76.23,1,Tier 2 Tech,8.45
+STU-2226,Information Science,7.53,56,80,2,0,147,2,5,70,47.89,0,Unplaced,0.0
+STU-2227,Computer Science,8.13,35,75,2,0,255,0,1,65,68.21,1,Tier 2 Tech,17.06
+STU-2228,Artificial Intelligence & Machine Learning,8.56,75,92,1,0,29,0,3,83,81.18,1,Tier 2 Tech,13.39
+STU-2229,Information Science,6.89,76,67,0,0,67,0,0,64,61.1,1,Tier 3 Enterprise,4.67
+STU-2230,Civil Engineering,6.28,48,62,2,0,22,3,0,68,11.25,0,Unplaced,0.0
+STU-2231,Computer Science,6.45,58,60,3,1,51,1,2,74,57.72,1,Tier 3 Enterprise,5.81
+STU-2232,Computer Science,7.06,100,75,3,0,81,0,1,90,81.88,1,Tier 2 Tech,17.95
+STU-2233,Computer Science,7.21,67,65,3,0,6,1,3,76,57.77,1,Tier 3 Enterprise,5.22
+STU-2234,Electronics & Communication,6.75,82,75,2,1,138,0,0,80,80.83,1,Tier 2 Tech,10.69
+STU-2235,Information Science,6.17,62,50,1,2,86,0,0,70,69.45,1,Tier 2 Tech,9.18
+STU-2236,Civil Engineering,7.1,42,57,4,3,194,0,1,73,80.67,1,Tier 2 Tech,13.97
+STU-2237,Information Science,7.8,69,81,0,1,34,1,0,73,54.28,0,Unplaced,0.0
+STU-2238,Artificial Intelligence & Machine Learning,8.25,68,77,3,1,256,0,4,77,97.01,1,Tier 1 Product,20.14
+STU-2239,Computer Science,6.99,66,63,2,0,480,0,2,70,77.52,1,Tier 2 Tech,15.66
+STU-2240,Civil Engineering,7.15,70,78,3,0,276,0,3,90,82.09,1,Tier 2 Tech,17.19
+STU-2241,Mechanical Engineering,6.58,75,58,1,0,165,0,1,69,62.95,1,Tier 3 Enterprise,7.73
+STU-2242,Mechanical Engineering,7.57,69,70,3,0,184,0,3,53,78.55,1,Tier 2 Tech,9.08
+STU-2243,Mechanical Engineering,6.67,54,79,2,3,93,0,1,100,75.75,1,Tier 2 Tech,13.58
+STU-2244,Mechanical Engineering,8.23,78,93,3,0,23,0,1,70,70.82,1,Tier 2 Tech,8.97
+STU-2245,Electronics & Communication,5.64,44,72,2,0,124,2,0,89,28.26,0,Unplaced,0.0
+STU-2246,Computer Science,7.2,43,66,1,0,137,0,2,90,68.28,1,Tier 2 Tech,13.72
+STU-2247,Computer Science,7.93,82,87,1,1,464,0,5,85,97.65,1,Tier 2 Tech,16.15
+STU-2248,Artificial Intelligence & Machine Learning,7.8,79,64,3,0,85,0,2,71,76.4,1,Tier 2 Tech,13.38
+STU-2249,Electronics & Communication,9.9,71,82,1,1,34,0,3,77,81.61,1,Tier 2 Tech,16.72
+STU-2250,Mechanical Engineering,7.98,52,52,3,0,126,1,3,58,53.88,0,Unplaced,0.0
+STU-2251,Information Science,6.5,62,80,0,0,426,0,0,97,68.91,1,Tier 2 Tech,16.02
+STU-2252,Computer Science,7.49,68,63,4,0,21,1,2,63,60.11,1,Tier 3 Enterprise,5.11
+STU-2253,Computer Science,5.65,49,55,3,1,43,1,3,70,52.31,0,Unplaced,0.0
+STU-2254,Electronics & Communication,7.51,61,62,1,0,85,1,2,75,51.11,0,Unplaced,0.0
+STU-2255,Information Science,6.68,81,72,2,1,20,0,1,72,77.83,1,Tier 2 Tech,14.3
+STU-2256,Computer Science,8.61,91,77,2,1,2,0,1,66,91.86,1,Tier 2 Tech,8.07
+STU-2257,Information Science,7.0,66,54,1,1,45,0,2,90,68.89,1,Tier 2 Tech,11.96
+STU-2258,Computer Science,7.47,82,76,4,0,220,1,0,85,76.67,1,Tier 2 Tech,10.38
+STU-2259,Electronics & Communication,6.9,45,52,2,0,4,0,1,77,55.84,1,Tier 3 Enterprise,7.75
+STU-2260,Computer Science,9.51,81,79,2,0,61,0,0,69,79.29,1,Tier 2 Tech,12.05
+STU-2261,Mechanical Engineering,7.25,60,48,2,1,157,0,0,86,65.75,1,Tier 3 Enterprise,6.62
+STU-2262,Computer Science,9.62,76,74,1,1,336,0,2,68,89.74,1,Tier 1 Product,35.57
+STU-2263,Information Science,8.5,68,81,2,1,465,1,3,92,84.08,1,Tier 1 Product,36.56
+STU-2264,Computer Science,8.13,90,57,3,1,60,0,4,75,83.01,1,Tier 2 Tech,15.36
+STU-2265,Computer Science,8.01,59,61,2,2,330,0,3,88,89.8,1,Tier 1 Product,24.94
+STU-2266,Information Science,8.03,80,76,1,1,3,0,0,72,74.16,1,Tier 2 Tech,14.86
+STU-2267,Information Science,5.48,68,50,0,0,150,0,2,74,58.45,1,Tier 3 Enterprise,6.2
+STU-2268,Electronics & Communication,7.29,69,90,3,1,113,1,2,88,62.28,1,Tier 3 Enterprise,6.39
+STU-2269,Computer Science,8.53,69,98,2,0,31,1,3,100,66.6,1,Tier 3 Enterprise,4.0
+STU-2270,Electronics & Communication,7.55,60,63,0,1,77,0,1,92,64.08,1,Tier 3 Enterprise,5.03
+STU-2271,Civil Engineering,6.05,71,65,3,0,15,0,1,84,64.46,1,Tier 3 Enterprise,7.72
+STU-2272,Mechanical Engineering,7.54,71,79,1,0,225,0,1,81,75.89,1,Tier 2 Tech,10.9
+STU-2273,Computer Science,9.47,75,81,5,2,48,3,1,67,64.19,0,Unplaced,0.0
+STU-2274,Information Science,8.97,73,68,3,1,108,2,2,77,65.04,1,Tier 3 Enterprise,5.75
+STU-2275,Computer Science,7.53,83,72,4,0,19,1,2,63,59.42,1,Tier 3 Enterprise,4.75
+STU-2276,Computer Science,8.65,84,79,2,0,25,0,1,78,76.38,1,Tier 2 Tech,9.39
+STU-2277,Artificial Intelligence & Machine Learning,7.2,57,65,0,1,480,1,2,79,61.91,1,Tier 3 Enterprise,4.83
+STU-2278,Computer Science,5.73,84,62,4,2,153,1,1,50,72.73,1,Tier 2 Tech,13.54
+STU-2279,Information Science,6.58,55,57,1,1,359,0,1,74,75.73,1,Tier 2 Tech,17.19
+STU-2280,Electronics & Communication,9.32,80,75,3,3,38,0,1,78,95.8,1,Tier 2 Tech,11.26
+STU-2281,Electronics & Communication,7.3,80,71,3,0,19,2,0,72,37.96,0,Unplaced,0.0
+STU-2282,Electronics & Communication,7.33,45,74,3,1,76,0,1,78,77.36,1,Tier 2 Tech,11.23
+STU-2283,Computer Science,7.27,73,58,0,1,75,0,1,57,67.07,1,Tier 2 Tech,13.64
+STU-2284,Computer Science,9.69,65,98,3,1,21,0,3,64,92.59,1,Tier 2 Tech,11.57
+STU-2285,Information Science,9.39,61,69,4,0,145,0,1,86,87.94,1,Tier 2 Tech,17.1
+STU-2286,Computer Science,9.9,90,85,3,1,49,0,2,74,95.3,1,Tier 2 Tech,11.78
+STU-2287,Information Science,7.43,62,68,4,1,22,0,1,78,66.36,1,Tier 3 Enterprise,5.96
+STU-2288,Computer Science,7.93,60,69,0,1,44,1,0,67,53.92,0,Unplaced,0.0
+STU-2289,Computer Science,5.93,73,53,2,1,91,1,0,74,56.86,1,Tier 3 Enterprise,6.13
+STU-2290,Information Science,9.22,81,100,0,1,142,1,2,46,71.79,1,Tier 2 Tech,15.82
+STU-2291,Computer Science,6.32,70,54,2,1,72,0,1,84,66.19,1,Tier 3 Enterprise,6.26
+STU-2292,Electronics & Communication,7.84,88,99,2,0,82,0,1,95,80.33,1,Tier 2 Tech,10.39
+STU-2293,Electronics & Communication,6.39,79,67,3,0,16,0,1,61,65.03,1,Tier 3 Enterprise,4.5
+STU-2294,Mechanical Engineering,6.95,41,68,3,1,270,0,1,62,71.31,1,Tier 2 Tech,17.38
+STU-2295,Computer Science,6.68,64,70,1,3,290,0,0,79,86.99,1,Tier 2 Tech,16.02
+STU-2296,Computer Science,6.93,64,92,1,0,126,1,1,91,53.31,0,Unplaced,0.0
+STU-2297,Computer Science,7.01,78,58,1,1,1,0,3,73,72.93,1,Tier 2 Tech,8.23
+STU-2298,Electronics & Communication,7.0,35,56,3,0,84,0,1,59,61.23,1,Tier 3 Enterprise,7.29
+STU-2299,Electronics & Communication,8.52,100,72,2,0,109,0,3,71,82.9,1,Tier 2 Tech,13.91
+STU-2300,Computer Science,6.38,79,63,5,1,480,0,1,61,90.98,1,Tier 2 Tech,13.19
+STU-2301,Artificial Intelligence & Machine Learning,7.84,74,57,1,1,480,2,3,65,54.29,0,Unplaced,0.0
+STU-2302,Computer Science,8.94,88,83,4,0,214,2,0,70,61.99,1,Tier 3 Enterprise,4.05
+STU-2303,Information Science,7.04,100,85,3,1,7,0,1,62,86.52,1,Tier 2 Tech,15.81
+STU-2304,Electronics & Communication,6.81,84,67,1,2,336,0,1,64,86.23,1,Tier 2 Tech,9.98
+STU-2305,Civil Engineering,7.35,85,67,2,3,104,0,1,74,81.75,1,Tier 2 Tech,15.28
+STU-2306,Electronics & Communication,8.9,73,77,4,0,177,1,2,76,64.93,1,Tier 3 Enterprise,4.06
+STU-2307,Mechanical Engineering,7.81,70,83,0,1,57,0,0,56,70.99,1,Tier 2 Tech,15.96
+STU-2308,Computer Science,7.02,65,59,1,0,42,0,0,78,64.76,1,Tier 3 Enterprise,4.09
+STU-2309,Mechanical Engineering,8.13,60,95,1,0,68,0,0,69,67.83,1,Tier 2 Tech,10.36
+STU-2310,Computer Science,6.39,62,82,3,1,17,0,1,82,73.71,1,Tier 2 Tech,10.68
+STU-2311,Civil Engineering,8.35,53,81,1,1,48,0,1,83,65.42,1,Tier 3 Enterprise,4.63
+STU-2312,Information Science,8.05,70,76,1,0,214,0,2,67,76.0,1,Tier 2 Tech,12.81
+STU-2313,Mechanical Engineering,7.26,48,80,3,3,4,0,4,81,74.74,1,Tier 2 Tech,10.84
+STU-2314,Information Science,6.68,74,76,2,2,17,0,3,63,77.06,1,Tier 2 Tech,17.93
+STU-2315,Electronics & Communication,6.62,71,56,6,1,14,3,1,89,28.62,0,Unplaced,0.0
+STU-2316,Information Science,8.19,74,72,4,1,56,0,0,64,80.41,1,Tier 2 Tech,13.8
+STU-2317,Electronics & Communication,8.95,64,70,1,0,480,0,1,78,76.2,1,Tier 2 Tech,13.66
+STU-2318,Computer Science,6.9,100,71,1,1,20,2,4,71,49.31,0,Unplaced,0.0
+STU-2319,Computer Science,8.1,91,83,1,0,17,1,0,61,55.44,1,Tier 3 Enterprise,4.88
+STU-2320,Computer Science,5.3,54,40,3,2,271,0,0,84,69.59,1,Tier 2 Tech,12.09
+STU-2321,Computer Science,6.96,75,63,7,0,235,0,1,66,76.55,1,Tier 2 Tech,9.24
+STU-2322,Civil Engineering,7.57,63,59,3,0,3,0,0,53,58.6,1,Tier 3 Enterprise,7.05
+STU-2323,Computer Science,6.6,57,55,1,1,153,1,2,45,47.24,0,Unplaced,0.0
+STU-2324,Artificial Intelligence & Machine Learning,6.57,53,70,1,0,117,3,4,63,17.9,0,Unplaced,0.0
+STU-2325,Computer Science,6.87,78,59,1,0,160,0,4,90,68.27,1,Tier 2 Tech,11.31
+STU-2326,Computer Science,7.92,62,72,1,1,75,0,1,89,73.84,1,Tier 2 Tech,15.52
+STU-2327,Mechanical Engineering,7.39,85,54,2,2,480,0,4,65,89.93,1,Tier 2 Tech,11.72
+STU-2328,Electronics & Communication,5.14,85,54,2,1,4,0,0,69,60.35,1,Tier 3 Enterprise,7.96
+STU-2329,Information Science,5.27,91,53,1,0,29,0,2,68,63.76,1,Tier 3 Enterprise,4.68
+STU-2330,Electronics & Communication,6.93,60,60,3,0,55,0,2,57,59.1,1,Tier 3 Enterprise,4.01
+STU-2331,Electronics & Communication,8.1,78,74,1,0,65,0,3,62,66.43,1,Tier 3 Enterprise,6.38
+STU-2332,Computer Science,5.0,80,53,0,1,279,0,1,85,69.84,1,Tier 2 Tech,17.53
+STU-2333,Artificial Intelligence & Machine Learning,7.05,65,60,2,1,90,0,2,80,76.81,1,Tier 2 Tech,14.47
+STU-2334,Artificial Intelligence & Machine Learning,7.02,61,53,6,0,5,0,4,77,73.26,1,Tier 2 Tech,8.86
+STU-2335,Electronics & Communication,9.13,94,100,1,0,57,0,1,57,84.56,1,Tier 2 Tech,13.4
+STU-2336,Computer Science,7.18,75,63,2,0,59,0,2,75,69.02,1,Tier 2 Tech,17.09
+STU-2337,Electronics & Communication,8.02,80,75,1,0,370,1,0,46,57.89,1,Tier 3 Enterprise,4.03
+STU-2338,Computer Science,7.76,60,84,3,0,100,0,3,84,75.37,1,Tier 2 Tech,9.67
+STU-2339,Computer Science,5.26,54,89,1,1,111,1,2,77,50.63,0,Unplaced,0.0
+STU-2340,Computer Science,8.45,64,67,1,0,137,0,1,57,69.68,1,Tier 2 Tech,16.15
+STU-2341,Information Science,7.84,70,79,2,1,161,2,2,93,52.31,0,Unplaced,0.0
+STU-2342,Civil Engineering,8.16,57,70,3,1,110,1,4,52,66.67,1,Tier 3 Enterprise,7.58
+STU-2343,Electronics & Communication,9.9,71,85,1,0,29,0,1,80,68.34,1,Tier 2 Tech,15.07
+STU-2344,Electronics & Communication,5.31,48,47,4,1,227,0,0,80,69.46,1,Tier 2 Tech,17.92
+STU-2345,Information Science,9.5,56,76,3,1,144,0,0,59,85.24,1,Tier 2 Tech,8.9
+STU-2346,Computer Science,7.28,81,69,3,0,148,2,1,73,44.86,0,Unplaced,0.0
+STU-2347,Information Science,7.92,80,60,4,2,480,0,1,54,97.92,1,Tier 2 Tech,13.46
+STU-2348,Artificial Intelligence & Machine Learning,7.55,66,81,2,0,178,0,1,45,70.68,1,Tier 2 Tech,14.85
+STU-2349,Computer Science,7.13,57,69,3,2,194,0,1,61,82.32,1,Tier 2 Tech,15.03
+STU-2350,Civil Engineering,6.97,57,71,2,1,332,1,0,66,56.83,1,Tier 3 Enterprise,7.17
+STU-2351,Electronics & Communication,7.96,66,71,4,1,18,0,1,81,84.99,1,Tier 2 Tech,17.18
+STU-2352,Information Science,5.93,81,55,1,2,75,0,2,74,73.97,1,Tier 2 Tech,11.62
+STU-2353,Electronics & Communication,8.43,84,82,2,2,95,0,1,75,88.84,1,Tier 2 Tech,8.43
+STU-2354,Information Science,7.14,65,57,4,1,43,0,2,61,76.27,1,Tier 2 Tech,11.62
+STU-2355,Civil Engineering,6.36,55,59,1,1,201,0,1,67,65.98,1,Tier 3 Enterprise,6.69
+STU-2356,Artificial Intelligence & Machine Learning,7.1,75,60,3,0,158,0,3,62,73.96,1,Tier 2 Tech,10.13
+STU-2357,Information Science,8.98,60,74,5,1,140,1,1,59,76.36,1,Tier 2 Tech,16.1
+STU-2358,Computer Science,7.01,64,46,2,0,480,1,0,66,54.85,0,Unplaced,0.0
+STU-2359,Electronics & Communication,7.99,90,89,0,0,33,1,2,74,53.44,0,Unplaced,0.0
+STU-2360,Artificial Intelligence & Machine Learning,6.8,83,59,1,2,146,0,2,67,85.47,1,Tier 2 Tech,10.2
+STU-2361,Computer Science,8.43,74,91,1,0,88,1,1,70,64.58,1,Tier 3 Enterprise,4.04
+STU-2362,Electronics & Communication,8.35,54,89,0,0,41,0,2,82,66.86,1,Tier 3 Enterprise,6.03
+STU-2363,Electronics & Communication,9.63,74,76,0,1,19,0,3,67,76.16,1,Tier 2 Tech,15.26
+STU-2364,Electronics & Communication,7.41,86,60,4,0,248,2,2,57,40.41,0,Unplaced,0.0
+STU-2365,Computer Science,8.34,66,100,3,0,99,1,2,80,70.04,1,Tier 2 Tech,11.5
+STU-2366,Electronics & Communication,7.71,90,91,3,1,191,0,2,77,90.21,1,Tier 2 Tech,15.49
+STU-2367,Artificial Intelligence & Machine Learning,9.03,90,83,1,1,86,1,1,77,69.98,1,Tier 2 Tech,12.38
+STU-2368,Computer Science,6.81,95,69,1,1,27,3,0,81,23.41,0,Unplaced,0.0
+STU-2369,Computer Science,8.42,76,73,1,1,45,0,1,79,79.3,1,Tier 2 Tech,9.72
+STU-2370,Artificial Intelligence & Machine Learning,7.39,80,75,7,1,52,0,2,74,81.14,1,Tier 2 Tech,8.91
+STU-2371,Computer Science,7.53,91,65,0,1,397,1,2,100,71.01,1,Tier 2 Tech,15.11
+STU-2372,Civil Engineering,7.7,78,53,2,1,0,0,0,58,70.69,1,Tier 2 Tech,11.86
+STU-2373,Information Science,7.88,64,61,3,1,466,0,2,66,83.93,1,Tier 2 Tech,17.13
+STU-2374,Computer Science,7.47,65,71,6,2,432,1,2,85,86.44,1,Tier 2 Tech,13.4
+STU-2375,Civil Engineering,7.84,75,63,4,0,480,0,3,75,81.94,1,Tier 2 Tech,11.48
+STU-2376,Information Science,9.34,53,86,2,0,71,0,2,83,78.85,1,Tier 2 Tech,11.49
+STU-2377,Information Science,8.68,69,70,1,0,365,0,2,76,75.04,1,Tier 2 Tech,9.31
+STU-2378,Information Science,8.56,87,72,2,1,55,0,0,90,92.89,1,Tier 2 Tech,13.94
+STU-2379,Electronics & Communication,7.1,41,77,2,0,2,3,2,61,16.8,0,Unplaced,0.0
+STU-2380,Computer Science,6.62,93,67,1,1,27,0,2,90,78.66,1,Tier 2 Tech,13.82
+STU-2381,Information Science,8.65,87,81,0,2,319,0,0,88,91.96,1,Tier 1 Product,37.2
+STU-2382,Artificial Intelligence & Machine Learning,8.56,65,89,0,1,1,3,2,59,23.88,0,Unplaced,0.0
+STU-2383,Computer Science,9.22,79,90,2,0,86,2,2,81,52.42,0,Unplaced,0.0
+STU-2384,Electronics & Communication,6.94,72,81,4,1,8,0,0,73,80.9,1,Tier 2 Tech,10.01
+STU-2385,Computer Science,7.35,89,66,1,0,37,2,2,66,40.77,0,Unplaced,0.0
+STU-2386,Mechanical Engineering,5.8,85,54,0,1,10,0,0,51,52.42,0,Unplaced,0.0
+STU-2387,Computer Science,7.17,52,56,4,1,215,0,1,61,74.2,1,Tier 2 Tech,10.91
+STU-2388,Artificial Intelligence & Machine Learning,8.7,80,77,5,0,98,0,1,82,89.51,1,Tier 2 Tech,8.97
+STU-2389,Information Science,7.09,69,78,2,2,255,0,2,83,92.53,1,Tier 2 Tech,10.95
+STU-2390,Computer Science,8.3,73,91,1,0,128,0,3,71,74.59,1,Tier 2 Tech,12.28
+STU-2391,Computer Science,7.39,61,80,3,3,389,0,2,83,88.46,1,Tier 2 Tech,17.64
+STU-2392,Computer Science,7.96,96,57,1,0,78,0,3,85,73.94,1,Tier 2 Tech,14.53
+STU-2393,Information Science,6.34,86,73,3,0,111,0,0,75,68.21,1,Tier 2 Tech,15.83
+STU-2394,Computer Science,7.69,61,55,0,0,94,0,2,65,60.63,1,Tier 3 Enterprise,5.3
+STU-2395,Mechanical Engineering,5.0,53,60,0,0,72,0,1,79,57.35,1,Tier 3 Enterprise,4.58
+STU-2396,Information Science,7.39,66,67,3,1,205,0,0,79,75.5,1,Tier 2 Tech,10.57
+STU-2397,Computer Science,5.81,78,65,3,1,113,0,2,82,78.33,1,Tier 2 Tech,10.56
+STU-2398,Electronics & Communication,8.93,75,70,1,1,177,0,2,84,85.88,1,Tier 2 Tech,13.83
+STU-2399,Electronics & Communication,8.46,89,91,0,0,169,0,3,57,80.06,1,Tier 2 Tech,11.41
+STU-2400,Computer Science,8.11,83,62,1,0,23,0,1,67,67.97,1,Tier 2 Tech,16.57
+STU-2401,Computer Science,9.27,85,79,0,1,115,0,1,51,79.89,1,Tier 2 Tech,17.89
+STU-2402,Computer Science,6.56,76,54,1,0,24,1,1,82,43.06,0,Unplaced,0.0
+STU-2403,Electronics & Communication,9.52,52,70,0,1,96,4,2,71,9.75,0,Unplaced,0.0
+STU-2404,Electronics & Communication,8.63,69,81,2,1,124,1,1,79,72.56,1,Tier 2 Tech,11.43
+STU-2405,Information Science,7.34,86,88,3,0,480,0,1,56,90.47,1,Tier 2 Tech,15.05
+STU-2406,Mechanical Engineering,8.85,71,100,2,1,3,0,0,90,84.95,1,Tier 2 Tech,14.57
+STU-2407,Mechanical Engineering,6.38,79,64,6,1,10,0,1,59,73.35,1,Tier 2 Tech,9.94
+STU-2408,Electronics & Communication,6.69,67,76,5,1,8,2,2,83,44.26,0,Unplaced,0.0
+STU-2409,Civil Engineering,6.93,57,69,1,0,55,0,1,75,59.84,1,Tier 3 Enterprise,7.67
+STU-2410,Computer Science,7.02,70,73,2,0,189,0,3,71,78.78,1,Tier 2 Tech,9.99
+STU-2411,Computer Science,6.44,76,60,2,0,204,0,1,70,73.21,1,Tier 2 Tech,15.37
+STU-2412,Computer Science,8.95,62,85,2,0,146,1,3,66,60.99,1,Tier 3 Enterprise,5.39
+STU-2413,Computer Science,7.32,68,75,3,0,249,0,2,89,82.42,1,Tier 2 Tech,11.67
+STU-2414,Information Science,7.99,58,70,2,2,42,0,0,74,76.24,1,Tier 2 Tech,12.55
+STU-2415,Artificial Intelligence & Machine Learning,6.97,87,66,0,1,10,1,2,58,58.77,1,Tier 3 Enterprise,7.46
+STU-2416,Computer Science,5.6,67,56,3,1,6,0,0,69,66.12,1,Tier 3 Enterprise,4.56
+STU-2417,Computer Science,7.9,92,83,7,0,210,0,2,75,86.15,1,Tier 2 Tech,8.55
+STU-2418,Information Science,5.5,93,45,1,2,144,0,5,84,79.47,1,Tier 2 Tech,12.02
+STU-2419,Artificial Intelligence & Machine Learning,7.52,70,71,3,0,131,0,1,66,76.64,1,Tier 2 Tech,8.56
+STU-2420,Computer Science,6.09,57,79,1,1,45,0,1,67,67.58,1,Tier 2 Tech,14.88
+STU-2421,Information Science,9.79,42,100,2,3,52,0,1,74,91.69,1,Tier 2 Tech,15.6
+STU-2422,Computer Science,8.6,51,94,2,1,349,0,0,84,90.79,1,Tier 1 Product,38.51
+STU-2423,Computer Science,7.72,52,74,1,3,7,1,0,57,53.23,0,Unplaced,0.0
+STU-2424,Artificial Intelligence & Machine Learning,8.99,91,87,1,1,163,0,3,80,90.86,1,Tier 2 Tech,15.44
+STU-2425,Artificial Intelligence & Machine Learning,6.67,73,75,3,0,40,0,1,68,68.31,1,Tier 2 Tech,17.16
+STU-2426,Computer Science,8.2,77,93,3,0,4,0,0,70,81.17,1,Tier 2 Tech,15.48
+STU-2427,Artificial Intelligence & Machine Learning,7.82,40,55,2,0,149,1,0,98,46.15,0,Unplaced,0.0
+STU-2428,Electronics & Communication,7.89,55,61,2,0,44,0,3,71,65.07,1,Tier 3 Enterprise,7.74
+STU-2429,Civil Engineering,9.0,84,97,2,1,140,0,0,83,94.26,1,Tier 2 Tech,9.93
+STU-2430,Information Science,8.41,76,76,0,0,135,0,2,82,77.02,1,Tier 2 Tech,13.0
+STU-2431,Information Science,7.92,69,68,3,2,84,0,4,59,91.67,1,Tier 2 Tech,17.94
+STU-2432,Information Science,5.78,79,45,3,0,165,0,0,51,68.16,1,Tier 2 Tech,14.82
+STU-2433,Electronics & Communication,6.54,94,58,2,1,95,1,0,83,60.51,1,Tier 3 Enterprise,7.51
+STU-2434,Computer Science,7.47,68,57,1,3,37,0,1,60,70.33,1,Tier 2 Tech,8.3
+STU-2435,Computer Science,7.7,72,94,2,0,145,2,4,54,46.05,0,Unplaced,0.0
+STU-2436,Computer Science,6.36,74,62,5,1,97,0,2,86,78.79,1,Tier 2 Tech,16.72
+STU-2437,Electronics & Communication,9.9,100,90,0,1,1,1,1,61,69.6,1,Tier 2 Tech,14.98
+STU-2438,Computer Science,9.27,42,92,0,0,255,0,5,64,75.31,1,Tier 2 Tech,9.71
+STU-2439,Electronics & Communication,8.26,81,87,1,1,86,0,0,97,82.63,1,Tier 2 Tech,8.26
+STU-2440,Artificial Intelligence & Machine Learning,7.68,70,82,2,0,223,0,1,54,80.3,1,Tier 2 Tech,10.6
+STU-2441,Computer Science,7.37,79,81,2,1,235,0,3,58,84.73,1,Tier 2 Tech,17.16
+STU-2442,Electronics & Communication,6.55,62,58,1,1,64,1,0,68,46.51,0,Unplaced,0.0
+STU-2443,Information Science,7.69,71,70,5,1,77,0,1,71,83.11,1,Tier 2 Tech,14.68
+STU-2444,Civil Engineering,7.88,81,82,0,1,59,0,2,63,72.43,1,Tier 2 Tech,17.19
+STU-2445,Computer Science,6.23,100,56,1,0,65,0,3,60,67.74,1,Tier 2 Tech,12.46
+STU-2446,Electronics & Communication,7.97,83,75,2,1,248,1,1,92,75.34,1,Tier 2 Tech,17.37
+STU-2447,Mechanical Engineering,7.43,60,75,3,2,170,0,3,77,87.21,1,Tier 2 Tech,12.63
+STU-2448,Artificial Intelligence & Machine Learning,5.5,66,63,2,2,14,1,0,81,56.83,1,Tier 3 Enterprise,4.82
+STU-2449,Electronics & Communication,6.65,65,47,0,1,103,1,1,72,42.34,0,Unplaced,0.0
+STU-2450,Information Science,7.15,46,76,2,0,480,1,2,77,61.45,1,Tier 3 Enterprise,4.61
+STU-2451,Electronics & Communication,9.68,67,87,0,3,99,0,0,85,79.17,1,Tier 2 Tech,17.94
+STU-2452,Civil Engineering,8.21,82,84,2,0,169,0,2,62,80.32,1,Tier 2 Tech,11.34
+STU-2453,Electronics & Communication,6.13,54,68,6,1,161,0,2,77,77.61,1,Tier 2 Tech,9.6
+STU-2454,Computer Science,8.13,86,93,3,0,47,1,0,82,65.69,1,Tier 3 Enterprise,4.03
+STU-2455,Artificial Intelligence & Machine Learning,5.9,78,72,0,3,51,1,3,92,63.81,1,Tier 3 Enterprise,5.14
+STU-2456,Electronics & Communication,8.79,61,95,3,1,141,0,1,97,93.7,1,Tier 2 Tech,16.89
+STU-2457,Electronics & Communication,7.08,70,83,1,1,76,1,2,74,58.21,1,Tier 3 Enterprise,6.14
+STU-2458,Computer Science,7.5,94,74,1,0,92,0,2,87,77.1,1,Tier 2 Tech,14.32
+STU-2459,Electronics & Communication,9.06,82,84,4,1,137,0,1,45,95.56,1,Tier 2 Tech,17.22
+STU-2460,Information Science,6.18,72,70,3,1,165,0,1,92,81.23,1,Tier 2 Tech,13.13
+STU-2461,Electronics & Communication,6.06,68,67,0,1,34,3,0,65,14.23,0,Unplaced,0.0
+STU-2462,Computer Science,6.96,73,64,0,0,17,1,0,71,40.19,0,Unplaced,0.0
+STU-2463,Electronics & Communication,8.74,64,85,0,1,37,1,2,79,57.52,1,Tier 3 Enterprise,7.35
+STU-2464,Artificial Intelligence & Machine Learning,5.93,42,59,5,0,77,2,1,72,34.07,0,Unplaced,0.0
+STU-2465,Computer Science,5.0,100,43,2,1,46,0,1,76,70.89,1,Tier 2 Tech,11.24
+STU-2466,Artificial Intelligence & Machine Learning,7.1,74,81,5,0,92,2,0,93,52.68,0,Unplaced,0.0
+STU-2467,Information Science,8.21,77,78,0,0,6,0,0,69,67.96,1,Tier 2 Tech,17.77
+STU-2468,Civil Engineering,8.92,71,100,3,0,78,1,2,60,63.04,1,Tier 3 Enterprise,4.32
+STU-2469,Mechanical Engineering,7.09,61,52,5,0,50,1,1,95,51.91,0,Unplaced,0.0
+STU-2470,Electronics & Communication,7.15,69,63,2,0,84,0,0,80,63.29,1,Tier 3 Enterprise,6.9
+STU-2471,Electronics & Communication,8.87,49,83,4,2,60,0,3,97,96.94,1,Tier 2 Tech,14.61
+STU-2472,Civil Engineering,5.54,100,67,2,1,36,0,1,84,74.15,1,Tier 2 Tech,9.92
+STU-2473,Information Science,7.17,54,73,3,0,257,4,1,58,16.32,0,Unplaced,0.0
+STU-2474,Computer Science,7.81,57,77,1,1,22,0,0,81,70.78,1,Tier 2 Tech,11.89
+STU-2475,Electronics & Communication,8.09,65,65,1,1,125,0,2,62,76.35,1,Tier 2 Tech,11.13
+STU-2476,Mechanical Engineering,7.04,90,56,1,2,284,1,1,74,70.08,1,Tier 2 Tech,8.94
+STU-2477,Mechanical Engineering,7.64,72,76,6,0,85,0,1,73,72.97,1,Tier 2 Tech,13.85
+STU-2478,Mechanical Engineering,5.0,54,38,1,0,229,0,1,54,49.21,0,Unplaced,0.0
+STU-2479,Information Science,6.88,89,61,4,3,14,0,2,64,90.19,1,Tier 2 Tech,17.94
+STU-2480,Mechanical Engineering,8.1,82,81,1,0,74,0,3,100,70.38,1,Tier 2 Tech,13.6
+STU-2481,Computer Science,6.52,79,54,3,0,67,1,1,76,49.95,0,Unplaced,0.0
+STU-2482,Information Science,7.66,82,89,2,0,0,0,2,71,76.31,1,Tier 2 Tech,13.45
+STU-2483,Computer Science,8.09,100,88,1,0,64,0,0,95,83.31,1,Tier 2 Tech,8.4
+STU-2484,Computer Science,7.22,100,54,1,3,50,0,2,69,87.44,1,Tier 2 Tech,9.39
+STU-2485,Information Science,7.79,62,64,1,0,121,0,2,72,67.19,1,Tier 2 Tech,13.13
+STU-2486,Information Science,6.54,94,41,1,2,306,2,0,85,57.58,1,Tier 3 Enterprise,7.94
+STU-2487,Electronics & Communication,7.37,77,63,1,3,9,2,2,69,45.46,0,Unplaced,0.0
+STU-2488,Information Science,8.27,78,85,3,1,43,0,0,65,78.15,1,Tier 2 Tech,16.77
+STU-2489,Information Science,7.77,48,70,1,0,64,0,1,46,60.39,1,Tier 3 Enterprise,5.36
+STU-2490,Computer Science,6.95,69,72,0,0,66,0,2,62,61.08,1,Tier 3 Enterprise,6.17
+STU-2491,Information Science,7.85,60,59,1,1,163,0,3,62,77.79,1,Tier 2 Tech,13.53
+STU-2492,Computer Science,8.39,83,87,1,0,64,0,1,75,76.19,1,Tier 2 Tech,14.85
+STU-2493,Computer Science,5.35,86,49,5,1,3,1,0,66,52.33,0,Unplaced,0.0
+STU-2494,Electronics & Communication,8.87,42,83,1,0,136,0,1,99,63.05,1,Tier 3 Enterprise,6.75
+STU-2495,Electronics & Communication,7.23,71,68,1,2,237,0,1,61,79.92,1,Tier 2 Tech,15.9
+STU-2496,Electronics & Communication,8.07,87,63,1,1,79,0,2,90,69.11,1,Tier 2 Tech,8.25
+STU-2497,Information Science,8.92,69,71,4,1,95,0,2,76,92.84,1,Tier 2 Tech,17.44
+STU-2498,Information Science,6.09,82,70,2,2,19,1,2,83,67.48,1,Tier 2 Tech,8.7
+STU-2499,Civil Engineering,6.82,76,70,3,0,27,0,2,82,66.76,1,Tier 3 Enterprise,5.9
+STU-2500,Information Science,7.28,76,80,1,0,29,0,3,47,72.83,1,Tier 2 Tech,17.2
+STU-2501,Information Science,6.74,68,69,1,0,61,0,2,73,69.7,1,Tier 2 Tech,12.88
+STU-2502,Computer Science,9.51,54,89,1,0,289,2,1,70,46.4,0,Unplaced,0.0
+STU-2503,Computer Science,6.66,56,48,1,1,81,0,4,60,64.14,1,Tier 3 Enterprise,4.25
+STU-2504,Information Science,6.99,81,65,0,0,23,1,2,79,53.25,0,Unplaced,0.0
+STU-2505,Information Science,7.82,72,74,4,0,34,0,1,94,78.96,1,Tier 2 Tech,10.29
+STU-2506,Electronics & Communication,6.28,70,81,4,3,53,2,2,45,47.74,0,Unplaced,0.0
+STU-2507,Information Science,7.16,66,76,7,0,107,1,2,67,62.18,1,Tier 3 Enterprise,6.31
+STU-2508,Electronics & Communication,7.95,67,90,5,1,63,0,2,59,80.84,1,Tier 2 Tech,8.88
+STU-2509,Mechanical Engineering,7.23,86,75,3,0,54,1,2,74,64.15,1,Tier 3 Enterprise,5.69
+STU-2510,Mechanical Engineering,7.5,67,64,5,0,91,0,3,70,76.63,1,Tier 2 Tech,11.29
+STU-2511,Electronics & Communication,7.02,53,69,0,1,30,0,1,66,58.69,1,Tier 3 Enterprise,7.26
+STU-2512,Artificial Intelligence & Machine Learning,5.93,82,61,1,2,9,0,3,82,77.84,1,Tier 2 Tech,9.1
+STU-2513,Computer Science,7.95,69,66,4,0,2,0,3,93,73.95,1,Tier 2 Tech,14.83
+STU-2514,Computer Science,9.53,72,84,1,0,31,0,3,100,77.16,1,Tier 2 Tech,12.07
+STU-2515,Computer Science,7.62,94,70,0,0,10,1,2,65,59.53,1,Tier 3 Enterprise,6.35
+STU-2516,Electronics & Communication,7.85,71,90,1,0,45,1,2,52,53.53,0,Unplaced,0.0
+STU-2517,Civil Engineering,8.36,76,58,2,0,163,0,1,80,75.67,1,Tier 2 Tech,10.06
+STU-2518,Computer Science,6.2,55,73,0,1,138,1,1,93,53.35,0,Unplaced,0.0
+STU-2519,Artificial Intelligence & Machine Learning,9.47,68,78,4,0,103,0,3,83,92.11,1,Tier 2 Tech,14.1
+STU-2520,Computer Science,7.82,80,60,2,1,210,0,1,93,76.87,1,Tier 2 Tech,14.74
+STU-2521,Artificial Intelligence & Machine Learning,9.4,50,98,4,1,36,2,1,71,62.47,1,Tier 3 Enterprise,4.28
+STU-2522,Information Science,6.79,74,73,3,0,237,0,0,66,82.31,1,Tier 2 Tech,16.24
+STU-2523,Computer Science,9.6,73,100,3,0,56,0,3,75,91.61,1,Tier 2 Tech,16.61
+STU-2524,Information Science,8.45,72,87,1,3,56,1,4,70,77.45,1,Tier 2 Tech,8.64
+STU-2525,Computer Science,8.21,86,98,2,0,57,0,2,81,83.25,1,Tier 2 Tech,14.03
+STU-2526,Computer Science,7.86,76,80,4,1,11,0,3,85,86.53,1,Tier 2 Tech,13.94
+STU-2527,Computer Science,7.33,92,69,2,0,407,0,0,86,78.69,1,Tier 2 Tech,8.12
+STU-2528,Mechanical Engineering,8.92,58,86,1,1,16,0,2,80,70.86,1,Tier 2 Tech,11.42
+STU-2529,Information Science,7.75,73,86,3,0,45,3,1,76,35.16,0,Unplaced,0.0
+STU-2530,Computer Science,5.44,73,47,4,0,42,0,2,83,69.65,1,Tier 2 Tech,17.69
+STU-2531,Electronics & Communication,6.37,57,56,3,0,8,0,2,50,58.42,1,Tier 3 Enterprise,6.22
+STU-2532,Electronics & Communication,7.4,85,68,1,0,18,0,3,76,70.18,1,Tier 2 Tech,17.33
+STU-2533,Computer Science,7.94,100,54,4,2,5,0,0,74,90.62,1,Tier 2 Tech,14.76
+STU-2534,Information Science,7.54,71,73,0,1,38,0,1,76,73.8,1,Tier 2 Tech,8.28
+STU-2535,Computer Science,8.94,79,64,2,0,221,0,1,72,83.59,1,Tier 1 Product,19.87
+STU-2536,Computer Science,5.45,73,56,3,1,45,0,1,79,67.4,1,Tier 2 Tech,15.22
+STU-2537,Electronics & Communication,7.76,62,82,1,2,14,0,3,67,78.79,1,Tier 2 Tech,13.55
+STU-2538,Computer Science,5.6,46,52,5,1,114,0,1,87,64.37,1,Tier 3 Enterprise,4.51
+STU-2539,Information Science,8.44,62,96,1,0,480,1,0,79,65.5,1,Tier 3 Enterprise,6.46
+STU-2540,Electronics & Communication,7.5,52,57,1,2,29,2,4,75,42.96,0,Unplaced,0.0
+STU-2541,Computer Science,8.06,95,88,1,0,36,2,3,65,44.77,0,Unplaced,0.0
+STU-2542,Electronics & Communication,6.65,70,71,1,1,392,0,1,83,75.14,1,Tier 2 Tech,16.1
+STU-2543,Computer Science,9.01,67,66,2,1,21,0,1,76,83.65,1,Tier 2 Tech,15.53
+STU-2544,Artificial Intelligence & Machine Learning,8.75,84,100,3,2,78,1,1,64,89.53,1,Tier 2 Tech,10.46
+STU-2545,Information Science,8.24,56,77,3,2,30,0,2,73,84.44,1,Tier 2 Tech,10.58
+STU-2546,Mechanical Engineering,7.46,61,62,3,2,296,0,1,81,82.5,1,Tier 2 Tech,17.68
+STU-2547,Electronics & Communication,8.24,72,63,0,0,439,1,2,80,56.83,1,Tier 3 Enterprise,7.55
+STU-2548,Computer Science,6.82,86,64,1,2,185,1,1,79,63.57,1,Tier 3 Enterprise,5.27
+STU-2549,Electronics & Communication,8.54,79,79,4,0,41,2,1,75,48.56,0,Unplaced,0.0
+STU-2550,Artificial Intelligence & Machine Learning,9.41,75,88,2,0,56,1,1,86,64.48,1,Tier 3 Enterprise,7.3
+STU-2551,Electronics & Communication,8.78,73,79,1,1,30,0,5,88,78.47,1,Tier 2 Tech,9.62
+STU-2552,Mechanical Engineering,6.8,77,72,1,1,243,0,2,82,76.29,1,Tier 2 Tech,9.97
+STU-2553,Civil Engineering,8.0,74,72,6,1,270,2,0,66,51.56,0,Unplaced,0.0
+STU-2554,Computer Science,6.18,57,42,2,1,59,0,1,61,61.28,1,Tier 3 Enterprise,4.72
+STU-2555,Computer Science,8.23,72,76,3,2,117,2,1,67,63.38,1,Tier 3 Enterprise,4.35
+STU-2556,Electronics & Communication,8.1,56,53,1,0,19,0,5,97,66.53,1,Tier 3 Enterprise,7.42
+STU-2557,Information Science,5.54,73,59,2,0,62,0,1,77,71.93,1,Tier 2 Tech,13.79
+STU-2558,Mechanical Engineering,6.32,65,52,3,2,109,1,1,99,68.5,1,Tier 2 Tech,10.59
+STU-2559,Artificial Intelligence & Machine Learning,7.29,100,71,2,0,53,0,3,72,74.95,1,Tier 2 Tech,16.49
+STU-2560,Information Science,7.27,71,83,2,1,48,1,2,70,62.43,1,Tier 3 Enterprise,7.21
+STU-2561,Computer Science,6.27,52,52,4,1,0,0,5,73,71.2,1,Tier 2 Tech,9.01
+STU-2562,Mechanical Engineering,8.03,70,86,1,1,179,2,1,72,48.24,0,Unplaced,0.0
+STU-2563,Computer Science,7.88,79,70,2,1,242,0,0,64,83.45,1,Tier 2 Tech,14.44
+STU-2564,Mechanical Engineering,7.39,95,88,3,0,383,0,3,60,97.32,1,Tier 2 Tech,15.22
+STU-2565,Information Science,6.77,63,62,1,2,139,0,2,80,74.39,1,Tier 2 Tech,15.16
+STU-2566,Electronics & Communication,8.75,49,73,3,0,87,0,2,86,69.81,1,Tier 2 Tech,15.23
+STU-2567,Computer Science,9.42,83,94,4,0,34,1,1,100,81.32,1,Tier 2 Tech,9.69
+STU-2568,Electronics & Communication,7.07,52,64,4,0,480,0,3,68,74.36,1,Tier 2 Tech,11.15
+STU-2569,Information Science,6.93,65,59,2,1,98,0,1,69,73.3,1,Tier 2 Tech,16.44
+STU-2570,Electronics & Communication,8.14,68,72,1,1,125,0,0,64,75.42,1,Tier 2 Tech,16.98
+STU-2571,Computer Science,7.21,71,69,0,2,126,0,1,87,80.22,1,Tier 2 Tech,10.79
+STU-2572,Electronics & Communication,7.45,81,85,3,1,205,0,2,83,89.11,1,Tier 2 Tech,8.23
+STU-2573,Civil Engineering,8.41,62,59,2,1,1,0,1,63,71.92,1,Tier 2 Tech,16.6
+STU-2574,Computer Science,5.5,68,56,0,2,27,0,0,63,60.73,1,Tier 3 Enterprise,5.51
+STU-2575,Computer Science,9.05,71,90,7,1,120,1,2,85,84.11,1,Tier 2 Tech,11.29
+STU-2576,Computer Science,7.68,74,75,2,1,248,0,2,78,88.31,1,Tier 2 Tech,11.47
+STU-2577,Electronics & Communication,7.15,73,82,0,1,127,3,3,83,22.57,0,Unplaced,0.0
+STU-2578,Electronics & Communication,7.5,78,71,4,0,58,0,2,63,80.52,1,Tier 2 Tech,12.16
+STU-2579,Information Science,7.56,83,70,4,2,49,0,0,51,88.86,1,Tier 2 Tech,11.78
+STU-2580,Computer Science,5.7,77,63,3,0,147,0,0,63,69.52,1,Tier 2 Tech,13.66
+STU-2581,Information Science,9.24,78,86,4,1,148,0,0,82,94.58,1,Tier 2 Tech,8.79
+STU-2582,Electronics & Communication,7.65,49,69,3,1,102,0,1,99,70.13,1,Tier 2 Tech,17.72
+STU-2583,Information Science,8.09,72,81,1,2,37,1,2,68,67.08,1,Tier 2 Tech,17.36
+STU-2584,Artificial Intelligence & Machine Learning,8.65,78,74,1,2,285,0,2,100,98.73,1,Tier 1 Product,40.43
+STU-2585,Computer Science,6.48,82,57,3,1,88,1,2,83,57.2,1,Tier 3 Enterprise,7.52
+STU-2586,Electronics & Communication,8.12,62,71,2,1,171,0,0,57,76.84,1,Tier 2 Tech,14.6
+STU-2587,Information Science,7.31,62,84,3,0,26,0,1,76,71.17,1,Tier 2 Tech,10.21
+STU-2588,Information Science,8.53,63,48,4,1,46,0,1,84,84.41,1,Tier 2 Tech,8.49
+STU-2589,Electronics & Communication,5.26,79,58,4,2,228,2,1,45,52.71,0,Unplaced,0.0
+STU-2590,Electronics & Communication,7.49,86,72,3,2,5,0,2,81,87.27,1,Tier 2 Tech,8.99
+STU-2591,Artificial Intelligence & Machine Learning,6.94,66,50,3,2,78,1,1,88,62.75,1,Tier 3 Enterprise,5.3
+STU-2592,Computer Science,8.08,84,79,5,0,72,0,1,78,85.74,1,Tier 2 Tech,13.04
+STU-2593,Computer Science,8.12,73,81,1,2,153,0,2,73,79.94,1,Tier 2 Tech,17.93
+STU-2594,Electronics & Communication,6.82,70,72,3,2,36,0,1,71,77.93,1,Tier 2 Tech,12.35
+STU-2595,Electronics & Communication,6.82,69,40,1,0,27,1,0,71,38.77,0,Unplaced,0.0
+STU-2596,Computer Science,7.48,82,85,2,1,286,1,2,59,73.34,1,Tier 2 Tech,13.25
+STU-2597,Computer Science,6.61,76,57,2,1,93,0,2,65,67.72,1,Tier 2 Tech,14.95
+STU-2598,Computer Science,8.53,100,87,2,1,12,1,4,69,83.86,1,Tier 2 Tech,9.81
+STU-2599,Civil Engineering,7.19,60,76,1,3,23,0,4,75,71.13,1,Tier 2 Tech,17.33
+STU-2600,Computer Science,5.0,79,43,2,1,480,2,2,67,44.35,0,Unplaced,0.0
+STU-2601,Computer Science,7.19,64,76,4,1,23,1,1,63,64.37,1,Tier 3 Enterprise,6.12
+STU-2602,Computer Science,6.46,59,59,2,1,103,1,3,83,58.19,1,Tier 3 Enterprise,5.11
+STU-2603,Information Science,5.81,71,37,1,1,59,1,0,78,50.01,0,Unplaced,0.0
+STU-2604,Computer Science,6.24,73,73,1,2,238,0,2,67,83.37,1,Tier 2 Tech,17.35
+STU-2605,Information Science,7.72,100,66,2,1,154,0,0,80,86.85,1,Tier 2 Tech,14.25
+STU-2606,Computer Science,9.06,69,75,4,0,99,0,2,68,83.14,1,Tier 2 Tech,12.84
+STU-2607,Mechanical Engineering,7.94,56,71,2,0,1,0,2,74,66.64,1,Tier 3 Enterprise,6.32
+STU-2608,Computer Science,6.93,75,70,1,0,233,0,3,85,80.85,1,Tier 2 Tech,15.48
+STU-2609,Information Science,8.1,42,76,2,1,64,0,2,66,73.52,1,Tier 2 Tech,9.55
+STU-2610,Civil Engineering,7.1,70,74,3,2,295,0,2,59,92.44,1,Tier 2 Tech,16.65
+STU-2611,Electronics & Communication,6.84,72,53,2,0,75,0,1,72,67.72,1,Tier 2 Tech,17.6
+STU-2612,Information Science,6.33,83,55,1,0,130,0,0,57,68.29,1,Tier 2 Tech,13.67
+STU-2613,Computer Science,5.67,85,56,7,0,7,0,0,70,66.96,1,Tier 3 Enterprise,6.73
+STU-2614,Computer Science,7.17,64,88,1,1,150,1,1,70,65.6,1,Tier 3 Enterprise,7.44
+STU-2615,Electronics & Communication,7.77,69,73,1,3,45,0,4,45,77.89,1,Tier 2 Tech,11.75
+STU-2616,Artificial Intelligence & Machine Learning,7.49,61,82,0,1,47,1,0,80,57.89,1,Tier 3 Enterprise,7.97
+STU-2617,Electronics & Communication,7.14,56,69,6,1,13,0,0,71,73.34,1,Tier 2 Tech,14.81
+STU-2618,Electronics & Communication,6.56,76,59,1,1,17,0,0,88,65.98,1,Tier 3 Enterprise,5.7
+STU-2619,Electronics & Communication,8.27,54,75,2,0,22,0,1,76,66.78,1,Tier 3 Enterprise,6.71
+STU-2620,Information Science,6.15,66,59,2,1,43,0,1,82,70.08,1,Tier 2 Tech,13.22
+STU-2621,Computer Science,8.45,58,85,3,1,244,0,1,88,90.12,1,Tier 1 Product,20.68
+STU-2622,Electronics & Communication,6.5,79,77,3,1,50,0,1,72,75.76,1,Tier 2 Tech,15.96
+STU-2623,Artificial Intelligence & Machine Learning,6.77,97,69,2,2,141,0,0,73,86.69,1,Tier 2 Tech,13.64
+STU-2624,Computer Science,5.99,53,71,3,1,9,0,1,55,73.9,1,Tier 2 Tech,15.96
+STU-2625,Electronics & Communication,7.05,46,58,2,1,98,1,2,88,54.02,0,Unplaced,0.0
+STU-2626,Computer Science,8.67,70,77,6,2,72,0,2,72,98.3,1,Tier 2 Tech,9.55
+STU-2627,Information Science,8.17,72,70,0,3,419,0,0,61,83.07,1,Tier 1 Product,30.92
+STU-2628,Computer Science,8.68,75,84,6,1,205,0,2,82,105.86,1,Tier 1 Product,36.4
+STU-2629,Information Science,8.17,65,73,3,0,66,0,1,47,69.79,1,Tier 2 Tech,17.88
+STU-2630,Mechanical Engineering,6.39,69,70,3,1,164,3,1,68,25.5,0,Unplaced,0.0
+STU-2631,Computer Science,7.24,77,60,3,1,23,0,2,84,73.98,1,Tier 2 Tech,16.84
+STU-2632,Electronics & Communication,6.74,86,66,1,0,90,0,0,68,58.1,1,Tier 3 Enterprise,7.46
+STU-2633,Mechanical Engineering,9.06,44,91,4,0,8,0,1,65,68.38,1,Tier 2 Tech,10.47
+STU-2634,Artificial Intelligence & Machine Learning,6.28,66,41,0,0,47,0,1,69,48.91,0,Unplaced,0.0
+STU-2635,Computer Science,8.58,74,100,3,1,28,0,2,49,98.15,1,Tier 2 Tech,16.38
+STU-2636,Information Science,8.58,59,77,3,1,139,2,0,82,58.62,1,Tier 3 Enterprise,4.68
+STU-2637,Computer Science,9.61,96,68,2,0,74,0,0,72,79.5,1,Tier 2 Tech,9.98
+STU-2638,Artificial Intelligence & Machine Learning,7.15,63,70,2,0,152,0,0,70,63.75,1,Tier 3 Enterprise,4.44
+STU-2639,Artificial Intelligence & Machine Learning,8.38,71,79,2,1,79,0,1,70,80.37,1,Tier 2 Tech,16.58
+STU-2640,Information Science,9.9,79,90,1,0,9,0,3,74,74.82,1,Tier 2 Tech,9.08
+STU-2641,Mechanical Engineering,6.92,63,77,1,0,146,0,2,81,65.62,1,Tier 3 Enterprise,4.55
+STU-2642,Information Science,5.91,46,66,4,1,197,0,2,73,84.09,1,Tier 2 Tech,10.46
+STU-2643,Electronics & Communication,5.53,65,59,4,1,257,0,1,57,77.67,1,Tier 2 Tech,13.73
+STU-2644,Computer Science,8.38,86,83,2,0,93,0,0,80,78.47,1,Tier 2 Tech,16.8
+STU-2645,Mechanical Engineering,5.53,67,55,1,1,154,0,0,79,65.46,1,Tier 3 Enterprise,5.67
+STU-2646,Computer Science,7.19,60,87,1,0,153,0,0,76,67.29,1,Tier 2 Tech,13.46
+STU-2647,Mechanical Engineering,8.08,84,61,5,1,18,0,2,86,80.33,1,Tier 2 Tech,9.66
+STU-2648,Mechanical Engineering,7.8,67,75,4,0,19,0,1,74,78.77,1,Tier 2 Tech,10.66
+STU-2649,Electronics & Communication,8.07,64,77,4,0,8,0,3,87,72.58,1,Tier 2 Tech,9.34
+STU-2650,Computer Science,7.84,74,82,3,1,42,0,1,90,82.81,1,Tier 2 Tech,12.1
+STU-2651,Computer Science,9.01,82,75,2,1,70,2,1,80,62.05,1,Tier 3 Enterprise,6.36
+STU-2652,Computer Science,6.55,100,46,2,0,480,1,1,65,58.8,1,Tier 3 Enterprise,5.14
+STU-2653,Information Science,6.86,83,68,1,0,62,3,3,72,27.83,0,Unplaced,0.0
+STU-2654,Computer Science,6.75,88,68,3,2,142,3,2,88,45.99,0,Unplaced,0.0
+STU-2655,Artificial Intelligence & Machine Learning,8.51,64,94,1,1,130,1,4,56,70.13,1,Tier 2 Tech,16.46
+STU-2656,Electronics & Communication,8.59,57,68,2,0,25,2,1,69,37.07,0,Unplaced,0.0
+STU-2657,Computer Science,8.1,72,88,2,1,6,1,2,69,65.1,1,Tier 3 Enterprise,7.92
+STU-2658,Information Science,8.9,73,100,3,0,86,1,3,63,77.33,1,Tier 2 Tech,9.2
+STU-2659,Information Science,6.3,56,58,0,1,132,0,3,84,64.47,1,Tier 3 Enterprise,4.07
+STU-2660,Electronics & Communication,9.43,69,74,4,0,480,0,0,78,90.73,1,Tier 1 Product,36.95
+STU-2661,Information Science,9.28,77,82,1,0,48,1,2,65,65.44,1,Tier 3 Enterprise,4.76
+STU-2662,Artificial Intelligence & Machine Learning,8.41,77,79,0,0,249,0,1,81,83.14,1,Tier 1 Product,26.48
+STU-2663,Information Science,9.56,79,94,1,1,52,1,2,72,72.3,1,Tier 2 Tech,11.94
+STU-2664,Artificial Intelligence & Machine Learning,5.78,76,52,0,0,128,0,2,63,57.04,1,Tier 3 Enterprise,7.67
+STU-2665,Civil Engineering,7.02,64,83,1,0,100,0,0,65,70.42,1,Tier 2 Tech,14.59
+STU-2666,Computer Science,6.79,64,55,1,0,5,1,3,79,45.69,0,Unplaced,0.0
+STU-2667,Artificial Intelligence & Machine Learning,8.39,55,61,3,0,8,2,5,85,39.11,0,Unplaced,0.0
+STU-2668,Computer Science,6.44,96,74,1,1,2,0,1,68,74.05,1,Tier 2 Tech,8.41
+STU-2669,Mechanical Engineering,8.43,72,56,0,0,50,1,2,80,44.38,0,Unplaced,0.0
+STU-2670,Information Science,9.11,68,82,2,1,150,1,0,92,78.43,1,Tier 2 Tech,8.15
+STU-2671,Civil Engineering,8.36,58,100,2,0,20,0,1,58,67.85,1,Tier 2 Tech,10.0
+STU-2672,Civil Engineering,7.91,100,75,3,0,102,0,3,78,82.78,1,Tier 2 Tech,11.18
+STU-2673,Mechanical Engineering,6.51,56,52,5,1,37,0,1,83,72.66,1,Tier 2 Tech,12.85
+STU-2674,Mechanical Engineering,6.67,65,64,2,3,175,0,3,72,82.85,1,Tier 2 Tech,16.38
+STU-2675,Computer Science,8.97,77,83,1,0,176,0,2,88,81.82,1,Tier 2 Tech,11.15
+STU-2676,Computer Science,8.46,80,81,2,0,164,0,2,100,84.82,1,Tier 2 Tech,11.77
+STU-2677,Information Science,7.56,85,79,0,1,81,0,2,78,78.02,1,Tier 2 Tech,11.29
+STU-2678,Computer Science,7.14,97,58,5,2,36,1,1,71,73.58,1,Tier 2 Tech,8.09
+STU-2679,Electronics & Communication,5.37,79,71,1,3,182,0,1,85,77.39,1,Tier 2 Tech,17.55
+STU-2680,Computer Science,6.42,57,65,1,1,22,0,0,84,65.83,1,Tier 3 Enterprise,4.56
+STU-2681,Artificial Intelligence & Machine Learning,9.7,68,96,1,1,37,0,1,45,80.41,1,Tier 2 Tech,10.88
+STU-2682,Electronics & Communication,6.19,76,55,2,1,22,1,0,73,51.61,0,Unplaced,0.0
+STU-2683,Mechanical Engineering,7.81,100,87,1,1,123,1,1,69,65.29,1,Tier 3 Enterprise,4.52
+STU-2684,Computer Science,8.71,52,79,3,1,127,0,1,78,86.36,1,Tier 2 Tech,12.91
+STU-2685,Civil Engineering,6.22,88,64,4,2,116,2,3,71,56.31,1,Tier 3 Enterprise,7.73
+STU-2686,Artificial Intelligence & Machine Learning,7.8,74,65,2,1,59,1,2,72,61.02,1,Tier 3 Enterprise,4.4
+STU-2687,Information Science,8.63,83,71,3,1,11,1,1,63,78.53,1,Tier 2 Tech,12.41
+STU-2688,Electronics & Communication,7.61,70,79,4,1,266,1,2,82,77.54,1,Tier 2 Tech,8.22
+STU-2689,Mechanical Engineering,9.9,60,86,1,1,77,0,1,93,75.89,1,Tier 2 Tech,15.71
+STU-2690,Computer Science,5.76,82,49,2,1,57,0,2,63,71.75,1,Tier 2 Tech,14.41
+STU-2691,Information Science,8.76,81,75,3,1,97,0,3,57,93.39,1,Tier 2 Tech,15.0
+STU-2692,Information Science,7.41,85,78,4,0,23,0,0,74,76.05,1,Tier 2 Tech,12.72
+STU-2693,Computer Science,8.45,71,73,5,0,15,0,2,73,74.11,1,Tier 2 Tech,17.08
+STU-2694,Information Science,8.09,63,75,3,1,57,2,1,88,54.45,0,Unplaced,0.0
+STU-2695,Computer Science,6.79,50,66,0,2,28,0,1,59,61.43,1,Tier 3 Enterprise,5.64
+STU-2696,Computer Science,7.85,83,55,2,0,30,3,0,67,23.08,0,Unplaced,0.0
+STU-2697,Computer Science,5.56,77,41,2,1,245,0,2,48,68.61,1,Tier 2 Tech,13.14
+STU-2698,Artificial Intelligence & Machine Learning,8.26,58,81,1,0,83,0,1,90,73.26,1,Tier 2 Tech,14.95
+STU-2699,Information Science,7.93,64,68,2,0,72,0,2,77,70.22,1,Tier 2 Tech,13.21
+STU-2700,Artificial Intelligence & Machine Learning,8.3,65,88,1,3,128,0,3,68,87.68,1,Tier 2 Tech,9.89
+STU-2701,Information Science,8.76,51,91,2,2,332,3,2,58,53.92,0,Unplaced,0.0
+STU-2702,Computer Science,8.0,60,83,4,0,13,1,1,59,60.95,1,Tier 3 Enterprise,5.27
+STU-2703,Information Science,7.76,56,92,3,1,197,0,2,78,87.09,1,Tier 2 Tech,8.92
+STU-2704,Information Science,6.63,66,64,1,0,96,2,1,60,32.39,0,Unplaced,0.0
+STU-2705,Computer Science,6.82,61,73,3,3,17,1,0,75,62.09,1,Tier 3 Enterprise,5.73
+STU-2706,Electronics & Communication,8.91,49,77,3,0,38,0,1,98,66.04,1,Tier 3 Enterprise,6.44
+STU-2707,Computer Science,9.18,100,100,4,0,72,0,1,69,90.04,1,Tier 2 Tech,9.19
+STU-2708,Electronics & Communication,7.34,89,90,3,1,129,0,0,62,86.69,1,Tier 2 Tech,14.31
+STU-2709,Electronics & Communication,7.65,61,73,1,2,30,0,3,78,75.83,1,Tier 2 Tech,16.93
+STU-2710,Computer Science,6.6,75,68,2,0,84,1,2,59,51.94,0,Unplaced,0.0
+STU-2711,Computer Science,8.89,77,96,2,1,126,0,2,94,93.04,1,Tier 2 Tech,11.38
+STU-2712,Mechanical Engineering,8.33,88,77,2,0,65,0,1,90,70.53,1,Tier 2 Tech,10.22
+STU-2713,Information Science,9.74,60,83,3,2,218,0,0,72,98.84,1,Tier 1 Product,39.43
+STU-2714,Computer Science,6.63,87,73,2,0,223,3,2,63,36.29,0,Unplaced,0.0
+STU-2715,Artificial Intelligence & Machine Learning,7.18,64,70,0,2,69,1,2,68,57.92,1,Tier 3 Enterprise,6.77
+STU-2716,Computer Science,7.85,53,76,1,1,397,0,2,70,81.57,1,Tier 2 Tech,9.05
+STU-2717,Electronics & Communication,8.31,82,70,1,0,8,0,0,78,64.34,1,Tier 3 Enterprise,5.63
+STU-2718,Artificial Intelligence & Machine Learning,7.36,90,53,1,3,0,0,0,86,79.92,1,Tier 2 Tech,14.74
+STU-2719,Computer Science,6.64,100,67,1,3,52,1,1,61,65.71,1,Tier 3 Enterprise,6.3
+STU-2720,Computer Science,8.57,55,89,4,1,101,0,1,86,89.26,1,Tier 2 Tech,14.19
+STU-2721,Computer Science,8.39,81,76,2,0,109,1,2,81,63.97,1,Tier 3 Enterprise,6.27
+STU-2722,Computer Science,6.59,66,79,1,1,71,2,2,67,48.9,0,Unplaced,0.0
+STU-2723,Computer Science,9.09,82,77,3,1,14,0,2,60,98.73,1,Tier 2 Tech,15.98
+STU-2724,Electronics & Communication,8.89,51,72,1,1,20,0,1,75,70.23,1,Tier 2 Tech,11.2
+STU-2725,Computer Science,7.75,54,73,0,1,210,0,0,61,69.66,1,Tier 2 Tech,15.08
+STU-2726,Information Science,7.69,61,72,1,0,222,0,0,86,71.92,1,Tier 2 Tech,17.91
+STU-2727,Artificial Intelligence & Machine Learning,8.21,73,85,2,1,123,0,4,60,86.52,1,Tier 2 Tech,11.9
+STU-2728,Mechanical Engineering,6.65,63,57,3,1,120,0,0,80,70.4,1,Tier 2 Tech,15.91
+STU-2729,Electronics & Communication,7.63,81,86,2,0,100,0,2,73,77.39,1,Tier 2 Tech,10.46
+STU-2730,Computer Science,5.23,86,73,1,1,24,0,0,67,68.77,1,Tier 2 Tech,10.82
+STU-2731,Electronics & Communication,8.56,80,80,1,1,61,2,1,72,46.19,0,Unplaced,0.0
+STU-2732,Information Science,5.88,94,71,1,1,130,0,0,86,72.25,1,Tier 2 Tech,17.35
+STU-2733,Information Science,9.25,77,75,2,0,84,0,1,59,75.62,1,Tier 2 Tech,8.26
+STU-2734,Computer Science,7.24,54,80,2,1,2,1,4,69,61.62,1,Tier 3 Enterprise,4.87
+STU-2735,Civil Engineering,7.37,91,81,3,0,337,0,0,64,82.69,1,Tier 2 Tech,12.83
+STU-2736,Information Science,6.91,63,75,3,1,204,1,1,73,67.49,1,Tier 2 Tech,12.02
+STU-2737,Computer Science,7.28,84,70,0,1,33,1,2,65,56.52,1,Tier 3 Enterprise,6.52
+STU-2738,Information Science,9.16,94,55,2,1,105,0,1,52,85.49,1,Tier 2 Tech,9.93
+STU-2739,Information Science,5.0,78,45,2,0,282,0,2,61,66.83,1,Tier 3 Enterprise,4.28
+STU-2740,Mechanical Engineering,9.0,51,77,2,1,11,0,3,93,79.07,1,Tier 2 Tech,11.69
+STU-2741,Electronics & Communication,7.97,59,65,2,3,76,0,1,76,73.62,1,Tier 2 Tech,13.24
+STU-2742,Mechanical Engineering,6.27,90,63,2,0,67,0,1,76,71.62,1,Tier 2 Tech,13.62
+STU-2743,Computer Science,6.42,69,59,1,2,58,3,1,70,26.73,0,Unplaced,0.0
+STU-2744,Information Science,9.44,73,79,0,1,198,0,0,73,78.6,1,Tier 2 Tech,14.01
+STU-2745,Information Science,6.56,82,53,1,1,52,0,3,68,77.48,1,Tier 2 Tech,13.49
+STU-2746,Computer Science,6.33,81,55,7,0,7,2,1,80,43.98,0,Unplaced,0.0
+STU-2747,Computer Science,8.85,75,94,2,0,7,1,3,75,64.51,1,Tier 3 Enterprise,4.98
+STU-2748,Mechanical Engineering,7.97,69,69,4,2,4,0,1,59,84.36,1,Tier 2 Tech,15.65
+STU-2749,Computer Science,6.57,67,59,2,0,57,0,1,77,63.84,1,Tier 3 Enterprise,4.35
+STU-2750,Information Science,7.84,84,70,1,0,139,0,0,45,67.92,1,Tier 2 Tech,9.98
+STU-2751,Computer Science,6.47,79,67,2,1,25,3,1,78,30.54,0,Unplaced,0.0
+STU-2752,Computer Science,8.81,68,87,2,0,114,0,4,57,78.61,1,Tier 2 Tech,15.39
+STU-2753,Computer Science,8.77,87,51,0,1,127,2,2,72,47.56,0,Unplaced,0.0
+STU-2754,Artificial Intelligence & Machine Learning,8.19,70,87,2,1,32,0,3,59,85.49,1,Tier 2 Tech,10.8
+STU-2755,Mechanical Engineering,8.0,60,90,1,2,100,1,1,74,68.58,1,Tier 2 Tech,12.93
+STU-2756,Artificial Intelligence & Machine Learning,9.54,61,77,4,1,127,0,0,80,92.46,1,Tier 2 Tech,11.27
+STU-2757,Information Science,7.6,58,63,2,0,69,3,2,92,25.83,0,Unplaced,0.0
+STU-2758,Computer Science,6.3,68,57,1,0,45,2,1,55,24.65,0,Unplaced,0.0
+STU-2759,Information Science,8.09,89,69,2,1,106,0,2,85,87.39,1,Tier 2 Tech,13.07
+STU-2760,Information Science,9.89,60,93,3,0,419,1,1,75,75.55,1,Tier 2 Tech,11.47
+STU-2761,Mechanical Engineering,6.48,74,44,2,3,61,1,2,68,59.17,1,Tier 3 Enterprise,7.98
+STU-2762,Computer Science,7.2,62,58,1,1,54,2,2,83,38.71,0,Unplaced,0.0
+STU-2763,Information Science,8.06,68,91,1,0,68,0,0,71,78.33,1,Tier 2 Tech,11.57
+STU-2764,Computer Science,7.54,50,63,3,2,8,0,0,82,73.38,1,Tier 2 Tech,14.27
+STU-2765,Computer Science,6.52,68,76,3,0,88,1,2,62,60.74,1,Tier 3 Enterprise,7.55
+STU-2766,Electronics & Communication,8.83,69,86,4,0,43,1,2,66,61.25,1,Tier 3 Enterprise,6.55
+STU-2767,Information Science,9.9,79,73,0,1,14,0,2,85,81.98,1,Tier 2 Tech,13.66
+STU-2768,Information Science,7.82,75,80,3,2,69,1,3,91,80.49,1,Tier 2 Tech,13.69
+STU-2769,Information Science,6.61,55,63,3,1,0,0,2,73,71.01,1,Tier 2 Tech,12.96
+STU-2770,Information Science,5.9,87,54,1,0,56,1,1,45,44.27,0,Unplaced,0.0
+STU-2771,Mechanical Engineering,7.88,74,77,4,0,12,0,2,71,76.46,1,Tier 2 Tech,16.08
+STU-2772,Civil Engineering,8.81,74,87,0,0,2,0,2,74,69.42,1,Tier 2 Tech,8.5
+STU-2773,Artificial Intelligence & Machine Learning,8.12,71,84,1,0,191,0,1,71,82.22,1,Tier 1 Product,39.24
+STU-2774,Mechanical Engineering,7.6,64,84,3,0,272,0,3,78,78.69,1,Tier 2 Tech,13.86
+STU-2775,Computer Science,6.95,75,71,2,1,25,0,0,68,70.99,1,Tier 2 Tech,16.49
+STU-2776,Electronics & Communication,6.4,78,49,2,2,85,0,3,84,78.99,1,Tier 2 Tech,8.1
+STU-2777,Information Science,8.52,47,75,1,0,35,0,1,59,62.46,1,Tier 3 Enterprise,7.48
+STU-2778,Computer Science,8.61,64,100,4,0,74,0,1,88,84.96,1,Tier 2 Tech,9.2
+STU-2779,Mechanical Engineering,5.9,68,66,2,2,63,1,1,92,63.58,1,Tier 3 Enterprise,6.88
+STU-2780,Computer Science,9.35,75,100,2,1,34,0,1,63,82.82,1,Tier 2 Tech,12.17
+STU-2781,Artificial Intelligence & Machine Learning,8.23,88,91,1,2,132,0,0,63,87.71,1,Tier 2 Tech,14.81
+STU-2782,Information Science,9.14,61,87,4,0,14,0,1,78,74.57,1,Tier 2 Tech,14.28
+STU-2783,Electronics & Communication,6.12,65,63,5,0,5,2,1,59,29.37,0,Unplaced,0.0
+STU-2784,Electronics & Communication,6.1,64,60,2,1,160,1,4,68,64.63,1,Tier 3 Enterprise,4.65
+STU-2785,Civil Engineering,7.44,60,54,2,1,120,0,0,87,71.09,1,Tier 2 Tech,13.15
+STU-2786,Electronics & Communication,8.15,67,77,0,1,75,1,2,82,60.36,1,Tier 3 Enterprise,5.11
+STU-2787,Electronics & Communication,9.58,82,100,3,1,69,3,0,97,52.28,0,Unplaced,0.0
+STU-2788,Computer Science,8.38,57,73,3,0,75,0,3,76,78.98,1,Tier 2 Tech,13.6
+STU-2789,Information Science,7.33,77,74,7,1,63,3,1,66,32.33,0,Unplaced,0.0
+STU-2790,Computer Science,6.47,48,72,6,1,54,0,3,74,80.39,1,Tier 2 Tech,15.38
+STU-2791,Electronics & Communication,8.95,64,74,3,0,76,0,0,72,69.64,1,Tier 2 Tech,8.81
+STU-2792,Information Science,6.54,67,59,4,1,82,0,2,72,76.49,1,Tier 2 Tech,13.16
+STU-2793,Electronics & Communication,9.39,95,76,2,1,129,0,2,73,96.87,1,Tier 2 Tech,14.18
+STU-2794,Computer Science,7.29,68,62,3,0,136,0,2,62,74.4,1,Tier 2 Tech,10.95
+STU-2795,Computer Science,9.35,41,73,3,0,52,0,4,77,74.81,1,Tier 2 Tech,17.53
+STU-2796,Electronics & Communication,8.35,44,69,2,0,58,0,2,57,58.13,1,Tier 3 Enterprise,6.08
+STU-2797,Computer Science,7.45,72,85,2,0,51,0,0,65,71.39,1,Tier 2 Tech,9.83
+STU-2798,Computer Science,7.03,80,59,2,1,84,0,2,72,80.27,1,Tier 2 Tech,9.08
+STU-2799,Computer Science,7.23,77,71,3,2,66,0,1,46,82.27,1,Tier 2 Tech,13.42
+STU-2800,Artificial Intelligence & Machine Learning,8.07,74,71,2,0,242,0,1,83,84.2,1,Tier 1 Product,27.01
+STU-2801,Electronics & Communication,7.68,88,85,0,0,131,3,3,49,23.86,0,Unplaced,0.0
+STU-2802,Information Science,6.95,64,80,5,3,251,0,3,82,96.77,1,Tier 2 Tech,9.93
+STU-2803,Computer Science,7.42,84,80,2,0,135,0,1,58,81.78,1,Tier 2 Tech,8.31
+STU-2804,Computer Science,7.69,49,76,2,0,389,0,2,69,73.29,1,Tier 2 Tech,13.67
+STU-2805,Mechanical Engineering,5.26,59,51,0,0,111,0,1,80,54.21,0,Unplaced,0.0
+STU-2806,Electronics & Communication,8.1,46,64,4,1,364,0,3,100,93.43,1,Tier 1 Product,32.37
+STU-2807,Computer Science,6.52,68,83,1,0,18,0,1,75,65.71,1,Tier 3 Enterprise,4.57
+STU-2808,Computer Science,6.33,71,55,3,1,5,1,1,50,52.42,0,Unplaced,0.0
+STU-2809,Computer Science,5.74,73,64,4,0,95,0,2,85,71.32,1,Tier 2 Tech,14.02
+STU-2810,Electronics & Communication,5.63,72,67,1,0,451,0,2,71,72.36,1,Tier 2 Tech,17.52
+STU-2811,Mechanical Engineering,6.11,59,55,1,0,59,0,1,74,58.96,1,Tier 3 Enterprise,7.91
+STU-2812,Computer Science,6.82,69,76,1,1,26,1,2,80,62.86,1,Tier 3 Enterprise,7.55
+STU-2813,Computer Science,9.75,51,97,2,1,81,1,0,47,71.29,1,Tier 2 Tech,16.07
+STU-2814,Computer Science,7.02,91,85,1,0,115,0,1,74,79.21,1,Tier 2 Tech,10.09
+STU-2815,Artificial Intelligence & Machine Learning,7.8,67,69,3,0,41,0,3,69,74.44,1,Tier 2 Tech,9.56
+STU-2816,Computer Science,8.04,65,63,4,1,137,2,3,88,54.23,0,Unplaced,0.0
+STU-2817,Mechanical Engineering,7.74,94,68,2,2,406,0,1,82,97.66,1,Tier 2 Tech,12.45
+STU-2818,Electronics & Communication,7.51,54,74,4,0,249,0,1,54,80.46,1,Tier 2 Tech,14.2
+STU-2819,Information Science,6.29,56,62,2,1,37,0,1,89,64.57,1,Tier 3 Enterprise,7.4
+STU-2820,Computer Science,9.2,56,81,4,0,43,0,2,79,77.18,1,Tier 2 Tech,10.32
+STU-2821,Computer Science,9.59,71,69,3,0,51,3,2,55,33.6,0,Unplaced,0.0
+STU-2822,Electronics & Communication,5.75,78,62,1,0,55,4,3,74,5.32,0,Unplaced,0.0
+STU-2823,Mechanical Engineering,6.47,82,83,3,1,11,1,1,86,59.01,1,Tier 3 Enterprise,5.92
+STU-2824,Electronics & Communication,7.29,100,74,2,0,157,0,1,59,77.29,1,Tier 2 Tech,14.47
+STU-2825,Information Science,6.54,40,70,4,2,50,0,2,90,78.38,1,Tier 2 Tech,12.46
+STU-2826,Computer Science,8.16,80,83,2,1,233,0,0,55,88.27,1,Tier 1 Product,28.9
+STU-2827,Artificial Intelligence & Machine Learning,6.8,64,70,2,2,287,3,1,64,37.63,0,Unplaced,0.0
+STU-2828,Mechanical Engineering,9.9,63,100,2,0,2,1,5,62,65.57,1,Tier 3 Enterprise,4.9
+STU-2829,Computer Science,8.91,63,87,4,0,480,0,1,90,90.45,1,Tier 1 Product,41.68
+STU-2830,Artificial Intelligence & Machine Learning,7.83,59,71,4,3,136,0,4,68,87.98,1,Tier 2 Tech,12.75
+STU-2831,Electronics & Communication,8.73,95,73,2,1,80,0,1,60,88.87,1,Tier 2 Tech,13.33
+STU-2832,Electronics & Communication,8.82,83,80,1,2,54,3,2,79,34.62,0,Unplaced,0.0
+STU-2833,Electronics & Communication,6.98,72,70,1,0,80,0,2,81,63.68,1,Tier 3 Enterprise,4.87
+STU-2834,Mechanical Engineering,6.7,90,62,2,0,43,0,2,82,70.6,1,Tier 2 Tech,13.14
+STU-2835,Electronics & Communication,7.69,50,76,2,1,107,0,3,70,67.7,1,Tier 2 Tech,10.55
+STU-2836,Computer Science,8.55,53,84,2,0,10,0,1,77,61.29,1,Tier 3 Enterprise,4.81
+STU-2837,Computer Science,7.75,41,82,2,1,106,2,2,66,36.23,0,Unplaced,0.0
+STU-2838,Artificial Intelligence & Machine Learning,5.87,62,71,2,0,35,4,3,94,11.85,0,Unplaced,0.0
+STU-2839,Computer Science,6.72,74,66,2,0,1,2,0,87,35.5,0,Unplaced,0.0
+STU-2840,Information Science,7.52,73,59,2,0,88,1,0,86,52.33,0,Unplaced,0.0
+STU-2841,Information Science,7.52,74,68,2,0,95,0,0,83,74.53,1,Tier 2 Tech,10.76
+STU-2842,Information Science,9.77,52,90,6,0,61,0,3,80,83.85,1,Tier 2 Tech,8.03
+STU-2843,Electronics & Communication,6.08,83,42,2,1,8,0,1,59,64.6,1,Tier 3 Enterprise,6.28
+STU-2844,Artificial Intelligence & Machine Learning,8.16,75,91,1,0,246,1,2,81,67.48,1,Tier 2 Tech,11.87
+STU-2845,Computer Science,9.24,82,87,3,0,103,0,1,75,84.07,1,Tier 2 Tech,16.99
+STU-2846,Computer Science,9.9,45,95,2,2,13,0,4,89,97.1,1,Tier 2 Tech,8.41
+STU-2847,Computer Science,7.16,76,82,4,1,78,0,2,83,90.3,1,Tier 2 Tech,8.43
+STU-2848,Civil Engineering,8.14,55,70,3,0,75,0,0,80,67.24,1,Tier 2 Tech,16.86
+STU-2849,Electronics & Communication,8.23,66,83,2,1,6,1,1,53,56.65,1,Tier 3 Enterprise,4.51
+STU-2850,Computer Science,7.82,79,73,2,2,102,2,0,72,54.42,0,Unplaced,0.0
+STU-2851,Mechanical Engineering,7.49,73,70,0,0,181,0,0,67,55.84,1,Tier 3 Enterprise,4.01
+STU-2852,Civil Engineering,8.08,60,68,6,0,152,0,0,77,74.84,1,Tier 2 Tech,9.79
+STU-2853,Mechanical Engineering,5.0,72,68,3,1,24,2,0,69,31.97,0,Unplaced,0.0
+STU-2854,Artificial Intelligence & Machine Learning,8.35,50,75,4,0,218,1,0,70,65.45,1,Tier 3 Enterprise,7.3
+STU-2855,Computer Science,7.74,88,80,0,1,46,0,1,79,76.66,1,Tier 2 Tech,16.03
+STU-2856,Mechanical Engineering,7.36,69,52,0,3,322,0,0,68,75.38,1,Tier 2 Tech,11.4
+STU-2857,Information Science,9.85,87,100,2,2,8,0,1,75,105.51,1,Tier 2 Tech,14.68
+STU-2858,Mechanical Engineering,6.86,64,77,0,0,73,0,0,55,53.56,0,Unplaced,0.0
+STU-2859,Electronics & Communication,7.16,64,70,4,0,100,2,1,64,42.49,0,Unplaced,0.0
+STU-2860,Mechanical Engineering,9.79,61,88,4,3,31,0,1,81,99.44,1,Tier 2 Tech,13.07
+STU-2861,Electronics & Communication,6.68,84,69,2,1,162,0,3,59,78.14,1,Tier 2 Tech,17.05
+STU-2862,Computer Science,6.99,62,90,2,0,108,0,1,88,70.18,1,Tier 2 Tech,8.56
+STU-2863,Information Science,7.44,81,53,3,1,2,0,1,85,79.16,1,Tier 2 Tech,16.13
+STU-2864,Artificial Intelligence & Machine Learning,8.52,66,87,1,0,103,0,1,70,75.92,1,Tier 2 Tech,9.71
+STU-2865,Artificial Intelligence & Machine Learning,7.83,44,65,4,0,74,0,3,100,75.35,1,Tier 2 Tech,11.92
+STU-2866,Computer Science,6.18,64,61,0,2,24,0,1,88,65.29,1,Tier 3 Enterprise,4.77
+STU-2867,Computer Science,7.01,55,65,3,0,480,0,2,62,73.61,1,Tier 2 Tech,15.03
+STU-2868,Computer Science,6.93,72,63,0,0,250,0,3,82,70.97,1,Tier 2 Tech,14.78
+STU-2869,Electronics & Communication,7.52,55,72,6,0,38,0,3,74,74.25,1,Tier 2 Tech,13.48
+STU-2870,Mechanical Engineering,8.07,84,65,2,1,85,0,3,64,74.17,1,Tier 2 Tech,14.98
+STU-2871,Computer Science,8.06,70,86,1,0,41,0,1,61,68.17,1,Tier 2 Tech,14.4
+STU-2872,Information Science,5.65,69,39,2,1,164,0,2,85,68.7,1,Tier 2 Tech,15.76
+STU-2873,Mechanical Engineering,8.77,81,87,4,1,293,0,3,66,104.15,1,Tier 1 Product,23.75
+STU-2874,Electronics & Communication,7.88,85,71,1,2,48,4,0,72,14.47,0,Unplaced,0.0
+STU-2875,Information Science,9.12,71,73,5,0,180,2,2,62,55.04,1,Tier 3 Enterprise,5.72
+STU-2876,Electronics & Communication,8.09,61,78,2,2,75,0,1,65,78.84,1,Tier 2 Tech,9.52
+STU-2877,Information Science,8.81,47,66,1,0,55,1,2,72,46.78,0,Unplaced,0.0
+STU-2878,Computer Science,8.11,62,77,1,1,306,0,2,78,83.48,1,Tier 1 Product,28.31
+STU-2879,Electronics & Communication,9.08,63,70,0,0,78,0,3,45,62.85,1,Tier 3 Enterprise,6.81
+STU-2880,Electronics & Communication,8.17,73,81,4,0,69,0,0,74,78.55,1,Tier 2 Tech,14.91
+STU-2881,Civil Engineering,7.49,67,62,1,1,122,0,0,65,64.62,1,Tier 3 Enterprise,6.84
+STU-2882,Electronics & Communication,9.9,81,86,3,0,33,0,1,90,83.31,1,Tier 2 Tech,11.09
+STU-2883,Mechanical Engineering,8.58,63,83,4,0,43,0,1,100,75.68,1,Tier 2 Tech,14.62
+STU-2884,Computer Science,8.23,71,70,5,0,295,1,3,69,71.34,1,Tier 2 Tech,11.67
+STU-2885,Information Science,6.2,88,61,1,1,124,0,3,53,76.09,1,Tier 2 Tech,17.44
+STU-2886,Computer Science,6.18,76,46,3,0,192,0,2,75,72.63,1,Tier 2 Tech,11.43
+STU-2887,Computer Science,7.92,71,81,5,0,34,0,1,71,77.1,1,Tier 2 Tech,14.03
+STU-2888,Electronics & Communication,7.76,63,91,2,0,86,0,1,97,72.07,1,Tier 2 Tech,15.5
+STU-2889,Artificial Intelligence & Machine Learning,6.92,63,95,2,1,390,4,1,93,22.18,0,Unplaced,0.0
+STU-2890,Computer Science,7.76,60,74,4,0,42,1,0,84,63.96,1,Tier 3 Enterprise,7.63
+STU-2891,Information Science,9.35,64,94,0,0,19,3,1,66,27.99,0,Unplaced,0.0
+STU-2892,Mechanical Engineering,8.36,82,61,1,0,78,0,1,82,71.06,1,Tier 2 Tech,12.38
+STU-2893,Computer Science,6.34,68,77,5,0,53,0,1,77,68.15,1,Tier 2 Tech,11.6
+STU-2894,Electronics & Communication,7.48,53,79,4,1,19,0,1,76,73.43,1,Tier 2 Tech,12.3
+STU-2895,Electronics & Communication,6.71,96,60,1,1,241,0,0,55,74.09,1,Tier 2 Tech,11.24
+STU-2896,Electronics & Communication,7.17,76,81,2,2,480,0,1,86,83.97,1,Tier 2 Tech,14.54
+STU-2897,Computer Science,7.15,52,66,2,0,92,1,5,75,55.88,1,Tier 3 Enterprise,7.73
+STU-2898,Information Science,7.07,65,63,2,3,163,0,1,72,86.61,1,Tier 2 Tech,9.26
+STU-2899,Mechanical Engineering,6.22,73,66,1,0,215,0,2,66,73.47,1,Tier 2 Tech,13.61
+STU-2900,Electronics & Communication,7.46,95,61,3,3,132,1,1,64,69.08,1,Tier 2 Tech,16.98
+STU-2901,Computer Science,6.98,56,78,1,0,4,1,1,77,47.62,0,Unplaced,0.0
+STU-2902,Mechanical Engineering,5.0,85,41,1,1,18,0,1,53,62.4,1,Tier 3 Enterprise,4.4
+STU-2903,Computer Science,9.86,91,80,2,0,8,0,1,83,81.8,1,Tier 2 Tech,12.94
+STU-2904,Electronics & Communication,8.8,63,73,4,0,1,0,1,61,70.62,1,Tier 2 Tech,16.65
+STU-2905,Computer Science,7.19,68,77,3,2,40,0,1,49,75.91,1,Tier 2 Tech,17.0
+STU-2906,Artificial Intelligence & Machine Learning,7.62,57,66,0,1,54,0,1,95,71.91,1,Tier 2 Tech,13.14
+STU-2907,Information Science,6.31,69,49,4,3,30,0,0,63,77.0,1,Tier 2 Tech,8.25
+STU-2908,Computer Science,9.47,71,81,2,1,7,0,0,65,83.64,1,Tier 2 Tech,9.06
+STU-2909,Computer Science,9.69,81,89,2,1,83,0,1,87,97.43,1,Tier 2 Tech,13.87
+STU-2910,Computer Science,7.77,87,62,3,0,35,1,3,96,65.42,1,Tier 3 Enterprise,4.5
+STU-2911,Civil Engineering,8.73,61,70,2,3,174,2,2,55,60.54,1,Tier 3 Enterprise,4.6
+STU-2912,Artificial Intelligence & Machine Learning,7.79,44,95,1,1,0,0,3,62,71.57,1,Tier 2 Tech,15.72
+STU-2913,Information Science,6.13,71,52,0,1,203,1,0,63,56.09,1,Tier 3 Enterprise,7.0
+STU-2914,Information Science,7.15,76,65,1,0,340,0,1,85,74.93,1,Tier 2 Tech,16.43
+STU-2915,Electronics & Communication,7.75,75,70,1,1,138,0,1,93,81.74,1,Tier 2 Tech,9.06
+STU-2916,Civil Engineering,7.1,67,64,2,2,145,0,3,61,82.45,1,Tier 2 Tech,9.98
+STU-2917,Electronics & Communication,7.36,73,77,1,0,298,0,1,90,76.22,1,Tier 2 Tech,16.33
+STU-2918,Information Science,7.5,93,81,1,0,25,0,2,65,73.82,1,Tier 2 Tech,15.21
+STU-2919,Information Science,7.51,77,69,1,0,480,2,2,78,51.62,0,Unplaced,0.0
+STU-2920,Electronics & Communication,7.66,66,60,3,1,163,0,1,58,76.09,1,Tier 2 Tech,16.06
+STU-2921,Computer Science,6.43,64,76,0,0,142,4,2,72,1.46,0,Unplaced,0.0
+STU-2922,Electronics & Communication,6.81,69,65,1,0,49,0,0,72,55.64,1,Tier 3 Enterprise,7.96
+STU-2923,Information Science,6.19,94,78,1,0,86,0,3,70,75.44,1,Tier 2 Tech,16.64
+STU-2924,Mechanical Engineering,8.68,69,58,3,1,116,0,2,78,83.06,1,Tier 2 Tech,13.2
+STU-2925,Computer Science,5.28,71,56,4,0,106,0,0,61,66.22,1,Tier 3 Enterprise,5.24
+STU-2926,Electronics & Communication,8.87,65,100,1,0,134,0,2,63,79.31,1,Tier 2 Tech,13.7
+STU-2927,Information Science,9.12,87,81,2,3,9,0,3,79,101.3,1,Tier 2 Tech,14.39
+STU-2928,Electronics & Communication,7.27,99,67,4,3,48,0,1,90,89.12,1,Tier 2 Tech,11.35
+STU-2929,Computer Science,5.0,78,54,2,0,62,0,1,73,66.69,1,Tier 3 Enterprise,7.08
+STU-2930,Electronics & Communication,7.2,73,64,0,1,33,0,0,80,65.9,1,Tier 3 Enterprise,4.37
+STU-2931,Electronics & Communication,7.53,72,69,0,1,20,0,2,83,71.7,1,Tier 2 Tech,15.79
+STU-2932,Electronics & Communication,6.49,38,60,3,0,16,0,2,83,50.2,0,Unplaced,0.0
+STU-2933,Electronics & Communication,7.03,82,61,4,0,50,1,2,62,59.02,1,Tier 3 Enterprise,4.13
+STU-2934,Electronics & Communication,9.28,73,98,0,1,74,3,1,64,35.97,0,Unplaced,0.0
+STU-2935,Mechanical Engineering,8.33,77,83,0,0,7,0,0,65,69.79,1,Tier 2 Tech,12.98
+STU-2936,Computer Science,6.58,62,67,2,0,322,0,0,97,68.34,1,Tier 2 Tech,16.61
+STU-2937,Mechanical Engineering,5.84,66,66,1,2,159,0,2,80,78.98,1,Tier 2 Tech,8.86
+STU-2938,Information Science,7.24,66,67,3,1,144,2,1,79,55.72,1,Tier 3 Enterprise,6.07
+STU-2939,Computer Science,7.37,86,63,1,1,20,0,1,78,67.06,1,Tier 2 Tech,9.59
+STU-2940,Computer Science,8.15,66,71,5,0,101,0,1,58,78.88,1,Tier 2 Tech,16.95
+STU-2941,Computer Science,7.01,100,68,0,1,82,0,1,97,80.22,1,Tier 2 Tech,16.32
+STU-2942,Mechanical Engineering,8.16,78,66,1,0,444,0,5,79,76.94,1,Tier 2 Tech,17.34
+STU-2943,Electronics & Communication,9.73,54,84,2,1,151,1,3,82,73.88,1,Tier 2 Tech,16.75
+STU-2944,Mechanical Engineering,8.5,70,74,2,1,94,1,3,52,72.03,1,Tier 2 Tech,15.37
+STU-2945,Information Science,7.55,62,93,2,1,209,0,1,83,82.41,1,Tier 2 Tech,9.85
+STU-2946,Information Science,7.4,41,43,2,0,18,2,1,69,24.85,0,Unplaced,0.0
+STU-2947,Computer Science,7.21,94,67,2,1,1,0,1,58,80.0,1,Tier 2 Tech,11.03
+STU-2948,Computer Science,8.9,81,100,2,2,128,3,1,62,63.06,0,Unplaced,0.0
+STU-2949,Information Science,6.91,79,68,1,1,11,1,1,58,57.13,1,Tier 3 Enterprise,5.99
+STU-2950,Computer Science,7.65,74,80,2,0,13,0,1,58,71.05,1,Tier 2 Tech,13.89
+STU-2951,Computer Science,7.66,52,74,1,1,150,1,0,74,54.84,0,Unplaced,0.0
+STU-2952,Electronics & Communication,7.05,65,61,2,0,34,0,3,69,60.66,1,Tier 3 Enterprise,7.13
+STU-2953,Electronics & Communication,6.09,83,38,1,2,108,0,1,78,74.63,1,Tier 2 Tech,10.27
+STU-2954,Artificial Intelligence & Machine Learning,7.96,57,77,0,1,274,0,1,94,77.82,1,Tier 2 Tech,9.28
+STU-2955,Artificial Intelligence & Machine Learning,7.53,36,64,3,0,41,0,1,72,67.01,1,Tier 2 Tech,12.83
+STU-2956,Electronics & Communication,8.15,68,69,2,0,26,0,0,47,62.41,1,Tier 3 Enterprise,4.63
+STU-2957,Information Science,7.01,70,63,1,0,12,0,1,71,60.17,1,Tier 3 Enterprise,6.77
+STU-2958,Electronics & Communication,8.94,73,100,3,2,15,1,0,88,83.56,1,Tier 2 Tech,13.76
+STU-2959,Mechanical Engineering,6.64,82,89,1,0,7,0,0,72,64.8,1,Tier 3 Enterprise,6.96
+STU-2960,Computer Science,9.48,80,90,2,1,10,0,0,92,88.22,1,Tier 2 Tech,8.63
+STU-2961,Information Science,5.68,75,52,2,2,62,0,2,79,82.72,1,Tier 2 Tech,17.65
+STU-2962,Mechanical Engineering,8.08,88,64,1,0,42,0,1,51,64.16,1,Tier 3 Enterprise,4.0
+STU-2963,Information Science,8.12,50,81,7,0,134,0,2,75,82.32,1,Tier 2 Tech,11.25
+STU-2964,Electronics & Communication,6.72,79,83,1,1,224,0,2,77,82.62,1,Tier 2 Tech,14.8
+STU-2965,Electronics & Communication,8.07,80,74,3,1,168,1,0,86,64.67,1,Tier 3 Enterprise,4.18
+STU-2966,Computer Science,9.01,54,60,1,0,83,0,1,95,64.38,1,Tier 3 Enterprise,4.33
+STU-2967,Information Science,5.16,50,59,1,0,11,0,0,84,50.28,0,Unplaced,0.0
+STU-2968,Computer Science,8.15,61,87,2,1,136,1,2,79,65.35,1,Tier 3 Enterprise,4.31
+STU-2969,Computer Science,5.0,62,36,2,2,49,0,2,82,73.98,1,Tier 2 Tech,13.82
+STU-2970,Computer Science,6.54,82,66,1,0,9,0,3,71,66.47,1,Tier 3 Enterprise,7.58
+STU-2971,Mechanical Engineering,9.39,63,91,3,0,203,0,3,56,86.97,1,Tier 1 Product,31.33
+STU-2972,Computer Science,6.96,60,66,0,0,45,1,0,74,44.31,0,Unplaced,0.0
+STU-2973,Information Science,6.31,63,54,4,2,27,2,1,78,49.99,0,Unplaced,0.0
+STU-2974,Computer Science,7.38,87,81,0,0,225,1,1,59,59.44,1,Tier 3 Enterprise,6.41
+STU-2975,Artificial Intelligence & Machine Learning,9.87,72,86,4,2,255,0,2,89,117.73,1,Tier 1 Product,26.3
+STU-2976,Computer Science,5.59,69,41,0,0,45,0,3,86,52.9,0,Unplaced,0.0
+STU-2977,Information Science,6.44,70,43,0,2,48,1,3,57,59.63,1,Tier 3 Enterprise,4.07
+STU-2978,Civil Engineering,9.25,90,98,1,1,95,0,2,90,84.63,1,Tier 2 Tech,8.22
+STU-2979,Mechanical Engineering,9.64,61,95,2,1,145,0,0,70,91.8,1,Tier 2 Tech,16.88
+STU-2980,Computer Science,7.49,90,72,2,0,7,1,1,64,52.74,0,Unplaced,0.0
+STU-2981,Mechanical Engineering,6.24,74,57,3,1,98,0,2,86,73.34,1,Tier 2 Tech,9.03
+STU-2982,Information Science,9.9,69,85,3,0,335,0,0,73,89.45,1,Tier 1 Product,41.99
+STU-2983,Information Science,9.35,100,76,3,0,33,2,4,96,58.46,1,Tier 3 Enterprise,4.66
+STU-2984,Computer Science,8.35,57,74,0,0,263,0,1,63,69.36,1,Tier 2 Tech,14.75
+STU-2985,Computer Science,6.71,67,44,1,2,329,0,2,53,73.72,1,Tier 2 Tech,17.49
+STU-2986,Electronics & Communication,7.55,54,65,1,1,34,1,2,70,47.04,0,Unplaced,0.0
+STU-2987,Information Science,7.42,85,68,1,1,154,2,3,83,54.29,0,Unplaced,0.0
+STU-2988,Information Science,7.96,95,81,2,1,30,0,1,62,83.69,1,Tier 2 Tech,11.62
+STU-2989,Electronics & Communication,9.2,95,85,4,0,147,0,2,58,87.35,1,Tier 2 Tech,15.34
+STU-2990,Mechanical Engineering,8.57,89,88,2,2,175,1,3,76,92.5,1,Tier 2 Tech,11.51
+STU-2991,Computer Science,6.41,69,76,5,1,31,0,2,56,74.62,1,Tier 2 Tech,11.05
+STU-2992,Electronics & Communication,9.11,66,95,1,1,138,0,1,77,80.18,1,Tier 2 Tech,10.02
+STU-2993,Computer Science,7.94,48,80,3,1,183,0,0,69,77.6,1,Tier 2 Tech,16.21
+STU-2994,Mechanical Engineering,8.36,100,78,1,3,48,1,2,79,75.75,1,Tier 2 Tech,10.57
+STU-2995,Electronics & Communication,9.21,78,75,2,2,20,1,0,57,73.9,1,Tier 2 Tech,10.83
+STU-2996,Artificial Intelligence & Machine Learning,6.38,65,70,1,1,10,0,3,89,70.54,1,Tier 2 Tech,17.99
+STU-2997,Computer Science,7.56,90,89,1,0,94,1,0,71,53.93,0,Unplaced,0.0
+STU-2998,Computer Science,7.02,58,71,2,1,420,1,3,83,71.44,1,Tier 2 Tech,11.27
+STU-2999,Computer Science,5.88,77,78,2,1,190,0,0,85,77.91,1,Tier 2 Tech,12.23

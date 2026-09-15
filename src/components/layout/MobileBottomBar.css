@@ -1,0 +1,60 @@
+.mobile-bottom-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: var(--bg-surface, #ffffff);
+  border-top: 1px solid var(--border-light, #e5e7eb);
+  z-index: 1000;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(8px);
+}
+
+@media (max-width: 768px) {
+  .mobile-bottom-bar {
+    display: block;
+  }
+}
+
+.mobile-bottom-bar-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  padding: 0 4px;
+}
+
+.mobile-bottom-bar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
+  color: var(--text-secondary, #6b7280);
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  gap: 3px;
+}
+
+.mobile-bottom-bar-icon {
+  transition: transform 0.2s ease;
+}
+
+.mobile-bottom-bar-item.active {
+  color: var(--accent-primary, #4E715D);
+  font-weight: 700;
+}
+
+.mobile-bottom-bar-item.active .mobile-bottom-bar-icon {
+  transform: translateY(-1px) scale(1.1);
+  color: var(--accent-primary, #4E715D);
+}
+
+.mobile-bottom-bar-label {
+  line-height: 1;
+}

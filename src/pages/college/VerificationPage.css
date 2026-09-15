@@ -1,0 +1,203 @@
+/* Verification Page & Bulk Action Styling */
+.verification-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Bulk Action Bar */
+.bulk-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(168, 85, 247, 0.08) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-lg, 12px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  animation: slideDown 0.25s ease-out;
+}
+
+.bulk-action-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.bulk-count-badge {
+  background: var(--primary, #6366f1);
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+}
+
+.bulk-action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Checkbox styling */
+.custom-checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  accent-color: var(--primary, #6366f1);
+}
+
+/* Dynamic Tag Pills */
+.tag-pills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.35rem;
+}
+
+.tag-pill-btn {
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--primary, #6366f1);
+  border: 1px dashed rgba(99, 102, 241, 0.4);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-family: monospace;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.tag-pill-btn:hover {
+  background: var(--primary, #6366f1);
+  color: #ffffff;
+  border-style: solid;
+  transform: translateY(-1px);
+}
+
+/* Email Preview Card */
+.email-preview-card {
+  background: var(--surface, #1e293b);
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.email-preview-header {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: #ffffff;
+  padding: 1rem 1.25rem;
+}
+
+.email-preview-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.email-preview-sub {
+  font-size: 0.8rem;
+  opacity: 0.9;
+  margin-top: 0.25rem;
+}
+
+.email-preview-body {
+  padding: 1.25rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  font-size: 0.9rem;
+}
+
+.email-credentials-box {
+  background: rgba(99, 102, 241, 0.06);
+  border-left: 4px solid var(--primary, #6366f1);
+  padding: 0.85rem 1rem;
+  border-radius: 0 8px 8px 0;
+  margin: 1rem 0;
+  font-family: monospace;
+  font-size: 0.85rem;
+}
+
+.email-cta-button {
+  display: inline-block;
+  background: var(--primary, #6366f1);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.6rem 1.25rem;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-top: 0.75rem;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.email-preview-footer {
+  background: rgba(0, 0, 0, 0.04);
+  border-top: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+  padding: 0.75rem 1.25rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary, #94a3b8);
+  text-align: center;
+}
+
+/* Modal Tabs */
+.modal-nav-tabs {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.modal-nav-tab {
+  background: transparent;
+  border: none;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary, #94a3b8);
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.15s ease;
+}
+
+.modal-nav-tab.active {
+  background: var(--primary, #6366f1);
+  color: #ffffff;
+}
+
+/* Animations & Responsive */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .bulk-action-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  .bulk-action-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  .bulk-action-buttons .btn {
+    width: 100%;
+  }
+  .tag-pills-container {
+    max-height: 120px;
+    overflow-y: auto;
+  }
+}

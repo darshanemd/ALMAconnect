@@ -1,0 +1,134 @@
+.survey-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Google Forms Aesthetic Styling */
+.google-form-container {
+  padding: var(--space-4);
+  font-family: 'Outfit', 'Inter', sans-serif;
+}
+
+.google-form-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+  transition: box-shadow var(--transition-normal), border-color var(--transition-normal);
+  position: relative;
+}
+
+/* Google Forms Top Color Accent Bar */
+.google-form-header-card {
+  border-top: 10px solid #673ab7; /* Google Form Purple Accent */
+}
+
+.google-form-top-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background-color: #673ab7;
+}
+
+/* Question card validation error state */
+.google-form-question-card.question-card-error {
+  border-left: 6px solid var(--danger) !important;
+  border-color: var(--danger-light);
+}
+
+/* Inputs styled like Google Forms */
+.google-form-textarea {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  padding: var(--space-2) 0;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+  transition: border-bottom-color var(--transition-fast);
+}
+
+.google-form-textarea:focus {
+  outline: none;
+  border-bottom: 2px solid #673ab7;
+}
+
+/* Custom styled MCQ options */
+.google-form-radio-label {
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+.google-form-radio-input {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: var(--surface);
+  margin: 0;
+  font: inherit;
+  color: var(--text-secondary);
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--text-tertiary);
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+
+.google-form-radio-input::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em #673ab7;
+}
+
+.google-form-radio-input:checked {
+  border-color: #673ab7;
+}
+
+.google-form-radio-input:checked::before {
+  transform: scale(1);
+}
+
+.google-form-option-text {
+  color: var(--text);
+  font-size: 14px;
+}
+
+/* Google Forms rating stars visual styling */
+.google-form-rating-star {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-tertiary);
+  padding: var(--space-1);
+  transition: transform var(--transition-fast), color var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.google-form-rating-star:hover {
+  transform: scale(1.2);
+}
+
+.google-form-rating-star.active {
+  color: var(--accent);
+}
+
+.google-form-error-msg {
+  color: var(--danger);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+}

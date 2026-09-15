@@ -1,0 +1,672 @@
+/* Event Card & Poster Image */
+.event-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0 !important;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.event-poster-container {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  background-color: var(--background);
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+.event-poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.event-card:hover .event-poster-img {
+  transform: scale(1.04);
+}
+
+.event-poster-placeholder {
+  position: relative;
+  width: 100%;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(135deg, rgba(110, 114, 229, 0.2) 0%, rgba(56, 189, 248, 0.1) 100%);
+}
+
+.event-card-content {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  gap: var(--space-4);
+}
+
+.event-info-list {
+  border-top: 1px solid var(--border-light);
+  padding-top: var(--space-4);
+}
+
+.event-info-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.event-card-actions {
+  border-top: 1px solid var(--border-light);
+  padding-top: var(--space-4);
+}
+
+.ticket-modal {
+  max-width: 420px;
+}
+
+.ticket-qr-container {
+  display: inline-block;
+  box-shadow: var(--shadow-sm);
+}
+
+.ticket-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  background-color: var(--background);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+
+.ticket-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ticket-cell .label {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.ticket-cell .value {
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 2px;
+}
+
+/* Discussion Board / Chat Board Styles */
+.discussion-modal {
+  max-width: 600px;
+}
+
+.chat-history-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-height: 350px;
+  min-height: 200px;
+  overflow-y: auto;
+  padding: var(--space-3);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-hover);
+  margin-bottom: var(--space-4);
+}
+
+.chat-bubble {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  border-bottom-left-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+  max-width: 85%;
+  align-self: flex-start;
+  box-shadow: var(--shadow-sm);
+  animation: slideUp var(--transition-fast);
+}
+
+.chat-bubble.self {
+  align-self: flex-end;
+  background-color: var(--accent-bg);
+  border-color: var(--accent-light);
+  border-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-sm);
+}
+
+.chat-bubble-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: 4px;
+}
+
+.chat-bubble-author {
+  font-weight: 600;
+  font-size: var(--font-xs);
+  color: var(--text-primary);
+}
+
+.chat-bubble-time {
+  font-size: 10px;
+  color: var(--text-tertiary);
+}
+
+.chat-bubble-text {
+  font-size: var(--font-sm);
+  color: var(--text-primary);
+  line-height: 1.4;
+  word-break: break-word;
+  text-align: left;
+}
+
+.chat-input-form {
+  display: flex;
+  gap: var(--space-2);
+  border-top: 1px solid var(--border-light);
+  padding-top: var(--space-4);
+}
+
+/* Hackathon Workflow Styles */
+.hackathon-workflow-view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.workflow-header-section {
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+
+.workflow-subtitle {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  margin-top: var(--space-1);
+}
+
+.workflow-grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1.2fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .workflow-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-left: 10px;
+}
+
+.timeline-step {
+  display: flex;
+  gap: var(--space-4);
+  position: relative;
+  padding-bottom: var(--space-8);
+  align-items: flex-start;
+}
+
+.timeline-step:last-child {
+  padding-bottom: 0;
+}
+
+/* Connector line */
+.timeline-step::after {
+  content: '';
+  position: absolute;
+  left: 24px;
+  top: 48px;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--border-light);
+  z-index: 0;
+}
+
+.timeline-step:last-child::after {
+  display: none;
+}
+
+.step-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  z-index: 1;
+  box-shadow: var(--shadow-sm);
+  border: 2px solid var(--surface);
+  transition: transform var(--transition-fast) ease;
+}
+
+.timeline-step:hover .step-badge {
+  transform: scale(1.1);
+}
+
+.step-card {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  flex-grow: 1;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast) ease;
+}
+
+.timeline-step:hover .step-card {
+  border-color: var(--accent-light);
+  box-shadow: var(--shadow-md);
+  transform: translateX(4px);
+}
+
+.step-title {
+  font-weight: 600;
+  font-size: var(--font-md);
+  color: var(--text-primary);
+}
+
+.step-label {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  margin-top: var(--space-1);
+}
+
+/* Highlight Stage 2 specifically */
+.timeline-step.stage-highlight .step-card {
+  border: 2px solid var(--accent);
+  background-color: var(--accent-bg);
+}
+
+.problem-statement-sidebar {
+  position: sticky;
+  top: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.problem-statement-card {
+  border: 2px dashed var(--accent-light);
+  background: var(--surface);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-fast) ease;
+}
+
+.problem-statement-card.active-hub {
+  border-color: var(--accent);
+}
+
+.doc-download-box {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--background);
+  border: 1px solid var(--border);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  margin-top: var(--space-3);
+}
+
+.selector-bar {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* Team Hub Styles */
+.teams-hub-card {
+  border: 1px solid var(--border-light);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.teams-list-scrollable {
+  max-height: 250px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  padding-right: 4px;
+}
+
+.team-list-item {
+  background: var(--background);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.team-list-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.team-member-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.team-member-chip {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 2px 6px;
+  font-size: 9px;
+  color: var(--text-secondary);
+}
+
+/* Premium Team Builder Styles */
+.team-card-premium {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  background: var(--surface);
+  transition: all var(--transition-fast) cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.team-card-premium:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-light);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.tag-role {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--accent-dark);
+  background-color: var(--accent-bg);
+  border: 1px solid var(--accent-light);
+  border-radius: var(--radius-sm);
+  padding: 2px 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.team-member-chip.advisor {
+  background: var(--accent) !important;
+  color: var(--surface) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 3px var(--accent-light);
+}
+
+.badge-advisor {
+  font-size: 9px;
+  background-color: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.badge-joined {
+  font-size: 9px;
+  background-color: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.create-team-container {
+  animation: fadeIn var(--transition-normal) ease;
+}
+
+.teams-list-scrollable {
+  max-height: 480px; /* Expand height to fit cards better */
+  padding-bottom: 12px;
+}
+
+.badge.badge-warning {
+  background-color: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+
+/* Search & Filter Control Bar */
+.events-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+}
+
+.search-box-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 220px;
+}
+
+.search-box-wrap input {
+  padding-left: 36px;
+}
+
+.search-box-wrap .search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+}
+
+/* Category Filter Badges */
+.badge-category-reunion { background: #FEF3C7; color: #B45309; border: 1px solid #FCD34D; }
+.badge-category-cultural { background: #FCE7F3; color: #BE185D; border: 1px solid #F9A8D4; }
+.badge-category-freshers { background: #E0F2FE; color: #0369A1; border: 1px solid #7DD3FC; }
+.badge-category-ethnic { background: #DCFCE7; color: #15803D; border: 1px solid #86EFAC; }
+.badge-category-hackathon { background: #F3E8FF; color: #7E22CE; border: 1px solid #D8B4FE; }
+.badge-category-webinar { background: #E0E7FF; color: #4338CA; border: 1px solid #A5B4FC; }
+.badge-category-workshop { background: #ECFDF5; color: #047857; border: 1px solid #6EE7B7; }
+
+/* Capacity Progress Bar */
+.capacity-bar-bg {
+  width: 100%;
+  height: 6px;
+  background-color: var(--border-light);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.capacity-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* Custom Registration Question Builder */
+.question-builder-box {
+  background: var(--background);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px;
+}
+
+.preset-btn {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Print Ticket Media Styling */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .printable-ticket-area, .printable-ticket-area * {
+    visibility: visible;
+  }
+  .printable-ticket-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
+
+/* ── Hackathons & Challenge Hub Styling ── */
+.hackathon-hub-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border-light);
+}
+
+@media (min-width: 640px) {
+  .hackathon-hub-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.hackathon-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 12px);
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.hackathon-switcher-btn {
+  padding: 7px 16px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border-radius: var(--radius-md, 8px);
+  border: none;
+  color: var(--text-secondary);
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.hackathon-switcher-btn:hover {
+  color: var(--text-primary);
+  background-color: var(--surface-hover);
+}
+
+.hackathon-switcher-btn.active {
+  color: var(--text-inverse) !important;
+  background: var(--accent) !important;
+  box-shadow: 0 1px 4px rgba(31, 61, 45, 0.2);
+}
+
+.hackathon-detail-panel {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl, 14px);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.hackathon-pdf-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: border-color 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .hackathon-pdf-card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.hackathon-pdf-card:hover {
+  border-color: var(--accent-light);
+}
+
+.hackathon-pdf-icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md, 8px);
+  background: rgba(185, 74, 72, 0.12);
+  color: var(--danger, #b94a48);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hackathon-pdf-upload-dropzone {
+  background: var(--surface);
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: all 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .hackathon-pdf-upload-dropzone {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.hackathon-pdf-upload-dropzone:hover {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+}
+
+

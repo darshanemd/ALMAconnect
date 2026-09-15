@@ -1,0 +1,62 @@
+.csv-textarea {
+  font-family: monospace;
+  font-size: var(--font-xs);
+  min-height: 160px;
+}
+
+.validation-stats-bar {
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: var(--space-4);
+}
+
+.val-stat-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.val-stat-box .count {
+  line-height: 1;
+}
+
+.val-stat-box .label {
+  color: var(--text-secondary);
+}
+
+.token-spec-box {
+  background-color: var(--background);
+  border: 1px solid var(--border-light);
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+.token-spec-box code {
+  color: var(--accent-dark);
+}
+
+.csv-file-upload-zone {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 1.5rem;
+  background: var(--background);
+  transition: all var(--transition-base);
+  text-align: center;
+  position: relative;
+  margin-bottom: var(--space-4);
+}
+
+.csv-file-upload-zone:hover,
+.csv-file-upload-zone.drag-active {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+}
+
+.hidden-file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

@@ -1,0 +1,21 @@
+.profile-banner-card {
+  background: var(--accent-gradient-light);
+  border: 1px solid var(--accent-light);
+}
+
+.profile-banner-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.education-box {
+  background-color: var(--background);
+}
+
+@media (max-width: 1024px) {
+  .grid-span-2 {
+    grid-column: span 3;
+  }
+}

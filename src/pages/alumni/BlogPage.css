@@ -1,0 +1,329 @@
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-lg, 10px);
+}
+
+.blog-card-image-wrap {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  background-color: var(--surface-hover);
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+
+.blog-card-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.blog-card:hover .blog-card-cover-img {
+  transform: scale(1.03);
+}
+
+.blog-card-author-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.blog-modal {
+  max-width: 620px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-modal .modal-body {
+  overflow-y: auto;
+  max-height: calc(90vh - 130px);
+  padding-right: 4px;
+}
+
+/* Preset Covers Grid */
+.blog-preset-images-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.blog-preset-thumb-item {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  height: 58px;
+  transition: all 0.15s ease;
+}
+
+.blog-preset-thumb-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-preset-thumb-item span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 8px;
+  font-weight: 600;
+  text-align: center;
+  padding: 1px 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.blog-preset-thumb-item:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.blog-preset-thumb-item.selected {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-bg);
+}
+
+.preset-selected-check {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Upload Dropzone */
+.blog-upload-dropzone {
+  margin-top: 6px;
+}
+
+.hidden-file-input {
+  display: none;
+}
+
+.upload-label-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  border: 1.5px dashed var(--border);
+  border-radius: 6px;
+  background: var(--background);
+  color: var(--text-primary);
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.upload-label-btn:hover {
+  border-color: var(--accent);
+  background: var(--surface-hover);
+  color: var(--accent-light, var(--accent));
+}
+
+/* Cover Preview */
+.blog-cover-preview-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+.blog-cover-preview-img {
+  width: 60px;
+  height: 38px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.blog-cover-preview-meta {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   RICH MEDIA TOOLBAR & INLINE MEDIA
+   ────────────────────────────────────────────────────────────────────────── */
+.editor-tab-toggle {
+  display: flex;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.editor-tab-btn {
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 4px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.editor-tab-btn.active {
+  background: var(--surface);
+  color: var(--accent-light, var(--accent));
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.rich-editor-toolbar {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  padding: 5px 8px;
+}
+
+.toolbar-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 7px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.toolbar-btn:hover {
+  background: var(--surface-hover);
+  color: var(--text-primary);
+}
+
+.toolbar-btn.highlight {
+  background: var(--accent-bg, rgba(78, 113, 93, 0.15));
+  color: var(--accent-light, var(--accent));
+  border-color: rgba(78, 113, 93, 0.25);
+}
+
+.toolbar-btn.highlight:hover,
+.toolbar-btn.highlight.active-tool {
+  background: var(--accent);
+  color: white;
+}
+
+.toolbar-divider {
+  width: 1px;
+  height: 16px;
+  background: var(--border);
+  margin: 0 4px;
+}
+
+/* Media Drawer Card inside Editor */
+.media-drawer-card {
+  background: var(--surface-hover);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  animation: fadeIn 0.15s ease-out;
+}
+
+.blog-modal textarea.textarea {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.editor-live-preview-box {
+  min-height: 180px;
+  max-height: 320px;
+  overflow-y: auto;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px 16px;
+}
+
+/* Inline Media inside Markdown Render */
+.blog-markdown-figure {
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blog-inline-img {
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--border);
+}
+
+.blog-inline-caption {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 6px;
+  font-style: italic;
+}
+
+.blog-video-container {
+  margin: 16px 0;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+.blog-inline-video {
+  width: 100%;
+  max-height: 420px;
+  display: block;
+}
+
+.blog-video-embed-wrap {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+  margin: 16px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.blog-video-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}

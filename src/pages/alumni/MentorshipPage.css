@@ -1,0 +1,24 @@
+.mentor-card {
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+}
+
+.ai-match-gauge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--font-xs);
+  font-weight: 700;
+  border-radius: var(--radius-full);
+}
+
+.starter-box {
+  background-color: var(--background);
+  border: 1px dashed var(--border);
+}
+
+.volunteer-info-badge {
+  background-color: var(--success-bg);
+  border-color: #A7F3D0;
+}
