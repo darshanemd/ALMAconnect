@@ -12,6 +12,7 @@ import {
 import EmptyState from '../../components/ui/EmptyState';
 import { calculateSkillMatch } from '../../utils/matching';
 import { formatDate } from '../../utils/formatters';
+import { uploadFile, getFileUrl } from '../../utils/api';
 import './JobsPage.css';
 
 // Helper to safely format salary text (handles ?, commas, LPA, etc.)
@@ -278,16 +279,8 @@ export default function JobsPage() {
       const data = new FormData();
       data.append('file', file);
 
-      const res = await fetch('/api/upload', {
-        method: 'POST',
-        body: data
-      });
+      const result = await uploadFile(data);
 
-      if (!res.ok) {
-        throw new Error('Upload failed');
-      }
-
-      const result = await res.json();
       setFormData(prev => ({
         ...prev,
         pdfUrl: result.url,

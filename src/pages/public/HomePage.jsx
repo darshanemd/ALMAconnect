@@ -6,6 +6,7 @@ import {
   TrendingUp, FileText, Zap, Activity, X, Star, Globe
 } from 'lucide-react';
 import AlumniConnectLogo from '../../components/ui/AlumniConnectLogo';
+import { apiRequest } from '../../utils/api';
 import './HomePage.css';
 
 const COMMUNITY_ACTIVITIES = [
@@ -35,7 +36,6 @@ export default function HomePage() {
     ]
   });
 
-  const [alumniCount, setAlumniCount] = useState(5000);
   const [activeFaq, setActiveFaq] = useState(null);
 
   // Hero Rotatable Ecosystem state
@@ -52,8 +52,7 @@ export default function HomePage() {
 
   // Fetch real live statistics from MongoDB
   useEffect(() => {
-    fetch('/api/public-stats')
-      .then(res => res.json())
+    apiRequest('/public-stats')
       .then(data => {
         if (data && typeof data.alumni === 'number') {
           setLiveStats(data);
@@ -123,7 +122,7 @@ export default function HomePage() {
       { threshold: 0.12 }
     );
 
-    const revealElements = document.querySelectorAll('.feature-card, .stat-item, .result-card, .faq-card');
+    const revealElements = document.querySelectorAll('.feature-card, .stat-item, .faq-card');
     revealElements.forEach(el => observer.observe(el));
 
     return () => observer.disconnect();
@@ -132,10 +131,6 @@ export default function HomePage() {
   const toggleFaq = (index) => {
     setActiveFaq(activeFaq === index ? null : index);
   };
-
-  // Dynamic calculations based on slider
-  const estimatedMentorships = Math.round(alumniCount * 0.12);
-  const estimatedJobPosts = Math.round(alumniCount * 0.08);
 
   const activities = liveStats.activities || [];
   const currentActivity = activities[activityIdx % (activities.length || 1)] || {
@@ -326,45 +321,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Interactive Network Impact Calculator */}
-      <section className="calculator-section">
-        <div className="calculator-container glass-panel">
-          <div className="calc-info">
-            <span className="sub-tag">ESTIMATE IMPACT</span>
-            <h2>See Your Network's Growth Potential</h2>
-            <p>Adjust the slider to simulate alumni engagement and career matches across your institution.</p>
-            
-            <div className="slider-box">
-              <div className="slider-label">
-                <span>Alumni Network Size:</span>
-                <strong>{alumniCount.toLocaleString()} Members</strong>
-              </div>
-              <input 
-                type="range" 
-                min="1000" 
-                max="25000" 
-                step="500"
-                value={alumniCount} 
-                onChange={(e) => setAlumniCount(Number(e.target.value))}
-                className="calc-range"
-              />
-            </div>
-          </div>
-
-          <div className="calc-results-grid">
-            <div className="result-card">
-              <Users size={20} className="text-cyan" />
-              <h3>{estimatedMentorships.toLocaleString()}</h3>
-              <p>Active Mentorship Connections</p>
-            </div>
-            <div className="result-card">
-              <Briefcase size={20} className="text-emerald" />
-              <h3>{estimatedJobPosts.toLocaleString()}</h3>
-              <p>Career Opportunities Unlocked</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* FAQ Accordion */}
       <section className="faq-section">

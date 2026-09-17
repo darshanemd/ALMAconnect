@@ -522,35 +522,7 @@
   height: 22px;
 }
 
-/* Quick Demo Login Grid */
-.demo-accounts-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin-bottom: 20px;
-}
 
-.demo-role-btn {
-  padding: 8px 4px;
-  border-radius: 10px;
-  border: 1px dashed var(--border, rgba(78, 113, 93, 0.3));
-  background: var(--accent-bg, rgba(78, 113, 93, 0.08));
-  color: var(--accent, #4E715D);
-  font-size: 0.78rem;
-  font-weight: 600;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.demo-role-btn:hover {
-  background: var(--border-light, rgba(78, 113, 93, 0.18));
-  border-style: solid;
-  transform: translateY(-1px);
-}
 
 .card-footer-custom {
   text-align: center;

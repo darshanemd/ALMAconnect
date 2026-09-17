@@ -180,6 +180,41 @@ sudo certbot --nginx -d alumni.yourdomain.com
 
 ---
 
+## 🖼️ Media Files Management (Images, Videos & PDFs)
+
+Project ALMA handles three categories of user uploads:
+- **Images**: User avatars, blog featured photos, event banners, and document attachments (PNG, JPG, WEBP, GIF, SVG).
+- **Videos**: Alumni recorded talks, webinars, and media blogs (MP4, WEBM, MOV).
+- **PDFs**: Student resumes, placement brochures, official college circulars, and job role descriptions.
+
+### 1. How Uploads Work
+- Uploads are processed by `multer` via `POST /api/upload` with a limit of **100MB**.
+- Files are saved to `server/uploads/` with unique cryptographically random suffixes (`media-<timestamp>-<hash>.<ext>`).
+- Static files are served by Express at `/uploads/<filename>` with long-lived HTTP caching and streamable video playback (`preload="metadata"`).
+- In decoupled deployments (Frontend on Vercel, Backend on Render), the frontend automatically resolves all media URLs to the backend domain via `getFileUrl()`.
+
+### 2. File Persistence in Docker Compose (VPS / Self-Hosted)
+In `docker-compose.yml`, a persistent Docker volume is automatically mounted:
+```yaml
+volumes:
+  - backend_uploads:/app/server/uploads
+```
+All uploaded images, videos, and PDFs **persist across container updates, restarts, and image rebuilds**.
+
+### 3. File Persistence in Cloud Hosting (Render / Railway / Heroku)
+> [!NOTE]
+> On free tiers of cloud platforms like Render or Railway, the local filesystem is **ephemeral** (files in `uploads/` will be wiped if the server goes to sleep or redeploys).
+
+To keep files permanently in cloud deployments:
+- **Option A: Attach a Persistent Disk (Easiest)**
+  - In Render Web Service settings → **Disks** → Add a Disk: Mount path `/app/server/uploads`, size 1GB - 10GB.
+- **Option B: Free Cloud Object Storage (Recommended for High Scale)**
+  - Use a free **Cloudinary** account (25GB free image & video storage + CDN) or **Cloudflare R2** / **AWS S3** / **Supabase Storage**.
+- **Option C: Automatic Base64 Fallback**
+  - Project ALMA includes built-in fallback to Base64 Data URLs if static disk storage is temporarily unavailable.
+
+---
+
 ## 🩺 Production Health & Monitoring
 
 Project ALMA includes a built-in health monitoring endpoint:

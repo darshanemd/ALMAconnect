@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router';
 import { useData } from '../../contexts/DataContext';
 import { useAuth } from '../../contexts/AuthContext';
-import { apiRequest } from '../../utils/api';
+import { apiRequest, getFileUrl } from '../../utils/api';
 import { 
   ArrowLeft, ThumbsUp, MessageSquare, Calendar, Sparkles, 
   Film, Clock, Check, Bookmark, User, Tag, Send,
@@ -195,7 +195,7 @@ export default function BlogPostPage() {
       if (isVideoSource(src, alt)) {
         return (
           <div className="blog-video-container my-6">
-            <video controls className="blog-inline-video" src={src}>
+            <video controls className="blog-inline-video" src={getFileUrl(src)}>
               Your browser does not support video playback.
             </video>
             {alt && alt !== 'Photo' && alt !== 'Image' && (
@@ -209,7 +209,7 @@ export default function BlogPostPage() {
 
       return (
         <figure className="blog-markdown-figure my-6">
-          <img src={src} alt={alt || 'Article image'} className="blog-inline-img" loading="lazy" {...props} />
+          <img src={getFileUrl(src)} alt={alt || 'Article image'} className="blog-inline-img" loading="lazy" {...props} />
           {alt && alt !== 'Photo' && alt !== 'Image' && (
             <figcaption className="blog-inline-caption">{alt}</figcaption>
           )}
@@ -229,7 +229,7 @@ export default function BlogPostPage() {
       if (isVideoSource(href, labelText)) {
         return (
           <div className="blog-video-container my-6">
-            <video controls className="blog-inline-video" src={href} preload="metadata">
+            <video controls className="blog-inline-video" src={getFileUrl(href)} preload="metadata">
               Your browser does not support the video tag.
             </video>
             {labelText && (

@@ -6,6 +6,7 @@ import { getInitials } from '../../utils/formatters';
 import Avatar from '../../components/ui/Avatar';
 import ProfilePhotoUploader from '../../components/ui/ProfilePhotoUploader';
 import ResumeViewerModal from '../../components/ui/ResumeViewerModal';
+import { uploadFile, getFileUrl } from '../../utils/api';
 import './ProfilePage.css';
 
 export default function ProfilePage() {
@@ -57,18 +58,9 @@ export default function ProfilePage() {
       try {
         const formData = new FormData();
         formData.append('file', file);
-
-        const uploadRes = await fetch('/api/upload', {
-          method: 'POST',
-          body: formData,
-          credentials: 'include'
-        });
-
-        if (uploadRes.ok) {
-          const uploadData = await uploadRes.json();
-          if (uploadData.url) {
-            finalResumeUrl = uploadData.url;
-          }
+        const uploadData = await uploadFile(formData);
+        if (uploadData?.url) {
+          finalResumeUrl = uploadData.url;
         }
       } catch (uploadErr) {
         console.warn('Server file upload failed, falling back to base64 storage:', uploadErr);

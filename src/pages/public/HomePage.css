@@ -308,65 +308,6 @@
   line-height: 1.6;
 }
 
-/* Calculator Section */
-.calculator-section {
-  max-width: var(--max-content);
-  margin: 0 auto;
-  padding: 0 var(--space-6) 80px;
-}
-
-.calculator-container {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 40px;
-  padding: 40px;
-}
-
-.slider-box {
-  margin-top: 24px;
-}
-
-.slider-label {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 12px;
-  font-size: 0.95rem;
-}
-
-.calc-range {
-  width: 100%;
-  accent-color: var(--accent);
-  height: 8px;
-  cursor: pointer;
-}
-
-.calc-results-grid {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 16px;
-}
-
-.result-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  padding: 20px 24px;
-  border-radius: var(--radius-lg);
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.result-card h3 {
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--accent);
-}
-
-.result-card p {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-}
 
 /* FAQ Accordion */
 .faq-section {
@@ -459,13 +400,13 @@
 }
 
 /* Scroll Reveal Animations */
-.feature-card, .stat-item, .result-card, .faq-card {
+.feature-card, .stat-item, .faq-card {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.feature-card.in-view, .stat-item.in-view, .result-card.in-view, .faq-card.in-view {
+.feature-card.in-view, .stat-item.in-view, .faq-card.in-view {
   opacity: 1;
   transform: translateY(0);
 }
@@ -498,7 +439,6 @@
 
 @media (max-width: 1024px) {
   .features-grid { grid-template-columns: repeat(2, 1fr); }
-  .calculator-container { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {

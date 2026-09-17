@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import EmptyState from '../../components/ui/EmptyState';
 import { formatDate } from '../../utils/formatters';
+import { uploadFile, getFileUrl } from '../../utils/api';
 import QRCode from 'react-qr-code';
 
 // Modular Events UI Components
@@ -59,8 +60,8 @@ export default function EventsPage() {
     return hackathonEvents.find(e => e.id === selectedHackathonId) || hackathonEvents[0];
   }, [hackathonEvents, selectedHackathonId]);
 
-  // Admin permission check for Hackathon & Problem Statement management
-  const isAdmin = user?.role === 'admin' || user?.role === 'college_admin' || user?.role === 'college' || (activeHackathon && activeHackathon.organizer === user?.name);
+  // Admin permission check: strictly college administrators, excluding alumni
+  const isAdmin = (user?.role === 'admin' || user?.role === 'college_admin' || user?.role === 'college') && user?.role !== 'alumni';
   const [uploadingPdf, setUploadingPdf] = useState(false);
   const pdfInputRef = useRef(null);
 
@@ -92,15 +93,9 @@ export default function EventsPage() {
       try {
         const formData = new FormData();
         formData.append('file', file);
-        const uploadRes = await fetch('/api/upload', {
-          method: 'POST',
-          body: formData
-        });
-        if (uploadRes.ok) {
-          const data = await uploadRes.json();
-          if (data.url) {
-            finalFileUrl = data.url;
-          }
+        const uploadRes = await uploadFile(formData);
+        if (uploadRes?.url) {
+          finalFileUrl = uploadRes.url;
         }
       } catch (uploadErr) {
         console.warn('Backend /api/upload failed, falling back to base64 Data URL:', uploadErr);
@@ -189,6 +184,10 @@ export default function EventsPage() {
   };
 
   const handleCreateEvent = async (eventData) => {
+    if (!isAdmin) {
+      alert('Only college administrators can host events.');
+      return;
+    }
     await addEvent({
       ...eventData,
       organizer: user?.name || 'College Admin'
@@ -235,6 +234,7 @@ export default function EventsPage() {
   };
 
   const handleOpenRoster = (event) => {
+    if (!isAdmin) return;
     setSelectedEventForRoster(event);
     setRosterModalOpen(true);
   };
@@ -272,7 +272,7 @@ export default function EventsPage() {
         </div>
 
         <div className="flex items-center gap-3">
-          {(user?.role === 'college_admin' || user?.role === 'alumni') && (
+          {isAdmin && (
             <button 
               onClick={() => setModalOpen(true)} 
               className="btn btn-primary flex items-center gap-2 font-bold"
@@ -351,7 +351,7 @@ export default function EventsPage() {
               const isPast = activeTab === 'past' || (event.date && new Date(event.date) < new Date());
               const isRegistered = event.rsvps.includes(user?.id);
               const isFull = event.currentAttendees >= event.maxAttendees && !isRegistered;
-              const isOrganizer = user?.role === 'college_admin' || event.organizer === user?.name;
+              const isOrganizer = isAdmin;
               const posterImage = event.image || (CATEGORY_DEFAULT_POSTERS && CATEGORY_DEFAULT_POSTERS[event.type]) || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop&q=80';
 
               return (
@@ -670,7 +670,7 @@ export default function EventsPage() {
       )}
 
       {/* EVENT CREATION MODAL */}
-      {modalOpen && (
+      {modalOpen && isAdmin && (
         <EventCreationModal 
           onClose={() => setModalOpen(false)}
           onSubmit={handleCreateEvent}
@@ -689,7 +689,7 @@ export default function EventsPage() {
       )}
 
       {/* ATTENDEE ROSTER MODAL WITH CSV EXPORT */}
-      {rosterModalOpen && selectedEventForRoster && (
+      {rosterModalOpen && selectedEventForRoster && isAdmin && (
         <AttendeeRosterModal 
           event={selectedEventForRoster}
           alumni={alumni}

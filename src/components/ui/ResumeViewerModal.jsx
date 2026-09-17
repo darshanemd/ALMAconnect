@@ -1,6 +1,7 @@
 import React from 'react';
 import { X, Download, FileText, CheckCircle2 } from 'lucide-react';
 import Avatar from './Avatar';
+import { getFileUrl } from '../../utils/api';
 import './ResumeViewerModal.css';
 
 export default function ResumeViewerModal({ 
@@ -18,7 +19,7 @@ export default function ResumeViewerModal({
     // If alumnus uploaded a custom file, download it directly
     if (resumeUrl && (resumeUrl.startsWith('data:') || resumeUrl.startsWith('/uploads/') || resumeUrl.startsWith('http'))) {
       const link = document.createElement('a');
-      link.href = resumeUrl;
+      link.href = getFileUrl(resumeUrl);
       const ext = isBase64Image ? 'png' : 'pdf';
       link.download = `${alumniName.replace(/\s+/g, '_')}_Resume.${ext}`;
       document.body.appendChild(link);
@@ -125,13 +126,13 @@ startxref
         <div className="resume-modal-body">
           {isBase64Image ? (
             <img 
-              src={resumeUrl} 
+              src={getFileUrl(resumeUrl)} 
               alt={`${alumniName}'s Resume`} 
               className="resume-preview-img"
             />
           ) : isBase64Pdf ? (
             <embed 
-              src={resumeUrl} 
+              src={getFileUrl(resumeUrl)} 
               type="application/pdf" 
               className="resume-embed"
             />

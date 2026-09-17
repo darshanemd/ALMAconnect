@@ -1,5 +1,6 @@
 import React from 'react';
 import { getInitials } from '../../utils/formatters';
+import { getFileUrl } from '../../utils/api';
 import { CheckCircle2 } from 'lucide-react';
 import './Avatar.css';
 
@@ -24,7 +25,7 @@ export default function Avatar({
     >
       {src ? (
         <img 
-          src={src} 
+          src={getFileUrl(src)} 
           alt={name} 
           className="avatar-img" 
           onError={(e) => {

@@ -8,6 +8,7 @@ import {
   Bold, Heading, Code, Quote, List, Eye, Edit3, Film, Loader2
 } from 'lucide-react';
 import { formatDate } from '../../utils/formatters';
+import { uploadFile, getFileUrl } from '../../utils/api';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import './BlogPage.css';
@@ -110,17 +111,7 @@ export default function BlogPage() {
   const uploadFileToServer = async (file) => {
     const data = new FormData();
     data.append('file', file);
-
-    const res = await fetch('/api/upload', {
-      method: 'POST',
-      body: data
-    });
-
-    if (!res.ok) {
-      throw new Error(`Upload failed with status ${res.status}`);
-    }
-
-    const result = await res.json();
+    const result = await uploadFile(data);
     return result.url; // e.g. /uploads/media-12345.mp4
   };
 
@@ -310,7 +301,7 @@ export default function BlogPage() {
       if (isVideoSource(src, alt)) {
         return (
           <div className="blog-video-container my-4">
-            <video controls className="blog-inline-video" src={src}>
+            <video controls className="blog-inline-video" src={getFileUrl(src)}>
               Your browser does not support video playback.
             </video>
             {alt && alt !== 'Photo' && alt !== 'Image' && (
@@ -324,7 +315,7 @@ export default function BlogPage() {
 
       return (
         <figure className="blog-markdown-figure my-4">
-          <img src={src} alt={alt || 'Article image'} className="blog-inline-img" loading="lazy" {...props} />
+          <img src={getFileUrl(src)} alt={alt || 'Article image'} className="blog-inline-img" loading="lazy" {...props} />
           {alt && alt !== 'Photo' && alt !== 'Image' && (
             <figcaption className="blog-inline-caption">{alt}</figcaption>
           )}
@@ -343,7 +334,7 @@ export default function BlogPage() {
       if (isVideoSource(href, labelText)) {
         return (
           <div className="blog-video-container my-4">
-            <video controls className="blog-inline-video" src={href} preload="metadata">
+            <video controls className="blog-inline-video" src={getFileUrl(href)} preload="metadata">
               Your browser does not support the video tag.
             </video>
             {labelText && (

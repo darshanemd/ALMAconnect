@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useData } from '../../contexts/DataContext';
 import { Bell, FileText, Plus, Download, Trash2, Megaphone, Check, Search, Calendar, User, Eye, ExternalLink, X } from 'lucide-react';
+import { uploadFile, getFileUrl } from '../../utils/api';
 import './CircularsPage.css';
 
 function DocumentPreviewModal({ file, onClose }) {
@@ -16,7 +17,7 @@ function DocumentPreviewModal({ file, onClose }) {
   if (!file || !file.attachmentUrl) return null;
 
   const fileName = file.attachmentName || 'Official Document';
-  const url = file.attachmentUrl;
+  const url = getFileUrl(file.attachmentUrl);
 
   const isImage = 
     url.startsWith('data:image/') || 
@@ -343,12 +344,8 @@ export default function CircularsPage() {
                         try {
                           const data = new FormData();
                           data.append('file', file);
-                          const res = await fetch('/api/upload', {
-                            method: 'POST',
-                            body: data
-                          });
-                          if (res.ok) {
-                            const result = await res.json();
+                          const result = await uploadFile(data);
+                          if (result?.url) {
                             setFormData(prev => ({
                               ...prev,
                               attachmentName: file.name,

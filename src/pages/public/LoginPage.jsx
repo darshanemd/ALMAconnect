@@ -3,8 +3,7 @@ import { useNavigate, Link } from 'react-router';
 import { useAuth } from '../../contexts/AuthContext';
 import { apiRequest } from '../../utils/api';
 import { 
-  GraduationCap, Mail, Lock, Shield, User, AlertCircle, 
-  ArrowRight, Eye, EyeOff, Sparkles, MessageSquare, BookOpen, 
+  Mail, Lock, AlertCircle, ArrowRight, Eye, EyeOff, 
   X, CheckCircle, RefreshCw, KeyRound 
 } from 'lucide-react';
 import AlumniConnectLogo from '../../components/ui/AlumniConnectLogo';
@@ -110,22 +109,6 @@ export default function LoginPage() {
       navigate('/dashboard');
     } catch (err) {
       setError(err.message || 'Failed to sign in. Please check your credentials.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleQuickLogin = async (demoEmail, roleName, hubId) => {
-    setEmail(demoEmail);
-    setPassword('demo123');
-    setActiveHub(hubId || roleName);
-    setError('');
-    setLoading(true);
-    try {
-      await login(demoEmail, 'demo123');
-      navigate('/dashboard');
-    } catch (err) {
-      setError('Failed to login with demo account.');
     } finally {
       setLoading(false);
     }
@@ -337,34 +320,7 @@ export default function LoginPage() {
                 {loading ? 'Authenticating...' : 'Login'} <ArrowRight size={18} />
               </button>
 
-              <div className="divider-custom">Or Quick Demo Login:</div>
 
-              {/* Demo Quick Accounts */}
-              <div className="demo-accounts-row">
-                <button 
-                  type="button" 
-                  onClick={() => handleQuickLogin('alumni@demo.com', 'Alumni', 'Facilitator Hub')} 
-                  className="demo-role-btn"
-                >
-                  <User size={16} /> Alumni
-                </button>
-
-                <button 
-                  type="button" 
-                  onClick={() => handleQuickLogin('student@demo.com', 'Student', 'Student Hub')} 
-                  className="demo-role-btn"
-                >
-                  <GraduationCap size={16} /> Student
-                </button>
-                
-                <button 
-                  type="button" 
-                  onClick={() => handleQuickLogin('admin@demo.com', 'Admin', 'Community Forum')} 
-                  className="demo-role-btn"
-                >
-                  <Shield size={16} /> Admin
-                </button>
-              </div>
 
               <div className="card-footer-custom" style={{ marginTop: '20px' }}>
                 Don't have an account? <Link to="/register">Sign Up</Link> &nbsp;•&nbsp; <a href="#" onClick={(e) => { e.preventDefault(); alert("Help Center: Contact support@alumniconnect.edu"); }}>Need Help?</a>
