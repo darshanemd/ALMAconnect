@@ -1,1 +1,8 @@
-{\n  "rewrites": [\n    {\n      "source": "/(.*)",\n      "destination": "/"\n    }\n  ]\n}
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
+}
