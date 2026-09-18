@@ -1373,22 +1373,30 @@ Warm regards,
                       </tr>
                     </thead>
                     <tbody>
-                      {emailLogs.map(log => (
-                        <tr key={log.id}>
-                          <td>
-                            <div className="font-semibold">{log.memberName}</div>
-                            <div className="text-xs text-secondary">{log.email}</div>
-                          </td>
-                          <td className="text-xs font-medium">{log.subject}</td>
-                          <td className="text-xs text-secondary">{new Date(log.sentAt).toLocaleString()}</td>
-                          <td className="text-xs font-mono text-accent">{log.tempCredentials}</td>
-                          <td>
-                            <span className="badge badge-success flex items-center gap-1">
-                              <CheckCircle2 size={12} /> {log.status}
-                            </span>
-                          </td>
-                        </tr>
-                      ))}
+                      {emailLogs.map(log => {
+                        const recipientName = log.recipientName || log.memberName || 'Candidate';
+                        const recipientEmail = log.recipientEmail || log.email || '';
+                        const isSimulated = log.status?.includes('Simulated') || log.status?.includes('Logged');
+                        const credsClean = (log.tempCredentials || '')
+                          .replace(/Pass:\s*\$2[aby]\$\d+\$[^\s|]+/i, 'Pass: [User Password]');
+
+                        return (
+                          <tr key={log.id}>
+                            <td>
+                              <div className="font-semibold">{recipientName}</div>
+                              <div className="text-xs text-secondary">{recipientEmail}</div>
+                            </td>
+                            <td className="text-xs font-medium">{log.subject}</td>
+                            <td className="text-xs text-secondary">{new Date(log.sentAt).toLocaleString()}</td>
+                            <td className="text-xs font-mono text-accent">{credsClean || 'Active Account'}</td>
+                            <td>
+                              <span className={`badge ${isSimulated ? 'badge-warning' : 'badge-success'} flex items-center gap-1`}>
+                                <CheckCircle2 size={12} /> {log.status || 'Recorded'}
+                              </span>
+                            </td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </table>
                 </div>

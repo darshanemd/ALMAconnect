@@ -311,7 +311,7 @@ ${collegeName} Administration`;
     subject,
     body: formattedBody,
     type: 'verification',
-    tempCredentials: `Pass: ${tempPassword}${rollNumber ? ` | Roll: ${rollNumber}` : ''}`,
+    tempCredentials: `${isCustomTempPass ? `Pass: ${tempPassword}` : 'Password: [User Configured]'}${rollNumber ? ` | Roll: ${rollNumber}` : ''}`,
     status: deliveryStatus
   });
 
