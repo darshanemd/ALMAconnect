@@ -442,25 +442,29 @@ export default function CircularsPage() {
 
                     {/* Attached Document in Admin List */}
                     {c.attachmentUrl && (
-                      <div 
-                        className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-2.5 bg-surface border border-light rounded-lg text-xs cursor-pointer hover:border-accent/40 hover:bg-surface-hover transition-all"
-                        onClick={() => setSelectedPdf(c)}
-                        title="Click to preview document"
-                      >
-                        <div className="flex items-center gap-2 min-w-0 flex-1">
-                          <div className="p-1 bg-accent-bg text-accent rounded flex-shrink-0">
-                            <FileText size={15} />
+                      <div className="doc-attachment-card">
+                        <div className="doc-attachment-info">
+                          <div className="doc-attachment-icon">
+                            <FileText size={18} />
                           </div>
-                          <div className="min-w-0 flex-1">
-                            <span className="font-semibold truncate block text-xs text-primary">{c.attachmentName || 'Attached_Document.pdf'}</span>
-                            <span className="text-[10px] text-secondary">Click to view document</span>
+                          <div className="doc-attachment-meta">
+                            <span className="doc-attachment-name" title={c.attachmentName}>
+                              {c.attachmentName || 'Attached_Document.pdf'}
+                            </span>
+                            <span className="doc-attachment-type">
+                              {c.attachmentName?.match(/\.(png|jpe?g|webp|gif)$/i)
+                                ? 'Image Attachment'
+                                : c.attachmentName?.match(/\.pdf$/i)
+                                ? 'PDF Document'
+                                : 'Attached File'}
+                            </span>
                           </div>
                         </div>
-                        <div className="flex items-center gap-1.5 flex-shrink-0 self-end sm:self-auto" onClick={e => e.stopPropagation()}>
+                        <div className="doc-attachment-actions">
                           <button 
                             type="button" 
                             onClick={() => setSelectedPdf(c)} 
-                            className="btn btn-secondary btn-xs text-xs py-1 px-2.5 flex items-center gap-1 font-semibold"
+                            className="btn btn-secondary btn-xs doc-action-btn"
                           >
                             <Eye size={12} /> View
                           </button>
@@ -469,7 +473,7 @@ export default function CircularsPage() {
                             download={c.attachmentName || 'document'} 
                             target="_blank" 
                             rel="noopener noreferrer" 
-                            className="btn btn-primary btn-xs text-xs py-1 px-2.5 flex items-center gap-1 font-semibold"
+                            className="btn btn-primary btn-xs doc-action-btn"
                           >
                             <Download size={12} /> Download
                           </a>
@@ -567,35 +571,32 @@ export default function CircularsPage() {
                 </p>
               </div>
 
-              {/* PDF Preview & Download Attachment box */}
+              {/* Clean Modern Document Attachment Card */}
               {c.attachmentUrl && (
-                <div 
-                  className="attachment-box flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-3 bg-surface border border-light rounded-lg hover:border-accent/40 hover:bg-surface-hover transition-all cursor-pointer shadow-xs"
-                  onClick={() => setSelectedPdf(c)}
-                  title="Click to preview attachment"
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => { if (e.key === 'Enter') setSelectedPdf(c); }}
-                >
-                  <div className="flex items-center gap-2.5 min-w-0 flex-1">
-                    <div className="p-2 bg-accent-bg text-accent rounded-lg flex-shrink-0">
+                <div className="doc-attachment-card">
+                  <div className="doc-attachment-info">
+                    <div className="doc-attachment-icon">
                       <FileText size={20} />
                     </div>
-                    <div className="min-w-0 flex-1">
-                      <span className="text-xs font-bold truncate block text-primary" title={c.attachmentName}>
+                    <div className="doc-attachment-meta">
+                      <span className="doc-attachment-name" title={c.attachmentName}>
                         {c.attachmentName || 'Official Document'}
                       </span>
-                      <span className="text-[11px] text-accent font-medium flex items-center gap-1 mt-0.5">
-                        <Eye size={11} /> Click to view document
+                      <span className="doc-attachment-type">
+                        {c.attachmentName?.match(/\.(png|jpe?g|webp|gif)$/i)
+                          ? 'Image Attachment'
+                          : c.attachmentName?.match(/\.pdf$/i)
+                          ? 'PDF Document'
+                          : 'Attached File'}
                       </span>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 flex-shrink-0 self-end sm:self-auto" onClick={e => e.stopPropagation()}>
+                  <div className="doc-attachment-actions">
                     <button
                       type="button"
                       onClick={() => setSelectedPdf(c)}
-                      className="btn btn-secondary btn-xs text-xs py-1 px-3 flex items-center gap-1.5 font-semibold"
+                      className="btn btn-secondary btn-xs doc-action-btn"
                     >
                       <Eye size={13} /> View
                     </button>
@@ -604,7 +605,7 @@ export default function CircularsPage() {
                       download={c.attachmentName || 'document'}
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="btn btn-primary btn-xs text-xs py-1 px-3 flex items-center gap-1.5 font-semibold"
+                      className="btn btn-primary btn-xs doc-action-btn"
                       title="Download file directly"
                     >
                       <Download size={13} /> Download

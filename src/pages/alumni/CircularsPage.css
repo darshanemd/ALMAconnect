@@ -132,12 +132,101 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
 }
 
-.circular-card .attachment-box {
-  transition: background-color var(--transition-fast) ease;
+/* Modern Document Attachment Card */
+.doc-attachment-card {
+  background: var(--surface-hover, rgba(0, 0, 0, 0.02));
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+  transition: all var(--transition-fast) ease;
 }
 
-.circular-card .attachment-box:hover {
-  background-color: var(--background-hover);
+[data-theme="dark"] .doc-attachment-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.doc-attachment-card:hover {
+  border-color: var(--accent-light);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.doc-attachment-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  width: 100%;
+}
+
+.doc-attachment-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--accent-bg, #ecfdf5);
+  color: var(--accent, #059669);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.doc-attachment-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.doc-attachment-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.35;
+}
+
+.doc-attachment-type {
+  font-size: 10px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.doc-attachment-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid var(--border-light);
+  padding-top: 10px;
+  width: 100%;
+}
+
+[data-theme="dark"] .doc-attachment-actions {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+.doc-action-btn {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
 }
 
 .hidden-file-input {
