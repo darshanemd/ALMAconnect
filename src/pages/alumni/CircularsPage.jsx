@@ -51,27 +51,27 @@ function DocumentPreviewModal({ file, onClose }) {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 flex-shrink-0">
+          <div className="flex items-center gap-1.5 flex-shrink-0">
             <a 
               href={url} 
               target="_blank" 
-              rel="noreferrer" 
-              className="btn btn-secondary btn-xs flex items-center gap-1.5 text-xs py-1 px-2.5"
+              rel="noopener noreferrer" 
+              className="btn btn-secondary btn-xs flex items-center gap-1 text-xs py-1 px-2.5 font-semibold"
               title="Open document in a new browser tab"
             >
               <ExternalLink size={13} />
-              <span className="hidden sm:inline">Open in Tab</span>
+              <span>Open Tab</span>
             </a>
             <a 
               href={url} 
               download={fileName} 
               target="_blank" 
-              rel="noreferrer" 
-              className="btn btn-primary btn-xs flex items-center gap-1.5 text-xs py-1 px-2.5"
+              rel="noopener noreferrer" 
+              className="btn btn-primary btn-xs flex items-center gap-1 text-xs py-1 px-2.5 font-semibold"
               title="Download file"
             >
               <Download size={13} />
-              <span className="hidden sm:inline">Download</span>
+              <span>Download</span>
             </a>
             <button 
               type="button" 
@@ -96,11 +96,24 @@ function DocumentPreviewModal({ file, onClose }) {
               />
             </div>
           ) : (
-            <iframe 
-              src={displayUrl} 
-              title={fileName} 
-              className="doc-preview-iframe"
-            />
+            <>
+              <div className="bg-slate-900 text-slate-300 px-4 py-2 flex items-center justify-between text-xs border-b border-slate-700 flex-shrink-0">
+                <span className="truncate mr-2">Previewing PDF Document</span>
+                <a 
+                  href={url} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn btn-primary btn-xs py-0.5 px-2 text-xs flex items-center gap-1"
+                >
+                  <ExternalLink size={12} /> Open Fullscreen
+                </a>
+              </div>
+              <iframe 
+                src={displayUrl} 
+                title={fileName} 
+                className="doc-preview-iframe"
+              />
+            </>
           )}
         </div>
       </div>
@@ -429,27 +442,36 @@ export default function CircularsPage() {
 
                     {/* Attached Document in Admin List */}
                     {c.attachmentUrl && (
-                      <div className="flex items-center justify-between p-2 bg-surface border border-light rounded text-xs">
-                        <div className="flex items-center gap-1.5 min-w-0">
-                          <FileText size={14} className="text-accent flex-shrink-0" />
-                          <span className="font-semibold truncate text-[11px] text-primary">{c.attachmentName || 'Attached_Document.pdf'}</span>
+                      <div 
+                        className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-2.5 bg-surface border border-light rounded-lg text-xs cursor-pointer hover:border-accent/40 hover:bg-surface-hover transition-all"
+                        onClick={() => setSelectedPdf(c)}
+                        title="Click to preview document"
+                      >
+                        <div className="flex items-center gap-2 min-w-0 flex-1">
+                          <div className="p-1 bg-accent-bg text-accent rounded flex-shrink-0">
+                            <FileText size={15} />
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <span className="font-semibold truncate block text-xs text-primary">{c.attachmentName || 'Attached_Document.pdf'}</span>
+                            <span className="text-[10px] text-secondary">Click to view document</span>
+                          </div>
                         </div>
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center gap-1.5 flex-shrink-0 self-end sm:self-auto" onClick={e => e.stopPropagation()}>
                           <button 
                             type="button" 
                             onClick={() => setSelectedPdf(c)} 
-                            className="btn btn-secondary btn-xs text-[10px] py-0.5 px-2"
+                            className="btn btn-secondary btn-xs text-xs py-1 px-2.5 flex items-center gap-1 font-semibold"
                           >
-                            <Eye size={10} className="mr-1" /> View
+                            <Eye size={12} /> View
                           </button>
                           <a 
-                            href={c.attachmentUrl} 
-                            download={c.attachmentName || 'document.pdf'} 
+                            href={getFileUrl(c.attachmentUrl)} 
+                            download={c.attachmentName || 'document'} 
                             target="_blank" 
-                            rel="noreferrer" 
-                            className="btn btn-primary btn-xs text-[10px] py-0.5 px-2 flex items-center gap-1"
+                            rel="noopener noreferrer" 
+                            className="btn btn-primary btn-xs text-xs py-1 px-2.5 flex items-center gap-1 font-semibold"
                           >
-                            <Download size={10} /> Download
+                            <Download size={12} /> Download
                           </a>
                         </div>
                       </div>
@@ -547,29 +569,45 @@ export default function CircularsPage() {
 
               {/* PDF Preview & Download Attachment box */}
               {c.attachmentUrl && (
-                <div className="attachment-box flex items-center justify-between p-3 bg-surface border border-light rounded-lg">
-                  <div className="flex items-center gap-2 min-w-0">
-                    <FileText size={16} className="text-accent flex-shrink-0" />
-                    <span className="text-xxs font-bold truncate text-primary" title={c.attachmentName}>
-                      {c.attachmentName || 'Official Document'}
-                    </span>
+                <div 
+                  className="attachment-box flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-3 bg-surface border border-light rounded-lg hover:border-accent/40 hover:bg-surface-hover transition-all cursor-pointer shadow-xs"
+                  onClick={() => setSelectedPdf(c)}
+                  title="Click to preview attachment"
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => { if (e.key === 'Enter') setSelectedPdf(c); }}
+                >
+                  <div className="flex items-center gap-2.5 min-w-0 flex-1">
+                    <div className="p-2 bg-accent-bg text-accent rounded-lg flex-shrink-0">
+                      <FileText size={20} />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <span className="text-xs font-bold truncate block text-primary" title={c.attachmentName}>
+                        {c.attachmentName || 'Official Document'}
+                      </span>
+                      <span className="text-[11px] text-accent font-medium flex items-center gap-1 mt-0.5">
+                        <Eye size={11} /> Click to view document
+                      </span>
+                    </div>
                   </div>
-                  <div className="flex gap-1">
+
+                  <div className="flex items-center gap-2 flex-shrink-0 self-end sm:self-auto" onClick={e => e.stopPropagation()}>
                     <button
                       type="button"
                       onClick={() => setSelectedPdf(c)}
-                      className="btn btn-secondary btn-xs text-xxs"
+                      className="btn btn-secondary btn-xs text-xs py-1 px-3 flex items-center gap-1.5 font-semibold"
                     >
-                      <Eye size={12} className="mr-1" /> Preview
+                      <Eye size={13} /> View
                     </button>
                     <a 
-                      href={c.attachmentUrl} 
+                      href={getFileUrl(c.attachmentUrl)} 
                       download={c.attachmentName || 'document'}
                       target="_blank" 
-                      rel="noreferrer" 
-                      className="btn btn-primary btn-xs flex items-center gap-1 px-2.5 py-1 text-xxs"
+                      rel="noopener noreferrer" 
+                      className="btn btn-primary btn-xs text-xs py-1 px-3 flex items-center gap-1.5 font-semibold"
+                      title="Download file directly"
                     >
-                      <Download size={12} />
+                      <Download size={13} /> Download
                     </a>
                   </div>
                 </div>
