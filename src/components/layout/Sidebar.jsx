@@ -12,6 +12,10 @@ import './Sidebar.css';
 export default function Sidebar({ role, collapsed, mobileOpen, onToggle, onNavClick }) {
   const { circulars, lastSeenCircularsTime } = useData();
   const unreadCount = (circulars || []).filter(c => new Date(c.createdAt) > new Date(lastSeenCircularsTime)).length;
+
+  // On mobile drawer, sidebar should never be rendered in collapsed state
+  const isCollapsed = collapsed && !mobileOpen;
+
   const getNavItems = () => {
     switch (role) {
       case 'student':
@@ -67,7 +71,7 @@ export default function Sidebar({ role, collapsed, mobileOpen, onToggle, onNavCl
   const navItems = getNavItems();
 
   return (
-    <aside className={`sidebar ${collapsed ? 'collapsed' : ''} ${mobileOpen ? 'mobile-open' : ''}`}>
+    <aside className={`sidebar ${isCollapsed ? 'collapsed' : ''} ${mobileOpen ? 'mobile-open' : ''}`}>
       <div className="sidebar-logo-container flex justify-between items-center w-full">
         <div className="flex items-center gap-3">
           <AlumniConnectLogo size={38} />
@@ -125,9 +129,9 @@ export default function Sidebar({ role, collapsed, mobileOpen, onToggle, onNavCl
         <button 
           onClick={onToggle} 
           className="sidebar-collapse-btn"
-          aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+          aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
-          {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
+          {isCollapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
         </button>
       </div>
     </aside>
