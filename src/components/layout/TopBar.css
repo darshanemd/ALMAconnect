@@ -171,6 +171,7 @@
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .topbar-notif-count-pill {
@@ -182,6 +183,7 @@
   font-size: 11px;
   font-weight: 700;
   border-radius: var(--radius-full);
+  white-space: nowrap;
 }
 
 .topbar-mark-read-btn {
@@ -199,6 +201,8 @@
   outline: none;
   transition: all var(--transition-fast);
   line-height: 1;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .topbar-mark-read-btn:hover {
@@ -301,6 +305,8 @@
   color: var(--text-secondary);
   margin-top: 3px;
   line-height: 1.4;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .topbar-notif-item-time {
@@ -354,9 +360,38 @@
   padding: var(--space-3) var(--space-4);
 }
 
+/* Smooth dropdown pop-in animation */
+@keyframes dropdownPopIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateY(-6px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
 @media (max-width: 768px) {
   .topbar {
     left: 0 !important;
     padding: 0 var(--space-4);
+  }
+
+  /* Fixed viewport-aware placement on mobile to prevent left-side clipping */
+  .topbar-notif-dropdown {
+    position: fixed;
+    top: calc(var(--topbar-height, 64px) + 8px);
+    right: 12px;
+    left: auto;
+    width: 360px;
+    max-width: calc(100vw - 24px);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px var(--border);
+    transform-origin: top right;
+  }
+
+  .topbar-notif-list {
+    max-height: min(400px, 65vh);
   }
 }
