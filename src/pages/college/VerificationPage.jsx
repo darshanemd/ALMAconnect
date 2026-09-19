@@ -1138,9 +1138,13 @@ Warm regards,
                         </div>
                         <div className="text-[11px] text-secondary mt-0.5">
                           {smtpStatus?.configured ? (
-                            'Gmail SSL Port 465 • Ready to dispatch OTPs & Onboarding emails'
+                            smtpStatus?.isHttpsApi ? (
+                              'HTTPS Port 443 • Cloud Native Delivery (Immune to Render SMTP port blocks)'
+                            ) : (
+                              'Gmail SSL Port 465 • Direct SMTP Connection'
+                            )
                           ) : (
-                            'Operating in local demo mode. To dispatch real emails, configure your Google App Password.'
+                            'Operating in local demo mode. To dispatch real emails, configure Brevo, Resend, or Google App Password.'
                           )}
                         </div>
                       </div>
@@ -1155,18 +1159,31 @@ Warm regards,
                     </button>
                   </div>
 
+                  {/* Render Free Tier Outbound SMTP Notice */}
+                  {!smtpStatus?.isHttpsApi && (
+                    <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl text-amber-900 text-xs flex items-start gap-2.5 leading-relaxed">
+                      <AlertCircle size={16} className="text-amber-600 shrink-0 mt-0.5" />
+                      <div>
+                        <strong className="block font-bold mb-0.5">Hosting on Render Free Tier?</strong>
+                        <span>
+                          Render permanently blocks outbound SMTP ports (465 & 587). If test dispatch times out on Render, add a free <code className="bg-amber-100 px-1 py-0.5 rounded font-bold">BREVO_API_KEY</code> (from <a href="https://brevo.com" target="_blank" rel="noreferrer" className="underline font-bold text-amber-950">brevo.com</a>, sends 300/day from your Gmail) or <code className="bg-amber-100 px-1 py-0.5 rounded font-bold">RESEND_API_KEY</code> (from <a href="https://resend.com" target="_blank" rel="noreferrer" className="underline font-bold text-amber-950">resend.com</a>) in your Render Environment for guaranteed HTTPS delivery.
+                        </span>
+                      </div>
+                    </div>
+                  )}
+
                   {/* Send Live Test Email Card */}
                   <div className="p-4 bg-surface border rounded-xl shadow-xs">
                     <h4 className="text-xs font-bold text-primary uppercase tracking-wider flex items-center gap-1.5 mb-1.5">
                       <Send size={14} className="text-accent" /> Dispatch Test Email
                     </h4>
                     <p className="text-xs text-secondary mb-3">
-                      Verify that your Gmail SMTP connection can successfully reach inboxes by sending a test message.
+                      Verify that your email dispatcher can successfully deliver messages to inboxes.
                     </p>
 
                     {testEmailError && (
-                      <div className="badge badge-danger w-full p-2.5 mb-3 flex items-center gap-2 text-xs font-medium" style={{ borderRadius: 8 }}>
-                        <AlertCircle size={15} className="shrink-0" />
+                      <div className="badge badge-danger w-full p-2.5 mb-3 flex items-start gap-2 text-xs font-medium text-left leading-relaxed" style={{ borderRadius: 8 }}>
+                        <AlertCircle size={15} className="shrink-0 mt-0.5" />
                         <span>{testEmailError}</span>
                       </div>
                     )}
@@ -1180,6 +1197,8 @@ Warm regards,
 
                     <form onSubmit={handleSendTestEmail} className="flex gap-2">
                       <input 
+                        id="test-email-address"
+                        name="testEmailAddress"
                         type="email" 
                         className="input flex-1 text-xs" 
                         placeholder="Enter recipient email (e.g. yourname@gmail.com)"
@@ -1193,7 +1212,7 @@ Warm regards,
                         disabled={testEmailLoading}
                       >
                         {testEmailLoading ? <RefreshCw size={14} className="animate-spin" /> : <Send size={14} />}
-                        <span>Send Test Email</span>
+                        <span>{testEmailLoading ? 'Dispatching...' : 'Send Test Email'}</span>
                       </button>
                     </form>
                   </div>
@@ -1250,10 +1269,18 @@ Warm regards,
                       Open <code className="px-1.5 py-0.5 bg-slate-100 rounded text-primary font-bold">ProjectALMA/server/.env</code> and configure:
                     </p>
                     <div className="bg-slate-900 text-slate-100 p-3.5 rounded-lg font-mono text-xs overflow-x-auto leading-relaxed border border-slate-800">
-                      <div className="text-slate-400"># GMAIL SMTP CONFIGURATION</div>
-                      <div><span className="text-sky-300">GMAIL_USER</span>=<span className="text-emerald-300">"rrcb6513@gmail.com"</span></div>
-                      <div><span className="text-sky-300">GMAIL_APP_PASSWORD</span>=<span className="text-amber-300">"jubm scxk tzsj qrck"</span></div>
-                      <div><span className="text-sky-300">EMAIL_FROM_NAME</span>=<span className="text-emerald-300">"AlmaConnect Portal"</span></div>
+                      <div className="text-emerald-400 font-bold"># OPTION 1: BREVO HTTPS API (RECOMMENDED FOR RENDER FREE TIER)</div>
+                      <div className="text-slate-400"># Free 300 emails/day forever • Sends from your Gmail • Never blocked by Render</div>
+                      <div><span className="text-sky-300">BREVO_API_KEY</span>=<span className="text-amber-300">"xkeysib-..."</span></div>
+                      <div><span className="text-sky-300">BREVO_SENDER</span>=<span className="text-emerald-300">"srv80421@gmail.com"</span></div>
+                      <div><span className="text-sky-300">EMAIL_FROM_NAME</span>=<span className="text-emerald-300">"AlumniConnect Portal"</span></div>
+                      <br />
+                      <div className="text-sky-400 font-bold"># OPTION 2: RESEND HTTPS API (PORT 443 • FAST SETUP)</div>
+                      <div><span className="text-sky-300">RESEND_API_KEY</span>=<span className="text-amber-300">"re_..."</span></div>
+                      <br />
+                      <div className="text-slate-400 font-bold"># OPTION 3: GMAIL SMTP (LOCAL DEV OR PAID RENDER)</div>
+                      <div><span className="text-sky-300">GMAIL_USER</span>=<span className="text-emerald-300">"srv80421@gmail.com"</span></div>
+                      <div><span className="text-sky-300">GMAIL_APP_PASSWORD</span>=<span className="text-amber-300">"xxxx xxxx xxxx xxxx"</span></div>
                     </div>
                   </div>
 
