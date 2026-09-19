@@ -48,6 +48,9 @@ import Blog from './models/Blog.js';
 dotenv.config();
 
 const app = express();
+// Enable trust proxy for Render / reverse proxies to correctly track client IP
+app.set('trust proxy', 1);
+
 const httpServer = http.createServer(app);
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/alumniconnect';

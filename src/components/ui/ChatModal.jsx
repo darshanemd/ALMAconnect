@@ -101,23 +101,39 @@ export default function ChatModal({ activeChatAlum, onClose }) {
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
-  // Fetch initial messages & scroll down
-  const loadMessages = useCallback(async () => {
-    if (!user?.id || !activeChatAlum?.id) return;
-    try {
-      if (refreshBlocks) await refreshBlocks();
-      const msgs = await getDirectMessages(user.id, activeChatAlum.id);
-      setChatMessages(msgs || []);
-    } catch (err) {
-      console.error('Error fetching chat messages:', err);
-    } finally {
-      setLoadingMessages(false);
-    }
-  }, [user?.id, activeChatAlum?.id, refreshBlocks, getDirectMessages]);
-
+  // Refresh block list on mount or when current user changes
   useEffect(() => {
-    loadMessages();
-  }, [loadMessages]);
+    if (refreshBlocks && user?.id) {
+      refreshBlocks();
+    }
+  }, [user?.id]);
+
+  // Fetch initial messages for active chat partner
+  useEffect(() => {
+    let isMounted = true;
+    const fetchMessages = async () => {
+      if (!user?.id || !activeChatAlum?.id) return;
+      setLoadingMessages(true);
+      try {
+        const msgs = await getDirectMessages(user.id, activeChatAlum.id);
+        if (isMounted) {
+          setChatMessages(msgs || []);
+        }
+      } catch (err) {
+        console.error('Error fetching chat messages:', err);
+      } finally {
+        if (isMounted) {
+          setLoadingMessages(false);
+        }
+      }
+    };
+
+    fetchMessages();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [user?.id, activeChatAlum?.id, getDirectMessages]);
 
   // Handle typing indicator dispatch
   const handleInputChange = (e) => {

@@ -639,11 +639,11 @@ export const DataProvider = ({ children }) => {
   };
 
   // Networking CRUD
-  const getConnectionRequests = (userId) => {
+  const getConnectionRequests = useCallback((userId) => {
     return connectionRequests;
-  };
+  }, [connectionRequests]);
 
-  const sendConnectionRequest = async (fromId, toId) => {
+  const sendConnectionRequest = useCallback(async (fromId, toId) => {
     try {
       const saved = await apiRequest('/networking', 'POST', { fromId, toId });
       setConnectionRequests(prev => [...prev, saved]);
@@ -651,9 +651,9 @@ export const DataProvider = ({ children }) => {
     } catch (err) {
       console.error('Failed to request connection:', err);
     }
-  };
+  }, [refreshNotifications]);
 
-  const respondConnectionRequest = async (requestId, status) => {
+  const respondConnectionRequest = useCallback(async (requestId, status) => {
     try {
       const updated = await apiRequest(`/networking/${requestId}`, 'PUT', { status });
       setConnectionRequests(prev => prev.map(r => r.id === requestId ? updated : r));
@@ -665,19 +665,19 @@ export const DataProvider = ({ children }) => {
     } catch (err) {
       console.error('Failed to respond to request:', err);
     }
-  };
+  }, [refreshNotifications]);
 
   // Direct Messaging
-  const getDirectMessages = async (currentUserId, otherUserId) => {
+  const getDirectMessages = useCallback(async (currentUserId, otherUserId) => {
     try {
       return await apiRequest(`/messages/${otherUserId}?currentUserId=${currentUserId}`);
     } catch (err) {
       console.error('Failed to load direct messages:', err);
       return [];
     }
-  };
+  }, []);
 
-  const sendDirectMessage = async (fromUserId, toUserId, text = '', image = null) => {
+  const sendDirectMessage = useCallback(async (fromUserId, toUserId, text = '', image = null) => {
     try {
       const saved = await apiRequest('/messages', 'POST', { from: fromUserId, to: toUserId, text, image });
       await refreshNotifications();
@@ -686,7 +686,7 @@ export const DataProvider = ({ children }) => {
       console.error('Failed to send direct message:', err);
       throw err;
     }
-  };
+  }, [refreshNotifications]);
 
   // Block & Report User Management
   const refreshBlocks = useCallback(async () => {
