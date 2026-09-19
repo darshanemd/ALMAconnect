@@ -76,7 +76,18 @@ export const DataProvider = ({ children }) => {
     if (!user?.id) return;
     try {
       const fetchedNotifs = await apiRequest(`/notifications?userId=${user.id}&role=${user.role}&collegeId=${user.collegeId || ''}`);
-      setNotifications(fetchedNotifs);
+      let localReadIds = [];
+      try {
+        localReadIds = JSON.parse(localStorage.getItem(`read_notifs_${user.id}`) || '[]');
+      } catch (e) { /* ignore */ }
+      const readSet = new Set(localReadIds);
+
+      const merged = (fetchedNotifs || []).map(n => ({
+        ...n,
+        read: n.read === true || readSet.has(n.id)
+      }));
+
+      setNotifications(merged);
     } catch (err) {
       console.warn('Failed to refresh notifications:', err);
     }
@@ -801,26 +812,45 @@ export const DataProvider = ({ children }) => {
 
   const markNotificationAsRead = useCallback(async (notifId) => {
     try {
-      const updated = await apiRequest(`/notifications/${notifId}/read`, 'PUT');
-      setNotifications(prev => prev.map(n => n.id === notifId ? updated : n));
+      if (user?.id) {
+        try {
+          const stored = JSON.parse(localStorage.getItem(`read_notifs_${user.id}`) || '[]');
+          if (!stored.includes(notifId)) {
+            localStorage.setItem(`read_notifs_${user.id}`, JSON.stringify([...stored, notifId]));
+          }
+        } catch (e) { /* ignore */ }
+      }
+      setNotifications(prev => prev.map(n => n.id === notifId ? { ...n, read: true } : n));
+      const updated = await apiRequest(`/notifications/${notifId}/read`, 'PUT', { userId: user?.id });
+      setNotifications(prev => prev.map(n => n.id === notifId ? { ...n, ...updated, read: true } : n));
     } catch (err) {
       console.error('Failed to mark alert read:', err);
+      setNotifications(prev => prev.map(n => n.id === notifId ? { ...n, read: true } : n));
     }
-  }, []);
+  }, [user?.id]);
 
   const markAllNotificationsAsRead = useCallback(async (role, userId) => {
+    const targetUserId = userId || user?.id;
+    if (targetUserId) {
+      try {
+        const currentIds = (notifications || []).map(n => n.id);
+        const stored = JSON.parse(localStorage.getItem(`read_notifs_${targetUserId}`) || '[]');
+        const combined = Array.from(new Set([...stored, ...currentIds]));
+        localStorage.setItem(`read_notifs_${targetUserId}`, JSON.stringify(combined));
+      } catch (e) { /* ignore */ }
+    }
+    setNotifications(prev => prev.map(n => ({ ...n, read: true })));
+
     try {
       await apiRequest('/notifications/read-all', 'PUT', { 
-        userId: userId || user?.id, 
+        userId: targetUserId, 
         role: role || user?.role, 
         collegeId: user?.collegeId 
       });
-      setNotifications(prev => prev.map(n => ({ ...n, read: true })));
     } catch (err) {
       console.warn('Failed to mark all notifications read on backend, updating locally:', err);
-      setNotifications(prev => prev.map(n => ({ ...n, read: true })));
     }
-  }, [user]);
+  }, [user, notifications]);
 
   // Blogs CRUD
   const getBlogs = () => blogs;

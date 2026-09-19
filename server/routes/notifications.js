@@ -88,10 +88,20 @@ router.get('/', async (req, res) => {
       return true;
     });
 
-    // Sort newest first
-    filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+    // Map read status based on per-user readBy or global read
+    const formatted = filtered.map(n => {
+      const doc = n.toObject ? n.toObject() : { ...n };
+      const isRead = Boolean(doc.read || (userId && Array.isArray(doc.readBy) && doc.readBy.includes(userId)));
+      return {
+        ...doc,
+        read: isRead
+      };
+    });
 
-    res.json(filtered);
+    // Sort newest first
+    formatted.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    res.json(formatted);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -108,6 +118,7 @@ router.post('/', async (req, res) => {
       id: `notif-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
       date: new Date(),
       read: false,
+      readBy: [],
       ...req.body,
       content: finalContent,
       message: finalMessage
@@ -123,18 +134,67 @@ router.post('/', async (req, res) => {
 router.put('/read-all', async (req, res) => {
   try {
     const { userId, role, collegeId } = req.body;
-    const filter = {};
-    if (userId) filter.userId = userId;
-    else if (role) {
-      filter.role = role;
-      if (collegeId) filter.collegeId = collegeId;
+
+    // 1. Directly target notifications assigned to this user
+    if (userId) {
+      await Notification.updateMany(
+        { userId },
+        { 
+          $set: { read: true },
+          $addToSet: { readBy: userId }
+        }
+      );
     }
-    
-    // Update all matching notifications to read: true
-    await Notification.updateMany(
-      filter,
-      { $set: { read: true } }
-    );
+
+    // 2. Mark broadcast / group / college notifications visible to this user
+    const broadcastConditions = [
+      { userId: { $exists: false } },
+      { userId: null },
+      { userId: '' }
+    ];
+
+    if (userId) {
+      broadcastConditions.push({ userId });
+    }
+
+    const query = { $or: broadcastConditions };
+
+    if (collegeId && collegeId !== 'all') {
+      query.$and = query.$and || [];
+      query.$and.push({
+        $or: [
+          { collegeId: { $exists: false } },
+          { collegeId: null },
+          { collegeId: '' },
+          { collegeId: 'all' },
+          { collegeId: collegeId }
+        ]
+      });
+    }
+
+    if (role && role !== 'all') {
+      query.$and = query.$and || [];
+      query.$and.push({
+        $or: [
+          { role: { $exists: false } },
+          { role: null },
+          { role: '' },
+          { role: 'all' },
+          { role: role }
+        ]
+      });
+    }
+
+    if (userId) {
+      await Notification.updateMany(query, {
+        $addToSet: { readBy: userId }
+      });
+    } else {
+      await Notification.updateMany(query, {
+        $set: { read: true }
+      });
+    }
+
     res.json({ message: 'All notifications marked as read' });
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -144,13 +204,22 @@ router.put('/read-all', async (req, res) => {
 // PUT mark single notification as read
 router.put('/:id/read', async (req, res) => {
   try {
-    const updated = await Notification.findOneAndUpdate(
-      { id: req.params.id },
-      { $set: { read: true } },
-      { new: true }
-    );
-    if (!updated) return res.status(404).json({ message: 'Notification not found' });
-    res.json(updated);
+    const { userId } = req.body || {};
+    const notif = await Notification.findOne({ id: req.params.id });
+    if (!notif) return res.status(404).json({ message: 'Notification not found' });
+
+    notif.read = true;
+    if (userId) {
+      if (!Array.isArray(notif.readBy)) notif.readBy = [];
+      if (!notif.readBy.includes(userId)) {
+        notif.readBy.push(userId);
+      }
+    }
+    const updated = await notif.save();
+    res.json({
+      ...(updated.toObject ? updated.toObject() : updated),
+      read: true
+    });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

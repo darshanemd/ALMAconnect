@@ -7,6 +7,7 @@ const notificationSchema = new mongoose.Schema({
   message: { type: String },
   date: { type: Date, default: Date.now },
   read: { type: Boolean, default: false },
+  readBy: { type: [String], default: [] }, // userIds who have marked this notification as read
   role: { type: String }, // 'alumni', 'student', 'college_admin'
   userId: { type: String },
   collegeId: { type: String },
