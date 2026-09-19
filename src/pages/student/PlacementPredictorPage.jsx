@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import { 
   ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, 
-  PolarRadiusAxis, Radar, Legend, Tooltip, LineChart, Line, XAxis, YAxis, 
+  Radar, Legend, Tooltip, LineChart, Line, XAxis, YAxis, 
   CartesianGrid, PieChart, Pie, Cell, Sector, AreaChart, Area, BarChart, Bar
 } from 'recharts';
 import { 
@@ -183,7 +183,7 @@ function CustomRoleSelect({ value, onChange }) {
                   </div>
                   {group.roles.map((r) => {
                     const isSelected = r.id === value || r.title === value;
-                    const RoleIcon = r.icon;
+                    const RoleIcon = r.icon || Target;
                     return (
                       <div
                         key={r.id}
@@ -385,6 +385,8 @@ export default function PlacementPredictorPage() {
       { name: '0% - 20% (Disqualification Risk)', value: veryLow, cycles: veryLow * 10, fill: '#ef4444' }
     ];
   };
+
+  const scenarioDonutData = getScenarioDonutData();
 
   // Calculate SVG Circle Dashoffset for Probability Gauge
   const radius = 40;
@@ -704,7 +706,7 @@ export default function PlacementPredictorPage() {
               </button>
 
               <span className="tier-badge-pill">
-                <span className="tier-dot" /> {prediction.tierInfo?.name || 'Target Tier'}
+                <span className="tier-dot" /> {prediction.tierInfo.name}
               </span>
             </div>
 
@@ -795,7 +797,7 @@ export default function PlacementPredictorPage() {
                 <span className="gauge-subtext">Based on target tier benchmarks & applicant pool</span>
                 <span className="target-role-pill">
                   <Target size={11} className="text-accent inline mr-1" />
-                  Target Role: {(prediction.targetRole || role || '').split('(')[0].trim() || 'Software Engineer'}
+                  Target Role: {prediction.targetRole.split('(')[0].trim()}
                 </span>
               </div>
             </div>
@@ -804,47 +806,47 @@ export default function PlacementPredictorPage() {
             <div className="kpi-card">
               <div className="kpi-header">
                 <span className="kpi-title">Placement Resilience Index</span>
-                <span className={`resilience-status-pill ${prediction.resilienceStatusClass || 'badge-success'}`}>
-                  <ShieldCheck size={11} /> {prediction.resilienceStatus || 'Moderate'}
+                <span className={`resilience-status-pill ${prediction.resilienceStatusClass}`}>
+                  <ShieldCheck size={11} /> {prediction.resilienceStatus}
                 </span>
               </div>
 
               <div>
                 <div className="resilience-score-big">
-                  {prediction.resilienceScore || 75} <span>/100</span>
+                  {prediction.resilienceScore} <span>/100</span>
                 </div>
 
                 <div className="resilience-projections-grid">
                   <div className="proj-col">
                     <span className="proj-col-title">Best Case</span>
-                    <div className="proj-col-val text-emerald-400">{prediction.projections?.bestCase ?? 85}%</div>
+                    <div className="proj-col-val text-emerald-400">{prediction.projections.bestCase}%</div>
                     <div className="proj-mini-track">
-                      <div className="proj-mini-fill bg-emerald-400" style={{ width: `${prediction.projections?.bestCase ?? 85}%` }} />
+                      <div className="proj-mini-fill bg-emerald-400" style={{ width: `${prediction.projections.bestCase}%` }} />
                     </div>
                     <span className="proj-col-desc">Favorable Market</span>
                   </div>
 
                   <div className="proj-col">
                     <span className="proj-col-title">Average Case</span>
-                    <div className="proj-col-val text-primary">{prediction.projections?.averageCase ?? 70}%</div>
+                    <div className="proj-col-val text-primary">{prediction.projections.averageCase}%</div>
                     <div className="proj-mini-track">
-                      <div className="proj-mini-fill bg-blue-400" style={{ width: `${prediction.projections?.averageCase ?? 70}%` }} />
+                      <div className="proj-mini-fill bg-blue-400" style={{ width: `${prediction.projections.averageCase}%` }} />
                     </div>
                     <span className="proj-col-desc">Standard Cohort</span>
                   </div>
 
                   <div className="proj-col">
                     <span className="proj-col-title">Worst Case</span>
-                    <div className="proj-col-val text-amber-400">{prediction.projections?.worstCase ?? 50}%</div>
+                    <div className="proj-col-val text-amber-400">{prediction.projections.worstCase}%</div>
                     <div className="proj-mini-track">
-                      <div className="proj-mini-fill bg-amber-400" style={{ width: `${prediction.projections?.worstCase ?? 50}%` }} />
+                      <div className="proj-mini-fill bg-amber-400" style={{ width: `${prediction.projections.worstCase}%` }} />
                     </div>
                     <span className="proj-col-desc">High Competition</span>
                   </div>
                 </div>
 
                 <p className="resilience-footer-note">
-                  Profile is {(prediction.resilienceStatus || 'moderate').toLowerCase()}. Critical sensitivity detected in Aptitude Score and DSA Depth.
+                  Profile is {prediction.resilienceStatus.toLowerCase()}. Critical sensitivity detected in Aptitude Score and DSA Depth.
                 </p>
               </div>
             </div>
@@ -1099,7 +1101,6 @@ export default function PlacementPredictorPage() {
                     <RadarChart cx="50%" cy="50%" outerRadius="75%" data={prediction.radarData}>
                       <PolarGrid stroke="var(--border)" opacity={0.5} />
                       <PolarAngleAxis dataKey="metric" tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} />
-                      <PolarRadiusAxis angle={30} domain={[0, 100]} tick={{ fill: 'var(--text-tertiary)', fontSize: 9 }} />
                       <Radar 
                         name="Placed Alumni Benchmark" 
                         dataKey="PlacedAlumni" 
@@ -1132,7 +1133,7 @@ export default function PlacementPredictorPage() {
                     <div className="gap-box">
                       <span className="gap-metric">DSA & Problem Solving</span>
                       <span className="gap-delta text-amber-400">
-                        {(prediction.radarData || []).find(d => d.metric === 'DSA Depth')?.YourScore || (prediction.radarData || []).find(d => d.metric === 'DSA Depth')?.Student || 0} vs {(prediction.radarData || []).find(d => d.metric === 'DSA Depth')?.PlacedAlumni || 0}
+                        {prediction.radarData.find(d => d.metric === 'DSA Depth')?.YourScore || 0} vs {prediction.radarData.find(d => d.metric === 'DSA Depth')?.PlacedAlumni || 0}
                       </span>
                       <p className="gap-recommendation">Solve 50+ Graph & DP problems to match placed alumni median.</p>
                     </div>
@@ -1140,15 +1141,15 @@ export default function PlacementPredictorPage() {
                     <div className="gap-box">
                       <span className="gap-metric">System Design / Projects</span>
                       <span className="gap-delta text-emerald-400">
-                        {(prediction.radarData || []).find(d => d.metric === 'Projects')?.YourScore || (prediction.radarData || []).find(d => d.metric === 'Projects')?.Student || 0} vs {(prediction.radarData || []).find(d => d.metric === 'Projects')?.PlacedAlumni || 0}
+                        {prediction.radarData.find(d => d.metric === 'Projects')?.YourScore || 0} vs {prediction.radarData.find(d => d.metric === 'Projects')?.PlacedAlumni || 0}
                       </span>
-                      <p className="gap-recommendation">Projects meet current baseline for {prediction.tierInfo?.name || 'your target tier'}.</p>
+                      <p className="gap-recommendation">Projects meet current baseline for {prediction.tierInfo.name}.</p>
                     </div>
 
                     <div className="gap-box">
                       <span className="gap-metric">Aptitude Readiness</span>
                       <span className="gap-delta text-blue-400">
-                        {(prediction.radarData || []).find(d => d.metric === 'Aptitude')?.YourScore || (prediction.radarData || []).find(d => d.metric === 'Aptitude')?.Student || 0} vs {(prediction.radarData || []).find(d => d.metric === 'Aptitude')?.PlacedAlumni || 0}
+                        {prediction.radarData.find(d => d.metric === 'Aptitude')?.YourScore || 0} vs {prediction.radarData.find(d => d.metric === 'Aptitude')?.PlacedAlumni || 0}
                       </span>
                       <p className="gap-recommendation">Maintain daily mock speed drills to avoid cutoff disqualifications.</p>
                     </div>
@@ -1197,99 +1198,92 @@ export default function PlacementPredictorPage() {
                   </div>
                 </div>
 
-                {(() => {
-                  const donutData = getScenarioDonutData();
-                  const highPlusGood = Math.round((donutData[0]?.value || 0) + (donutData[1]?.value || 0));
+                <div className="montecarlo-visual-grid">
+                  
+                  {/* Donut Chart with Breakdown */}
+                  <div className="mc-full-donut-panel">
+                    <span className="font-bold text-xs text-primary mb-2 block">
+                      Outcome Distribution Across 1,000 Simulated Recruitment Drives
+                    </span>
 
-                  return (
-                    <div className="montecarlo-visual-grid">
-                      
-                      {/* Donut Chart with Breakdown */}
-                      <div className="mc-full-donut-panel">
-                        <span className="font-bold text-xs text-primary mb-2 block">
-                          Outcome Distribution Across 1,000 Simulated Recruitment Drives
-                        </span>
-
-                        <div style={{ width: '100%', height: 240 }} className="relative flex items-center justify-center">
-                          <ResponsiveContainer width="100%" height={240} minWidth={0} minHeight={0}>
-                            <PieChart>
-                              <Pie 
-                                data={donutData} 
-                                cx="50%" 
-                                cy="50%" 
-                                innerRadius={55} 
-                                outerRadius={85} 
-                                paddingAngle={3}
-                                dataKey="value"
-                              >
-                                {donutData.map((entry, index) => (
-                                  <Cell key={`cell-${index}`} fill={entry.fill} />
-                                ))}
-                              </Pie>
-                              <Tooltip 
-                                contentStyle={{ background: 'var(--surface)', borderColor: 'var(--border)', borderRadius: 6, fontSize: 11 }} 
-                                formatter={(v, name) => [`${v}% of Cycles (${v * 10} drives)`, name]}
-                              />
-                            </PieChart>
-                          </ResponsiveContainer>
-                          <div className="mc-donut-hero-text">
-                            <span className="text-xl font-extrabold text-primary">1,000</span>
-                            <span className="text-[10px] text-tertiary">Cycles Run</span>
-                          </div>
-                        </div>
-
-                        <div className="mc-full-legend-stack">
-                          {donutData.map((seg, idx) => (
-                            <div key={idx} className="flex justify-between items-center text-xs py-1 border-b border-border-light">
-                              <div className="flex items-center gap-2">
-                                <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: seg.fill }} />
-                                <span className="text-secondary">{seg.name}</span>
-                              </div>
-                              <span className="font-bold text-primary">{seg.value}% ({seg.cycles} drives)</span>
-                            </div>
-                          ))}
-                        </div>
+                    <div style={{ width: '100%', height: 240 }} className="relative flex items-center justify-center">
+                      <ResponsiveContainer width="100%" height={240} minWidth={0} minHeight={0}>
+                        <PieChart>
+                          <Pie 
+                            data={scenarioDonutData} 
+                            cx="50%" 
+                            cy="50%" 
+                            innerRadius={55} 
+                            outerRadius={85} 
+                            paddingAngle={3}
+                            dataKey="value"
+                          >
+                            {scenarioDonutData.map((entry, index) => (
+                              <Cell key={`cell-${index}`} fill={entry.fill} />
+                            ))}
+                          </Pie>
+                          <Tooltip 
+                            contentStyle={{ background: 'var(--surface)', borderColor: 'var(--border)', borderRadius: 6, fontSize: 11 }} 
+                            formatter={(v, name) => [`${v}% of Cycles (${v * 10} drives)`, name]}
+                          />
+                        </PieChart>
+                      </ResponsiveContainer>
+                      <div className="mc-donut-hero-text">
+                        <span className="text-xl font-extrabold text-primary">1,000</span>
+                        <span className="text-[10px] text-tertiary">Cycles Run</span>
                       </div>
-
-                      {/* Histogram of Outcomes */}
-                      <div className="mc-histogram-panel">
-                        <span className="font-bold text-xs text-primary mb-2 block">
-                          Offer Distribution Probability Density (Simulated Placement Offers)
-                        </span>
-
-                        <div style={{ width: '100%', height: 240 }}>
-                          <ResponsiveContainer width="100%" height={240} minWidth={0} minHeight={0}>
-                            <BarChart data={[
-                              { bracket: '0-20%', frequency: donutData[4]?.value || 5, fill: '#ef4444' },
-                              { bracket: '20-40%', frequency: donutData[3]?.value || 12, fill: '#f97316' },
-                              { bracket: '40-60%', frequency: donutData[2]?.value || 25, fill: '#f59e0b' },
-                              { bracket: '60-80%', frequency: donutData[1]?.value || 40, fill: '#3b82f6' },
-                              { bracket: '80-100%', frequency: donutData[0]?.value || 18, fill: '#10b981' }
-                            ]}>
-                              <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" opacity={0.4} />
-                              <XAxis dataKey="bracket" stroke="var(--text-tertiary)" fontSize={10} />
-                              <YAxis stroke="var(--text-tertiary)" fontSize={10} label={{ value: 'Frequency %', angle: -90, position: 'insideLeft', fill: 'var(--text-tertiary)', fontSize: 10 }} />
-                              <Tooltip 
-                                contentStyle={{ background: 'var(--surface)', borderColor: 'var(--border)', borderRadius: 6, fontSize: 11 }} 
-                                formatter={(v) => [`${v}% of Simulation Runs`, 'Probability Frequency']}
-                              />
-                              <Bar dataKey="frequency" radius={[4, 4, 0, 0]}>
-                                {donutData.map((entry, index) => (
-                                  <Cell key={`bar-${index}`} fill={entry.fill} />
-                                ))}
-                              </Bar>
-                            </BarChart>
-                          </ResponsiveContainer>
-                        </div>
-
-                        <div className="p-3 bg-surface-hover border rounded-lg mt-2 text-xs text-secondary leading-relaxed">
-                          💡 <strong>Simulation Insight:</strong> In {mcScenario.toUpperCase()} market conditions, your candidate profile converts in <strong>{highPlusGood}%</strong> of campus recruitment scenarios without requiring repeat drives.
-                        </div>
-                      </div>
-
                     </div>
-                  );
-                })()}
+
+                    <div className="mc-full-legend-stack">
+                      {scenarioDonutData.map((seg, idx) => (
+                        <div key={idx} className="flex justify-between items-center text-xs py-1 border-b border-border-light">
+                          <div className="flex items-center gap-2">
+                            <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: seg.fill }} />
+                            <span className="text-secondary">{seg.name}</span>
+                          </div>
+                          <span className="font-bold text-primary">{seg.value}% ({seg.cycles} drives)</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Histogram of Outcomes */}
+                  <div className="mc-histogram-panel">
+                    <span className="font-bold text-xs text-primary mb-2 block">
+                      Offer Distribution Probability Density (Simulated Placement Offers)
+                    </span>
+
+                    <div style={{ width: '100%', height: 240 }}>
+                      <ResponsiveContainer width="100%" height={240} minWidth={0} minHeight={0}>
+                        <BarChart data={[
+                          { bracket: '0-20%', frequency: scenarioDonutData[4]?.value || 5, fill: '#ef4444' },
+                          { bracket: '20-40%', frequency: scenarioDonutData[3]?.value || 12, fill: '#f97316' },
+                          { bracket: '40-60%', frequency: scenarioDonutData[2]?.value || 25, fill: '#f59e0b' },
+                          { bracket: '60-80%', frequency: scenarioDonutData[1]?.value || 40, fill: '#3b82f6' },
+                          { bracket: '80-100%', frequency: scenarioDonutData[0]?.value || 18, fill: '#10b981' }
+                        ]}>
+                          <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" opacity={0.4} />
+                          <XAxis dataKey="bracket" stroke="var(--text-tertiary)" fontSize={10} />
+                          <YAxis stroke="var(--text-tertiary)" fontSize={10} label={{ value: 'Frequency %', angle: -90, position: 'insideLeft', fill: 'var(--text-tertiary)', fontSize: 10 }} />
+                          <Tooltip 
+                            contentStyle={{ background: 'var(--surface)', borderColor: 'var(--border)', borderRadius: 6, fontSize: 11 }} 
+                            formatter={(v) => [`${v}% of Simulation Runs`, 'Probability Frequency']}
+                          />
+                          <Bar dataKey="frequency" radius={[4, 4, 0, 0]}>
+                            {scenarioDonutData.map((entry, index) => (
+                              <Cell key={`bar-${index}`} fill={entry.fill} />
+                            ))}
+                          </Bar>
+                        </BarChart>
+                      </ResponsiveContainer>
+                    </div>
+
+                    <div className="p-3 bg-surface-hover border rounded-lg mt-2 text-xs text-secondary leading-relaxed">
+                      💡 <strong>Simulation Insight:</strong> In {mcScenario.toUpperCase()} market conditions, your candidate profile converts in <strong>{Math.round((scenarioDonutData[0]?.value || 0) + (scenarioDonutData[1]?.value || 0))}%</strong> of campus recruitment scenarios without requiring repeat drives.
+                    </div>
+                  </div>
+
+                </div>
 
               </div>
             </div>

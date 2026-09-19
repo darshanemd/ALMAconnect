@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, 
-  PolarRadiusAxis, Radar, Legend, Tooltip 
+  Radar, Legend, Tooltip 
 } from 'recharts';
 import { Compass } from 'lucide-react';
 
@@ -22,7 +22,6 @@ export default function SkillRadarChart({ radarData }) {
           <RadarChart cx="50%" cy="50%" outerRadius="75%" data={radarData}>
             <PolarGrid stroke="var(--border-light)" />
             <PolarAngleAxis dataKey="axis" tick={{ fill: 'var(--text-secondary)', fontSize: 10 }} />
-            <PolarRadiusAxis angle={30} domain={[0, 100]} tick={{ fill: 'var(--text-secondary)', fontSize: 9 }} />
             <Radar name="Student Level" dataKey="Student" stroke="#4E715D" fill="#4E715D" fillOpacity={0.5} />
             <Radar name="Target Benchmark" dataKey="Target" stroke="#D97706" fill="#D97706" fillOpacity={0.15} />
             <Tooltip />
