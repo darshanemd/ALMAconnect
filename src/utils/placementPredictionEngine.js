@@ -317,12 +317,12 @@ export function runPlacementSimulation({
   const benchmark = selectedTier.benchmarkAlumni;
 
   const radarData = [
-    { metric: 'GPA', Student: studentRadarScores.gpa, PlacedAlumni: benchmark.gpa },
-    { metric: 'Aptitude', Student: studentRadarScores.aptitude, PlacedAlumni: benchmark.aptitude },
-    { metric: 'Projects', Student: studentRadarScores.projects, PlacedAlumni: benchmark.projects },
-    { metric: 'Internships', Student: studentRadarScores.internships, PlacedAlumni: benchmark.internships },
-    { metric: 'DSA Depth', Student: studentRadarScores.dsaDepth, PlacedAlumni: benchmark.dsaDepth },
-    { metric: 'Academic Record', Student: studentRadarScores.academicRecord, PlacedAlumni: benchmark.academicRecord }
+    { metric: 'GPA', Student: studentRadarScores.gpa, YourScore: studentRadarScores.gpa, PlacedAlumni: benchmark.gpa },
+    { metric: 'Aptitude', Student: studentRadarScores.aptitude, YourScore: studentRadarScores.aptitude, PlacedAlumni: benchmark.aptitude },
+    { metric: 'Projects', Student: studentRadarScores.projects, YourScore: studentRadarScores.projects, PlacedAlumni: benchmark.projects },
+    { metric: 'Internships', Student: studentRadarScores.internships, YourScore: studentRadarScores.internships, PlacedAlumni: benchmark.internships },
+    { metric: 'DSA Depth', Student: studentRadarScores.dsaDepth, YourScore: studentRadarScores.dsaDepth, PlacedAlumni: benchmark.dsaDepth },
+    { metric: 'Academic Record', Student: studentRadarScores.academicRecord, YourScore: studentRadarScores.academicRecord, PlacedAlumni: benchmark.academicRecord }
   ];
 
   const radarGaps = [

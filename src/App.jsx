@@ -1,43 +1,70 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router';
 import { useAuth } from './contexts/AuthContext';
+import ErrorBoundary from './components/ui/ErrorBoundary';
+
+// Resilient dynamic import that automatically recovers from stale Vercel chunk hashes
+function lazyWithRetry(componentImport) {
+  return lazy(async () => {
+    try {
+      return await componentImport();
+    } catch (error) {
+      const errorMsg = String(error?.message || '').toLowerCase();
+      const isChunkError = 
+        errorMsg.includes('failed to fetch dynamically imported module') ||
+        errorMsg.includes('importing a module script failed') ||
+        errorMsg.includes('loading chunk') ||
+        errorMsg.includes('unexpected token \'<\'');
+
+      const reloadKey = 'chunk_reload_done';
+      const alreadyReloaded = window.sessionStorage.getItem(reloadKey);
+
+      if (isChunkError && !alreadyReloaded) {
+        window.sessionStorage.setItem(reloadKey, 'true');
+        window.location.reload();
+        return new Promise(() => {}); // prevent throwing before reload finishes
+      }
+      throw error;
+    }
+  });
+}
 
 // Layouts
 import PublicLayout from './components/layout/PublicLayout';
 import DashboardLayout from './components/layout/DashboardLayout';
 
 // Public Pages (Lazy Loaded for Initial Speed)
-const HomePage = lazy(() => import('./pages/public/HomePage'));
-const LoginPage = lazy(() => import('./pages/public/LoginPage'));
-const RegisterPage = lazy(() => import('./pages/public/RegisterPage'));
+const HomePage = lazyWithRetry(() => import('./pages/public/HomePage'));
+const LoginPage = lazyWithRetry(() => import('./pages/public/LoginPage'));
+const RegisterPage = lazyWithRetry(() => import('./pages/public/RegisterPage'));
 
 // Private Dispatcher
-const DashboardDispatcher = lazy(() => import('./pages/DashboardDispatcher'));
+const DashboardDispatcher = lazyWithRetry(() => import('./pages/DashboardDispatcher'));
 
 // Core & Shared Pages (Lazy-Loaded)
-const DirectoryPage = lazy(() => import('./pages/alumni/DirectoryPage'));
-const JobsPage = lazy(() => import('./pages/alumni/JobsPage'));
-const EventsPage = lazy(() => import('./pages/alumni/EventsPage'));
-const BlogPage = lazy(() => import('./pages/alumni/BlogPage'));
-const BlogPostPage = lazy(() => import('./pages/alumni/BlogPostPage'));
-const NetworkPage = lazy(() => import('./pages/alumni/NetworkPage'));
-const MentorshipPage = lazy(() => import('./pages/alumni/MentorshipPage'));
-const SmartCardPage = lazy(() => import('./pages/alumni/SmartCardPage'));
-const SurveysPage = lazy(() => import('./pages/alumni/SurveysPage'));
-const ProfilePage = lazy(() => import('./pages/alumni/ProfilePage'));
-const CircularsPage = lazy(() => import('./pages/alumni/CircularsPage'));
-const CollegeProfilePage = lazy(() => import('./pages/college/CollegeProfilePage'));
-const VerificationPage = lazy(() => import('./pages/college/VerificationPage'));
-const SettingsPage = lazy(() => import('./pages/SettingsPage'));
+const DirectoryPage = lazyWithRetry(() => import('./pages/alumni/DirectoryPage'));
+const JobsPage = lazyWithRetry(() => import('./pages/alumni/JobsPage'));
+const EventsPage = lazyWithRetry(() => import('./pages/alumni/EventsPage'));
+const BlogPage = lazyWithRetry(() => import('./pages/alumni/BlogPage'));
+const BlogPostPage = lazyWithRetry(() => import('./pages/alumni/BlogPostPage'));
+const NetworkPage = lazyWithRetry(() => import('./pages/alumni/NetworkPage'));
+const MentorshipPage = lazyWithRetry(() => import('./pages/alumni/MentorshipPage'));
+const SmartCardPage = lazyWithRetry(() => import('./pages/alumni/SmartCardPage'));
+const SurveysPage = lazyWithRetry(() => import('./pages/alumni/SurveysPage'));
+const ProfilePage = lazyWithRetry(() => import('./pages/alumni/ProfilePage'));
+const CircularsPage = lazyWithRetry(() => import('./pages/alumni/CircularsPage'));
+const CollegeProfilePage = lazyWithRetry(() => import('./pages/college/CollegeProfilePage'));
+const VerificationPage = lazyWithRetry(() => import('./pages/college/VerificationPage'));
+const SettingsPage = lazyWithRetry(() => import('./pages/SettingsPage'));
 
 // Specialized Student & College Pages (Lazy-Loaded)
-const ResumeAnalyzerPage = lazy(() => import('./pages/student/ResumeAnalyzerPage'));
-const SkillGapPage = lazy(() => import('./pages/student/SkillGapPage'));
-const PlacementPredictorPage = lazy(() => import('./pages/student/PlacementPredictorPage'));
-const ComplaintsPage = lazy(() => import('./pages/student/ComplaintsPage'));
-const CSVUploadPage = lazy(() => import('./pages/college/CSVUploadPage'));
-const SurveyBuilderPage = lazy(() => import('./pages/college/SurveyBuilderPage'));
-const ComplaintsAdminPage = lazy(() => import('./pages/college/ComplaintsAdminPage'));
+const ResumeAnalyzerPage = lazyWithRetry(() => import('./pages/student/ResumeAnalyzerPage'));
+const SkillGapPage = lazyWithRetry(() => import('./pages/student/SkillGapPage'));
+const PlacementPredictorPage = lazyWithRetry(() => import('./pages/student/PlacementPredictorPage'));
+const ComplaintsPage = lazyWithRetry(() => import('./pages/student/ComplaintsPage'));
+const CSVUploadPage = lazyWithRetry(() => import('./pages/college/CSVUploadPage'));
+const SurveyBuilderPage = lazyWithRetry(() => import('./pages/college/SurveyBuilderPage'));
+const ComplaintsAdminPage = lazyWithRetry(() => import('./pages/college/ComplaintsAdminPage'));
 
 // Route Fallback Loading Spinner
 function PageFallback() {
@@ -83,8 +110,9 @@ function CatchAllRoute() {
 export default function App() {
   return (
     <BrowserRouter>
-      <Suspense fallback={<PageFallback />}>
-        <Routes>
+      <ErrorBoundary>
+        <Suspense fallback={<PageFallback />}>
+          <Routes>
           {/* Public Routes */}
           <Route element={<PublicLayout />}>
             <Route path="/" element={<HomePage />} />
@@ -121,22 +149,30 @@ export default function App() {
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/complaints" element={<Navigate to="/student/complaints" replace />} />
 
-            {/* Student Specific Routes */}
+            {/* Specialized AI & Career Tools (Accessible to Students, Alumni & Admins) */}
             <Route path="/student/resume-analyzer" element={
-              <ProtectedRoute allowedRoles={['student']}>
+              <ProtectedRoute allowedRoles={['student', 'alumni', 'college_admin', 'admin']}>
                 <ResumeAnalyzerPage />
               </ProtectedRoute>
             } />
+            <Route path="/resume-analyzer" element={<Navigate to="/student/resume-analyzer" replace />} />
+
             <Route path="/student/skill-gap" element={
-              <ProtectedRoute allowedRoles={['student']}>
+              <ProtectedRoute allowedRoles={['student', 'alumni', 'college_admin', 'admin']}>
                 <SkillGapPage />
               </ProtectedRoute>
             } />
+            <Route path="/skill-gap" element={<Navigate to="/student/skill-gap" replace />} />
+
             <Route path="/student/placement-predictor" element={
-              <ProtectedRoute allowedRoles={['student']}>
+              <ProtectedRoute allowedRoles={['student', 'alumni', 'college_admin', 'admin']}>
                 <PlacementPredictorPage />
               </ProtectedRoute>
             } />
+            <Route path="/placement-predictor" element={<Navigate to="/student/placement-predictor" replace />} />
+            <Route path="/placement" element={<Navigate to="/student/placement-predictor" replace />} />
+            <Route path="/predictor" element={<Navigate to="/student/placement-predictor" replace />} />
+
             <Route path="/student/complaints" element={
               <ProtectedRoute allowedRoles={['student', 'alumni']}>
                 <ComplaintsPage />
@@ -175,6 +211,7 @@ export default function App() {
           <Route path="*" element={<CatchAllRoute />} />
         </Routes>
       </Suspense>
-    </BrowserRouter>
+    </ErrorBoundary>
+  </BrowserRouter>
   );
 }

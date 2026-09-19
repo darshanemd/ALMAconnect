@@ -8,6 +8,7 @@ import Sidebar from './Sidebar';
 import TopBar from './TopBar';
 import MobileBottomBar from './MobileBottomBar';
 import CommandMenu from '../ui/CommandMenu';
+import ErrorBoundary from '../ui/ErrorBoundary';
 import './DashboardLayout.css';
 
 export default function DashboardLayout() {
@@ -127,7 +128,9 @@ export default function DashboardLayout() {
         )}
 
         <main className="content-area animate-fade-in">
-          <Outlet />
+          <ErrorBoundary>
+            <Outlet />
+          </ErrorBoundary>
         </main>
       </div>
 

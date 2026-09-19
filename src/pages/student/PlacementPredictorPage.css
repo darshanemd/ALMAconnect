@@ -1684,6 +1684,150 @@
   }
 }
 
+@media (max-width: 768px) {
+  .placement-page-container {
+    padding: 8px 8px 80px;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .launcher-wrapper {
+    padding: 8px 0 24px;
+    min-height: auto;
+    display: block;
+    width: 100%;
+  }
+
+  .launcher-card {
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    margin: 0;
+  }
+
+  .launcher-card-inner {
+    padding: 16px 12px 20px;
+  }
+
+  .launcher-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .launcher-title-wrap {
+    gap: 10px;
+    align-items: center;
+  }
+
+  .launcher-header h2 {
+    font-size: 15px;
+    line-height: 1.3;
+  }
+
+  .launcher-header p {
+    font-size: 11px;
+  }
+
+  .presets-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 10px;
+  }
+
+  .presets-chips-row {
+    flex-wrap: wrap;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .preset-chip {
+    font-size: 10.5px;
+    padding: 4px 8px;
+    flex: 1 1 auto;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .tier-buttons-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .tier-btn {
+    padding: 10px 12px;
+  }
+
+  .form-section-card {
+    padding: 14px 12px;
+    margin-bottom: 12px;
+  }
+
+  .grid.grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .custom-role-dropdown-menu {
+    width: 100%;
+    max-width: 100%;
+    left: 0;
+    right: 0;
+  }
+
+  .predict-submit-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 13px;
+    justify-content: center;
+  }
+
+  .results-control-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .control-bar-left,
+  .control-bar-right {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .predictor-tabs-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .predictor-tab-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 9px 12px;
+    font-size: 11.5px;
+  }
+
+  .montecarlo-visual-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .radar-gap-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .parameter-drawer-body {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
 /* ==========================================================================
    COMPREHENSIVE DARK MODE OVERRIDES ([data-theme="dark"])
    ========================================================================== */
