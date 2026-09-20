@@ -21,6 +21,7 @@ export default function CollegeProfilePage() {
   
   // Tag manager state
   const [newDeptInput, setNewDeptInput] = useState('');
+  const [saving, setSaving] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
 
@@ -67,7 +68,7 @@ export default function CollegeProfilePage() {
     setDepartments(departments.filter((_, idx) => idx !== deptIndex));
   };
 
-  const handleSaveProfile = (e) => {
+  const handleSaveProfile = async (e) => {
     e.preventDefault();
     setError('');
 
@@ -82,7 +83,8 @@ export default function CollegeProfilePage() {
     }
 
     try {
-      updateCollege(college.id, {
+      setSaving(true);
+      await updateCollege(college.id, {
         name: name.trim(),
         code: code.trim().toUpperCase(),
         location: location.trim(),
@@ -96,9 +98,11 @@ export default function CollegeProfilePage() {
       
       setTimeout(() => {
         setSuccess(false);
-      }, 3000);
+      }, 3500);
     } catch (err) {
-      setError('Failed to update college profile. Please try again.');
+      setError(err?.message || 'Failed to update college profile. Please try again.');
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -253,8 +257,8 @@ export default function CollegeProfilePage() {
           </div>
 
           <div className="flex gap-4 mt-6">
-            <button type="submit" className="btn btn-primary flex-1 flex items-center justify-center gap-2">
-              <Save size={18} /> Save Institution Details
+            <button type="submit" disabled={saving} className="btn btn-primary flex-1 flex items-center justify-center gap-2">
+              <Save size={18} /> {saving ? 'Saving Institution Details...' : 'Save Institution Details'}
             </button>
           </div>
         </form>

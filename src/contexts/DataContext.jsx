@@ -15,7 +15,14 @@ export const useData = () => {
 export const DataProvider = ({ children }) => {
   const { user } = useAuth();
 
-  const [colleges, setColleges] = useState([]);
+  const [colleges, setColleges] = useState(() => {
+    try {
+      const cached = localStorage.getItem('cachedColleges');
+      return cached ? JSON.parse(cached) : [];
+    } catch {
+      return [];
+    }
+  });
   const [alumni, setAlumni] = useState([]);
   const [preVerifiedStudents, setPreVerifiedStudents] = useState([]);
   const [jobs, setJobs] = useState([]);
@@ -93,35 +100,35 @@ export const DataProvider = ({ children }) => {
     }
   }, [user]);
 
+  // Authoritative server-first college refresher
+  const refreshColleges = useCallback(async () => {
+    try {
+      const fetchedColleges = await apiRequest('/colleges');
+      if (fetchedColleges && Array.isArray(fetchedColleges) && fetchedColleges.length > 0) {
+        setColleges(fetchedColleges);
+        try {
+          localStorage.setItem('cachedColleges', JSON.stringify(fetchedColleges));
+        } catch (e) { /* ignore storage errors */ }
+        return fetchedColleges;
+      }
+    } catch (colErr) {
+      console.warn('Failed to fetch colleges from backend API, falling back to local cache if available:', colErr);
+      try {
+        const cachedCollegesStr = localStorage.getItem('cachedColleges');
+        const cachedColleges = cachedCollegesStr ? JSON.parse(cachedCollegesStr) : null;
+        if (cachedColleges && cachedColleges.length > 0) {
+          setColleges(prev => (prev.length === 0 ? cachedColleges : prev));
+          return cachedColleges;
+        }
+      } catch (e) { /* ignore */ }
+    }
+  }, []);
+
   // Load all data on mount or when user session shifts
   useEffect(() => {
     const loadAllData = async () => {
       try {
-        const cachedCollegesStr = localStorage.getItem('cachedColleges');
-        const cachedColleges = cachedCollegesStr ? JSON.parse(cachedCollegesStr) : null;
-
-        let fetchedColleges = [];
-        try {
-          fetchedColleges = await apiRequest('/colleges');
-        } catch (colErr) {
-          console.warn('Failed to fetch colleges from backend API, using cached:', colErr);
-        }
-
-        if (fetchedColleges && fetchedColleges.length > 0) {
-          if (cachedColleges && cachedColleges.length > 0) {
-            const merged = fetchedColleges.map(c => {
-              const cachedObj = cachedColleges.find(item => item.id === c.id);
-              return cachedObj ? { ...c, ...cachedObj } : c;
-            });
-            setColleges(merged);
-            localStorage.setItem('cachedColleges', JSON.stringify(merged));
-          } else {
-            setColleges(fetchedColleges);
-            localStorage.setItem('cachedColleges', JSON.stringify(fetchedColleges));
-          }
-        } else if (cachedColleges && cachedColleges.length > 0) {
-          setColleges(cachedColleges);
-        }
+        await refreshColleges();
 
         const fetchedAlumni = await apiRequest('/members');
         const currentYear = new Date().getFullYear();
@@ -177,7 +184,23 @@ export const DataProvider = ({ children }) => {
     };
 
     loadAllData();
-  }, [user, refreshNotifications]);
+  }, [user, refreshNotifications, refreshColleges]);
+
+  // Live cross-tab / cross-device synchronization:
+  // When a user returns or refocuses the app, pull fresh college information from the server
+  useEffect(() => {
+    const handleSyncOnFocus = () => {
+      if (typeof document !== 'undefined' && document.visibilityState === 'visible') {
+        refreshColleges();
+      }
+    };
+    window.addEventListener('visibilitychange', handleSyncOnFocus);
+    window.addEventListener('focus', handleSyncOnFocus);
+    return () => {
+      window.removeEventListener('visibilitychange', handleSyncOnFocus);
+      window.removeEventListener('focus', handleSyncOnFocus);
+    };
+  }, [refreshColleges]);
 
   // Periodic real-time sync for notifications (every 20s)
   useEffect(() => {
@@ -203,17 +226,23 @@ export const DataProvider = ({ children }) => {
     try {
       const updated = await apiRequest(`/colleges/${id}`, 'PUT', updatedFields);
       setColleges(prev => {
-        const next = prev.map(col => col.id === id ? { ...col, ...updatedFields, ...updated } : col);
-        localStorage.setItem('cachedColleges', JSON.stringify(next));
+        const next = prev.map(col => col.id === id ? { ...col, ...updatedFields, ...(updated || {}) } : col);
+        try {
+          localStorage.setItem('cachedColleges', JSON.stringify(next));
+        } catch (e) { /* ignore */ }
         return next;
       });
+      return updated;
     } catch (err) {
       console.error('Failed to update college in backend API, persisting locally:', err);
       setColleges(prev => {
         const next = prev.map(col => col.id === id ? { ...col, ...updatedFields } : col);
-        localStorage.setItem('cachedColleges', JSON.stringify(next));
+        try {
+          localStorage.setItem('cachedColleges', JSON.stringify(next));
+        } catch (e) { /* ignore */ }
         return next;
       });
+      throw err;
     }
   };
 
@@ -1031,6 +1060,7 @@ export const DataProvider = ({ children }) => {
     surveys,
     resetData,
     updateCollege,
+    refreshColleges,
     getAlumni,
     getAlumniById,
     updateAlumni,
