@@ -52,15 +52,20 @@ router.post('/', upload.single('file'), async (req, res) => {
     let fileUrl = `/uploads/${req.file.filename}`;
     const mimeType = req.file.mimetype || '';
     const isVideo = mimeType.startsWith('video/') || req.file.filename.match(/\.(mp4|webm|mov|ogg)$/i);
-    const isPdfOrRaw = req.file.filename.match(/\.(pdf|doc|docx|zip)$/i);
+    const isPdf = req.file.filename.match(/\.pdf$/i) || mimeType === 'application/pdf';
+    const isDocOrZip = req.file.filename.match(/\.(doc|docx|zip)$/i);
 
     // If Cloudinary is configured, upload to Cloudinary for permanent CDN storage
     if (process.env.CLOUDINARY_CLOUD_NAME && process.env.CLOUDINARY_API_KEY && process.env.CLOUDINARY_API_SECRET) {
       try {
-        const resourceType = isVideo ? 'video' : (isPdfOrRaw ? 'raw' : 'auto');
+        // Uploading PDFs as 'auto' or 'image' allows Cloudinary to treat them as documents/images,
+        // which avoids the strict raw ACL delivery restrictions and enables instant browser viewing
+        const resourceType = isVideo ? 'video' : (isDocOrZip ? 'raw' : (isPdf ? 'image' : 'auto'));
         const uploadResult = await cloudinary.uploader.upload(req.file.path, {
           folder: 'almaconnect',
           resource_type: resourceType,
+          access_mode: 'public',
+          type: 'upload',
           use_filename: true,
           unique_filename: true
         });
@@ -86,6 +91,48 @@ router.post('/', upload.single('file'), async (req, res) => {
   } catch (error) {
     console.error('File upload error:', error);
     return res.status(500).json({ error: 'Failed to upload media file' });
+  }
+});
+
+// GET /api/upload/pdf-proxy?url=...
+// Streams PDF documents, automatically signing Cloudinary raw requests if ACL is restricted
+router.get('/pdf-proxy', async (req, res) => {
+  const { url } = req.query;
+  if (!url) return res.status(400).send('Missing url parameter');
+
+  try {
+    let fetchUrl = url;
+
+    // If it is a Cloudinary raw upload, generate a signed download URL using API credentials
+    if (url.includes('cloudinary.com') && url.includes('/raw/upload/') && process.env.CLOUDINARY_API_KEY && process.env.CLOUDINARY_API_SECRET) {
+      try {
+        const match = url.match(/\/raw\/upload\/(?:v\d+\/)?(.+)$/);
+        if (match && match[1]) {
+          const publicIdWithExt = match[1];
+          fetchUrl = cloudinary.utils.private_download_url(publicIdWithExt, '', { resource_type: 'raw' });
+        }
+      } catch (signErr) {
+        console.warn('Could not generate private signed download URL:', signErr);
+      }
+    }
+
+    const response = await fetch(fetchUrl);
+    if (!response.ok) {
+      // If fetching signed URL returned non-200, return status
+      return res.status(response.status).json({
+        error: 'Failed to retrieve document from storage',
+        status: response.status
+      });
+    }
+
+    const contentType = response.headers.get('content-type') || 'application/pdf';
+    res.setHeader('Content-Type', contentType);
+    res.setHeader('Content-Disposition', 'inline');
+    const arrayBuffer = await response.arrayBuffer();
+    return res.send(Buffer.from(arrayBuffer));
+  } catch (err) {
+    console.error('PDF proxy streaming error:', err);
+    return res.status(500).send('Failed to stream PDF');
   }
 });
 

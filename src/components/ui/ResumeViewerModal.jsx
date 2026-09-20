@@ -1,5 +1,5 @@
-import React from 'react';
-import { X, Download, FileText, CheckCircle2 } from 'lucide-react';
+import React, { useState, useMemo } from 'react';
+import { X, Download, FileText, CheckCircle2, Eye, ExternalLink } from 'lucide-react';
 import Avatar from './Avatar';
 import { getFileUrl } from '../../utils/api';
 import './ResumeViewerModal.css';
@@ -12,14 +12,26 @@ export default function ResumeViewerModal({
   resumeType = 'pdf',
   onClose 
 }) {
+  const [viewMode, setViewMode] = useState('document'); // 'document' | 'digital'
+
   const isBase64Image = resumeUrl && (resumeUrl.startsWith('data:image/') || /\.(jpg|jpeg|png|webp)$/i.test(resumeUrl));
-  const isBase64Pdf = resumeUrl && (resumeUrl.startsWith('data:application/pdf') || resumeUrl.endsWith('.pdf'));
+  const isBase64Pdf = resumeUrl && (resumeUrl.startsWith('data:application/pdf') || resumeUrl.endsWith('.pdf') || resumeUrl.includes('.pdf'));
+
+  // If the resumeUrl is a Cloudinary raw upload, route through the secure proxy
+  const effectivePdfUrl = useMemo(() => {
+    if (!resumeUrl) return '';
+    if (resumeUrl.includes('cloudinary.com') && resumeUrl.includes('/raw/upload/')) {
+      return getFileUrl(`/api/upload/pdf-proxy?url=${encodeURIComponent(resumeUrl)}`);
+    }
+    return getFileUrl(resumeUrl);
+  }, [resumeUrl]);
 
   const handleDownload = () => {
-    // If alumnus uploaded a custom file, download it directly
+    // If alumnus uploaded a custom file, download it directly or via proxy
     if (resumeUrl && (resumeUrl.startsWith('data:') || resumeUrl.startsWith('/uploads/') || resumeUrl.startsWith('http'))) {
       const link = document.createElement('a');
-      link.href = getFileUrl(resumeUrl);
+      link.href = effectivePdfUrl || getFileUrl(resumeUrl);
+      link.target = '_blank';
       const ext = isBase64Image ? 'png' : 'pdf';
       link.download = `${alumniName.replace(/\s+/g, '_')}_Resume.${ext}`;
       document.body.appendChild(link);
@@ -106,6 +118,24 @@ startxref
           </div>
 
           <div className="flex items-center gap-2">
+            {isBase64Pdf && (
+              <button 
+                type="button"
+                className="btn btn-secondary btn-sm flex items-center gap-1.5"
+                onClick={() => setViewMode(prev => prev === 'document' ? 'digital' : 'document')}
+                title="Switch between uploaded PDF and verified digital profile"
+              >
+                {viewMode === 'document' ? (
+                  <>
+                    <Eye size={14} /> View Digital Profile
+                  </>
+                ) : (
+                  <>
+                    <FileText size={14} /> View Uploaded PDF
+                  </>
+                )}
+              </button>
+            )}
             <button 
               className="btn btn-primary btn-sm flex items-center gap-1 shadow-sm"
               onClick={handleDownload}
@@ -124,18 +154,45 @@ startxref
 
         {/* Document Body Viewer */}
         <div className="resume-modal-body">
-          {isBase64Image ? (
+          {viewMode === 'document' && isBase64Image ? (
             <img 
               src={getFileUrl(resumeUrl)} 
               alt={`${alumniName}'s Resume`} 
               className="resume-preview-img"
             />
-          ) : isBase64Pdf ? (
-            <embed 
-              src={getFileUrl(resumeUrl)} 
-              type="application/pdf" 
-              className="resume-embed"
-            />
+          ) : viewMode === 'document' && isBase64Pdf ? (
+            <div className="w-full h-full flex flex-col items-center">
+              <object 
+                data={effectivePdfUrl} 
+                type="application/pdf" 
+                className="resume-embed"
+              >
+                <div className="p-8 text-center text-white bg-slate-800 rounded-lg max-w-md my-auto flex flex-col items-center">
+                  <FileText size={44} className="mb-3 text-emerald-400" />
+                  <h4 className="font-bold text-sm mb-1.5">PDF Preview Notice</h4>
+                  <p className="text-xs text-slate-300 mb-4 leading-relaxed">
+                    If your storage settings restrict inline PDF delivery (e.g. Cloudinary ACL), you can open it in a new tab or view the verified digital profile.
+                  </p>
+                  <div className="flex gap-2 justify-center">
+                    <a 
+                      href={effectivePdfUrl} 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      className="btn btn-primary btn-xs flex items-center gap-1"
+                    >
+                      <ExternalLink size={12} /> Open PDF Directly
+                    </a>
+                    <button 
+                      type="button" 
+                      onClick={() => setViewMode('digital')} 
+                      className="btn btn-secondary btn-xs"
+                    >
+                      View Digital Resume
+                    </button>
+                  </div>
+                </div>
+              </object>
+            </div>
           ) : (
             /* High-Quality Visual Paper Canvas Fallback */
             <div className="resume-paper-canvas">
