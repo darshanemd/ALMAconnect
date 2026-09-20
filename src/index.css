@@ -1443,6 +1443,14 @@ h6 { font-size: var(--font-base); }
   .hide-mobile {
     display: none !important;
   }
+
+  .content-area {
+    padding-bottom: calc(105px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  .p-8 {
+    padding: var(--space-4) !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1451,7 +1459,10 @@ h6 { font-size: var(--font-base); }
     padding: 0.5rem 0.85rem;
   }
   .card-body { padding: var(--space-3); }
-  .content-area { padding: var(--space-3); }
+  .content-area { 
+    padding: var(--space-3); 
+    padding-bottom: calc(105px + env(safe-area-inset-bottom, 0px)) !important;
+  }
   .topbar-title { font-size: var(--font-base); }
 }
 

@@ -4,12 +4,14 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 60px;
-  background-color: var(--bg-surface, #ffffff);
-  border-top: 1px solid var(--border-light, #e5e7eb);
-  z-index: 1000;
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
-  backdrop-filter: blur(8px);
+  height: calc(60px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  background-color: var(--surface, #ffffff);
+  border-top: 1px solid var(--border, #e5e7eb);
+  z-index: var(--z-topbar, 110);
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 @media (max-width: 768px) {

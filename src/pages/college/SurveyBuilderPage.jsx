@@ -576,7 +576,7 @@ export default function SurveyBuilderPage() {
             ))}
           </div>
 
-          <div className="flex justify-between items-center mt-6 pt-4 border-t border-light">
+          <div className="survey-builder-bottom-actions flex justify-between items-center mt-6 pt-4 border-t border-light">
             <button type="button" onClick={handleAddQuestion} className="btn btn-secondary">Add Another Question</button>
             <button type="submit" className="btn btn-primary">Publish Survey</button>
           </div>

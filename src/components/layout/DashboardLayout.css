@@ -64,6 +64,6 @@
   
   .content-area {
     padding: var(--space-4);
-    padding-bottom: 80px;
+    padding-bottom: calc(105px + env(safe-area-inset-bottom, 0px)) !important;
   }
 }
