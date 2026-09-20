@@ -425,6 +425,7 @@ export default function DirectoryPage() {
           avatarUrl={selectedResumeAlum.avatarUrl}
           resumeUrl={selectedResumeAlum.resumeUrl}
           resumeType={selectedResumeAlum.resumeType || 'pdf'}
+          alumniData={selectedResumeAlum}
           onClose={() => setSelectedResumeAlum(null)}
         />
       )}

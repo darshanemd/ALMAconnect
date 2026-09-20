@@ -389,6 +389,7 @@ export default function ProfilePage() {
           avatarUrl={user?.avatarUrl || profileData.avatarUrl}
           resumeUrl={resumeFile}
           resumeType={resumeType}
+          alumniData={{ ...profileData, ...user }}
           onClose={() => setShowResumeModal(false)}
         />
       )}

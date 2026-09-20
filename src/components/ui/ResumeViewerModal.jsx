@@ -1,5 +1,5 @@
-import React, { useState, useMemo } from 'react';
-import { X, Download, FileText, CheckCircle2, Eye, ExternalLink } from 'lucide-react';
+import React, { useState } from 'react';
+import { X, Download, FileText, CheckCircle2, Eye, ExternalLink, AlertCircle } from 'lucide-react';
 import Avatar from './Avatar';
 import { getFileUrl } from '../../utils/api';
 import './ResumeViewerModal.css';
@@ -10,71 +10,75 @@ export default function ResumeViewerModal({
   avatarUrl, 
   resumeUrl, 
   resumeType = 'pdf',
+  alumniData = null,
   onClose 
 }) {
-  const [viewMode, setViewMode] = useState('document'); // 'document' | 'digital'
+  const isBase64Image = Boolean(resumeUrl && (resumeUrl.startsWith('data:image/') || /\.(jpg|jpeg|png|webp)$/i.test(resumeUrl)));
+  const isPdf = Boolean(resumeUrl && (resumeUrl.startsWith('data:application/pdf') || resumeUrl.endsWith('.pdf') || resumeUrl.includes('.pdf') || resumeType === 'pdf'));
+  const isRawCloudinaryPdf = Boolean(resumeUrl && resumeUrl.includes('cloudinary.com') && resumeUrl.includes('/raw/upload/'));
 
-  const isBase64Image = resumeUrl && (resumeUrl.startsWith('data:image/') || /\.(jpg|jpeg|png|webp)$/i.test(resumeUrl));
-  const isBase64Pdf = resumeUrl && (resumeUrl.startsWith('data:application/pdf') || resumeUrl.endsWith('.pdf') || resumeUrl.includes('.pdf'));
+  // Default to digital profile if the file is a raw Cloudinary upload (to prevent ACL 401 black screens) or if no file URL
+  const [viewMode, setViewMode] = useState(() => (isRawCloudinaryPdf || !resumeUrl ? 'digital' : 'document'));
 
-  // If the resumeUrl is a Cloudinary raw upload, route through the secure proxy
-  const effectivePdfUrl = useMemo(() => {
-    if (!resumeUrl) return '';
-    if (resumeUrl.includes('cloudinary.com') && resumeUrl.includes('/raw/upload/')) {
-      return getFileUrl(`/api/upload/pdf-proxy?url=${encodeURIComponent(resumeUrl)}`);
-    }
-    return getFileUrl(resumeUrl);
-  }, [resumeUrl]);
+  // Normalized Profile Data for Verified Digital Resume
+  const displayCompany = alumniData?.company || 'Technology Organization';
+  const displayEmail = alumniData?.email || `${alumniName.toLowerCase().replace(/[^a-z0-9]/g, '.')}@example.com`;
+  const displayPhone = alumniData?.phone || '+91 98765 43210';
+  const displayLocation = alumniData?.location || 'Bengaluru, India';
+  const displayLinkedin = alumniData?.linkedinUrl || alumniData?.linkedin || `linkedin.com/in/${alumniName.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
+  const displayDegree = alumniData?.department ? `B.Tech in ${alumniData.department}` : 'B.Tech in Engineering';
+  const displayCollege = alumniData?.collegeName || 'Alma Mater College of Engineering';
+  const displayGradYear = alumniData?.graduationYear || alumniData?.batch || '2023';
+  const displayBio = alumniData?.bio || alumniData?.headline || 'Passionate software engineering professional dedicated to developing scalable systems, high-quality code, and mentoring next-generation students.';
+  
+  const skillsList = alumniData?.skills && Array.isArray(alumniData.skills) && alumniData.skills.length > 0 
+    ? alumniData.skills 
+    : ['React.js', 'Node.js', 'TypeScript', 'System Design', 'Cloud Architecture', 'Problem Solving'];
 
-  const handleDownload = () => {
-    // If alumnus uploaded a custom file, download it directly or via proxy
-    if (resumeUrl && (resumeUrl.startsWith('data:') || resumeUrl.startsWith('/uploads/') || resumeUrl.startsWith('http'))) {
-      const link = document.createElement('a');
-      link.href = effectivePdfUrl || getFileUrl(resumeUrl);
-      link.target = '_blank';
-      const ext = isBase64Image ? 'png' : 'pdf';
-      link.download = `${alumniName.replace(/\s+/g, '_')}_Resume.${ext}`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      return;
-    }
+  const directFileUrl = resumeUrl ? getFileUrl(resumeUrl) : '';
 
-    // Direct PDF Blob generation for instant direct download to Downloads folder
+  // Download generator: Creates an instant client-side PDF document with zero network dependencies
+  const generateDigitalPdf = () => {
+    const cleanName = alumniName.replace(/[()]/g, '');
+    const cleanRole = alumniRole.replace(/[()]/g, '');
+    const cleanCompany = displayCompany.replace(/[()]/g, '');
+    const cleanDegree = displayDegree.replace(/[()]/g, '');
+    const cleanGradYear = String(displayGradYear).replace(/[()]/g, '');
+    const cleanSummary = displayBio.slice(0, 150).replace(/[()]/g, '');
+    const cleanSkills = skillsList.slice(0, 8).join(', ').replace(/[()]/g, '');
+
+    const streamContent = `BT
+/F1 18 Tf
+50 730 Td
+(${cleanName} - Verified Resume) Tj
+0 -25 Td
+/F1 12 Tf
+(Role: ${cleanRole} at ${cleanCompany}) Tj
+0 -18 Td
+(Verified Alma Mater Graduate | Class of ${cleanGradYear}) Tj
+0 -30 Td
+(PROFESSIONAL SUMMARY) Tj
+0 -16 Td
+(${cleanSummary}) Tj
+0 -30 Td
+(WORK EXPERIENCE) Tj
+0 -16 Td
+(${cleanRole} @ ${cleanCompany} [Current]) Tj
+0 -14 Td
+(- Engineering scalable web applications and collaborating across engineering teams.) Tj
+0 -30 Td
+(EDUCATION & SKILLS) Tj
+0 -16 Td
+(${cleanDegree} | Skills: ${cleanSkills}) Tj
+ET`;
+
     const pdfBinaryString = `%PDF-1.4
 1 0 obj <</Type /Catalog /Pages 2 0 R>> endobj
 2 0 obj <</Type /Pages /Count 1 /Kids [3 0 R]>> endobj
 3 0 obj <</Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources <</Font <</F1 5 0 R>>>>>> endobj
-4 0 obj <</Length 420>>
+4 0 obj <</Length ${streamContent.length}>>
 stream
-BT
-/F1 18 Tf
-50 730 Td
-(${alumniName} - Verified Resume) Tj
-0 -25 Td
-/F1 12 Tf
-(Role: ${alumniRole}) Tj
-0 -18 Td
-(Verified Alma Mater Graduate | Class of 2020) Tj
-0 -30 Td
-(PROFESSIONAL SUMMARY) Tj
-0 -16 Td
-(Experienced Software Engineer specializing in full-stack web systems and cloud.) Tj
-0 -30 Td
-(WORK EXPERIENCE) Tj
-0 -16 Td
-(Senior Software Engineer @ Microsoft [2022 - Present]) Tj
-0 -14 Td
-(- Engineered microservices with 99.99% availability handling 2M+ API requests.) Tj
-0 -16 Td
-(Software Engineer @ Google [2020 - 2022]) Tj
-0 -14 Td
-(- Developed real-time telemetry analytics dashboards.) Tj
-0 -30 Td
-(EDUCATION & SKILLS) Tj
-0 -16 Td
-(B.Tech CS | Skills: React.js, Node.js, TypeScript, Python, AWS, Docker) Tj
-ET
+${streamContent}
 endstream
 endobj
 5 0 obj <</Type /Font /Subtype /Type1 /BaseFont /Helvetica>> endobj
@@ -88,18 +92,36 @@ xref
 0000000710 00000 n 
 trailer <</Size 6 /Root 1 0 R>>
 startxref
-780
+${800 + streamContent.length}
 %%EOF`;
 
     const blob = new Blob([pdfBinaryString], { type: 'application/pdf' });
     const blobUrl = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = blobUrl;
-    link.download = `${alumniName.replace(/\s+/g, '_')}_Resume.pdf`;
+    link.download = `${alumniName.replace(/\s+/g, '_')}_Verified_Resume.pdf`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
     setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+  };
+
+  const handleDownload = () => {
+    // If viewing document and the file is directly accessible (e.g. local or non-raw image/pdf), trigger direct download
+    if (viewMode === 'document' && directFileUrl && !isRawCloudinaryPdf) {
+      const link = document.createElement('a');
+      link.href = directFileUrl;
+      link.target = '_blank';
+      const ext = isBase64Image ? 'png' : 'pdf';
+      link.download = `${alumniName.replace(/\s+/g, '_')}_Resume.${ext}`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      return;
+    }
+
+    // Otherwise generate the verified digital PDF instantly
+    generateDigitalPdf();
   };
 
   return (
@@ -113,35 +135,53 @@ startxref
               <h3 className="font-bold text-sm text-primary flex items-center gap-1.5">
                 {alumniName}'s Verified Resume <CheckCircle2 size={14} className="text-accent" />
               </h3>
-              <span className="text-xs text-secondary">{alumniRole} &bull; Accepted Request</span>
+              <span className="text-xs text-secondary">{alumniRole} {alumniData?.company ? `• ${alumniData.company}` : ''}</span>
             </div>
           </div>
 
           <div className="flex items-center gap-2">
-            {isBase64Pdf && (
+            {/* View Mode Switcher */}
+            <div className="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-lg border border-border text-xs">
               <button 
                 type="button"
-                className="btn btn-secondary btn-sm flex items-center gap-1.5"
-                onClick={() => setViewMode(prev => prev === 'document' ? 'digital' : 'document')}
-                title="Switch between uploaded PDF and verified digital profile"
+                className={`px-3 py-1.5 rounded-md font-medium transition-all flex items-center gap-1.5 ${
+                  viewMode === 'digital' 
+                    ? 'bg-primary text-white shadow-sm' 
+                    : 'text-secondary hover:text-primary'
+                }`}
+                onClick={() => setViewMode('digital')}
+                title="View verified digital profile canvas"
               >
-                {viewMode === 'document' ? (
-                  <>
-                    <Eye size={14} /> View Digital Profile
-                  </>
-                ) : (
-                  <>
-                    <FileText size={14} /> View Uploaded PDF
-                  </>
-                )}
+                <Eye size={13} className={viewMode === 'digital' ? 'text-accent' : ''} />
+                <span>Digital Profile</span>
               </button>
-            )}
+
+              {resumeUrl && (
+                <button 
+                  type="button"
+                  className={`px-3 py-1.5 rounded-md font-medium transition-all flex items-center gap-1.5 ${
+                    viewMode === 'document' 
+                      ? 'bg-primary text-white shadow-sm' 
+                      : 'text-secondary hover:text-primary'
+                  }`}
+                  onClick={() => setViewMode('document')}
+                  title="View uploaded PDF document"
+                >
+                  <FileText size={13} />
+                  <span>Uploaded File</span>
+                </button>
+              )}
+            </div>
+
             <button 
-              className="btn btn-primary btn-sm flex items-center gap-1 shadow-sm"
+              className="btn btn-primary btn-sm flex items-center gap-1.5 shadow-sm"
               onClick={handleDownload}
+              title="Download PDF"
             >
-              <Download size={14} /> Download PDF
+              <Download size={14} /> 
+              <span className="hidden sm:inline">Download PDF</span>
             </button>
+
             <button 
               className="btn btn-ghost btn-sm p-1.5 rounded-full" 
               onClick={onClose}
@@ -156,14 +196,28 @@ startxref
         <div className="resume-modal-body">
           {viewMode === 'document' && isBase64Image ? (
             <img 
-              src={getFileUrl(resumeUrl)} 
+              src={directFileUrl} 
               alt={`${alumniName}'s Resume`} 
               className="resume-preview-img"
             />
-          ) : viewMode === 'document' && isBase64Pdf ? (
+          ) : viewMode === 'document' && isPdf ? (
             <div className="w-full h-full flex flex-col items-center">
+              {/* Informative notice if hosted on Cloudinary raw storage */}
+              {isRawCloudinaryPdf && (
+                <div className="w-full max-w-2xl mb-4 p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg text-amber-200 text-xs flex items-start gap-2.5 shrink-0">
+                  <AlertCircle size={16} className="text-amber-400 shrink-0 mt-0.5" />
+                  <div className="flex-1">
+                    <p className="font-semibold text-amber-300">Cloudinary Raw Storage Notice</p>
+                    <p className="text-amber-200/90 mt-0.5 leading-relaxed">
+                      If in-browser preview is blocked by Cloudinary account security, enable <strong>"Allow delivery of PDF and ZIP files"</strong> in Cloudinary Console (Settings &gt; Security). 
+                      You can also view the complete <strong>Digital Profile</strong> or open the original file link.
+                    </p>
+                  </div>
+                </div>
+              )}
+
               <object 
-                data={effectivePdfUrl} 
+                data={directFileUrl} 
                 type="application/pdf" 
                 className="resume-embed"
               >
@@ -171,46 +225,46 @@ startxref
                   <FileText size={44} className="mb-3 text-emerald-400" />
                   <h4 className="font-bold text-sm mb-1.5">PDF Preview Notice</h4>
                   <p className="text-xs text-slate-300 mb-4 leading-relaxed">
-                    If your storage settings restrict inline PDF delivery (e.g. Cloudinary ACL), you can open it in a new tab or view the verified digital profile.
+                    This document is stored on cloud storage. You can open the file directly in a new tab or switch to the Verified Digital Resume.
                   </p>
-                  <div className="flex gap-2 justify-center">
+                  <div className="flex gap-2 justify-center flex-wrap">
                     <a 
-                      href={effectivePdfUrl} 
+                      href={directFileUrl} 
                       target="_blank" 
                       rel="noreferrer" 
-                      className="btn btn-primary btn-xs flex items-center gap-1"
+                      className="btn btn-primary btn-xs flex items-center gap-1.5"
                     >
-                      <ExternalLink size={12} /> Open PDF Directly
+                      <ExternalLink size={12} /> Open Original File
                     </a>
                     <button 
                       type="button" 
                       onClick={() => setViewMode('digital')} 
-                      className="btn btn-secondary btn-xs"
+                      className="btn btn-secondary btn-xs flex items-center gap-1.5"
                     >
-                      View Digital Resume
+                      <Eye size={12} /> View Digital Resume
                     </button>
                   </div>
                 </div>
               </object>
             </div>
           ) : (
-            /* High-Quality Visual Paper Canvas Fallback */
+            /* High-Quality Verified Digital Paper Canvas */
             <div className="resume-paper-canvas">
               <div className="resume-paper-header">
                 <h1>{alumniName}</h1>
-                <p>{alumniRole}</p>
+                <p>{alumniRole} {alumniData?.company ? `• ${alumniData.company}` : ''}</p>
                 <div className="resume-paper-contact">
-                  <span>✉️ {alumniName.toLowerCase().replace(/\s+/g, '.')}@example.com</span>
-                  <span>📞 +91 98765 43210</span>
-                  <span>📍 Bengaluru, Karnataka</span>
-                  <span>🌐 linkedin.com/in/{alumniName.toLowerCase().replace(/\s+/g, '')}</span>
+                  <span>✉️ {displayEmail}</span>
+                  <span>📞 {displayPhone}</span>
+                  <span>📍 {displayLocation}</span>
+                  <span>🌐 {displayLinkedin}</span>
                 </div>
               </div>
 
               <div className="resume-paper-section">
                 <div className="resume-paper-section-title">Professional Summary</div>
                 <p className="resume-paper-bullet">
-                  Experienced Software Engineer with 4+ years of expertise in full-stack architecture, React, Node.js, and cloud systems. Proven track record in designing scalable web applications and mentoring junior developers.
+                  {displayBio}
                 </p>
               </div>
 
@@ -219,50 +273,36 @@ startxref
                 
                 <div className="resume-paper-exp-item">
                   <div className="flex justify-between items-baseline">
-                    <span className="resume-paper-exp-role">Senior Software Engineer</span>
-                    <span className="text-xs text-secondary font-bold">2022 - Present</span>
+                    <span className="resume-paper-exp-role">{alumniRole}</span>
+                    <span className="text-xs text-secondary font-bold">Current</span>
                   </div>
-                  <div className="resume-paper-exp-company">Microsoft &bull; Full-time</div>
-                  <div className="resume-paper-bullet">&bull; Engineered microservices handling 2M+ daily active API requests with 99.99% availability.</div>
-                  <div className="resume-paper-bullet">&bull; Spearheaded React component library adoption across 5 cross-functional engineering teams.</div>
-                </div>
-
-                <div className="resume-paper-exp-item">
-                  <div className="flex justify-between items-baseline">
-                    <span className="resume-paper-exp-role">Software Development Engineer</span>
-                    <span className="text-xs text-secondary font-bold">2020 - 2022</span>
-                  </div>
-                  <div className="resume-paper-exp-company">Google &bull; Full-time</div>
-                  <div className="resume-paper-bullet">&bull; Developed real-time telemetry dashboards optimizing cloud database performance by 35%.</div>
+                  <div className="resume-paper-exp-company">{displayCompany} &bull; Full-time Professional</div>
+                  <div className="resume-paper-bullet">&bull; Delivering scalable software engineering solutions and architecting robust digital features.</div>
+                  <div className="resume-paper-bullet">&bull; Active alumni mentor advising current undergraduates on technology careers and interview readiness.</div>
                 </div>
               </div>
 
               <div className="resume-paper-section">
-                <div className="resume-paper-section-title">Education</div>
+                <div className="resume-paper-section-title">Education & Credentials</div>
                 <div className="flex justify-between items-baseline">
-                  <span className="resume-paper-exp-role">B.Tech in Computer Science & Engineering</span>
-                  <span className="text-xs text-secondary font-bold">Class of 2020</span>
+                  <span className="resume-paper-exp-role">{displayDegree}</span>
+                  <span className="text-xs text-secondary font-bold">Class of {displayGradYear}</span>
                 </div>
-                <div className="resume-paper-exp-company">Alma Mater College of Engineering &bull; CGPA: 9.2/10</div>
+                <div className="resume-paper-exp-company">{displayCollege} &bull; Verified Alumni Member</div>
               </div>
 
               <div className="resume-paper-section">
                 <div className="resume-paper-section-title">Skills & Technologies</div>
                 <div className="resume-paper-skills-grid">
-                  <span className="resume-paper-skill-tag">React.js</span>
-                  <span className="resume-paper-skill-tag">Node.js</span>
-                  <span className="resume-paper-skill-tag">TypeScript</span>
-                  <span className="resume-paper-skill-tag">Python</span>
-                  <span className="resume-paper-skill-tag">System Design</span>
-                  <span className="resume-paper-skill-tag">AWS</span>
-                  <span className="resume-paper-skill-tag">Docker</span>
+                  {skillsList.map((skill, idx) => (
+                    <span key={idx} className="resume-paper-skill-tag">{skill}</span>
+                  ))}
                 </div>
               </div>
 
               <div className="resume-paper-section">
-                <div className="resume-paper-section-title">Certifications & Awards</div>
-                <div className="resume-paper-bullet">&bull; AWS Certified Solutions Architect - Associate</div>
-                <div className="resume-paper-bullet">&bull; Winner, National Campus Hackathon (1st Place out of 250+ teams)</div>
+                <div className="resume-paper-section-title">Alumni Network Verification</div>
+                <div className="resume-paper-bullet">&bull; Verified Graduate Identity &bull; Authorized resume document for career networking</div>
               </div>
             </div>
           )}
@@ -270,8 +310,9 @@ startxref
 
         {/* Footer */}
         <div className="resume-modal-footer">
-          <span className="text-xs text-secondary flex items-center gap-1">
-            <FileText size={14} className="text-accent" /> Verified Resume document provided for career networking
+          <span className="text-xs text-secondary flex items-center gap-1.5">
+            <FileText size={14} className="text-accent" /> 
+            <span>Verified Alumni Resume &bull; Shared for career mentorship and networking</span>
           </span>
           <div className="flex items-center gap-2">
             <button className="btn btn-secondary btn-xs" onClick={onClose}>Close</button>

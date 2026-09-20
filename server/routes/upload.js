@@ -95,7 +95,7 @@ router.post('/', upload.single('file'), async (req, res) => {
 });
 
 // GET /api/upload/pdf-proxy?url=...
-// Streams PDF documents, automatically signing Cloudinary raw requests if ACL is restricted
+// Streams PDF documents, automatically signing Cloudinary raw requests if possible, or gracefully redirecting
 router.get('/pdf-proxy', async (req, res) => {
   const { url } = req.query;
   if (!url) return res.status(400).send('Missing url parameter');
@@ -103,26 +103,34 @@ router.get('/pdf-proxy', async (req, res) => {
   try {
     let fetchUrl = url;
 
-    // If it is a Cloudinary raw upload, generate a signed download URL using API credentials
-    if (url.includes('cloudinary.com') && url.includes('/raw/upload/') && process.env.CLOUDINARY_API_KEY && process.env.CLOUDINARY_API_SECRET) {
+    // If it is a Cloudinary raw upload, attempt signed delivery URL using API credentials
+    if (url.includes('cloudinary.com') && url.includes('/raw/upload/') && process.env.CLOUDINARY_CLOUD_NAME && process.env.CLOUDINARY_API_KEY && process.env.CLOUDINARY_API_SECRET) {
       try {
         const match = url.match(/\/raw\/upload\/(?:v\d+\/)?(.+)$/);
         if (match && match[1]) {
           const publicIdWithExt = match[1];
-          fetchUrl = cloudinary.utils.private_download_url(publicIdWithExt, '', { resource_type: 'raw' });
+          fetchUrl = cloudinary.utils.url(publicIdWithExt, {
+            resource_type: 'raw',
+            sign_url: true,
+            secure: true
+          });
         }
       } catch (signErr) {
-        console.warn('Could not generate private signed download URL:', signErr);
+        console.warn('Could not generate signed Cloudinary download URL:', signErr);
       }
     }
 
-    const response = await fetch(fetchUrl);
+    let response = await fetch(fetchUrl);
+    
+    // If signed URL failed or returned non-200, try direct URL
+    if (!response.ok && fetchUrl !== url) {
+      response = await fetch(url);
+    }
+
     if (!response.ok) {
-      // If fetching signed URL returned non-200, return status
-      return res.status(response.status).json({
-        error: 'Failed to retrieve document from storage',
-        status: response.status
-      });
+      // If Cloudinary or storage still restricts delivery (e.g. ACL 401/404), redirect directly to original URL
+      console.warn(`Upstream storage returned ${response.status} for ${url}, redirecting client`);
+      return res.redirect(url);
     }
 
     const contentType = response.headers.get('content-type') || 'application/pdf';
@@ -132,7 +140,8 @@ router.get('/pdf-proxy', async (req, res) => {
     return res.send(Buffer.from(arrayBuffer));
   } catch (err) {
     console.error('PDF proxy streaming error:', err);
-    return res.status(500).send('Failed to stream PDF');
+    // On unexpected error, redirect to original target rather than breaking with raw JSON
+    return res.redirect(url);
   }
 });
 
