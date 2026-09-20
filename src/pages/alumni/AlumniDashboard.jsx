@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link, useNavigate, useSearchParams } from 'react-router';
 import { useAuth } from '../../contexts/AuthContext';
 import { useData } from '../../contexts/DataContext';
 import { 
@@ -31,12 +31,28 @@ export default function AlumniDashboard() {
   const { user } = useAuth();
   const { getJobs, getEvents, getAlumniById, getResumeRequestsForAlumni, respondResumeRequest } = useData();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab, setActiveTab] = useState(() => searchParams.get('tab') || 'overview');
+
+  useEffect(() => {
+    const tabParam = searchParams.get('tab');
+    if (tabParam && ['overview', 'guidance', 'jobs', 'events'].includes(tabParam)) {
+      setActiveTab(tabParam);
+    }
+  }, [searchParams]);
 
   const currentUserData = getAlumniById(user?.id);
   const alumniResumeRequests = getResumeRequestsForAlumni(user?.id) || [];
   const pendingResumeRequests = alumniResumeRequests.filter(r => r.status === 'pending');
+
+  const handleRespondResume = async (reqId, status) => {
+    try {
+      await respondResumeRequest(reqId, status);
+    } catch (err) {
+      console.error('Failed to respond to resume request:', err);
+    }
+  };
 
   const storageKey = user?.id ? `alumni_mentorship_requests_${user.id}` : 'alumni_mentorship_requests_default';
 
@@ -247,8 +263,8 @@ export default function AlumniDashboard() {
           <button onClick={() => navigate('/jobs')} className="btn btn-ghost btn-xs text-secondary hover:text-primary">
             <PlusCircle size={13} /> Post Job Referral
           </button>
-          <button onClick={() => navigate('/mentorship')} className="btn btn-ghost btn-xs text-secondary hover:text-primary">
-            <MessageSquare size={13} /> Guidance Requests ({studentRequests.length})
+          <button onClick={() => setActiveTab('guidance')} className="btn btn-ghost btn-xs text-secondary hover:text-primary">
+            <MessageSquare size={13} /> Guidance Requests ({studentRequests.length + pendingResumeRequests.length})
           </button>
           <button onClick={() => navigate('/card')} className="btn btn-ghost btn-xs text-secondary hover:text-primary">
             <GraduationCap size={13} /> Digital Pass
@@ -408,6 +424,30 @@ export default function AlumniDashboard() {
                   <p className="text-xs text-secondary">No pending inquiries.</p>
                 )}
               </div>
+
+              {pendingResumeRequests.length > 0 && (
+                <div className="card p-5 mt-4 border-l-4" style={{ borderLeftColor: 'var(--accent)' }}>
+                  <div className="flex justify-between items-center mb-3">
+                    <div className="flex items-center gap-2">
+                      <FileText size={16} className="text-accent" />
+                      <h3 className="section-title mb-0">Resume Requests</h3>
+                    </div>
+                    <span className="badge badge-accent text-xs">{pendingResumeRequests.length} pending</span>
+                  </div>
+                  <div className="student-request-item">
+                    <div className="flex items-center gap-3">
+                      <Avatar src={`https://api.dicebear.com/7.x/thumbs/svg?seed=${pendingResumeRequests[0].studentName}`} name={pendingResumeRequests[0].studentName} role="student" size="sm" />
+                      <div>
+                        <h4 className="font-bold text-xs text-primary">{pendingResumeRequests[0].studentName}</h4>
+                        <span className="text-[10px] text-secondary block">Requested your resume</span>
+                      </div>
+                    </div>
+                    <button onClick={() => handleRespondResume(pendingResumeRequests[0].id, 'accepted')} className="btn btn-primary btn-xs flex items-center gap-1">
+                      <Check size={12} /> Approve
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -449,23 +489,43 @@ export default function AlumniDashboard() {
 
           <div className="student-sidebar-column">
             <div className="card p-6">
-              <h3 className="section-title mb-3">Resume Access Requests</h3>
+              <div className="flex justify-between items-center mb-3">
+                <h3 className="section-title mb-0">Resume Access Requests</h3>
+                {pendingResumeRequests.length > 0 && (
+                  <span className="badge badge-accent text-xs font-bold">{pendingResumeRequests.length} Requests</span>
+                )}
+              </div>
               {pendingResumeRequests.length === 0 ? (
                 <p className="text-xs text-secondary">No pending resume requests.</p>
               ) : (
                 <div className="flex flex-col gap-2.5">
                   {pendingResumeRequests.map(req => (
-                    <div key={req.id} className="p-3 bg-surface border border-border-light rounded-lg flex items-center justify-between">
-                      <div className="flex items-center gap-2">
+                    <div key={req.id} className="p-3 bg-surface border border-border-light rounded-lg flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2 min-w-0">
                         <Avatar src={`https://api.dicebear.com/7.x/thumbs/svg?seed=${req.studentName}`} name={req.studentName} role="student" size="sm" />
-                        <div>
-                          <h4 className="font-bold text-xs text-primary">{req.studentName}</h4>
-                          <span className="text-[10px] text-secondary">Access Request</span>
+                        <div className="min-w-0">
+                          <h4 className="font-bold text-xs text-primary truncate">{req.studentName}</h4>
+                          <span className="text-[10px] text-secondary block truncate">
+                            {req.studentDepartment ? `${req.studentDepartment} • ` : ''}Access Request
+                          </span>
                         </div>
                       </div>
-                      <button onClick={() => respondResumeRequest(req.id, 'accepted')} className="btn btn-primary btn-xs">
-                        <Check size={12} />
-                      </button>
+                      <div className="flex items-center gap-1.5 flex-shrink-0">
+                        <button 
+                          onClick={() => handleRespondResume(req.id, 'accepted')} 
+                          className="btn btn-primary btn-xs flex items-center gap-1"
+                          title="Approve Resume Access"
+                        >
+                          <Check size={12} /> Approve
+                        </button>
+                        <button 
+                          onClick={() => handleRespondResume(req.id, 'rejected')} 
+                          className="btn btn-ghost btn-xs text-secondary hover:text-danger flex items-center p-1"
+                          title="Decline Request"
+                        >
+                          <X size={12} />
+                        </button>
+                      </div>
                     </div>
                   ))}
                 </div>

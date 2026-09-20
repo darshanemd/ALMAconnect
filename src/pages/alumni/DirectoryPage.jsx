@@ -101,13 +101,17 @@ export default function DirectoryPage() {
     "Mechanical Engineering", "Civil Engineering", "MBA", "PhD"
   ];
 
-  const handleRequestResume = (alumniId) => {
+  const handleRequestResume = async (alumniId) => {
     if (!user?.id) {
       alert('Please log in to request an alumni resume.');
       return;
     }
-    sendResumeRequest(user.id, user.name, alumniId);
-    alert('Resume request sent successfully! You will be able to view their resume once they approve it.');
+    try {
+      await sendResumeRequest(user.id, user.name, alumniId);
+      alert('Resume request sent successfully! The alumni has been notified and you will be able to view their resume once approved.');
+    } catch (err) {
+      alert('Failed to send resume request. Please try again.');
+    }
   };
 
   return (

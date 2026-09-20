@@ -39,17 +39,8 @@ export const DataProvider = ({ children }) => {
 
   const [resumeRequests, setResumeRequests] = useState(() => {
     try {
-      const stored = localStorage.getItem('alumni_resume_requests');
-      return stored ? JSON.parse(stored) : [
-        {
-          id: 'rr-1',
-          studentId: 'member-3', // Rahul Kumar
-          studentName: 'Rahul Kumar',
-          alumniId: 'member-1', // Priya Sharma
-          status: 'accepted',
-          createdAt: new Date().toISOString()
-        }
-      ];
+      const stored = localStorage.getItem(`alumni_resume_requests_${user?.id || 'default'}`);
+      return stored ? JSON.parse(stored) : [];
     } catch {
       return [];
     }
@@ -97,6 +88,27 @@ export const DataProvider = ({ children }) => {
       setNotifications(merged);
     } catch (err) {
       console.warn('Failed to refresh notifications:', err);
+    }
+  }, [user]);
+
+  // Server-synced resume requests refresher
+  const refreshResumeRequests = useCallback(async () => {
+    if (!user?.id) return;
+    try {
+      const fetched = await apiRequest(`/networking/resume-requests?userId=${user.id}`);
+      if (fetched && Array.isArray(fetched)) {
+        setResumeRequests(fetched);
+        try {
+          localStorage.setItem(`alumni_resume_requests_${user.id}`, JSON.stringify(fetched));
+        } catch (e) { /* ignore */ }
+        return fetched;
+      }
+    } catch (err) {
+      console.warn('Failed to refresh resume requests from server:', err);
+      try {
+        const stored = localStorage.getItem(`alumni_resume_requests_${user.id}`);
+        if (stored) setResumeRequests(JSON.parse(stored));
+      } catch (e) { /* ignore */ }
     }
   }, [user]);
 
@@ -166,7 +178,10 @@ export const DataProvider = ({ children }) => {
           const fetchedNetworking = await apiRequest(`/networking?userId=${user.id}`);
           setConnectionRequests(fetchedNetworking);
 
-          await refreshNotifications();
+          await Promise.all([
+            refreshNotifications(),
+            refreshResumeRequests()
+          ]);
 
           const fetchedCirculars = await apiRequest(`/circulars?role=${user.role}&collegeId=${user.collegeId || ''}`);
           setCirculars(fetchedCirculars);
@@ -184,14 +199,18 @@ export const DataProvider = ({ children }) => {
     };
 
     loadAllData();
-  }, [user, refreshNotifications, refreshColleges]);
+  }, [user, refreshNotifications, refreshColleges, refreshResumeRequests]);
 
   // Live cross-tab / cross-device synchronization:
-  // When a user returns or refocuses the app, pull fresh college information from the server
+  // When a user returns or refocuses the app, pull fresh college, notifications, and resume requests
   useEffect(() => {
     const handleSyncOnFocus = () => {
       if (typeof document !== 'undefined' && document.visibilityState === 'visible') {
         refreshColleges();
+        if (user?.id) {
+          refreshNotifications();
+          refreshResumeRequests();
+        }
       }
     };
     window.addEventListener('visibilitychange', handleSyncOnFocus);
@@ -200,16 +219,17 @@ export const DataProvider = ({ children }) => {
       window.removeEventListener('visibilitychange', handleSyncOnFocus);
       window.removeEventListener('focus', handleSyncOnFocus);
     };
-  }, [refreshColleges]);
+  }, [refreshColleges, user, refreshNotifications, refreshResumeRequests]);
 
-  // Periodic real-time sync for notifications (every 20s)
+  // Periodic real-time sync for notifications and resume requests (every 20s)
   useEffect(() => {
     if (!user?.id) return;
-    const notifInterval = setInterval(() => {
+    const interval = setInterval(() => {
       refreshNotifications();
+      refreshResumeRequests();
     }, 20000);
-    return () => clearInterval(notifInterval);
-  }, [user, refreshNotifications]);
+    return () => clearInterval(interval);
+  }, [user, refreshNotifications, refreshResumeRequests]);
 
   const resetData = async () => {
     try {
@@ -1015,29 +1035,65 @@ export const DataProvider = ({ children }) => {
     setLastSeenCircularsTime(now);
   }, [user]);
 
-  const sendResumeRequest = (studentId, studentName, alumniId) => {
-    const newRequest = {
-      id: `rr-${Date.now()}`,
+  const sendResumeRequest = async (studentId, studentName, alumniId) => {
+    const fallbackId = `rr-${Date.now()}`;
+    const fallbackReq = {
+      id: fallbackId,
       studentId,
       studentName: studentName || user?.name || 'Student',
       alumniId,
       status: 'pending',
       createdAt: new Date().toISOString()
     };
-    setResumeRequests(prev => {
-      const updated = [newRequest, ...prev.filter(r => !(r.studentId === studentId && r.alumniId === alumniId))];
-      localStorage.setItem('alumni_resume_requests', JSON.stringify(updated));
-      return updated;
-    });
-    return newRequest;
+
+    // Optimistically update state
+    setResumeRequests(prev => [fallbackReq, ...prev.filter(r => !(r.studentId === studentId && r.alumniId === alumniId))]);
+
+    try {
+      const created = await apiRequest('/networking/resume-requests', 'POST', {
+        studentId,
+        studentName: studentName || user?.name || 'Student',
+        alumniId
+      });
+
+      if (created && created.id) {
+        setResumeRequests(prev => [created, ...prev.filter(r => r.id !== fallbackId && !(r.studentId === studentId && r.alumniId === alumniId))]);
+        try {
+          localStorage.setItem(`alumni_resume_requests_${user?.id || studentId}`, JSON.stringify([created, ...resumeRequests]));
+        } catch (e) { /* ignore */ }
+        return created;
+      }
+    } catch (err) {
+      console.warn('Failed to send resume request to server, using local fallback:', err);
+      // Fallback: also ensure notification is posted
+      try {
+        await apiRequest('/notifications', 'POST', {
+          title: '📄 Resume Access Request',
+          content: `${studentName || user?.name || 'A student'} requested access to view your resume.`,
+          message: `${studentName || user?.name || 'A student'} requested access to view your resume.`,
+          userId: alumniId,
+          role: 'alumni',
+          link: '/dashboard?tab=guidance',
+          type: 'resume_request'
+        });
+      } catch (e) { /* ignore */ }
+    }
+    return fallbackReq;
   };
 
-  const respondResumeRequest = (requestId, status) => {
-    setResumeRequests(prev => {
-      const updated = prev.map(r => r.id === requestId ? { ...r, status } : r);
-      localStorage.setItem('alumni_resume_requests', JSON.stringify(updated));
+  const respondResumeRequest = async (requestId, status) => {
+    // Optimistically update state
+    setResumeRequests(prev => prev.map(r => r.id === requestId ? { ...r, status } : r));
+
+    try {
+      const updated = await apiRequest(`/networking/resume-requests/${requestId}`, 'PUT', { status });
+      if (updated && updated.id) {
+        setResumeRequests(prev => prev.map(r => r.id === requestId ? { ...r, ...updated } : r));
+      }
       return updated;
-    });
+    } catch (err) {
+      console.error('Failed to update resume request on server:', err);
+    }
   };
 
   const getResumeRequestStatus = (studentId, alumniId) => {
@@ -1130,6 +1186,7 @@ export const DataProvider = ({ children }) => {
     lastSeenCircularsTime,
     markCircularsAsSeen,
     resumeRequests,
+    refreshResumeRequests,
     sendResumeRequest,
     respondResumeRequest,
     getResumeRequestStatus,

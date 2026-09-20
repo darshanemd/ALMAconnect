@@ -79,7 +79,9 @@ export default function TopBar({ onMenuToggle, title, onToggleCommandMenu }) {
       const contentLower = (notif.content || notif.message || '').toLowerCase();
       const typeLower = (notif.type || '').toLowerCase();
 
-      if (titleLower.includes('job') || contentLower.includes('job') || typeLower === 'job') {
+      if (titleLower.includes('resume') || typeLower.includes('resume') || contentLower.includes('resume')) {
+        target = user?.role === 'student' ? '/directory' : '/dashboard?tab=guidance';
+      } else if (titleLower.includes('job') || contentLower.includes('job') || typeLower === 'job') {
         target = '/jobs';
       } else if (titleLower.includes('event') || titleLower.includes('rsvp') || titleLower.includes('registration') || titleLower.includes('hackathon') || contentLower.includes('event') || typeLower === 'event') {
         target = '/events';
