@@ -819,9 +819,46 @@ export const ALUMNI_TWINS_DATA = {
             weeks: 'Weeks 1 - 3',
             commitment: '8 hrs/week',
             status: 'ready',
-            description: 'Write maintainable, modular software using TDD cycles.',
+            icon: 'Code2',
+            description: 'Write maintainable, modular software using TDD cycles and domain-driven design boundaries.',
+            keySkills: ['JUnit 5 / Mockito', 'Domain Driven Design (DDD)', 'Dependency Inversion', 'Clean Code'],
+            capstoneDeliverable: 'TDD-Driven Issue Tracking Engine with Domain Events',
+            proTip: 'Atlassian pair-programming interviews place immense weight on writing tests first and explaining design patterns cleanly.',
             milestones: [
-              { id: 'm1', text: 'Implement Clean Architecture REST service with 90%+ unit test coverage', done: false }
+              { id: 'm1', text: 'Implement Clean Architecture REST service with 90%+ unit test coverage', done: false },
+              { id: 'm2', text: 'Write Mockito integration tests simulating external payment gateways', done: false }
+            ]
+          },
+          {
+            phase: 2,
+            title: 'Java 21 Concurrency & Project Loom Virtual Threads',
+            weeks: 'Weeks 4 - 7',
+            commitment: '10 hrs/week',
+            status: 'upcoming',
+            icon: 'Terminal',
+            description: 'Master Java 21 Virtual Threads, CompletableFuture pipelines, and deadlock-free asynchronous execution.',
+            keySkills: ['Virtual Threads', 'CompletableFuture', 'ExecutorService', 'Deadlock Detection'],
+            capstoneDeliverable: 'High-Concurrency Task Scheduling Framework (50K I/O tasks)',
+            proTip: 'Explain JVM carrier thread scheduling and non-blocking I/O tradeoffs during Atlassian systems rounds.',
+            milestones: [
+              { id: 'm3', text: 'Benchmark Java 21 Virtual Threads handling 50k concurrent tasks without thread exhaustion', done: false },
+              { id: 'm4', text: 'Build asynchronous worker pipeline with CompletableFuture chaining and error recovery', done: false }
+            ]
+          },
+          {
+            phase: 3,
+            title: 'Distributed Redis Caching & Resilient Rate Limiting',
+            weeks: 'Weeks 8 - 10',
+            commitment: '8 hrs/week',
+            status: 'upcoming',
+            icon: 'Server',
+            description: 'Eliminate backend database query bottlenecks with Redis distributed caching, Sliding Window rate limiters, and circuit breakers.',
+            keySkills: ['Redis Pub/Sub', 'Sliding Window Algorithm', 'Cache Stampede Mitigation', 'Lua Scripts in Redis'],
+            capstoneDeliverable: 'Distributed Rate-Limiter & Cache-Aside Middleware',
+            proTip: 'Discuss cache stampede mitigation using probabilistic early expiration and distributed mutex locks.',
+            milestones: [
+              { id: 'm5', text: 'Implement sliding-window rate limiter middleware with Redis Lua scripts', done: false },
+              { id: 'm6', text: 'Configure cache-aside pattern with automatic TTL invalidation and fallback circuit breakers', done: false }
             ]
           }
         ],
@@ -2744,17 +2781,18 @@ function isToolAlreadyMastered(tool, userSkills = []) {
   if (!userSkills || userSkills.length === 0) return false;
   const normUserSkills = userSkills.map(normalizeSkillKey);
 
-  // Check tool skill keys
-  if (Array.isArray(tool.skillKeys)) {
+  // 1. Check explicit tool skill keys if provided
+  if (Array.isArray(tool.skillKeys) && tool.skillKeys.length > 0) {
     for (const key of tool.skillKeys) {
       const normKey = normalizeSkillKey(key);
       if (normUserSkills.includes(normKey)) {
         return true;
       }
     }
+    return false;
   }
 
-  // Check keySkills array on the tool
+  // 2. Check keySkills array on the tool
   if (Array.isArray(tool.keySkills)) {
     for (const key of tool.keySkills) {
       const normKey = normalizeSkillKey(key);
@@ -2764,11 +2802,26 @@ function isToolAlreadyMastered(tool, userSkills = []) {
     }
   }
 
-  // Check tool title keywords
+  // 3. Check tool title keywords:
+  // Strip parenthetical text e.g. "(C++ / Java)", "(Project Loom)", "(AZ-900)" so auxiliary context isn't treated as tool subject
   const titleLower = (tool.title || '').toLowerCase();
+  const cleanedTitle = titleLower.replace(/\([^)]*\)/g, '').trim();
+
+  // If the tool is advanced (concurrency, data structures, algorithms, system design, architecture, profiling),
+  // basic knowledge of a foundational programming language does not mean the student mastered the advanced tool.
+  const isAdvancedTopic = /data structures|algorithms|concurrency|multithread|system design|architecture|internals|profiling/i.test(cleanedTitle);
+  const foundationalLanguages = ['java', 'python', 'cpp', 'c', 'javascript', 'typescript', 'html', 'css', 'csharp'];
+
   for (const s of userSkills) {
     const rawLower = s.toLowerCase().trim();
-    if (rawLower.length >= 3 && titleLower.includes(rawLower)) {
+    const normS = normalizeSkillKey(rawLower);
+
+    // Skip marking advanced CS topics as mastered simply from basic language syntax
+    if (isAdvancedTopic && foundationalLanguages.includes(normS)) {
+      continue;
+    }
+
+    if (rawLower.length >= 3 && cleanedTitle.includes(rawLower)) {
       return true;
     }
   }
@@ -2783,13 +2836,14 @@ export function getAlumniTwinsForRole(roleName, currentSkills = []) {
 
   // Determine acquired skills for this role
   const userSkillList = Array.isArray(currentSkills) && currentSkills.length > 0 ? currentSkills : DEFAULT_STARTING_SKILLS;
-  const normUserSkills = userSkillList.map(normalizeSkillKey);
 
   // If we have existing twins in ALUMNI_TWINS_DATA
   if (baseTwins.length > 0) {
     return baseTwins.map((twin, twinIdx) => {
-      // Find candidate tools: prioritize custom curriculum pool or twin's tools
-      const allCandidateTools = curriculumPool.length > 0 ? curriculumPool : twin.missingTools;
+      // Prioritize each senior's unique blueprint missingTools; fall back to role curriculum pool only if missing
+      const allCandidateTools = (Array.isArray(twin.missingTools) && twin.missingTools.length > 0)
+        ? twin.missingTools
+        : curriculumPool;
 
       // Filter candidate tools: exclude ones user has already mastered
       const remainingGaps = allCandidateTools.filter(t => !isToolAlreadyMastered(t, userSkillList));
@@ -2809,23 +2863,53 @@ export function getAlumniTwinsForRole(roleName, currentSkills = []) {
         toolNumber: idx + 1
       }));
 
-      // Generate dynamic roadmap phases matching the exact unmet missing tools
-      const dynamicPhases = numberedTools.map((t, idx) => ({
-        phase: idx + 1,
-        title: t.title,
-        weeks: `Weeks ${idx * 3 + 1} - ${idx * 3 + 3}`,
-        commitment: '8-10 hrs/week',
-        status: idx === 0 ? 'ready' : 'upcoming',
-        icon: idx === 0 ? 'Layout' : idx === 1 ? 'Server' : idx === 2 ? 'Layers' : idx === 3 ? 'Code2' : idx === 4 ? 'Terminal' : 'Sparkles',
-        description: t.whyItMattered,
-        keySkills: t.keySkills || [],
-        capstoneDeliverable: t.practiceProject || `Production-Grade ${t.title} Module`,
-        proTip: `Focus on hands-on repository code and real edge-case handling for ${t.category}.`,
-        milestones: [
-          { id: `m${idx * 2 + 1}`, text: `Complete core practical architecture for ${t.title}`, done: false },
-          { id: `m${idx * 2 + 2}`, text: `Build and benchmark capstone: ${t.practiceProject || 'Project Implementation'}`, done: false }
-        ]
-      }));
+      // Generate roadmap phases: preserve handcrafted phase details (pro-tips, milestones, capstones) when available
+      const dynamicPhases = numberedTools.map((t, idx) => {
+        const customPhase = (twin.roadmapPhases || []).find(p => {
+          const pTitle = (p.title || '').toLowerCase();
+          const tTitle = (t.title || '').toLowerCase();
+          return pTitle.includes(tTitle.slice(0, 10)) || tTitle.includes(pTitle.slice(0, 10));
+        }) || (twin.roadmapPhases || [])[idx];
+
+        if (customPhase) {
+          return {
+            ...customPhase,
+            phase: idx + 1,
+            title: customPhase.title || t.title,
+            weeks: customPhase.weeks || `Weeks ${idx * 3 + 1} - ${idx * 3 + 3}`,
+            commitment: customPhase.commitment || '8-10 hrs/week',
+            status: idx === 0 ? 'ready' : 'upcoming',
+            icon: customPhase.icon || (idx === 0 ? 'Layout' : idx === 1 ? 'Server' : idx === 2 ? 'Layers' : idx === 3 ? 'Code2' : idx === 4 ? 'Terminal' : 'Sparkles'),
+            description: customPhase.description || t.whyItMattered,
+            keySkills: customPhase.keySkills || t.keySkills || [],
+            capstoneDeliverable: customPhase.capstoneDeliverable || t.practiceProject || `Production-Grade ${t.title} Module`,
+            proTip: customPhase.proTip || `Focus on hands-on repository code and real edge-case handling for ${t.category}.`,
+            milestones: Array.isArray(customPhase.milestones) && customPhase.milestones.length > 0
+              ? customPhase.milestones
+              : [
+                { id: `m${idx * 2 + 1}`, text: `Complete core practical architecture for ${t.title}`, done: false },
+                { id: `m${idx * 2 + 2}`, text: `Build and benchmark capstone: ${t.practiceProject || 'Project Implementation'}`, done: false }
+              ]
+          };
+        }
+
+        return {
+          phase: idx + 1,
+          title: t.title,
+          weeks: `Weeks ${idx * 3 + 1} - ${idx * 3 + 3}`,
+          commitment: '8-10 hrs/week',
+          status: idx === 0 ? 'ready' : 'upcoming',
+          icon: idx === 0 ? 'Layout' : idx === 1 ? 'Server' : idx === 2 ? 'Layers' : idx === 3 ? 'Code2' : idx === 4 ? 'Terminal' : 'Sparkles',
+          description: t.whyItMattered,
+          keySkills: t.keySkills || [],
+          capstoneDeliverable: t.practiceProject || `Production-Grade ${t.title} Module`,
+          proTip: `Focus on hands-on repository code and real edge-case handling for ${t.category}.`,
+          milestones: [
+            { id: `m${idx * 2 + 1}`, text: `Complete core practical architecture for ${t.title}`, done: false },
+            { id: `m${idx * 2 + 2}`, text: `Build and benchmark capstone: ${t.practiceProject || 'Project Implementation'}`, done: false }
+          ]
+        };
+      });
 
       // Calculate matching / acquired skills
       const acquiredSkills = userSkillList;

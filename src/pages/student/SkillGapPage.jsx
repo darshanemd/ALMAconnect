@@ -547,6 +547,7 @@ export default function SkillGapPage() {
                       className={`twin-select-card ${isSelected ? 'active' : ''}`}
                       onClick={() => {
                         setSelectedTwinIndex(idx);
+                        setSelectedToolCategory('all');
                         setCompletedMilestones({});
                         setExpandedQa(null);
                       }}
