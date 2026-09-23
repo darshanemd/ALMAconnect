@@ -285,39 +285,39 @@ export default function PlacementPredictorPage() {
     }
   };
 
-  // Run Simulation Handler
-  const handleRunSimulation = async (e) => {
+  const tweakTimeoutRef = useRef(null);
+
+  // Run Simulation Handler - Instant execution with background ML sync
+  const handleRunSimulation = (e) => {
     e?.preventDefault();
     setLoading(true);
     setDrawerOpen(false);
 
-    try {
-      const mlRes = await apiRequest('/ml/predict-placement', 'POST', {
-        cgpa: parseFloat(gpa),
-        internships: parseInt(internships, 10),
-        historyOfBacklogs: parseInt(backlogs, 10),
-        stream: user?.department || 'Computer Science',
-        age: 21,
-        gender: 'Male'
-      }).catch(() => null);
-
+    // 1. Immediately fire non-blocking background ML request (never stalls the user)
+    apiRequest('/ml/predict-placement', 'POST', {
+      cgpa: parseFloat(gpa),
+      internships: parseInt(internships, 10),
+      historyOfBacklogs: parseInt(backlogs, 10),
+      stream: user?.department || 'Computer Science',
+      age: 21,
+      gender: 'Male'
+    }).then(mlRes => {
       if (mlRes?.success) {
         setMlData(mlRes);
       }
-    } catch {
-      // Fallback
-    }
+    }).catch(() => {});
 
+    // 2. Deliver calibrated Monte Carlo & XGBoost simulation results in 450ms
     setTimeout(() => {
       const res = runPlacementSimulation({
         gpa, aptitude, projects, internships, dsa, backlogs, tier, role
       });
       setPrediction(res);
       setLoading(false);
-    }, 1000);
+    }, 450);
   };
 
-  // Quick Live Tuning in Drawer
+  // Quick Live Tuning in Drawer - Instant local 60fps calculation with debounced server sync
   const handleLiveTweak = (newFields) => {
     const updated = {
       gpa, aptitude, projects, internships, dsa, backlogs, tier, role,
@@ -332,18 +332,23 @@ export default function PlacementPredictorPage() {
     if (newFields.tier !== undefined) setTier(newFields.tier);
     if (newFields.role !== undefined) setRole(newFields.role);
 
+    // Instant local recalculation - 0ms delay
     const res = runPlacementSimulation(updated);
     setPrediction(res);
 
-    apiRequest('/ml/predict-placement', 'POST', {
-      cgpa: parseFloat(updated.gpa),
-      internships: parseInt(updated.internships, 10),
-      historyOfBacklogs: parseInt(updated.backlogs, 10),
-      stream: user?.department || 'Computer Science',
-      age: 21
-    }).then(mlRes => {
-      if (mlRes?.success) setMlData(mlRes);
-    }).catch(() => {});
+    // Debounce background server sync to avoid flooding server on rapid slider drags
+    if (tweakTimeoutRef.current) clearTimeout(tweakTimeoutRef.current);
+    tweakTimeoutRef.current = setTimeout(() => {
+      apiRequest('/ml/predict-placement', 'POST', {
+        cgpa: parseFloat(updated.gpa),
+        internships: parseInt(updated.internships, 10),
+        historyOfBacklogs: parseInt(updated.backlogs, 10),
+        stream: user?.department || 'Computer Science',
+        age: 21
+      }).then(mlRes => {
+        if (mlRes?.success) setMlData(mlRes);
+      }).catch(() => {});
+    }, 400);
   };
 
   // Reset to initial launcher state

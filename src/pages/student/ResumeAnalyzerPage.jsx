@@ -519,8 +519,8 @@ export default function ResumeAnalyzerPage() {
 
   const metrics = getBuilderMetrics();
 
-  // Run simulated analyzer on the built resume content
-  const handleAnalyzeBuiltResume = async () => {
+  // Run simulated analyzer on the built resume content - Instant analysis with background ML
+  const handleAnalyzeBuiltResume = () => {
     setAnalyzing(true);
     setActiveTab('analyze');
     setResults(null);
@@ -528,23 +528,24 @@ export default function ResumeAnalyzerPage() {
 
     const fullText = getResumeText();
 
-    try {
-      const mlRes = await apiRequest('/ml/analyze-resume', 'POST', {
-        resumeText: fullText,
-        targetRole
-      });
+    // 1. Fire background ML NLP inference pipeline (non-blocking, never blocks user)
+    apiRequest('/ml/analyze-resume', 'POST', {
+      resumeText: fullText.slice(0, 15000),
+      targetRole
+    }).then(mlRes => {
       if (mlRes?.success) {
         setMlResumeData(mlRes);
       }
-    } catch (e) {
-      console.warn('ML resume analysis fallback:', e);
-    }
+    }).catch(e => {
+      console.warn('ML resume analysis background notice:', e);
+    });
 
+    // 2. Deliver the ATS evaluation in 500ms
     setTimeout(() => {
       setAnalyzing(false);
       const actualResults = analyzeResumeTextContent(fullText, 'BuilderResume.pdf', true, false);
       setResults(actualResults);
-    }, 1000);
+    }, 500);
   };
 
   // Strict Resume File Type Validator
@@ -652,27 +653,26 @@ export default function ResumeAnalyzerPage() {
       return;
     }
 
-    // Call Python ML NLP inference pipeline
-    try {
-      const mlRes = await apiRequest('/ml/analyze-resume', 'POST', {
-        resumeText: extractedText,
-        targetRole
-      });
+    // 1. Fire background ML NLP inference pipeline (non-blocking, never blocks user)
+    apiRequest('/ml/analyze-resume', 'POST', {
+      resumeText: extractedText.slice(0, 15000),
+      targetRole
+    }).then(mlRes => {
       if (mlRes?.success) {
         setMlResumeData(mlRes);
       }
-    } catch (e) {
-      console.warn('ML resume analysis fallback:', e);
-    }
+    }).catch(e => {
+      console.warn('ML resume analysis background notice:', e);
+    });
 
-    // Run the scoring engine on the actual extracted text
+    // 2. Run the scoring engine on the actual extracted text
     const computedResults = analyzeResumeTextContent(extractedText, file.name, isPdf, isDocx);
 
-    // Small delay for UX animation
+    // 3. Short 500ms smooth animation so the user sees the scan effect without stalling
     setTimeout(() => {
       setAnalyzing(false);
       setResults(computedResults);
-    }, 800);
+    }, 500);
   };
 
   const handlePrint = () => {

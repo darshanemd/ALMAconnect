@@ -8,13 +8,31 @@ import pandas as pd
 import joblib
 from sklearn.metrics.pairwise import cosine_similarity
 
-def predict_placement(input_data):
-    model_path = os.path.join(os.path.dirname(__file__), 'saved_models', 'placement_model.joblib')
-    if not os.path.exists(model_path):
-        from train_placement_model import train_college_placement_model
-        train_college_placement_model()
+_placement_artifact = None
+_resume_artifact = None
 
-    artifact = joblib.load(model_path)
+def get_placement_artifact():
+    global _placement_artifact
+    if _placement_artifact is None:
+        model_path = os.path.join(os.path.dirname(__file__), 'saved_models', 'placement_model.joblib')
+        if not os.path.exists(model_path):
+            from train_placement_model import train_college_placement_model
+            train_college_placement_model()
+        _placement_artifact = joblib.load(model_path)
+    return _placement_artifact
+
+def get_resume_artifact():
+    global _resume_artifact
+    if _resume_artifact is None:
+        model_path = os.path.join(os.path.dirname(__file__), 'saved_models', 'resume_nlp_model.joblib')
+        if not os.path.exists(model_path):
+            from train_resume_model import train_resume_nlp_pipeline
+            train_resume_nlp_pipeline()
+        _resume_artifact = joblib.load(model_path)
+    return _resume_artifact
+
+def predict_placement(input_data):
+    artifact = get_placement_artifact()
     pipeline = artifact['pipeline']
     tier_pipeline = artifact.get('tier_pipeline')
 
@@ -107,12 +125,7 @@ def clean_resume_text(text):
     return text.strip().lower()
 
 def analyze_resume(input_data):
-    model_path = os.path.join(os.path.dirname(__file__), 'saved_models', 'resume_nlp_model.joblib')
-    if not os.path.exists(model_path):
-        from train_resume_model import train_resume_nlp_pipeline
-        train_resume_nlp_pipeline()
-
-    artifact = joblib.load(model_path)
+    artifact = get_resume_artifact()
     vectorizer = artifact['vectorizer']
     classifier = artifact.get('classifier')
     category_centroids = artifact.get('category_centroids', {})
@@ -254,12 +267,64 @@ def analyze_resume(input_data):
         }
     }
 
+def run_daemon():
+    # Pre-warm and cache both models in memory once at startup
+    sys.stderr.write("[ML Daemon] Pre-warming models...\n")
+    sys.stderr.flush()
+    try:
+        get_placement_artifact()
+        get_resume_artifact()
+        sys.stderr.write("[ML Daemon] Models warm and ready.\n")
+        sys.stderr.flush()
+    except Exception as e:
+        sys.stderr.write(f"[ML Daemon] Warning during pre-warming: {e}\n")
+        sys.stderr.flush()
+
+    sys.stdout.write(json.dumps({"status": "ready"}) + "\n")
+    sys.stdout.flush()
+
+    while True:
+        line = sys.stdin.readline()
+        if not line:
+            break
+        line = line.strip()
+        if not line:
+            continue
+        req_id = None
+        try:
+            req = json.loads(line)
+            req_id = req.get("id")
+            mode = req.get("mode")
+            data = req.get("data", {})
+            if mode == "placement":
+                res = predict_placement(data)
+            elif mode == "resume":
+                res = analyze_resume(data)
+            elif mode == "ping":
+                res = {"success": True, "pong": True}
+            else:
+                res = {"success": False, "error": f"Unknown mode: {mode}"}
+            if req_id is not None:
+                res["id"] = req_id
+            sys.stdout.write(json.dumps(res) + "\n")
+            sys.stdout.flush()
+        except Exception as err:
+            err_res = {"success": False, "error": str(err)}
+            if req_id is not None:
+                err_res["id"] = req_id
+            sys.stdout.write(json.dumps(err_res) + "\n")
+            sys.stdout.flush()
+
 def main():
     parser = argparse.ArgumentParser(description="ProjectALMA Machine Learning Inference Bridge")
-    parser.add_argument("--mode", choices=["placement", "resume"], required=True, help="Prediction mode")
+    parser.add_argument("--mode", choices=["placement", "resume", "daemon"], default="daemon", help="Prediction mode")
     parser.add_argument("--data", type=str, default=None, help="JSON string of input features (or pass via stdin)")
 
     args = parser.parse_args()
+    if args.mode == "daemon":
+        run_daemon()
+        return
+
     try:
         raw_data = args.data
         if not raw_data or raw_data.strip() == "-":
