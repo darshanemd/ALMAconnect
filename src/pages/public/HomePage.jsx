@@ -366,23 +366,23 @@ export default function HomePage() {
 
       {/* Live Social Proof Activity Ticker Toast */}
       {showToast && (
-        <div className="live-activity-toast glass-panel animate-slide-up">
-          <div className="activity-toast-header flex items-center justify-between gap-2">
+        <div className="live-activity-toast glass-panel">
+          <div className="activity-toast-header flex items-center justify-between gap-2 mb-2">
             <span className="flex items-center gap-1.5 text-xxs font-bold text-accent uppercase tracking-wider">
-              <Activity size={12} className="animate-pulse" /> Live Activity Stream
+              <Activity size={12} className="animate-pulse flex-shrink-0" /> Live Activity Stream
             </span>
             <button 
               onClick={() => setShowToast(false)} 
-              className="text-secondary hover:text-primary transition-colors"
+              className="text-secondary hover:text-primary transition-colors p-0.5"
               title="Close activity feed"
             >
               <X size={14} />
             </button>
           </div>
-          <div className="activity-toast-body flex items-center gap-2.5 mt-1.5">
-            <span className="activity-icon-badge text-base">{currentActivity.icon}</span>
-            <div className="activity-details min-w-0">
-              <p className="activity-text text-xs font-semibold text-primary truncate">{currentActivity.text}</p>
+          <div className="activity-toast-body flex items-start gap-2.5">
+            <span className="activity-icon-badge text-xl flex-shrink-0 leading-none mt-0.5">{currentActivity.icon}</span>
+            <div className="activity-details min-w-0 flex-1">
+              <p className="activity-text text-xs font-semibold text-primary">{currentActivity.text}</p>
               <span className="activity-time text-[10px] text-secondary">{currentActivity.time}</span>
             </div>
           </div>

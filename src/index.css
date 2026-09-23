@@ -1291,10 +1291,38 @@ h6 { font-size: var(--font-base); }
 .py-4 { padding-top: var(--space-4); padding-bottom: var(--space-4); }
 
 .w-full { width: 100%; }
+.min-w-0 { min-width: 0 !important; }
+.min-h-0 { min-height: 0 !important; }
+.flex-shrink-0 { flex-shrink: 0 !important; }
+
 .truncate { 
   overflow: hidden; 
   text-overflow: ellipsis; 
   white-space: nowrap; 
+}
+
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
 }
 
 .sr-only {

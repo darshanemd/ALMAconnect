@@ -417,13 +417,62 @@
   bottom: 24px;
   left: 24px;
   z-index: 999;
-  max-width: 380px;
-  padding: 14px 18px;
+  width: 360px;
+  max-width: calc(100vw - 48px);
+  box-sizing: border-box;
+  padding: 12px 16px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
   animation: slideUpToast 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  overflow: hidden;
+}
+
+.activity-toast-header {
+  width: 100%;
+}
+
+.activity-toast-body {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.activity-icon-badge {
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.activity-details {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.activity-text {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.activity-time {
+  display: inline-block;
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 3px;
 }
 
 @keyframes slideUpToast {
@@ -448,5 +497,11 @@
   .hero-illustration { display: none; }
   .stats-container { grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .features-grid { grid-template-columns: 1fr; }
-  .live-activity-toast { display: none; }
+  .live-activity-toast {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    width: auto;
+    max-width: calc(100vw - 32px);
+  }
 }
