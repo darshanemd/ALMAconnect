@@ -95,12 +95,27 @@ router.post('/manual-alumni', async (req, res) => {
         return res.status(400).json({ message: `A member with email "${req.body.email}" already exists.` });
       }
     }
+
+    const enteredId = (req.body.rollNumber || req.body.usn || req.body.id || '').trim();
+    if (enteredId) {
+      const existingId = await Member.findOne({
+        $or: [
+          { id: enteredId },
+          { rollNumber: enteredId }
+        ]
+      });
+      if (existingId) {
+        return res.status(400).json({ message: `An account with USN / Alumni ID "${enteredId}" already exists.` });
+      }
+    }
+
     const newAlum = new Member({
-      id: `alum-${Date.now()}`,
       joinedDate: new Date(),
       status: req.body.status || 'pending',
       role: 'alumni',
       ...req.body,
+      id: enteredId || `alum-${Date.now()}`,
+      rollNumber: enteredId || req.body.rollNumber || '',
       ...(emailLower && { email: emailLower })
     });
     const saved = await newAlum.save();
@@ -118,7 +133,7 @@ router.post('/manual-alumni', async (req, res) => {
         sentAt: new Date(),
         collegeId: saved.collegeId || '',
         type: 'registration_received',
-        tempCredentials: `Email: ${saved.email}`
+        tempCredentials: `USN/ID: ${saved.rollNumber || saved.id || 'N/A'}`
       });
       await emailLog.save();
     } catch (eErr) {
@@ -149,6 +164,10 @@ router.post('/manual-alumni', async (req, res) => {
   } catch (err) {
     console.error('Error in manual-alumni:', err);
     if (err.code === 11000) {
+      const field = Object.keys(err.keyPattern || {})[0] || '';
+      if (field === 'id') {
+        return res.status(400).json({ message: `A member with this USN / Alumni ID already exists.` });
+      }
       return res.status(400).json({ message: `A member with email "${req.body.email}" already exists.` });
     }
     res.status(400).json({ message: err.message });
@@ -165,15 +184,30 @@ router.post('/manual-student', async (req, res) => {
         return res.status(400).json({ message: `A member with email "${req.body.email}" already exists.` });
       }
     }
+
+    const enteredId = (req.body.rollNumber || req.body.usn || req.body.id || '').trim();
+    if (enteredId) {
+      const existingId = await Member.findOne({
+        $or: [
+          { id: enteredId },
+          { rollNumber: enteredId }
+        ]
+      });
+      if (existingId) {
+        return res.status(400).json({ message: `An account with Roll Number / USN "${enteredId}" already exists.` });
+      }
+    }
+
     const gradYearNum = req.body.graduationYear ? Number(req.body.graduationYear) : null;
     const isGraduated = gradYearNum && gradYearNum <= new Date().getFullYear();
     const assignedRole = isGraduated ? 'alumni' : (req.body.role || 'student');
 
     const newStudent = new Member({
-      id: isGraduated ? `alum-${Date.now()}` : `stud-${Date.now()}`,
       joinedDate: new Date(),
       status: req.body.status || 'pending',
       ...req.body,
+      id: enteredId || (isGraduated ? `alum-${Date.now()}` : `stud-${Date.now()}`),
+      rollNumber: enteredId || req.body.rollNumber || '',
       role: assignedRole,
       ...(gradYearNum && { graduationYear: gradYearNum }),
       ...(emailLower && { email: emailLower })
@@ -196,7 +230,7 @@ router.post('/manual-student', async (req, res) => {
         sentAt: new Date(),
         collegeId: saved.collegeId || '',
         type: isAutoActive ? 'verification' : 'registration_received',
-        tempCredentials: `Roll Number: ${saved.rollNumber || 'N/A'}`
+        tempCredentials: `Roll Number / USN: ${saved.rollNumber || saved.id || 'N/A'}`
       });
       await emailLog.save();
     } catch (eErr) {
@@ -227,7 +261,12 @@ router.post('/manual-student', async (req, res) => {
 
     res.status(201).json(saved);
   } catch (err) {
+    console.error('Error in manual-student:', err);
     if (err.code === 11000) {
+      const field = Object.keys(err.keyPattern || {})[0] || '';
+      if (field === 'id') {
+        return res.status(400).json({ message: `A member with this Roll Number / USN already exists.` });
+      }
       return res.status(400).json({ message: `A member with email "${req.body.email}" already exists.` });
     }
     res.status(400).json({ message: err.message });
@@ -240,14 +279,16 @@ router.post('/bulk-alumni', async (req, res) => {
     const formatted = await Promise.all(req.body.map(async (a, i) => {
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(a.password || 'demo123', salt);
+      const idVal = (a.rollNumber || a.id || a.usn || '').trim();
       return {
-        id: `alum-bulk-${Date.now()}-${i}`,
         joinedDate: new Date(),
         avatar: null,
         isMentor: false,
         mentorTopics: [],
         connections: [],
         ...a,
+        id: idVal || `alum-bulk-${Date.now()}-${i}`,
+        rollNumber: idVal || a.rollNumber || '',
         password: hashedPassword
       };
     }));
@@ -258,10 +299,12 @@ router.post('/bulk-alumni', async (req, res) => {
   }
 });
 
-// Helper to construct query for ID or ObjectId
+// Helper to construct query for ID or ObjectId or rollNumber
 function buildIdQuery(id) {
   const isObjId = mongoose.Types.ObjectId.isValid(id);
-  return isObjId ? { $or: [{ id: id }, { _id: new mongoose.Types.ObjectId(id) }] } : { id: id };
+  return isObjId 
+    ? { $or: [{ id: id }, { _id: new mongoose.Types.ObjectId(id) }, { rollNumber: id }] } 
+    : { $or: [{ id: id }, { rollNumber: id }] };
 }
 
 function buildBulkIdQuery(ids) {

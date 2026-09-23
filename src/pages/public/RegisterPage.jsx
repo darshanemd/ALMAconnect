@@ -186,11 +186,11 @@ export default function RegisterPage() {
   }, [step]);
 
   const isStep1Valid = Boolean(
-    formData.firstName &&
-    formData.lastName &&
-    formData.email &&
+    formData.firstName?.trim() &&
+    formData.lastName?.trim() &&
+    formData.email?.trim() &&
     formData.password &&
-    (formData.role !== 'student' || formData.rollNumber)
+    formData.rollNumber?.trim()
   );
 
   const isStep2Valid = Boolean(
@@ -344,6 +344,8 @@ export default function RegisterPage() {
         
       const parsedData = {
         ...formData,
+        id: formData.rollNumber ? formData.rollNumber.trim() : undefined,
+        rollNumber: formData.rollNumber ? formData.rollNumber.trim() : '',
         graduationYear: Number(formData.graduationYear),
         skills: skillsArray,
         idProofUrl: formData.idProofImage || '',
@@ -545,6 +547,24 @@ export default function RegisterPage() {
                   </div>
                 </div>
               </div>
+
+              {formData.role === 'alumni' && (
+                <div className="input-group mb-4">
+                  <label htmlFor="rollNumber">USN / Alumni ID Number *</label>
+                  <input 
+                    id="rollNumber" 
+                    type="text" 
+                    className="input" 
+                    placeholder="e.g. 4EG20CS045 or ALUM-2020-001" 
+                    value={formData.rollNumber} 
+                    onChange={handleInputChange} 
+                    required 
+                  />
+                  <div className="text-xs text-secondary mt-1">
+                    Enter your college USN (University Seat Number) or official Alumni ID.
+                  </div>
+                </div>
+              )}
 
               {formData.role === 'student' && (
                 <div className="input-group mb-4">

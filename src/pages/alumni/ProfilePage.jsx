@@ -292,6 +292,12 @@ export default function ProfilePage() {
             <div className="education-box mt-4 border-l-2 border-accent pl-4 py-1">
               <h4 className="font-semibold text-sm">{profileData.degree} in {profileData.department}</h4>
               <p className="text-xs text-secondary mt-1">Class of {profileData.graduationYear}</p>
+              {(profileData.rollNumber || profileData.id) && (
+                <p className="text-xs text-secondary font-mono mt-1">
+                  {user?.role === 'alumni' ? 'USN / Alumni ID: ' : 'Roll Number: '}
+                  <span className="font-semibold text-accent">{profileData.rollNumber || profileData.id}</span>
+                </p>
+              )}
               <p className="text-xs text-secondary font-bold mt-1">Verified Alma Mater</p>
             </div>
           </div>

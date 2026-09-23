@@ -391,10 +391,19 @@ Warm regards,
         }
         await addManualStudentRegistration({
           ...memberData,
-          rollNumber: addForm.rollNumber
+          id: addForm.rollNumber.trim(),
+          rollNumber: addForm.rollNumber.trim()
         });
       } else {
-        await addManualAlumniRegistration(memberData);
+        if (!addForm.rollNumber) {
+          alert('USN / Alumni ID is required for alumni.');
+          return;
+        }
+        await addManualAlumniRegistration({
+          ...memberData,
+          id: addForm.rollNumber.trim(),
+          rollNumber: addForm.rollNumber.trim()
+        });
       }
 
       setAddForm({
@@ -636,7 +645,15 @@ Warm regards,
                         </td>
                         <td>
                           <div className="font-semibold">{member.firstName} {member.lastName}</div>
-                          {member.rollNumber && <span className="text-xs text-secondary font-mono">Roll: {member.rollNumber}</span>}
+                          {member.rollNumber ? (
+                            <span className="text-xs text-secondary font-mono">
+                              {member.role === 'alumni' ? 'USN/ID: ' : 'Roll: '}{member.rollNumber}
+                            </span>
+                          ) : member.id ? (
+                            <span className="text-xs text-secondary font-mono">
+                              {member.role === 'alumni' ? 'USN/ID: ' : 'Roll: '}{member.id}
+                            </span>
+                          ) : null}
                         </td>
                         <td>
                           <span className={`badge ${member.role === 'student' ? 'badge-info' : 'badge-accent'}`}>
@@ -1472,20 +1489,20 @@ Warm regards,
                   </div>
                 </div>
 
-                {addForm.role === 'student' && (
-                  <div className="input-group">
-                    <label htmlFor="add-rollNumber">Roll Number / Student ID *</label>
-                    <input 
-                      id="add-rollNumber" 
-                      type="text" 
-                      className="input" 
-                      placeholder="e.g. 4EG2027101" 
-                      value={addForm.rollNumber} 
-                      onChange={e => setAddForm(prev => ({ ...prev, rollNumber: e.target.value }))}
-                      required 
-                    />
-                  </div>
-                )}
+                <div className="input-group">
+                  <label htmlFor="add-rollNumber">
+                    {addForm.role === 'alumni' ? 'USN / Alumni ID *' : 'Roll Number / Student ID *'}
+                  </label>
+                  <input 
+                    id="add-rollNumber" 
+                    type="text" 
+                    className="input" 
+                    placeholder={addForm.role === 'alumni' ? "e.g. 4EG20CS045" : "e.g. 4EG2027101"} 
+                    value={addForm.rollNumber} 
+                    onChange={e => setAddForm(prev => ({ ...prev, rollNumber: e.target.value }))}
+                    required 
+                  />
+                </div>
 
                 <div className="grid grid-2 gap-4">
                   <div className="input-group">
@@ -1666,19 +1683,19 @@ Warm regards,
             </div>
             <form onSubmit={handleSaveEdit}>
               <div className="modal-body flex flex-col gap-4">
-                {editingMember?.role === 'student' && (
-                  <div className="input-group">
-                    <label htmlFor="edit-rollNumber">Roll Number *</label>
-                    <input 
-                      id="edit-rollNumber" 
-                      type="text" 
-                      className="input" 
-                      value={editForm.rollNumber} 
-                      onChange={e => setEditForm(prev => ({ ...prev, rollNumber: e.target.value }))}
-                      required 
-                    />
-                  </div>
-                )}
+                <div className="input-group">
+                  <label htmlFor="edit-rollNumber">
+                    {editingMember?.role === 'alumni' ? 'USN / Alumni ID *' : 'Roll Number *'}
+                  </label>
+                  <input 
+                    id="edit-rollNumber" 
+                    type="text" 
+                    className="input" 
+                    value={editForm.rollNumber} 
+                    onChange={e => setEditForm(prev => ({ ...prev, rollNumber: e.target.value }))}
+                    required 
+                  />
+                </div>
 
                 <div className="grid grid-2 gap-4">
                   <div className="input-group">
