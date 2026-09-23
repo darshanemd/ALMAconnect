@@ -2829,15 +2829,225 @@ function isToolAlreadyMastered(tool, userSkills = []) {
   return false;
 }
 
-// Helper: Get list of all alumni twins for a given role, dynamically filtered by user skills
-export function getAlumniTwinsForRole(roleName, currentSkills = []) {
+// Helper: Get list of all alumni twins for a given role, dynamically matching real directory alumni with curated fallback
+export function getAlumniTwinsForRole(roleName, currentSkills = [], realAlumniList = [], userCollegeId = null) {
   const baseTwins = ALUMNI_TWINS_DATA[roleName]?.alumniTwins || [];
   const curriculumPool = ROLE_MASTER_CURRICULUMS[roleName] || [];
-
-  // Determine acquired skills for this role
   const userSkillList = Array.isArray(currentSkills) && currentSkills.length > 0 ? currentSkills : DEFAULT_STARTING_SKILLS;
+  const roleLower = (roleName || '').toLowerCase().trim();
 
-  // If we have existing twins in ALUMNI_TWINS_DATA
+  // 1. Identify matching real alumni from the directory
+  let matchingRealAlumni = [];
+  if (Array.isArray(realAlumniList) && realAlumniList.length > 0) {
+    matchingRealAlumni = realAlumniList.filter(alum => {
+      if (!alum || alum.status !== 'active') return false;
+      const alumRole = (alum.currentRole || '').toLowerCase();
+      const alumSkills = Array.isArray(alum.skills) ? alum.skills.map(s => String(s).toLowerCase()) : [];
+
+      // Direct or substring match on currentRole
+      if (alumRole.includes(roleLower) || roleLower.includes(alumRole)) return true;
+
+      // Smart domain keyword matching
+      if (roleLower.includes('software') && (alumRole.includes('software') || alumRole.includes('engineer') || alumRole.includes('developer') || alumRole.includes('sde') || alumRole.includes('programmer'))) return true;
+      if (roleLower.includes('cloud') && (alumRole.includes('cloud') || alumRole.includes('aws') || alumRole.includes('azure') || alumRole.includes('gcp') || alumRole.includes('backend'))) return true;
+      if (roleLower.includes('backend') && (alumRole.includes('backend') || alumRole.includes('microservices') || alumRole.includes('api') || alumRole.includes('server'))) return true;
+      if (roleLower.includes('full stack') && (alumRole.includes('full') || alumRole.includes('stack') || alumRole.includes('web') || (alumSkills.includes('react') && alumSkills.includes('node')))) return true;
+      if ((roleLower.includes('ai') || roleLower.includes('ml') || roleLower.includes('data scientist')) && (alumRole.includes('ai') || alumRole.includes('ml') || alumRole.includes('machine') || alumRole.includes('learning') || alumRole.includes('scientist') || alumSkills.includes('pytorch') || alumSkills.includes('python'))) return true;
+      if (roleLower.includes('data analyst') && (alumRole.includes('analyst') || alumRole.includes('bi') || alumRole.includes('intelligence') || alumSkills.includes('sql') || alumSkills.includes('tableau') || alumSkills.includes('power bi'))) return true;
+      if (roleLower.includes('devops') && (alumRole.includes('devops') || alumRole.includes('sre') || alumRole.includes('infra') || alumRole.includes('reliability') || alumRole.includes('platform') || alumSkills.includes('kubernetes') || alumSkills.includes('docker'))) return true;
+      if (roleLower.includes('design') && (alumRole.includes('design') || alumRole.includes('ui') || alumRole.includes('ux') || alumRole.includes('product designer'))) return true;
+
+      return false;
+    });
+
+    // Prioritize alumni from student's own college first
+    if (userCollegeId && matchingRealAlumni.length > 0) {
+      matchingRealAlumni.sort((a, b) => {
+        const aMatches = a.collegeId === userCollegeId ? 1 : 0;
+        const bMatches = b.collegeId === userCollegeId ? 1 : 0;
+        return bMatches - aMatches;
+      });
+    }
+  }
+
+  // 2. If matching real alumni were found, build blueprints from them
+  if (matchingRealAlumni.length > 0) {
+    return matchingRealAlumni.slice(0, 6).map((alum, alumIdx) => {
+      const fullName = `${alum.firstName || ''} ${alum.lastName || ''}`.trim() || alum.name || `Senior ${alumIdx + 1}`;
+      const initials = ((alum.firstName?.[0] || '') + (alum.lastName?.[0] || '')).toUpperCase() || 'AL';
+
+      // Check if this real alumnus matches a pre-curated twin in ALUMNI_TWINS_DATA
+      const existingTwinMatch = baseTwins.find(bt => 
+        bt.name.toLowerCase() === fullName.toLowerCase() ||
+        (alum.firstName && bt.name.toLowerCase().includes(alum.firstName.toLowerCase()))
+      ) || (Object.values(ALUMNI_TWINS_DATA).flatMap(d => d.alumniTwins || []).find(bt =>
+        bt.name.toLowerCase() === fullName.toLowerCase() ||
+        (alum.firstName && bt.name.toLowerCase().includes(alum.firstName.toLowerCase()))
+      ));
+
+      // Resolve candidate tools:
+      let candidateTools = [];
+      if (existingTwinMatch && Array.isArray(existingTwinMatch.missingTools) && existingTwinMatch.missingTools.length > 0) {
+        candidateTools = existingTwinMatch.missingTools;
+      } else if (Array.isArray(alum.skills) && alum.skills.length > 0) {
+        // Map real alumnus's actual skills to rich curriculum tools where possible
+        const mappedTools = [];
+        const unmappedSkills = [];
+
+        alum.skills.forEach(skillStr => {
+          const normSkill = normalizeSkillKey(skillStr);
+          const matchingCurriculumTool = curriculumPool.find(t => 
+            (t.skillKeys && t.skillKeys.some(k => normalizeSkillKey(k) === normSkill)) ||
+            (t.keySkills && t.keySkills.some(k => normalizeSkillKey(k) === normSkill)) ||
+            (t.title && t.title.toLowerCase().includes(normSkill))
+          );
+
+          if (matchingCurriculumTool && !mappedTools.some(m => m.title === matchingCurriculumTool.title)) {
+            mappedTools.push(matchingCurriculumTool);
+          } else {
+            unmappedSkills.push(skillStr);
+          }
+        });
+
+        // Add synthesized tools for specialized skills
+        unmappedSkills.slice(0, 4).forEach(skill => {
+          mappedTools.push({
+            title: `${skill} Professional Implementation`,
+            category: 'Specialized Stack',
+            duration: '3 Weeks (8 hrs/week)',
+            whyItMattered: `Employed in daily production workflows at ${alum.currentCompany || 'industry technology teams'}.`,
+            practiceProject: `Production-Grade ${skill} Implementation Project`,
+            projectDescription: `Build and benchmark end-to-end repository code leveraging ${skill} with testing and error handling.`,
+            keySkills: [skill, 'Best Practices', 'Architecture Integration', 'Testing'],
+            youtubeCourses: [{
+              title: `${skill} Full Course for Developers`,
+              channel: 'freeCodeCamp.org',
+              duration: '2h 15m',
+              views: '650K views',
+              link: `https://www.youtube.com/results?search_query=${encodeURIComponent(skill + ' full course')}`
+            }]
+          });
+        });
+
+        candidateTools = mappedTools.length > 0 ? mappedTools : curriculumPool;
+      } else {
+        candidateTools = curriculumPool;
+      }
+
+      // Filter tools: exclude ones user has already mastered
+      const remainingGaps = candidateTools.filter(t => !isToolAlreadyMastered(t, userSkillList));
+      const selectedGaps = remainingGaps.length > 0 ? remainingGaps.slice(0, 8) : candidateTools.slice(-2);
+
+      const numberedTools = selectedGaps.map((t, idx) => ({
+        ...t,
+        toolNumber: idx + 1
+      }));
+
+      // Generate roadmap phases: preserve handcrafted phase details if available
+      const roadmapPhasesSource = existingTwinMatch?.roadmapPhases || [];
+      const dynamicPhases = numberedTools.map((t, idx) => {
+        const customPhase = roadmapPhasesSource.find(p => {
+          const pTitle = (p.title || '').toLowerCase();
+          const tTitle = (t.title || '').toLowerCase();
+          return pTitle.includes(tTitle.slice(0, 10)) || tTitle.includes(pTitle.slice(0, 10));
+        }) || roadmapPhasesSource[idx];
+
+        if (customPhase) {
+          return {
+            ...customPhase,
+            phase: idx + 1,
+            title: customPhase.title || t.title,
+            weeks: customPhase.weeks || `Weeks ${idx * 3 + 1} - ${idx * 3 + 3}`,
+            commitment: customPhase.commitment || '8-10 hrs/week',
+            status: idx === 0 ? 'ready' : 'upcoming',
+            icon: customPhase.icon || (idx === 0 ? 'Layout' : idx === 1 ? 'Server' : idx === 2 ? 'Layers' : idx === 3 ? 'Code2' : idx === 4 ? 'Terminal' : 'Sparkles'),
+            description: customPhase.description || t.whyItMattered,
+            keySkills: customPhase.keySkills || t.keySkills || [],
+            capstoneDeliverable: customPhase.capstoneDeliverable || t.practiceProject || `Production-Grade ${t.title} Module`,
+            proTip: customPhase.proTip || `Focus on hands-on repository code and real edge-case handling for ${t.category}.`,
+            milestones: Array.isArray(customPhase.milestones) && customPhase.milestones.length > 0
+              ? customPhase.milestones
+              : [
+                { id: `m${idx * 2 + 1}`, text: `Complete core practical architecture for ${t.title}`, done: false },
+                { id: `m${idx * 2 + 2}`, text: `Build and benchmark capstone: ${t.practiceProject || 'Project Implementation'}`, done: false }
+              ]
+          };
+        }
+
+        return {
+          phase: idx + 1,
+          title: t.title,
+          weeks: `Weeks ${idx * 3 + 1} - ${idx * 3 + 3}`,
+          commitment: '8-10 hrs/week',
+          status: idx === 0 ? 'ready' : 'upcoming',
+          icon: idx === 0 ? 'Layout' : idx === 1 ? 'Server' : idx === 2 ? 'Layers' : idx === 3 ? 'Code2' : idx === 4 ? 'Terminal' : 'Sparkles',
+          description: t.whyItMattered,
+          keySkills: t.keySkills || [],
+          capstoneDeliverable: t.practiceProject || `Production-Grade ${t.title} Module`,
+          proTip: `Focus on hands-on repository code and real edge-case handling for ${t.category}.`,
+          milestones: [
+            { id: `m${idx * 2 + 1}`, text: `Complete core practical architecture for ${t.title}`, done: false },
+            { id: `m${idx * 2 + 2}`, text: `Build and benchmark capstone: ${t.practiceProject || 'Project Implementation'}`, done: false }
+          ]
+        };
+      });
+
+      // Calculate matching / acquired skills
+      const totalCompetencies = userSkillList.length + numberedTools.length;
+      const matchPercentage = Math.min(95, Math.max(20, Math.round((userSkillList.length / Math.max(totalCompetencies, 1)) * 100)));
+
+      // Package derivation
+      const company = alum.currentCompany || existingTwinMatch?.currentCompany || 'Product Firm';
+      const companyPackage = alum.package || (
+        company.includes('Google') ? '36 LPA' :
+        company.includes('Atlassian') ? '30 LPA' :
+        company.includes('Microsoft') ? '28 LPA' :
+        company.includes('Amazon') ? '32 LPA' :
+        company.includes('Uber') ? '34 LPA' :
+        company.includes('NVIDIA') ? '35 LPA' :
+        company.includes('Walmart') ? '26 LPA' :
+        company.includes('Adobe') ? '31 LPA' :
+        company.includes('Swiggy') ? '25 LPA' :
+        company.includes('Salesforce') ? '29 LPA' :
+        company.includes('Deloitte') ? '18 LPA' :
+        '24 LPA'
+      );
+
+      const stackSummary = Array.isArray(alum.skills) && alum.skills.length > 0
+        ? alum.skills.slice(0, 3).join(' & ')
+        : (existingTwinMatch?.stackFocus || `${company} Stack`);
+
+      return {
+        id: alum.id || alum._id || existingTwinMatch?.id || `real-alum-${alumIdx}`,
+        name: fullName,
+        initials,
+        gender: existingTwinMatch?.gender || 'neutral',
+        verified: alum.isVerified !== false,
+        currentCompany: company,
+        currentRole: alum.currentRole || existingTwinMatch?.currentRole || roleName,
+        package: companyPackage,
+        batch: alum.graduationYear ? `Class of ${alum.graduationYear}` : (existingTwinMatch?.batch || 'Class of 2021'),
+        department: alum.department || existingTwinMatch?.department || 'Computer Science',
+        stackFocus: stackSummary,
+        advice: alum.bio || existingTwinMatch?.advice || `Mastering core architecture and clean code was key to getting hired at ${company}.`,
+        interviewQAs: existingTwinMatch?.interviewQAs || [
+          {
+            q: `What was the technical interview process like at ${company}?`,
+            a: `The loop focused heavily on real problem-solving, modular code organization, handling race conditions, and clearly articulating architectural tradeoffs.`
+          }
+        ],
+        baselineSkills: userSkillList,
+        acquiredSkills: userSkillList,
+        matchPercentage,
+        missingTools: numberedTools,
+        roadmapPhases: dynamicPhases,
+        isRealDirectoryAlumni: true,
+        email: alum.email || ''
+      };
+    });
+  }
+
+  // 3. Fallback: If no matching real alumni in directory, use baseTwins from ALUMNI_TWINS_DATA
   if (baseTwins.length > 0) {
     return baseTwins.map((twin, twinIdx) => {
       // Prioritize each senior's unique blueprint missingTools; fall back to role curriculum pool only if missing

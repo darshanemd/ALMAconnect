@@ -1,5 +1,6 @@
 import { useState, useMemo, useRef, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
+import { useData } from '../../contexts/DataContext';
 import { apiRequest } from '../../utils/api';
 import { 
   Sparkles, Database, Code2, Cloud, BrainCircuit, Layout, Terminal,
@@ -28,6 +29,7 @@ const ROLE_ICONS = {
 
 export default function SkillGapPage() {
   const { user } = useAuth();
+  const { getAlumni, sendConnectionRequest, sendDirectMessage } = useData();
 
   // State
   const [selectedRole, setSelectedRole] = useState('Cloud Backend Engineer');
@@ -98,10 +100,15 @@ export default function SkillGapPage() {
     };
   }, [isRolesDropdownOpen]);
 
-  // Available Alumni Twins for the chosen career role
+  // Real active alumni from directory
+  const directoryAlumni = useMemo(() => {
+    return typeof getAlumni === 'function' ? getAlumni({ status: 'active', role: 'alumni' }) : [];
+  }, [getAlumni]);
+
+  // Available Alumni Twins for the chosen career role (incorporates real directory alumni with curated fallback)
   const availableTwins = useMemo(() => {
-    return getAlumniTwinsForRole(selectedRole, startingSkills);
-  }, [selectedRole, startingSkills]);
+    return getAlumniTwinsForRole(selectedRole, startingSkills, directoryAlumni, user?.collegeId);
+  }, [selectedRole, startingSkills, directoryAlumni, user?.collegeId]);
 
   // Active Selected Alumni Twin Data
   const twin = availableTwins[selectedTwinIndex] || availableTwins[0];
@@ -243,8 +250,21 @@ export default function SkillGapPage() {
   };
 
   // Submit Mentorship Message
-  const handleSendConnection = (e) => {
+  const handleSendConnection = async (e) => {
     e.preventDefault();
+    try {
+      if (twin?.isRealDirectoryAlumni && twin.id && user?.id) {
+        if (typeof sendConnectionRequest === 'function') {
+          await sendConnectionRequest(user.id, twin.id);
+        }
+        if (typeof sendDirectMessage === 'function' && connectMessage.trim()) {
+          const introMsg = `[Skill Gap Detector Mentorship Inquiry: ${connectTopic}]\n\n${connectMessage.trim()}`;
+          await sendDirectMessage(user.id, twin.id, introMsg);
+        }
+      }
+    } catch (err) {
+      console.warn('Could not dispatch real connection request to alumni:', err);
+    }
     setConnectSuccess(true);
     setTimeout(() => {
       setIsConnectModalOpen(false);
@@ -559,6 +579,11 @@ export default function SkillGapPage() {
                       <div className="twin-select-info">
                         <div className="twin-select-name-row">
                           <span className="twin-select-name">{t.name}</span>
+                          {t.isRealDirectoryAlumni && (
+                            <span className="text-[10px] bg-emerald-50 text-emerald-700 font-bold px-1.5 py-0.5 rounded border border-emerald-200">
+                              Directory
+                            </span>
+                          )}
                           {isSelected && <CheckCircle size={15} className="twin-active-check-icon" />}
                         </div>
                         <div className="twin-select-company">
@@ -618,6 +643,11 @@ export default function SkillGapPage() {
                     <div className="senior-name-row">
                       <span className="senior-name">{twin.name}</span>
                       <CheckCircle size={18} className="senior-verified-icon" />
+                      {twin.isRealDirectoryAlumni && (
+                        <span className="text-xs bg-emerald-50 text-emerald-700 font-semibold px-2 py-0.5 rounded-full border border-emerald-200 ml-1">
+                          Verified Directory Alumnus
+                        </span>
+                      )}
                     </div>
                     <div className="senior-placement-text">
                       Placed as <strong>{twin.currentRole}</strong> at <strong>{twin.currentCompany}</strong> • {twin.package}
