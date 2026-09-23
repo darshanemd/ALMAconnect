@@ -52,6 +52,8 @@ export default function ChatModal({ activeChatAlum, onClose }) {
   const recognitionRef = useRef(null);
   const isListeningRef = useRef(false);
   const baseTextBeforeSpeechRef = useRef('');
+  const accumulatedSpeechRef = useRef('');
+  const restartTimeoutRef = useRef(null);
   const audioStreamRef = useRef(null);
   const audioCtxRef = useRef(null);
   const animFrameRef = useRef(null);
@@ -213,6 +215,12 @@ export default function ChatModal({ activeChatAlum, onClose }) {
     setIsListening(false);
     setVoiceStatusText('');
     setMicVolume(0);
+    accumulatedSpeechRef.current = '';
+
+    if (restartTimeoutRef.current) {
+      clearTimeout(restartTimeoutRef.current);
+      restartTimeoutRef.current = null;
+    }
 
     if (recognitionRef.current) {
       try {
@@ -252,69 +260,34 @@ export default function ChatModal({ activeChatAlum, onClose }) {
     }
   }, [activeChatAlum?.id, emitTyping]);
 
-  // Cleanup speech recognition on unmount or active user switch
-  useEffect(() => {
-    return () => {
-      stopVoiceTyping();
-    };
-  }, [stopVoiceTyping]);
+  // Clean-running mobile & desktop speech engine
+  const startSpeechEngine = useCallback(() => {
+    if (!isListeningRef.current) return;
 
-  // Voice Typing (Speech-to-Text) Toggle
-  const toggleVoiceTyping = async () => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SpeechRecognition) {
-      alert('Voice typing is not supported in this browser. Please use Google Chrome or Microsoft Edge.');
-      return;
-    }
+    if (!SpeechRecognition) return;
 
-    if (isListeningRef.current) {
-      stopVoiceTyping();
-      return;
-    }
+    const isMobile = typeof navigator !== 'undefined' && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
     try {
-      isListeningRef.current = true;
-      setIsListening(true);
-      setVoiceStatusText('Listening... Speak now');
-
-      baseTextBeforeSpeechRef.current = newMessageText || '';
-
-      // Start live microphone level meter
-      try {
-        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-          const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-          audioStreamRef.current = stream;
-          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-          if (AudioContextClass) {
-            const ctx = new AudioContextClass();
-            audioCtxRef.current = ctx;
-            if (ctx.state === 'suspended') {
-              await ctx.resume();
-            }
-            const analyser = ctx.createAnalyser();
-            analyser.fftSize = 64;
-            const src = ctx.createMediaStreamSource(stream);
-            src.connect(analyser);
-
-            const buffer = new Uint8Array(analyser.frequencyBinCount);
-            const check = () => {
-              if (!isListeningRef.current) return;
-              analyser.getByteFrequencyData(buffer);
-              let sum = 0;
-              for (let i = 0; i < buffer.length; i++) sum += buffer[i];
-              const level = Math.round((sum / buffer.length) * 1.5);
-              setMicVolume(Math.min(100, level));
-              animFrameRef.current = requestAnimationFrame(check);
-            };
-            check();
-          }
-        }
-      } catch (streamErr) {
-        console.warn('Mic meter note:', streamErr);
+      if (recognitionRef.current) {
+        try {
+          recognitionRef.current.onstart = null;
+          recognitionRef.current.onaudiostart = null;
+          recognitionRef.current.onsoundstart = null;
+          recognitionRef.current.onspeechstart = null;
+          recognitionRef.current.onresult = null;
+          recognitionRef.current.onerror = null;
+          recognitionRef.current.onend = null;
+          recognitionRef.current.stop();
+        } catch (e) { /* ignore */ }
+        recognitionRef.current = null;
       }
 
       const recognition = new SpeechRecognition();
-      recognition.continuous = true;
+      // On mobile browsers, continuous=false prevents engine hang/freeze.
+      // Speech utterances are seamlessly accumulated via accumulatedSpeechRef.
+      recognition.continuous = !isMobile;
       recognition.interimResults = true;
       recognition.maxAlternatives = 1;
       recognition.lang = speechLanguage || 'en-IN';
@@ -344,22 +317,32 @@ export default function ChatModal({ activeChatAlum, onClose }) {
       };
 
       recognition.onresult = (event) => {
-        let transcript = '';
+        let sessionFinal = '';
+        let sessionInterim = '';
 
         for (let i = 0; i < event.results.length; i++) {
           const item = event.results[i];
           if (item && item[0] && item[0].transcript) {
-            transcript += item[0].transcript;
+            if (item.isFinal) {
+              sessionFinal += item[0].transcript + ' ';
+            } else {
+              sessionInterim += item[0].transcript;
+            }
           }
         }
 
-        const base = baseTextBeforeSpeechRef.current ? baseTextBeforeSpeechRef.current.trim() + ' ' : '';
-        const combined = (base + transcript.trimStart()).slice(0, 500);
+        if (sessionFinal) {
+          accumulatedSpeechRef.current = (accumulatedSpeechRef.current + ' ' + sessionFinal).trim();
+        }
+
+        const totalSpeech = (accumulatedSpeechRef.current + (sessionInterim ? ' ' + sessionInterim : '')).trim();
+        const base = baseTextBeforeSpeechRef.current ? baseTextBeforeSpeechRef.current.trim() : '';
+        const combined = (base ? base + ' ' + totalSpeech : totalSpeech).slice(0, 500);
+
         setNewMessageText(combined);
 
-        const cleanTranscript = transcript.trim();
-        if (cleanTranscript) {
-          setVoiceStatusText(`"${cleanTranscript}"`);
+        if (totalSpeech) {
+          setVoiceStatusText(`"${totalSpeech.slice(-45)}"`);
         }
 
         if (activeChatAlum?.id) {
@@ -374,17 +357,18 @@ export default function ChatModal({ activeChatAlum, onClose }) {
       recognition.onerror = (event) => {
         console.warn('Speech recognition error event:', event.error);
         if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
-          setVoiceStatusText('⚠️ Mic blocked! Click lock/camera in address bar to Allow.');
-          alert('Microphone permission was denied. Please allow microphone access in your browser address bar.');
+          setVoiceStatusText('⚠️ Mic blocked! Please allow microphone access in browser settings.');
+          alert('Microphone permission was denied. Please allow microphone access in your browser settings.');
           stopVoiceTyping();
         } else if (event.error === 'network') {
           setVoiceStatusText('⚠️ Speech service unreachable. Check internet connection.');
         } else if (event.error === 'audio-capture') {
-          setVoiceStatusText('⚠️ No microphone hardware found or mic is muted.');
-          alert('No microphone was detected. Please check your Windows sound settings.');
+          setVoiceStatusText('⚠️ Microphone busy or not found.');
           stopVoiceTyping();
         } else if (event.error === 'no-speech') {
           setVoiceStatusText('Listening... (Waiting for your voice)');
+        } else if (event.error === 'aborted') {
+          // Normal abort on user stop or restart, ignore
         } else {
           setVoiceStatusText(`Notice: ${event.error}`);
         }
@@ -393,22 +377,65 @@ export default function ChatModal({ activeChatAlum, onClose }) {
       recognition.onend = () => {
         // Keep listening as long as user is active
         if (isListeningRef.current) {
-          try {
-            recognition.start();
-          } catch (e) {
-            setTimeout(() => {
-              if (isListeningRef.current) {
-                try {
-                  recognition.start();
-                } catch (err) { /* ignore */ }
-              }
-            }, 300);
-          }
+          if (restartTimeoutRef.current) clearTimeout(restartTimeoutRef.current);
+          restartTimeoutRef.current = setTimeout(() => {
+            if (isListeningRef.current) {
+              startSpeechEngine();
+            }
+          }, isMobile ? 350 : 150);
         }
       };
 
       recognitionRef.current = recognition;
       recognition.start();
+    } catch (err) {
+      console.warn('Speech recognition error:', err);
+      if (isListeningRef.current) {
+        if (restartTimeoutRef.current) clearTimeout(restartTimeoutRef.current);
+        restartTimeoutRef.current = setTimeout(() => {
+          if (isListeningRef.current) {
+            startSpeechEngine();
+          }
+        }, 500);
+      }
+    }
+  }, [speechLanguage, activeChatAlum?.id, emitTyping, stopVoiceTyping]);
+
+  // Cleanup speech recognition on unmount or active user switch
+  useEffect(() => {
+    return () => {
+      stopVoiceTyping();
+    };
+  }, [stopVoiceTyping]);
+
+  // Voice Typing (Speech-to-Text) Toggle
+  const toggleVoiceTyping = async () => {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      alert('Voice typing is not supported in this browser. Please use Google Chrome, Microsoft Edge, or Safari.');
+      return;
+    }
+
+    if (isListeningRef.current) {
+      stopVoiceTyping();
+      return;
+    }
+
+    // Check for insecure context on mobile (e.g. testing over HTTP on LAN)
+    if (typeof window !== 'undefined' && !window.isSecureContext && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+      alert('Voice typing on mobile requires a secure connection (HTTPS) or localhost. If accessing via local IP over HTTP, browser security blocks the speech API.');
+      return;
+    }
+
+    try {
+      isListeningRef.current = true;
+      setIsListening(true);
+      setVoiceStatusText('Listening... Speak now');
+
+      baseTextBeforeSpeechRef.current = newMessageText || '';
+      accumulatedSpeechRef.current = '';
+
+      startSpeechEngine();
     } catch (err) {
       console.error('Error starting speech recognition:', err);
       alert('Could not start voice typing: ' + (err.message || 'Microphone error'));
@@ -681,33 +708,32 @@ export default function ChatModal({ activeChatAlum, onClose }) {
                 {/* Voice Typing Active Notification Bar */}
                 {isListening && (
                   <div className="voice-typing-status-bar">
-                    <div className="flex items-center gap-2 overflow-hidden">
-                      {/* Live Volume Level Indicator */}
-                      <span className={`text-[11px] font-mono px-1.5 py-0.5 rounded font-bold transition-colors ${
-                        micVolume > 5 ? "bg-green-500/20 text-green-600 dark:text-green-400" : "bg-amber-500/20 text-amber-600"
-                      }`}>
-                        {micVolume > 5 ? `🎤 ${micVolume}%` : `🔇 0%`}
-                      </span>
+                    <div className="flex items-center gap-2 overflow-hidden flex-1 min-w-0">
+                      {/* Animated Voice Waveform */}
+                      <div className="voice-wave-container flex-shrink-0" title="Microphone recording active">
+                        <span className="voice-wave-bar"></span>
+                        <span className="voice-wave-bar"></span>
+                        <span className="voice-wave-bar"></span>
+                        <span className="voice-wave-bar"></span>
+                      </div>
 
                       <span className="font-semibold text-xs truncate">
-                        {micVolume === 0 && !voiceStatusText?.startsWith('"')
-                          ? "Mic is at 0%! Check if your mic is muted in Windows."
-                          : (voiceStatusText || "Hearing sound... speak clearly")}
+                        {voiceStatusText || "Listening... Speak clearly"}
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-2 flex-shrink-0">
+                    <div className="flex items-center gap-1.5 flex-shrink-0">
                       <button
                         type="button"
                         onClick={() => {
                           const nextLang = speechLanguage === 'en-IN' ? 'en-US' : 'en-IN';
                           setSpeechLanguage(nextLang);
-                          if (recognitionRef.current) {
-                            try {
-                              recognitionRef.current.lang = nextLang;
-                            } catch (e) { /* ignore */ }
-                          }
                           setVoiceStatusText(`Dialect: ${nextLang === 'en-IN' ? 'EN (India)' : 'EN (US)'}`);
+                          if (isListeningRef.current) {
+                            setTimeout(() => {
+                              if (isListeningRef.current) startSpeechEngine();
+                            }, 100);
+                          }
                         }}
                         className="voice-lang-badge"
                         title="Click to toggle English accent dialect"
